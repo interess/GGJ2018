@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: FreakingEditor.FscenesConfig
   m_EditorClassIdentifier: 
   scenePaths:
-  - Assets/MPW/Scenes/Core
-  - Assets/MPW/Scenes/Game
+  - Assets/DZ/Scenes/Core
+  - Assets/DZ/Scenes/Game
   devOnly: 0000
   mainScene: 0
