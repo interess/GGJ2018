@@ -1,0 +1,10 @@
+{
+  "CachedComponent": {
+    "prefix": "cachedComponent",
+    "body": [
+      "$1 _$2;",
+      "protected $1 $2 { get {if (_$2 == null) _$2 = GetComponent<$1>(); return _$2;} }"
+    ],
+    "description": "Creates cache component template"
+  }
+}
