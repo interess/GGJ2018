@@ -47,8 +47,6 @@ namespace FFramework
 				__lookupInitableUnitSafe = new HashSet<FUnit>(__lookupInitableUnit);
 				__lookupInitableUnit.Clear();
 
-				Debug.Log("Update Initables");
-
 				foreach (var unit in __lookupInitableUnitSafe)
 				{
 					var passed = true;
@@ -64,7 +62,6 @@ namespace FFramework
 
 					if (passed)
 					{
-						Debug.Log("Init funit " + unit.gameObject.name + " | " + unit.GetType().Name);
 						unit.___FInternalInit(__fcontext);
 
 						var tickable = unit as IFTickable;

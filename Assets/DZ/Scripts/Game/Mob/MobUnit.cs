@@ -1,16 +1,19 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using FFramework;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class MobUnit : MonoBehaviour {
+namespace DZ
+{
+    public class MobUnit : FUnit
+    {
+        public string gameSceneName;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+        public override void FInit()
+        {
+            if (!SceneManager.GetSceneByName(gameSceneName).IsValid())
+            {
+                SceneManager.LoadSceneAsync(gameSceneName, LoadSceneMode.Additive);
+            }
+        }
+    }
 }

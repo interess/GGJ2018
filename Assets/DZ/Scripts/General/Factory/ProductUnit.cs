@@ -25,12 +25,10 @@ namespace DZ
 
                 if (value)
                 {
-                    Debug.Log("Register from product: " + funit.gameObject.name);
                     FKernel.Register(funit);
                 }
                 else
                 {
-                    Debug.Log("Deregister from product: " + funit.gameObject.name);
                     FKernel.Deregister(funit);
                 }
             }
