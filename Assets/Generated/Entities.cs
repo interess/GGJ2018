@@ -200,3 +200,229 @@ namespace DZ.Core {
     }
 
 }
+namespace DZ.Game {
+    public sealed partial class InputEntity: Entitas.Entity, Entitas.IEntity {
+        public InputEntity AddComponentByName(string name) {
+            var componentIndex = InputComponentsLookup.GetComponentIndex(name);
+            if (componentIndex == -1) throw new System.Exception("There is no component named " + name);
+            return this.AddComponentByIndex(componentIndex);
+        }
+
+        public InputEntity AddComponentByIndex(int index) {
+            this.AddComponent(index, this.CreateComponent(index, InputComponentsLookup.componentTypes[index]));
+            return this;
+        }
+
+        //
+        // Flag Components
+        //
+
+        // FlagEvent
+        static readonly Components.Input.FlagEvent _flagEventComponent = new Components.Input.FlagEvent();
+        public bool flagEvent {
+            get { return HasComponent(InputComponentsLookup.FlagEvent); }
+            set {
+                if (value != flagEvent) {
+                    if (value) {
+                        AddComponent(InputComponentsLookup.FlagEvent, _flagEventComponent);
+                    } else {
+                        RemoveComponent(InputComponentsLookup.FlagEvent);
+                    }
+                }
+            }
+        }
+
+        public bool HasFlagEvent() {
+            return HasComponent(InputComponentsLookup.FlagEvent);
+        }
+
+        public void RemoveFlagEvent() {
+            RemoveComponent(InputComponentsLookup.FlagEvent);
+        }
+
+        public void PingFlagEvent() {
+            var component = GetComponent(InputComponentsLookup.FlagEvent);
+            if (component != null) ReplaceComponent(InputComponentsLookup.FlagEvent, component);
+            else if (component == null) ReplaceComponent(InputComponentsLookup.FlagEvent, null);
+        }
+
+        // FlagTrash
+        static readonly Components.Input.FlagTrash _flagTrashComponent = new Components.Input.FlagTrash();
+        public bool flagTrash {
+            get { return HasComponent(InputComponentsLookup.FlagTrash); }
+            set {
+                if (value != flagTrash) {
+                    if (value) {
+                        AddComponent(InputComponentsLookup.FlagTrash, _flagTrashComponent);
+                    } else {
+                        RemoveComponent(InputComponentsLookup.FlagTrash);
+                    }
+                }
+            }
+        }
+
+        public bool HasFlagTrash() {
+            return HasComponent(InputComponentsLookup.FlagTrash);
+        }
+
+        public void RemoveFlagTrash() {
+            RemoveComponent(InputComponentsLookup.FlagTrash);
+        }
+
+        public void PingFlagTrash() {
+            var component = GetComponent(InputComponentsLookup.FlagTrash);
+            if (component != null) ReplaceComponent(InputComponentsLookup.FlagTrash, component);
+            else if (component == null) ReplaceComponent(InputComponentsLookup.FlagTrash, null);
+        }
+
+        // FlagTrashValidated
+        static readonly Components.Input.FlagTrashValidated _flagTrashValidatedComponent = new Components.Input.FlagTrashValidated();
+        public bool flagTrashValidated {
+            get { return HasComponent(InputComponentsLookup.FlagTrashValidated); }
+            set {
+                if (value != flagTrashValidated) {
+                    if (value) {
+                        AddComponent(InputComponentsLookup.FlagTrashValidated, _flagTrashValidatedComponent);
+                    } else {
+                        RemoveComponent(InputComponentsLookup.FlagTrashValidated);
+                    }
+                }
+            }
+        }
+
+        public bool HasFlagTrashValidated() {
+            return HasComponent(InputComponentsLookup.FlagTrashValidated);
+        }
+
+        public void RemoveFlagTrashValidated() {
+            RemoveComponent(InputComponentsLookup.FlagTrashValidated);
+        }
+
+        public void PingFlagTrashValidated() {
+            var component = GetComponent(InputComponentsLookup.FlagTrashValidated);
+            if (component != null) ReplaceComponent(InputComponentsLookup.FlagTrashValidated, component);
+            else if (component == null) ReplaceComponent(InputComponentsLookup.FlagTrashValidated, null);
+        }
+
+        //
+        // Value Components
+        //
+    }
+
+    public sealed partial class StateEntity: Entitas.Entity, Entitas.IEntity {
+        public StateEntity AddComponentByName(string name) {
+            var componentIndex = StateComponentsLookup.GetComponentIndex(name);
+            if (componentIndex == -1) throw new System.Exception("There is no component named " + name);
+            return this.AddComponentByIndex(componentIndex);
+        }
+
+        public StateEntity AddComponentByIndex(int index) {
+            this.AddComponent(index, this.CreateComponent(index, StateComponentsLookup.componentTypes[index]));
+            return this;
+        }
+
+        //
+        // Flag Components
+        //
+
+        // FlagTrash
+        static readonly Components.State.FlagTrash _flagTrashComponent = new Components.State.FlagTrash();
+        public bool flagTrash {
+            get { return HasComponent(StateComponentsLookup.FlagTrash); }
+            set {
+                if (value != flagTrash) {
+                    if (value) {
+                        AddComponent(StateComponentsLookup.FlagTrash, _flagTrashComponent);
+                    } else {
+                        RemoveComponent(StateComponentsLookup.FlagTrash);
+                    }
+                }
+            }
+        }
+
+        public bool HasFlagTrash() {
+            return HasComponent(StateComponentsLookup.FlagTrash);
+        }
+
+        public void RemoveFlagTrash() {
+            RemoveComponent(StateComponentsLookup.FlagTrash);
+        }
+
+        public void PingFlagTrash() {
+            var component = GetComponent(StateComponentsLookup.FlagTrash);
+            if (component != null) ReplaceComponent(StateComponentsLookup.FlagTrash, component);
+            else if (component == null) ReplaceComponent(StateComponentsLookup.FlagTrash, null);
+        }
+
+        // FlagTrashValidated
+        static readonly Components.State.FlagTrashValidated _flagTrashValidatedComponent = new Components.State.FlagTrashValidated();
+        public bool flagTrashValidated {
+            get { return HasComponent(StateComponentsLookup.FlagTrashValidated); }
+            set {
+                if (value != flagTrashValidated) {
+                    if (value) {
+                        AddComponent(StateComponentsLookup.FlagTrashValidated, _flagTrashValidatedComponent);
+                    } else {
+                        RemoveComponent(StateComponentsLookup.FlagTrashValidated);
+                    }
+                }
+            }
+        }
+
+        public bool HasFlagTrashValidated() {
+            return HasComponent(StateComponentsLookup.FlagTrashValidated);
+        }
+
+        public void RemoveFlagTrashValidated() {
+            RemoveComponent(StateComponentsLookup.FlagTrashValidated);
+        }
+
+        public void PingFlagTrashValidated() {
+            var component = GetComponent(StateComponentsLookup.FlagTrashValidated);
+            if (component != null) ReplaceComponent(StateComponentsLookup.FlagTrashValidated, component);
+            else if (component == null) ReplaceComponent(StateComponentsLookup.FlagTrashValidated, null);
+        }
+
+        //
+        // Value Components
+        //
+
+        // StageManagerUnit
+        public Scripts.StageManagerUnit _stageManagerUnit { 
+            get {
+                if (!HasComponent(StateComponentsLookup.StageManagerUnit)) throw new System.Exception("Entity does not have component 'StageManagerUnit'. You can check safely with 'HasStageManagerUnit()'");
+                return ((Components.State.StageManagerUnit)GetComponent(StateComponentsLookup.StageManagerUnit)).value;
+            } 
+            set {
+                ((Components.State.StageManagerUnit)GetComponent(StateComponentsLookup.StageManagerUnit)).value = value;
+            }
+        }
+
+        public Scripts.StageManagerUnit stageManagerUnit { 
+            get {
+                if (!HasComponent(StateComponentsLookup.StageManagerUnit)) throw new System.Exception("Entity does not have component 'StageManagerUnit'. You can check safely with 'HasStageManagerUnit()'");
+                return ((Components.State.StageManagerUnit)GetComponent(StateComponentsLookup.StageManagerUnit)).value;
+            } 
+            set {
+                var component = CreateComponent<Components.State.StageManagerUnit>(StateComponentsLookup.StageManagerUnit);
+                component.value = value;
+                ReplaceComponent(StateComponentsLookup.StageManagerUnit, component);
+            }
+        }
+
+        public bool HasStageManagerUnit() {
+            return HasComponent(StateComponentsLookup.StageManagerUnit);
+        }
+
+        public void RemoveStageManagerUnit() {
+            if (HasComponent(StateComponentsLookup.StageManagerUnit)) { RemoveComponent(StateComponentsLookup.StageManagerUnit); }
+        }
+
+        public void PingStageManagerUnit() {
+            var component = GetComponent(StateComponentsLookup.StageManagerUnit);
+            if (component != null) ReplaceComponent(StateComponentsLookup.StageManagerUnit, component);
+            else if (component == null) ReplaceComponent(StateComponentsLookup.StageManagerUnit, null);
+        }
+    }
+
+}

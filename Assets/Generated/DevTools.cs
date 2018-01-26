@@ -20,6 +20,7 @@ namespace Entitas.Gentitas.DevTools.Generated {
     {
       #if UNITY_EDITOR
       DZ.Core.Contexts.Reset();
+      DZ.Game.Contexts.Reset();
       #endif
     }
 
@@ -30,6 +31,7 @@ namespace Entitas.Gentitas.DevTools.Generated {
     {
       #if UNITY_EDITOR
       DZ.Core.Contexts.HardReset();
+      DZ.Game.Contexts.HardReset();
       #endif
     }
   }

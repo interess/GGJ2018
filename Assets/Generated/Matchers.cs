@@ -100,3 +100,128 @@ namespace DZ.Core {
 
 }
 
+namespace DZ.Game {
+    public sealed partial class InputMatcher {
+        public static Entitas.IAllOfMatcher<InputEntity> AllOf(params int[] indices) {
+            return Entitas.Matcher<InputEntity>.AllOf(indices);
+        }
+
+        public static Entitas.IAllOfMatcher<InputEntity> AllOf(params Entitas.IMatcher<InputEntity>[] matchers) {
+            return Entitas.Matcher<InputEntity>.AllOf(matchers);
+        }
+
+        public static Entitas.IAnyOfMatcher<InputEntity> AnyOf(params int[] indices) {
+            return Entitas.Matcher<InputEntity>.AnyOf(indices);
+        }
+
+        public static Entitas.IAnyOfMatcher<InputEntity> AnyOf(params Entitas.IMatcher<InputEntity>[] matchers) {
+            return Entitas.Matcher<InputEntity>.AnyOf(matchers);
+        }
+        
+        static IMatcher<InputEntity> _matcherFlagEvent;
+
+        public static IMatcher<InputEntity> FlagEvent {
+            get {
+                if(_matcherFlagEvent == null) {
+                    var matcher = (Matcher<InputEntity>)Matcher<InputEntity>.AllOf(InputComponentsLookup.FlagEvent);
+                    matcher.componentNames = InputComponentsLookup.componentNames;
+                    _matcherFlagEvent = matcher;
+                }
+
+                return _matcherFlagEvent;
+            }
+        }
+
+        static IMatcher<InputEntity> _matcherFlagTrash;
+
+        public static IMatcher<InputEntity> FlagTrash {
+            get {
+                if(_matcherFlagTrash == null) {
+                    var matcher = (Matcher<InputEntity>)Matcher<InputEntity>.AllOf(InputComponentsLookup.FlagTrash);
+                    matcher.componentNames = InputComponentsLookup.componentNames;
+                    _matcherFlagTrash = matcher;
+                }
+
+                return _matcherFlagTrash;
+            }
+        }
+
+        static IMatcher<InputEntity> _matcherFlagTrashValidated;
+
+        public static IMatcher<InputEntity> FlagTrashValidated {
+            get {
+                if(_matcherFlagTrashValidated == null) {
+                    var matcher = (Matcher<InputEntity>)Matcher<InputEntity>.AllOf(InputComponentsLookup.FlagTrashValidated);
+                    matcher.componentNames = InputComponentsLookup.componentNames;
+                    _matcherFlagTrashValidated = matcher;
+                }
+
+                return _matcherFlagTrashValidated;
+            }
+        }
+
+    }
+
+    public sealed partial class StateMatcher {
+        public static Entitas.IAllOfMatcher<StateEntity> AllOf(params int[] indices) {
+            return Entitas.Matcher<StateEntity>.AllOf(indices);
+        }
+
+        public static Entitas.IAllOfMatcher<StateEntity> AllOf(params Entitas.IMatcher<StateEntity>[] matchers) {
+            return Entitas.Matcher<StateEntity>.AllOf(matchers);
+        }
+
+        public static Entitas.IAnyOfMatcher<StateEntity> AnyOf(params int[] indices) {
+            return Entitas.Matcher<StateEntity>.AnyOf(indices);
+        }
+
+        public static Entitas.IAnyOfMatcher<StateEntity> AnyOf(params Entitas.IMatcher<StateEntity>[] matchers) {
+            return Entitas.Matcher<StateEntity>.AnyOf(matchers);
+        }
+        
+        static IMatcher<StateEntity> _matcherFlagTrash;
+
+        public static IMatcher<StateEntity> FlagTrash {
+            get {
+                if(_matcherFlagTrash == null) {
+                    var matcher = (Matcher<StateEntity>)Matcher<StateEntity>.AllOf(StateComponentsLookup.FlagTrash);
+                    matcher.componentNames = StateComponentsLookup.componentNames;
+                    _matcherFlagTrash = matcher;
+                }
+
+                return _matcherFlagTrash;
+            }
+        }
+
+        static IMatcher<StateEntity> _matcherFlagTrashValidated;
+
+        public static IMatcher<StateEntity> FlagTrashValidated {
+            get {
+                if(_matcherFlagTrashValidated == null) {
+                    var matcher = (Matcher<StateEntity>)Matcher<StateEntity>.AllOf(StateComponentsLookup.FlagTrashValidated);
+                    matcher.componentNames = StateComponentsLookup.componentNames;
+                    _matcherFlagTrashValidated = matcher;
+                }
+
+                return _matcherFlagTrashValidated;
+            }
+        }
+
+        static IMatcher<StateEntity> _matcherStageManagerUnit;
+
+        public static IMatcher<StateEntity> StageManagerUnit {
+            get {
+                if(_matcherStageManagerUnit == null) {
+                    var matcher = (Matcher<StateEntity>)Matcher<StateEntity>.AllOf(StateComponentsLookup.StageManagerUnit);
+                    matcher.componentNames = StateComponentsLookup.componentNames;
+                    _matcherStageManagerUnit = matcher;
+                }
+
+                return _matcherStageManagerUnit;
+            }
+        }
+
+    }
+
+}
+

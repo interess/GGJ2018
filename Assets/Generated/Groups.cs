@@ -92,3 +92,63 @@ namespace DZ.Core {
 
 
 }
+namespace DZ.Game {
+	public partial class InputContext {
+		//
+		// Single Groups
+		//
+
+
+		//
+		// Groups
+		//
+
+	}
+
+	public partial class StateContext {
+		//
+		// Single Groups
+		//
+
+		// StageManagerUnit Group
+		private IGroup<StateEntity> _stageManagerUnitGroup;
+		public IGroup<StateEntity> stageManagerUnitGroup {
+			get { 
+				if (_stageManagerUnitGroup == null) {
+					_stageManagerUnitGroup = GetGroup(StateMatcher.StageManagerUnit);
+				}
+				return _stageManagerUnitGroup; } }
+
+		public StateEntity stageManagerUnitEntity {
+			get {
+				var cachedGroup = stageManagerUnitGroup;
+				if (cachedGroup.count > 1) {
+					return null;
+				}
+				if (cachedGroup.count == 0) {
+					return null;
+				}
+				return cachedGroup.GetSingleEntity(); } }
+
+		public Scripts.StageManagerUnit stageManagerUnit { 
+			get {
+				if (stageManagerUnitEntity == null) throw new System.Exception("StateContext has 0 or more than 1 entity with component 'StageManagerUnit'. You can check safely with 'HasStageManagerUnit()'");
+				return stageManagerUnitEntity.stageManagerUnit;
+			}	
+			set { 
+				if (stageManagerUnitGroup.count > 1) throw new System.Exception("StateContext has more than 1 entity with component 'StageManagerUnit'. You can check safely with 'HasStageManagerUnit()'");
+				else if (stageManagerUnitGroup.count == 0) this.CreateEntity().stageManagerUnit = value;
+				else stageManagerUnitEntity.stageManagerUnit = value;
+			}
+		}
+		public bool HasStageManagerUnit() {	return stageManagerUnitGroup.count == 1;	}
+
+
+		//
+		// Groups
+		//
+
+	}
+
+
+}

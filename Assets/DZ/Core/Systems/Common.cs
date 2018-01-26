@@ -8,14 +8,32 @@ namespace DZ.Core.Systems.Common
 {
     public class Chain : Entitas.Gentitas.Systems.ChainSystem
     {
-        public Chain() : base("FF.Core.Common")
+        public Chain() : base("DZ.Core.Common")
         {
+            Add(new InitLoadingManagerUnit());
+
             Add(new LoadGameScene());
 
             Add(new CreateApplication());
             Add(new UpdateApplicationLoadingProgress());
             Add(new MakeApplicationLoaded());
             Add(new DisableLoadingScreen());
+        }
+    }
+
+    public class InitLoadingManagerUnit : InitializeSystem
+    {
+        protected override void Act()
+        {
+            var managerUnit = GameObject.FindObjectOfType<Scripts.LoadingManagerUnit>();
+
+            if (managerUnit == null)
+            {
+                throw new FS.Exceptions.ObjectOfTypeNotFoundException(typeof(Scripts.LoadingManagerUnit));
+            }
+
+            var entity = state.CreateEntity();
+            entity.loadingManagerUnit = managerUnit;
         }
     }
 
@@ -108,16 +126,14 @@ namespace DZ.Core.Systems.Common
             var applicationEntity = Contexts.state.applicationEntity;
             var loadingProgress = 0f;
 
-            var suffix = "";
-            // if (!string.IsNullOrEmpty(Env.gameSceneSuffix)) suffix = "_" + Env.gameSceneSuffix;
+            // To 0.6 - by time, remaining by events
 
-            var containerGameSceneEntity = Contexts.state.sceneNameIndex.FindSingle("Container_Game");
-            var containerGameSandboxSceneEntity = Contexts.state.sceneNameIndex.FindSingle("Container_Game_Sandbox" + suffix);
+            var containerGameSceneEntity = Contexts.state.sceneNameIndex.FindSingle("Game");
 
-            // if (!Env.sandbox && containerGameSceneEntity.loaded || Env.sandbox && containerGameSandboxSceneEntity.loaded)
-            // {
-            //     loadingProgress += 1f;
-            // }
+            if (containerGameSceneEntity.loaded)
+            {
+                loadingProgress += 1f;
+            }
 
             applicationEntity.loadingProgress = loadingProgress;
         }

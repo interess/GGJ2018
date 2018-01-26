@@ -16,26 +16,18 @@ namespace DZ.Core.Scripts
         public float canvasFadeDuration;
         public float secondsToChangeTip = 1f;
 
-        List<string> cachedTips = new List<string>();
-
-        float secondsPassed = 100f;
-        int currentTipIndex;
-
-        void Start()
-        {
-            var entity = Contexts.state.CreateEntity();
-            entity.loadingManagerUnit = this;
-        }
+        private float __secondsPassed = 100f;
+        private int __currentTipIndex;
 
         public void SetProgress(int value)
         {
-            if (textProgress == null) return;
+            if (textProgress == null) { return; }
 
             textProgress.text = value + "%";
 
-            if (loadingBarUnit == null) return;
+            if (loadingBarUnit == null) { return; }
 
-            secondsPassed += Time.deltaTime;
+            __secondsPassed += Time.deltaTime;
             loadingBarUnit.SetValue(value / 100f);
         }
 

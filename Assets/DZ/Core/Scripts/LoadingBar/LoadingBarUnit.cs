@@ -14,9 +14,9 @@ namespace DZ.Core.Scripts
         public float padding;
 
         [SerializeField]
-        float targetValue;
+        private float __targetValue;
 
-        float currentValue;
+        private float __currentValue;
 
         public void SetValue(float value)
         {
@@ -30,15 +30,15 @@ namespace DZ.Core.Scripts
             inner.offsetMax = offset;
             inner.offsetMin = new Vector2(padding, padding);
 
-            currentValue = value;
+            __currentValue = value;
         }
 
 #if UNITY_EDITOR
         void Update()
         {
-            if (currentValue != targetValue)
+            if (__currentValue != __targetValue)
             {
-                SetValue(targetValue);
+                SetValue(__targetValue);
             }
         }
 #endif

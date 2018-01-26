@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/MPW/Scenes/Core.unity
+    path: Assets/DZ/Core/Scenes/Core.unity
     guid: 38b5ee07741f6a04f8460772f5d97665
   - enabled: 1
-    path: Assets/MPW/Scenes/Game.unity
+    path: Assets/DZ/Core/Scenes/Game.unity
     guid: bc90fd003d24b564cac1d42a9569d522

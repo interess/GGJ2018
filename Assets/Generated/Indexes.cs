@@ -138,3 +138,9 @@ namespace DZ.Core.Indexes {
         }
 	}
 }
+namespace DZ.Game.Indexes {
+	namespace Input {
+	}
+	namespace State {
+	}
+}

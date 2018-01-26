@@ -19,3 +19,19 @@ namespace DZ.Core.Components {
         public partial class LoadingManagerUnit: Entitas.IComponent { public Scripts.LoadingManagerUnit value; }
     }
 }
+namespace DZ.Game.Components {
+    namespace Input {
+        // Flag Components
+        public partial class FlagEvent: Entitas.IComponent { }
+        public partial class FlagTrash: Entitas.IComponent { }
+        public partial class FlagTrashValidated: Entitas.IComponent { }
+        // Value Components
+    }
+    namespace State {
+        // Flag Components
+        public partial class FlagTrash: Entitas.IComponent { }
+        public partial class FlagTrashValidated: Entitas.IComponent { }
+        // Value Components
+        public partial class StageManagerUnit: Entitas.IComponent { public Scripts.StageManagerUnit value; }
+    }
+}

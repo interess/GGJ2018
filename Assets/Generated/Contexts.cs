@@ -140,3 +140,196 @@ namespace DZ.Core {
         }
     }
 }
+namespace DZ.Game {
+    public partial class Contexts : IContexts {
+        public static Contexts _sharedInstance {
+            get {
+                if(__sharedInstance == null) {
+                    __sharedInstance = new Contexts();
+                }
+
+                return __sharedInstance;
+            }
+            set { 
+                __sharedInstance = value; 
+            }
+        }
+
+        static Contexts __sharedInstance;
+
+        public static void CreateContextObserver(IContext context) {
+#if(!ENTITAS_DISABLE_VISUAL_DEBUGGING && UNITY_EDITOR)
+            if(UnityEngine.Application.isPlaying) {
+                var observer = new Entitas.VisualDebugging.Unity.ContextObserver(context);
+                UnityEngine.Object.DontDestroyOnLoad(observer.gameObject);
+            }
+#endif
+        }
+
+        // Contexts
+        InputContext _input;
+        public static InputContext input { get { return _sharedInstance._input; } }
+
+        StateContext _state;
+        public static StateContext state { get { return _sharedInstance._state; } }
+
+
+        // IndiciesValue
+
+        public IContext[] allContexts { get { return new IContext [] { _input, _state }; } }
+
+        public Contexts() {
+            _input = new InputContext();
+            _state = new StateContext();
+
+            CreateContextObserver(_input);
+            CreateContextObserver(_state);
+        }
+
+        public static void Reset() {
+            var contexts = _sharedInstance.allContexts;
+            for (int i = 0; i < contexts.Length; i++) {
+                contexts[i].Reset();
+            }
+        }
+
+        public static void HardReset() {
+            __sharedInstance = new Contexts();
+        }
+    }
+
+    public partial class InputContext : Context<InputEntity>  {
+        public InputContext()
+            : base(
+                InputComponentsLookup.TotalComponents,
+                0,
+                new ContextInfo(
+                    "DZ.Game.Input",
+                    InputComponentsLookup.componentNames,
+                    InputComponentsLookup.componentTypes
+                ),
+                (entity) =>
+
+    #if (ENTITAS_FAST_AND_UNSAFE)
+                    new Entitas.UnsafeAERC()
+    #else
+                    new Entitas.SafeAERC(entity)
+    #endif
+
+            ) 
+        {
+        }
+
+
+    }
+
+    public static class InputComponentsLookup {
+        public const int FlagEvent = 0;
+        public const int FlagTrash = 1;
+        public const int FlagTrashValidated = 2;
+
+        public const int TotalComponents = 3;
+
+        public static readonly Dictionary<string, int> componentsDict = new Dictionary<string, int> () {
+            {"FlagEvent", 0 },
+            {"FlagTrash", 1 },
+            {"FlagTrashValidated", 2 }
+        };
+
+        public static readonly string[] componentNames = {
+            "FlagEvent",
+            "FlagTrash",
+            "FlagTrashValidated"
+        };
+
+        public static readonly System.Type[] componentTypes = {
+            typeof(Components.Input.FlagEvent),
+            typeof(Components.Input.FlagTrash),
+            typeof(Components.Input.FlagTrashValidated)
+        };
+
+        public static int GetComponentIndex(string name) {
+            int resultIndex = -1;
+            if (componentsDict.TryGetValue(name, out resultIndex)) {
+                return resultIndex;
+            }
+
+            return -1;
+        }
+
+        public static int GetComponentIndex(System.Type t) {
+            for (var i = 0; i < componentTypes.Length; i++) {
+                if (componentTypes[i] == t) return i;
+            }
+
+            return -1;
+        }
+    }
+    public partial class StateContext : Context<StateEntity>  {
+        public StateContext()
+            : base(
+                StateComponentsLookup.TotalComponents,
+                0,
+                new ContextInfo(
+                    "DZ.Game.State",
+                    StateComponentsLookup.componentNames,
+                    StateComponentsLookup.componentTypes
+                ),
+                (entity) =>
+
+    #if (ENTITAS_FAST_AND_UNSAFE)
+                    new Entitas.UnsafeAERC()
+    #else
+                    new Entitas.SafeAERC(entity)
+    #endif
+
+            ) 
+        {
+        }
+
+
+    }
+
+    public static class StateComponentsLookup {
+        public const int FlagTrash = 0;
+        public const int FlagTrashValidated = 1;
+        public const int StageManagerUnit = 2;
+
+        public const int TotalComponents = 3;
+
+        public static readonly Dictionary<string, int> componentsDict = new Dictionary<string, int> () {
+            {"FlagTrash", 0 },
+            {"FlagTrashValidated", 1 },
+            {"StageManagerUnit", 2 }
+        };
+
+        public static readonly string[] componentNames = {
+            "FlagTrash",
+            "FlagTrashValidated",
+            "StageManagerUnit"
+        };
+
+        public static readonly System.Type[] componentTypes = {
+            typeof(Components.State.FlagTrash),
+            typeof(Components.State.FlagTrashValidated),
+            typeof(Components.State.StageManagerUnit)
+        };
+
+        public static int GetComponentIndex(string name) {
+            int resultIndex = -1;
+            if (componentsDict.TryGetValue(name, out resultIndex)) {
+                return resultIndex;
+            }
+
+            return -1;
+        }
+
+        public static int GetComponentIndex(System.Type t) {
+            for (var i = 0; i < componentTypes.Length; i++) {
+                if (componentTypes[i] == t) return i;
+            }
+
+            return -1;
+        }
+    }
+}
