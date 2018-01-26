@@ -1,1 +1,3 @@
-public static partial class Env { }
+public static partial class Env
+{
+}

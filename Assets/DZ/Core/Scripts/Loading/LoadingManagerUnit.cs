@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
-using DG.Tweening;
 
 namespace DZ.Core.Scripts
 {
@@ -11,7 +11,6 @@ namespace DZ.Core.Scripts
         new public Camera camera;
         public CanvasGroup canvasGroup;
         public Text textProgress;
-        public Text textTip;
         public LoadingBarUnit loadingBarUnit;
 
         public float canvasFadeDuration;
@@ -38,14 +37,6 @@ namespace DZ.Core.Scripts
 
             secondsPassed += Time.deltaTime;
             loadingBarUnit.SetValue(value / 100f);
-
-            if (textTip == null) return;
-
-            if (secondsPassed > secondsToChangeTip)
-            {
-                textTip.text = GetRandomTip();
-                secondsPassed = 0f;
-            }
         }
 
         [FreakingEditor.FbuttonPlay]
@@ -53,38 +44,6 @@ namespace DZ.Core.Scripts
         {
             canvasGroup.DOFade(0f, 0.1f).SetDelay(.5f);
             canvasGroup.blocksRaycasts = false;
-        }
-
-        string GetRandomTip()
-        {
-            // if (cachedTips.Count == 0)
-            // {
-            //     var obj = Resources.Load("Loading/Tips");
-
-            //     if (obj != null)
-            //     {
-            //         var text = obj.ToString();
-            //         var tipsJSON = JSON.Parse(text).AsObject;
-            //         var cachedTipsArray = tipsJSON["tips"].AsArray;
-
-            //         foreach (JSONNode tip in cachedTipsArray)
-            //         {
-            //             cachedTips.Add(tip.Value.ToUpper());
-            //         }
-            //     }
-            //     else
-            //     {
-            //         Debug.LogError("LoadingManager did not find Resources/Loading/Tips.json");
-            //     }
-            // }
-
-            // if (cachedTips.Count != 0)
-            // {
-            //     var random = Random.Range(0, cachedTips.Count);
-            //     return cachedTips[random];
-            // }
-
-            return ("Be Dzen, motherfucker!").ToUpper();
         }
     }
 }

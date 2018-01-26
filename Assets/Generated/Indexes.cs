@@ -11,9 +11,9 @@ using System.Collections.Generic;
 namespace DZ.Core.Indexes {
 	namespace State {
         public interface ISceneNameIndex {
-            /// Value: sceneName  
+            /// Value: SceneName  
             StateEntity FindSingle(string value);
-            /// Value: sceneName  
+            /// Value: SceneName  
             HashSet<StateEntity> Find(string value);
             int GetCount(string value);
         }

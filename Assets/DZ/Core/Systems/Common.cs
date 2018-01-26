@@ -23,7 +23,7 @@ namespace DZ.Core.Systems.Common
     {
         protected override void Act()
         {
-            // Scripts.SceneLoader.Load("Container_Game");
+            Scripts.SceneLoader.Load("Game");
         }
     }
 

@@ -6,11 +6,11 @@ namespace DZ.Core.Declaration
     {
         public State()
         {
-            var loaded = Component();
-            var application = Component().GroupSingle;
-            var loadingProgress = Component<float>();
-            var sceneName = Component<string>().Index;
-            var loadingManagerUnit = Component<Scripts.LoadingManagerUnit>().GroupSingle;
+            var Loaded = Component();
+            var Application = Component().GroupSingle;
+            var LoadingProgress = Component<float>();
+            var SceneName = Component<string>().Index;
+            var LoadingManagerUnit = Component<Scripts.LoadingManagerUnit>().GroupSingle;
         }
     }
 }

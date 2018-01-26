@@ -84,7 +84,7 @@ namespace DZ.Core {
             sceneNameIndex = new DZ.Core.Indexes.State.SceneNameIndex(this);
         }
 
-        /// Value: sceneName  
+        /// Value: SceneName  
         public DZ.Core.Indexes.State.ISceneNameIndex sceneNameIndex;
 
     }
