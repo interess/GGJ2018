@@ -144,7 +144,7 @@ MonoBehaviour:
   canvasGroup: {fileID: 1405258218}
   textProgress: {fileID: 259600721}
   loadingBarUnit: {fileID: 0}
-  canvasFadeDuration: 0
+  canvasFadeDuration: 0.1
   secondsToChangeTip: 1
 --- !u!4 &50326809
 Transform:

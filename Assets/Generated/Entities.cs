@@ -197,6 +197,43 @@ namespace DZ.Core {
             if (component != null) ReplaceComponent(StateComponentsLookup.LoadingManagerUnit, component);
             else if (component == null) ReplaceComponent(StateComponentsLookup.LoadingManagerUnit, null);
         }
+
+        // LoadingSeconds
+        public float _loadingSeconds { 
+            get {
+                if (!HasComponent(StateComponentsLookup.LoadingSeconds)) throw new System.Exception("Entity does not have component 'LoadingSeconds'. You can check safely with 'HasLoadingSeconds()'");
+                return ((Components.State.LoadingSeconds)GetComponent(StateComponentsLookup.LoadingSeconds)).value;
+            } 
+            set {
+                ((Components.State.LoadingSeconds)GetComponent(StateComponentsLookup.LoadingSeconds)).value = value;
+            }
+        }
+
+        public float loadingSeconds { 
+            get {
+                if (!HasComponent(StateComponentsLookup.LoadingSeconds)) throw new System.Exception("Entity does not have component 'LoadingSeconds'. You can check safely with 'HasLoadingSeconds()'");
+                return ((Components.State.LoadingSeconds)GetComponent(StateComponentsLookup.LoadingSeconds)).value;
+            } 
+            set {
+                var component = CreateComponent<Components.State.LoadingSeconds>(StateComponentsLookup.LoadingSeconds);
+                component.value = value;
+                ReplaceComponent(StateComponentsLookup.LoadingSeconds, component);
+            }
+        }
+
+        public bool HasLoadingSeconds() {
+            return HasComponent(StateComponentsLookup.LoadingSeconds);
+        }
+
+        public void RemoveLoadingSeconds() {
+            if (HasComponent(StateComponentsLookup.LoadingSeconds)) { RemoveComponent(StateComponentsLookup.LoadingSeconds); }
+        }
+
+        public void PingLoadingSeconds() {
+            var component = GetComponent(StateComponentsLookup.LoadingSeconds);
+            if (component != null) ReplaceComponent(StateComponentsLookup.LoadingSeconds, component);
+            else if (component == null) ReplaceComponent(StateComponentsLookup.LoadingSeconds, null);
+        }
     }
 
 }

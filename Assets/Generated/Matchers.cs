@@ -96,6 +96,20 @@ namespace DZ.Core {
             }
         }
 
+        static IMatcher<StateEntity> _matcherLoadingSeconds;
+
+        public static IMatcher<StateEntity> LoadingSeconds {
+            get {
+                if(_matcherLoadingSeconds == null) {
+                    var matcher = (Matcher<StateEntity>)Matcher<StateEntity>.AllOf(StateComponentsLookup.LoadingSeconds);
+                    matcher.componentNames = StateComponentsLookup.componentNames;
+                    _matcherLoadingSeconds = matcher;
+                }
+
+                return _matcherLoadingSeconds;
+            }
+        }
+
     }
 
 }

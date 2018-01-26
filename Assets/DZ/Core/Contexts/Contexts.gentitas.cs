@@ -11,6 +11,7 @@ namespace DZ.Core.Declaration
             var LoadingProgress = Component<float>();
             var SceneName = Component<string>().Index;
             var LoadingManagerUnit = Component<Scripts.LoadingManagerUnit>().GroupSingle;
+            var LoadingSeconds = Component<float>();
         }
     }
 }

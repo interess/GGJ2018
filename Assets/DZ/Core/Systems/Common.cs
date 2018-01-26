@@ -18,6 +18,7 @@ namespace DZ.Core.Systems.Common
             Add(new UpdateApplicationLoadingProgress());
             Add(new MakeApplicationLoaded());
             Add(new DisableLoadingScreen());
+            Add(new SetLoadingProgressOnLoadingUnit());
         }
     }
 
@@ -63,7 +64,7 @@ namespace DZ.Core.Systems.Common
 
         protected override void Act(List<StateEntity> entities)
         {
-            if (state.applicationEntity.loadingProgress == 1f)
+            if (state.applicationEntity.loadingProgress >= 1f)
             {
                 Contexts.state.applicationEntity.loaded = true;
             }
@@ -124,18 +125,48 @@ namespace DZ.Core.Systems.Common
             }
 
             var applicationEntity = Contexts.state.applicationEntity;
-            var loadingProgress = 0f;
 
-            // To 0.6 - by time, remaining by events
+            if (!applicationEntity.HasLoadingSeconds())
+            {
+                applicationEntity.loadingSeconds = Time.deltaTime;
+            }
+            else
+            {
+                applicationEntity.loadingSeconds += Time.deltaTime;
+            }
+
+            var baseWaitingTime = 1.5f;
+
+            var loadingProgress = 0f;
+            var waitingProgressFactor = applicationEntity.loadingSeconds / baseWaitingTime;
+            waitingProgressFactor *= 0.5f;
+
+            loadingProgress += waitingProgressFactor;
 
             var containerGameSceneEntity = Contexts.state.sceneNameIndex.FindSingle("Game");
 
             if (containerGameSceneEntity.loaded)
             {
-                loadingProgress += 1f;
+                loadingProgress += 0.5f;
             }
 
+            if (loadingProgress > 1f) { loadingProgress = 1f; }
+
             applicationEntity.loadingProgress = loadingProgress;
+        }
+    }
+
+    public class SetLoadingProgressOnLoadingUnit : StateReactiveSystem
+    {
+        protected override void SetTriggers()
+        {
+            Trigger(StateMatcher.AllOf(StateMatcher.Application, StateMatcher.LoadingProgress).Added());
+        }
+
+        protected override void Act(List<StateEntity> entities)
+        {
+            var applicationEntity = state.applicationEntity;
+            state.loadingManagerUnit.SetProgress((int) (applicationEntity.loadingProgress * 100));
         }
     }
 }

@@ -95,15 +95,17 @@ namespace DZ.Core {
         public const int LoadingProgress = 2;
         public const int SceneName = 3;
         public const int LoadingManagerUnit = 4;
+        public const int LoadingSeconds = 5;
 
-        public const int TotalComponents = 5;
+        public const int TotalComponents = 6;
 
         public static readonly Dictionary<string, int> componentsDict = new Dictionary<string, int> () {
             {"Loaded", 0 },
             {"Application", 1 },
             {"LoadingProgress", 2 },
             {"SceneName", 3 },
-            {"LoadingManagerUnit", 4 }
+            {"LoadingManagerUnit", 4 },
+            {"LoadingSeconds", 5 }
         };
 
         public static readonly string[] componentNames = {
@@ -111,7 +113,8 @@ namespace DZ.Core {
             "Application",
             "LoadingProgress",
             "SceneName",
-            "LoadingManagerUnit"
+            "LoadingManagerUnit",
+            "LoadingSeconds"
         };
 
         public static readonly System.Type[] componentTypes = {
@@ -119,7 +122,8 @@ namespace DZ.Core {
             typeof(Components.State.Application),
             typeof(Components.State.LoadingProgress),
             typeof(Components.State.SceneName),
-            typeof(Components.State.LoadingManagerUnit)
+            typeof(Components.State.LoadingManagerUnit),
+            typeof(Components.State.LoadingSeconds)
         };
 
         public static int GetComponentIndex(string name) {

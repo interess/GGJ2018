@@ -17,6 +17,7 @@ namespace DZ.Core.Components {
         public partial class LoadingProgress: Entitas.IComponent { public float value; }
         public partial class SceneName: Entitas.IComponent { public string value; }
         public partial class LoadingManagerUnit: Entitas.IComponent { public Scripts.LoadingManagerUnit value; }
+        public partial class LoadingSeconds: Entitas.IComponent { public float value; }
     }
 }
 namespace DZ.Game.Components {
