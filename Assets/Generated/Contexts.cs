@@ -232,28 +232,32 @@ namespace DZ.Game {
         public const int FlagTrash = 1;
         public const int FlagTrashValidated = 2;
         public const int TrashTimer = 3;
+        public const int EventId = 4;
 
-        public const int TotalComponents = 4;
+        public const int TotalComponents = 5;
 
         public static readonly Dictionary<string, int> componentsDict = new Dictionary<string, int> () {
             {"FlagEvent", 0 },
             {"FlagTrash", 1 },
             {"FlagTrashValidated", 2 },
-            {"TrashTimer", 3 }
+            {"TrashTimer", 3 },
+            {"EventId", 4 }
         };
 
         public static readonly string[] componentNames = {
             "FlagEvent",
             "FlagTrash",
             "FlagTrashValidated",
-            "TrashTimer"
+            "TrashTimer",
+            "EventId"
         };
 
         public static readonly System.Type[] componentTypes = {
             typeof(Components.Input.FlagEvent),
             typeof(Components.Input.FlagTrash),
             typeof(Components.Input.FlagTrashValidated),
-            typeof(Components.Input.TrashTimer)
+            typeof(Components.Input.TrashTimer),
+            typeof(Components.Input.EventId)
         };
 
         public static int GetComponentIndex(string name) {
@@ -310,8 +314,9 @@ namespace DZ.Game {
         public const int Uid = 5;
         public const int UidUnit = 6;
         public const int ProductUnit = 7;
+        public const int View = 8;
 
-        public const int TotalComponents = 8;
+        public const int TotalComponents = 9;
 
         public static readonly Dictionary<string, int> componentsDict = new Dictionary<string, int> () {
             {"FlagTrash", 0 },
@@ -321,7 +326,8 @@ namespace DZ.Game {
             {"LevelPart", 4 },
             {"Uid", 5 },
             {"UidUnit", 6 },
-            {"ProductUnit", 7 }
+            {"ProductUnit", 7 },
+            {"View", 8 }
         };
 
         public static readonly string[] componentNames = {
@@ -332,7 +338,8 @@ namespace DZ.Game {
             "LevelPart",
             "Uid",
             "UidUnit",
-            "ProductUnit"
+            "ProductUnit",
+            "View"
         };
 
         public static readonly System.Type[] componentTypes = {
@@ -343,7 +350,8 @@ namespace DZ.Game {
             typeof(Components.State.LevelPart),
             typeof(Components.State.Uid),
             typeof(Components.State.UidUnit),
-            typeof(Components.State.ProductUnit)
+            typeof(Components.State.ProductUnit),
+            typeof(Components.State.View)
         };
 
         public static int GetComponentIndex(string name) {

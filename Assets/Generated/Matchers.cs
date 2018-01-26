@@ -188,6 +188,20 @@ namespace DZ.Game {
             }
         }
 
+        static IMatcher<InputEntity> _matcherEventId;
+
+        public static IMatcher<InputEntity> EventId {
+            get {
+                if(_matcherEventId == null) {
+                    var matcher = (Matcher<InputEntity>)Matcher<InputEntity>.AllOf(InputComponentsLookup.EventId);
+                    matcher.componentNames = InputComponentsLookup.componentNames;
+                    _matcherEventId = matcher;
+                }
+
+                return _matcherEventId;
+            }
+        }
+
     }
 
     public sealed partial class StateMatcher {
@@ -316,6 +330,20 @@ namespace DZ.Game {
                 }
 
                 return _matcherProductUnit;
+            }
+        }
+
+        static IMatcher<StateEntity> _matcherView;
+
+        public static IMatcher<StateEntity> View {
+            get {
+                if(_matcherView == null) {
+                    var matcher = (Matcher<StateEntity>)Matcher<StateEntity>.AllOf(StateComponentsLookup.View);
+                    matcher.componentNames = StateComponentsLookup.componentNames;
+                    _matcherView = matcher;
+                }
+
+                return _matcherView;
             }
         }
 

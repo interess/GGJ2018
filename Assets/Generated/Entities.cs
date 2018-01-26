@@ -402,6 +402,43 @@ namespace DZ.Game {
             if (component != null) ReplaceComponent(InputComponentsLookup.TrashTimer, component);
             else if (component == null) ReplaceComponent(InputComponentsLookup.TrashTimer, null);
         }
+
+        // EventId
+        public string _eventId { 
+            get {
+                if (!HasComponent(InputComponentsLookup.EventId)) throw new System.Exception("Entity does not have component 'EventId'. You can check safely with 'HasEventId()'");
+                return ((Components.Input.EventId)GetComponent(InputComponentsLookup.EventId)).value;
+            } 
+            set {
+                ((Components.Input.EventId)GetComponent(InputComponentsLookup.EventId)).value = value;
+            }
+        }
+
+        public string eventId { 
+            get {
+                if (!HasComponent(InputComponentsLookup.EventId)) throw new System.Exception("Entity does not have component 'EventId'. You can check safely with 'HasEventId()'");
+                return ((Components.Input.EventId)GetComponent(InputComponentsLookup.EventId)).value;
+            } 
+            set {
+                var component = CreateComponent<Components.Input.EventId>(InputComponentsLookup.EventId);
+                component.value = value;
+                ReplaceComponent(InputComponentsLookup.EventId, component);
+            }
+        }
+
+        public bool HasEventId() {
+            return HasComponent(InputComponentsLookup.EventId);
+        }
+
+        public void RemoveEventId() {
+            if (HasComponent(InputComponentsLookup.EventId)) { RemoveComponent(InputComponentsLookup.EventId); }
+        }
+
+        public void PingEventId() {
+            var component = GetComponent(InputComponentsLookup.EventId);
+            if (component != null) ReplaceComponent(InputComponentsLookup.EventId, component);
+            else if (component == null) ReplaceComponent(InputComponentsLookup.EventId, null);
+        }
     }
 
     public sealed partial class StateEntity: Entitas.Entity, Entitas.IEntity {
@@ -505,6 +542,35 @@ namespace DZ.Game {
             var component = GetComponent(StateComponentsLookup.LevelPart);
             if (component != null) ReplaceComponent(StateComponentsLookup.LevelPart, component);
             else if (component == null) ReplaceComponent(StateComponentsLookup.LevelPart, null);
+        }
+
+        // View
+        static readonly Components.State.View _viewComponent = new Components.State.View();
+        public bool view {
+            get { return HasComponent(StateComponentsLookup.View); }
+            set {
+                if (value != view) {
+                    if (value) {
+                        AddComponent(StateComponentsLookup.View, _viewComponent);
+                    } else {
+                        RemoveComponent(StateComponentsLookup.View);
+                    }
+                }
+            }
+        }
+
+        public bool HasView() {
+            return HasComponent(StateComponentsLookup.View);
+        }
+
+        public void RemoveView() {
+            RemoveComponent(StateComponentsLookup.View);
+        }
+
+        public void PingView() {
+            var component = GetComponent(StateComponentsLookup.View);
+            if (component != null) ReplaceComponent(StateComponentsLookup.View, component);
+            else if (component == null) ReplaceComponent(StateComponentsLookup.View, null);
         }
 
         //

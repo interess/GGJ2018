@@ -13,6 +13,9 @@ namespace DZ.Game.Declaration
 
             // Trash
             var TrashTimer = Component<float>().Universal;
+
+            // Event
+            var EventId = Component<string>();
         }
     }
 
@@ -39,6 +42,9 @@ namespace DZ.Game.Declaration
 
             // Product
             var ProductUnit = Component<FS.PrefabFactory.Scripts.ProductUnit>();
+
+            // View
+            var View = Component().Group;
         }
     }
 }

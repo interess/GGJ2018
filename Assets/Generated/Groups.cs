@@ -184,6 +184,18 @@ namespace DZ.Game {
 		public StateEntity[] levelPartEntities { 
 			get { return levelPartGroup.GetEntities(); } }
 		
+		// View Group
+		private IGroup<StateEntity> _viewGroup;
+		public IGroup<StateEntity> viewGroup {
+			get { 
+				if (_viewGroup == null) {
+					_viewGroup = GetGroup(StateMatcher.View);
+				}
+				return _viewGroup; } }
+
+		public StateEntity[] viewEntities { 
+			get { return viewGroup.GetEntities(); } }
+		
 	}
 
 
