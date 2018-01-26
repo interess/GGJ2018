@@ -8,7 +8,7 @@ namespace DZ.Game.Scripts
         public CameraUnit loadingCameraUnit { get; private set; }
         public CameraUnit gameCameraUnit { get; private set; }
 
-        public void Init()
+        public void Initialize()
         {
             var cameraUnits = GameObject.FindObjectsOfType<CameraUnit>();
             if (cameraUnits.Length > 2)

@@ -122,7 +122,8 @@ GameObject:
   m_Component:
   - component: {fileID: 50326809}
   - component: {fileID: 50326808}
-  m_Layer: 0
+  - component: {fileID: 50326810}
+  m_Layer: 8
   m_Name: Loading
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -161,6 +162,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &50326810
+MonoBehaviour:
+  m_ObjectHideFlags: 10
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 50326807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b046ff928d6ac4c0eb5573e12b07aa1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lastState: 1
+  lastStateBeforeSceneClose: 0
 --- !u!1 &257485473
 GameObject:
   m_ObjectHideFlags: 0
@@ -233,7 +247,7 @@ GameObject:
   - component: {fileID: 259600720}
   - component: {fileID: 259600722}
   - component: {fileID: 259600721}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: ProgressText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -354,7 +368,7 @@ GameObject:
   - component: {fileID: 803045591}
   - component: {fileID: 803045590}
   - component: {fileID: 803045594}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -399,7 +413,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 256
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -448,7 +462,7 @@ GameObject:
   - component: {fileID: 1405258220}
   - component: {fileID: 1405258219}
   - component: {fileID: 1405258218}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -553,7 +567,7 @@ GameObject:
   - component: {fileID: 2109981813}
   - component: {fileID: 2109981815}
   - component: {fileID: 2109981814}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}

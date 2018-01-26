@@ -11,6 +11,8 @@ namespace DZ.Game
 			Add(new Systems.Common.Before());
 
 			Add(new Systems.Stage.Chain());
+			Add(new Systems.Audio.Chain());
+			Add(new Systems.Level.Chain());
 
 			Add(new Systems.Common.After());
 			Add(new Systems.Common.Trash());

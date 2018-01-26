@@ -34,6 +34,7 @@ namespace DZ.Game.Components {
         // Flag Components
         public partial class FlagTrash: Entitas.IComponent { }
         public partial class FlagTrashValidated: Entitas.IComponent { }
+        public partial class FlagLoaded: Entitas.IComponent { }
         public partial class LevelPart: Entitas.IComponent { }
         public partial class View: Entitas.IComponent { }
         // Value Components
@@ -42,5 +43,10 @@ namespace DZ.Game.Components {
         public partial class Uid: Entitas.IComponent { public int value; }
         public partial class UidUnit: Entitas.IComponent { public FS.Uid.Scripts.UidUnit value; }
         public partial class ProductUnit: Entitas.IComponent { public FS.PrefabFactory.Scripts.ProductUnit value; }
+        public partial class AudioManagerUnit: Entitas.IComponent { public Scripts.AudioManagerUnit value; }
+        public partial class AudioEffectManagerUnit: Entitas.IComponent { public Scripts.AudioEffectManagerUnit value; }
+        public partial class AudioEffectUnit: Entitas.IComponent { public Scripts.AudioEffectUnit value; }
+        public partial class AudioEffectProductUnit: Entitas.IComponent { public Scripts.AudioEffectProductUnit value; }
+        public partial class SubsManagerUnit: Entitas.IComponent { public Scripts.SubsManagerUnit value; }
     }
 }

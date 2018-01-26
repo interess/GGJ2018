@@ -64,7 +64,7 @@ namespace DZ.Core.Systems.Common
 
         protected override void Act(List<StateEntity> entities)
         {
-            if (state.applicationEntity.loadingProgress >= 1f)
+            if (state.applicationEntity.loadingProgress >= 1f || Env.skipLoadingScreen)
             {
                 Contexts.state.applicationEntity.loaded = true;
             }

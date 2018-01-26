@@ -25,7 +25,7 @@ namespace DZ.Game.Systems.Stage
                     throw new FS.Exceptions.ObjectOfTypeNotFoundException(typeof(Scripts.StageManagerUnit));
                 }
 
-                managerUnit.Init();
+                managerUnit.Initialize();
 
                 var entity = state.CreateEntity();
                 entity.stageManagerUnit = managerUnit;

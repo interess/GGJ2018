@@ -249,6 +249,20 @@ namespace DZ.Game {
             }
         }
 
+        static IMatcher<StateEntity> _matcherFlagLoaded;
+
+        public static IMatcher<StateEntity> FlagLoaded {
+            get {
+                if(_matcherFlagLoaded == null) {
+                    var matcher = (Matcher<StateEntity>)Matcher<StateEntity>.AllOf(StateComponentsLookup.FlagLoaded);
+                    matcher.componentNames = StateComponentsLookup.componentNames;
+                    _matcherFlagLoaded = matcher;
+                }
+
+                return _matcherFlagLoaded;
+            }
+        }
+
         static IMatcher<StateEntity> _matcherTrashTimer;
 
         public static IMatcher<StateEntity> TrashTimer {
@@ -344,6 +358,76 @@ namespace DZ.Game {
                 }
 
                 return _matcherView;
+            }
+        }
+
+        static IMatcher<StateEntity> _matcherAudioManagerUnit;
+
+        public static IMatcher<StateEntity> AudioManagerUnit {
+            get {
+                if(_matcherAudioManagerUnit == null) {
+                    var matcher = (Matcher<StateEntity>)Matcher<StateEntity>.AllOf(StateComponentsLookup.AudioManagerUnit);
+                    matcher.componentNames = StateComponentsLookup.componentNames;
+                    _matcherAudioManagerUnit = matcher;
+                }
+
+                return _matcherAudioManagerUnit;
+            }
+        }
+
+        static IMatcher<StateEntity> _matcherAudioEffectManagerUnit;
+
+        public static IMatcher<StateEntity> AudioEffectManagerUnit {
+            get {
+                if(_matcherAudioEffectManagerUnit == null) {
+                    var matcher = (Matcher<StateEntity>)Matcher<StateEntity>.AllOf(StateComponentsLookup.AudioEffectManagerUnit);
+                    matcher.componentNames = StateComponentsLookup.componentNames;
+                    _matcherAudioEffectManagerUnit = matcher;
+                }
+
+                return _matcherAudioEffectManagerUnit;
+            }
+        }
+
+        static IMatcher<StateEntity> _matcherAudioEffectUnit;
+
+        public static IMatcher<StateEntity> AudioEffectUnit {
+            get {
+                if(_matcherAudioEffectUnit == null) {
+                    var matcher = (Matcher<StateEntity>)Matcher<StateEntity>.AllOf(StateComponentsLookup.AudioEffectUnit);
+                    matcher.componentNames = StateComponentsLookup.componentNames;
+                    _matcherAudioEffectUnit = matcher;
+                }
+
+                return _matcherAudioEffectUnit;
+            }
+        }
+
+        static IMatcher<StateEntity> _matcherAudioEffectProductUnit;
+
+        public static IMatcher<StateEntity> AudioEffectProductUnit {
+            get {
+                if(_matcherAudioEffectProductUnit == null) {
+                    var matcher = (Matcher<StateEntity>)Matcher<StateEntity>.AllOf(StateComponentsLookup.AudioEffectProductUnit);
+                    matcher.componentNames = StateComponentsLookup.componentNames;
+                    _matcherAudioEffectProductUnit = matcher;
+                }
+
+                return _matcherAudioEffectProductUnit;
+            }
+        }
+
+        static IMatcher<StateEntity> _matcherSubsManagerUnit;
+
+        public static IMatcher<StateEntity> SubsManagerUnit {
+            get {
+                if(_matcherSubsManagerUnit == null) {
+                    var matcher = (Matcher<StateEntity>)Matcher<StateEntity>.AllOf(StateComponentsLookup.SubsManagerUnit);
+                    matcher.componentNames = StateComponentsLookup.componentNames;
+                    _matcherSubsManagerUnit = matcher;
+                }
+
+                return _matcherSubsManagerUnit;
             }
         }
 

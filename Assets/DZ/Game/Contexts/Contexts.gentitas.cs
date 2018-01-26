@@ -26,6 +26,7 @@ namespace DZ.Game.Declaration
             // Flag
             var FlagTrash = Component().Universal;
             var FlagTrashValidated = Component().Universal;
+            var FlagLoaded = Component();
 
             // Trash
             var TrashTimer = Component<float>().Universal.Group;
@@ -45,6 +46,15 @@ namespace DZ.Game.Declaration
 
             // View
             var View = Component().Group;
+
+            // Audio
+            var AudioManagerUnit = Component<Scripts.AudioManagerUnit>().GroupSingle;
+            var AudioEffectManagerUnit = Component<Scripts.AudioEffectManagerUnit>().GroupSingle;
+            var AudioEffectUnit = Component<Scripts.AudioEffectUnit>();
+            var AudioEffectProductUnit = Component<Scripts.AudioEffectProductUnit>();
+
+            // Subs
+            var SubsManagerUnit = Component<Scripts.SubsManagerUnit>().GroupSingle;
         }
     }
 }

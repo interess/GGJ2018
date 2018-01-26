@@ -308,50 +308,74 @@ namespace DZ.Game {
     public static class StateComponentsLookup {
         public const int FlagTrash = 0;
         public const int FlagTrashValidated = 1;
-        public const int TrashTimer = 2;
-        public const int StageManagerUnit = 3;
-        public const int LevelPart = 4;
-        public const int Uid = 5;
-        public const int UidUnit = 6;
-        public const int ProductUnit = 7;
-        public const int View = 8;
+        public const int FlagLoaded = 2;
+        public const int TrashTimer = 3;
+        public const int StageManagerUnit = 4;
+        public const int LevelPart = 5;
+        public const int Uid = 6;
+        public const int UidUnit = 7;
+        public const int ProductUnit = 8;
+        public const int View = 9;
+        public const int AudioManagerUnit = 10;
+        public const int AudioEffectManagerUnit = 11;
+        public const int AudioEffectUnit = 12;
+        public const int AudioEffectProductUnit = 13;
+        public const int SubsManagerUnit = 14;
 
-        public const int TotalComponents = 9;
+        public const int TotalComponents = 15;
 
         public static readonly Dictionary<string, int> componentsDict = new Dictionary<string, int> () {
             {"FlagTrash", 0 },
             {"FlagTrashValidated", 1 },
-            {"TrashTimer", 2 },
-            {"StageManagerUnit", 3 },
-            {"LevelPart", 4 },
-            {"Uid", 5 },
-            {"UidUnit", 6 },
-            {"ProductUnit", 7 },
-            {"View", 8 }
+            {"FlagLoaded", 2 },
+            {"TrashTimer", 3 },
+            {"StageManagerUnit", 4 },
+            {"LevelPart", 5 },
+            {"Uid", 6 },
+            {"UidUnit", 7 },
+            {"ProductUnit", 8 },
+            {"View", 9 },
+            {"AudioManagerUnit", 10 },
+            {"AudioEffectManagerUnit", 11 },
+            {"AudioEffectUnit", 12 },
+            {"AudioEffectProductUnit", 13 },
+            {"SubsManagerUnit", 14 }
         };
 
         public static readonly string[] componentNames = {
             "FlagTrash",
             "FlagTrashValidated",
+            "FlagLoaded",
             "TrashTimer",
             "StageManagerUnit",
             "LevelPart",
             "Uid",
             "UidUnit",
             "ProductUnit",
-            "View"
+            "View",
+            "AudioManagerUnit",
+            "AudioEffectManagerUnit",
+            "AudioEffectUnit",
+            "AudioEffectProductUnit",
+            "SubsManagerUnit"
         };
 
         public static readonly System.Type[] componentTypes = {
             typeof(Components.State.FlagTrash),
             typeof(Components.State.FlagTrashValidated),
+            typeof(Components.State.FlagLoaded),
             typeof(Components.State.TrashTimer),
             typeof(Components.State.StageManagerUnit),
             typeof(Components.State.LevelPart),
             typeof(Components.State.Uid),
             typeof(Components.State.UidUnit),
             typeof(Components.State.ProductUnit),
-            typeof(Components.State.View)
+            typeof(Components.State.View),
+            typeof(Components.State.AudioManagerUnit),
+            typeof(Components.State.AudioEffectManagerUnit),
+            typeof(Components.State.AudioEffectUnit),
+            typeof(Components.State.AudioEffectProductUnit),
+            typeof(Components.State.SubsManagerUnit)
         };
 
         public static int GetComponentIndex(string name) {

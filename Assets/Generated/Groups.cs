@@ -155,6 +155,105 @@ namespace DZ.Game {
 		}
 		public bool HasStageManagerUnit() {	return stageManagerUnitGroup.count == 1;	}
 
+		// AudioManagerUnit Group
+		private IGroup<StateEntity> _audioManagerUnitGroup;
+		public IGroup<StateEntity> audioManagerUnitGroup {
+			get { 
+				if (_audioManagerUnitGroup == null) {
+					_audioManagerUnitGroup = GetGroup(StateMatcher.AudioManagerUnit);
+				}
+				return _audioManagerUnitGroup; } }
+
+		public StateEntity audioManagerUnitEntity {
+			get {
+				var cachedGroup = audioManagerUnitGroup;
+				if (cachedGroup.count > 1) {
+					return null;
+				}
+				if (cachedGroup.count == 0) {
+					return null;
+				}
+				return cachedGroup.GetSingleEntity(); } }
+
+		public Scripts.AudioManagerUnit audioManagerUnit { 
+			get {
+				if (audioManagerUnitEntity == null) throw new System.Exception("StateContext has 0 or more than 1 entity with component 'AudioManagerUnit'. You can check safely with 'HasAudioManagerUnit()'");
+				return audioManagerUnitEntity.audioManagerUnit;
+			}	
+			set { 
+				if (audioManagerUnitGroup.count > 1) throw new System.Exception("StateContext has more than 1 entity with component 'AudioManagerUnit'. You can check safely with 'HasAudioManagerUnit()'");
+				else if (audioManagerUnitGroup.count == 0) this.CreateEntity().audioManagerUnit = value;
+				else audioManagerUnitEntity.audioManagerUnit = value;
+			}
+		}
+		public bool HasAudioManagerUnit() {	return audioManagerUnitGroup.count == 1;	}
+
+		// AudioEffectManagerUnit Group
+		private IGroup<StateEntity> _audioEffectManagerUnitGroup;
+		public IGroup<StateEntity> audioEffectManagerUnitGroup {
+			get { 
+				if (_audioEffectManagerUnitGroup == null) {
+					_audioEffectManagerUnitGroup = GetGroup(StateMatcher.AudioEffectManagerUnit);
+				}
+				return _audioEffectManagerUnitGroup; } }
+
+		public StateEntity audioEffectManagerUnitEntity {
+			get {
+				var cachedGroup = audioEffectManagerUnitGroup;
+				if (cachedGroup.count > 1) {
+					return null;
+				}
+				if (cachedGroup.count == 0) {
+					return null;
+				}
+				return cachedGroup.GetSingleEntity(); } }
+
+		public Scripts.AudioEffectManagerUnit audioEffectManagerUnit { 
+			get {
+				if (audioEffectManagerUnitEntity == null) throw new System.Exception("StateContext has 0 or more than 1 entity with component 'AudioEffectManagerUnit'. You can check safely with 'HasAudioEffectManagerUnit()'");
+				return audioEffectManagerUnitEntity.audioEffectManagerUnit;
+			}	
+			set { 
+				if (audioEffectManagerUnitGroup.count > 1) throw new System.Exception("StateContext has more than 1 entity with component 'AudioEffectManagerUnit'. You can check safely with 'HasAudioEffectManagerUnit()'");
+				else if (audioEffectManagerUnitGroup.count == 0) this.CreateEntity().audioEffectManagerUnit = value;
+				else audioEffectManagerUnitEntity.audioEffectManagerUnit = value;
+			}
+		}
+		public bool HasAudioEffectManagerUnit() {	return audioEffectManagerUnitGroup.count == 1;	}
+
+		// SubsManagerUnit Group
+		private IGroup<StateEntity> _subsManagerUnitGroup;
+		public IGroup<StateEntity> subsManagerUnitGroup {
+			get { 
+				if (_subsManagerUnitGroup == null) {
+					_subsManagerUnitGroup = GetGroup(StateMatcher.SubsManagerUnit);
+				}
+				return _subsManagerUnitGroup; } }
+
+		public StateEntity subsManagerUnitEntity {
+			get {
+				var cachedGroup = subsManagerUnitGroup;
+				if (cachedGroup.count > 1) {
+					return null;
+				}
+				if (cachedGroup.count == 0) {
+					return null;
+				}
+				return cachedGroup.GetSingleEntity(); } }
+
+		public Scripts.SubsManagerUnit subsManagerUnit { 
+			get {
+				if (subsManagerUnitEntity == null) throw new System.Exception("StateContext has 0 or more than 1 entity with component 'SubsManagerUnit'. You can check safely with 'HasSubsManagerUnit()'");
+				return subsManagerUnitEntity.subsManagerUnit;
+			}	
+			set { 
+				if (subsManagerUnitGroup.count > 1) throw new System.Exception("StateContext has more than 1 entity with component 'SubsManagerUnit'. You can check safely with 'HasSubsManagerUnit()'");
+				else if (subsManagerUnitGroup.count == 0) this.CreateEntity().subsManagerUnit = value;
+				else subsManagerUnitEntity.subsManagerUnit = value;
+			}
+		}
+		public bool HasSubsManagerUnit() {	return subsManagerUnitGroup.count == 1;	}
+
 
 		//
 		// Groups

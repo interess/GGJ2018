@@ -515,6 +515,35 @@ namespace DZ.Game {
             else if (component == null) ReplaceComponent(StateComponentsLookup.FlagTrashValidated, null);
         }
 
+        // FlagLoaded
+        static readonly Components.State.FlagLoaded _flagLoadedComponent = new Components.State.FlagLoaded();
+        public bool flagLoaded {
+            get { return HasComponent(StateComponentsLookup.FlagLoaded); }
+            set {
+                if (value != flagLoaded) {
+                    if (value) {
+                        AddComponent(StateComponentsLookup.FlagLoaded, _flagLoadedComponent);
+                    } else {
+                        RemoveComponent(StateComponentsLookup.FlagLoaded);
+                    }
+                }
+            }
+        }
+
+        public bool HasFlagLoaded() {
+            return HasComponent(StateComponentsLookup.FlagLoaded);
+        }
+
+        public void RemoveFlagLoaded() {
+            RemoveComponent(StateComponentsLookup.FlagLoaded);
+        }
+
+        public void PingFlagLoaded() {
+            var component = GetComponent(StateComponentsLookup.FlagLoaded);
+            if (component != null) ReplaceComponent(StateComponentsLookup.FlagLoaded, component);
+            else if (component == null) ReplaceComponent(StateComponentsLookup.FlagLoaded, null);
+        }
+
         // LevelPart
         static readonly Components.State.LevelPart _levelPartComponent = new Components.State.LevelPart();
         public bool levelPart {
@@ -760,6 +789,191 @@ namespace DZ.Game {
             var component = GetComponent(StateComponentsLookup.ProductUnit);
             if (component != null) ReplaceComponent(StateComponentsLookup.ProductUnit, component);
             else if (component == null) ReplaceComponent(StateComponentsLookup.ProductUnit, null);
+        }
+
+        // AudioManagerUnit
+        public Scripts.AudioManagerUnit _audioManagerUnit { 
+            get {
+                if (!HasComponent(StateComponentsLookup.AudioManagerUnit)) throw new System.Exception("Entity does not have component 'AudioManagerUnit'. You can check safely with 'HasAudioManagerUnit()'");
+                return ((Components.State.AudioManagerUnit)GetComponent(StateComponentsLookup.AudioManagerUnit)).value;
+            } 
+            set {
+                ((Components.State.AudioManagerUnit)GetComponent(StateComponentsLookup.AudioManagerUnit)).value = value;
+            }
+        }
+
+        public Scripts.AudioManagerUnit audioManagerUnit { 
+            get {
+                if (!HasComponent(StateComponentsLookup.AudioManagerUnit)) throw new System.Exception("Entity does not have component 'AudioManagerUnit'. You can check safely with 'HasAudioManagerUnit()'");
+                return ((Components.State.AudioManagerUnit)GetComponent(StateComponentsLookup.AudioManagerUnit)).value;
+            } 
+            set {
+                var component = CreateComponent<Components.State.AudioManagerUnit>(StateComponentsLookup.AudioManagerUnit);
+                component.value = value;
+                ReplaceComponent(StateComponentsLookup.AudioManagerUnit, component);
+            }
+        }
+
+        public bool HasAudioManagerUnit() {
+            return HasComponent(StateComponentsLookup.AudioManagerUnit);
+        }
+
+        public void RemoveAudioManagerUnit() {
+            if (HasComponent(StateComponentsLookup.AudioManagerUnit)) { RemoveComponent(StateComponentsLookup.AudioManagerUnit); }
+        }
+
+        public void PingAudioManagerUnit() {
+            var component = GetComponent(StateComponentsLookup.AudioManagerUnit);
+            if (component != null) ReplaceComponent(StateComponentsLookup.AudioManagerUnit, component);
+            else if (component == null) ReplaceComponent(StateComponentsLookup.AudioManagerUnit, null);
+        }
+
+        // AudioEffectManagerUnit
+        public Scripts.AudioEffectManagerUnit _audioEffectManagerUnit { 
+            get {
+                if (!HasComponent(StateComponentsLookup.AudioEffectManagerUnit)) throw new System.Exception("Entity does not have component 'AudioEffectManagerUnit'. You can check safely with 'HasAudioEffectManagerUnit()'");
+                return ((Components.State.AudioEffectManagerUnit)GetComponent(StateComponentsLookup.AudioEffectManagerUnit)).value;
+            } 
+            set {
+                ((Components.State.AudioEffectManagerUnit)GetComponent(StateComponentsLookup.AudioEffectManagerUnit)).value = value;
+            }
+        }
+
+        public Scripts.AudioEffectManagerUnit audioEffectManagerUnit { 
+            get {
+                if (!HasComponent(StateComponentsLookup.AudioEffectManagerUnit)) throw new System.Exception("Entity does not have component 'AudioEffectManagerUnit'. You can check safely with 'HasAudioEffectManagerUnit()'");
+                return ((Components.State.AudioEffectManagerUnit)GetComponent(StateComponentsLookup.AudioEffectManagerUnit)).value;
+            } 
+            set {
+                var component = CreateComponent<Components.State.AudioEffectManagerUnit>(StateComponentsLookup.AudioEffectManagerUnit);
+                component.value = value;
+                ReplaceComponent(StateComponentsLookup.AudioEffectManagerUnit, component);
+            }
+        }
+
+        public bool HasAudioEffectManagerUnit() {
+            return HasComponent(StateComponentsLookup.AudioEffectManagerUnit);
+        }
+
+        public void RemoveAudioEffectManagerUnit() {
+            if (HasComponent(StateComponentsLookup.AudioEffectManagerUnit)) { RemoveComponent(StateComponentsLookup.AudioEffectManagerUnit); }
+        }
+
+        public void PingAudioEffectManagerUnit() {
+            var component = GetComponent(StateComponentsLookup.AudioEffectManagerUnit);
+            if (component != null) ReplaceComponent(StateComponentsLookup.AudioEffectManagerUnit, component);
+            else if (component == null) ReplaceComponent(StateComponentsLookup.AudioEffectManagerUnit, null);
+        }
+
+        // AudioEffectUnit
+        public Scripts.AudioEffectUnit _audioEffectUnit { 
+            get {
+                if (!HasComponent(StateComponentsLookup.AudioEffectUnit)) throw new System.Exception("Entity does not have component 'AudioEffectUnit'. You can check safely with 'HasAudioEffectUnit()'");
+                return ((Components.State.AudioEffectUnit)GetComponent(StateComponentsLookup.AudioEffectUnit)).value;
+            } 
+            set {
+                ((Components.State.AudioEffectUnit)GetComponent(StateComponentsLookup.AudioEffectUnit)).value = value;
+            }
+        }
+
+        public Scripts.AudioEffectUnit audioEffectUnit { 
+            get {
+                if (!HasComponent(StateComponentsLookup.AudioEffectUnit)) throw new System.Exception("Entity does not have component 'AudioEffectUnit'. You can check safely with 'HasAudioEffectUnit()'");
+                return ((Components.State.AudioEffectUnit)GetComponent(StateComponentsLookup.AudioEffectUnit)).value;
+            } 
+            set {
+                var component = CreateComponent<Components.State.AudioEffectUnit>(StateComponentsLookup.AudioEffectUnit);
+                component.value = value;
+                ReplaceComponent(StateComponentsLookup.AudioEffectUnit, component);
+            }
+        }
+
+        public bool HasAudioEffectUnit() {
+            return HasComponent(StateComponentsLookup.AudioEffectUnit);
+        }
+
+        public void RemoveAudioEffectUnit() {
+            if (HasComponent(StateComponentsLookup.AudioEffectUnit)) { RemoveComponent(StateComponentsLookup.AudioEffectUnit); }
+        }
+
+        public void PingAudioEffectUnit() {
+            var component = GetComponent(StateComponentsLookup.AudioEffectUnit);
+            if (component != null) ReplaceComponent(StateComponentsLookup.AudioEffectUnit, component);
+            else if (component == null) ReplaceComponent(StateComponentsLookup.AudioEffectUnit, null);
+        }
+
+        // AudioEffectProductUnit
+        public Scripts.AudioEffectProductUnit _audioEffectProductUnit { 
+            get {
+                if (!HasComponent(StateComponentsLookup.AudioEffectProductUnit)) throw new System.Exception("Entity does not have component 'AudioEffectProductUnit'. You can check safely with 'HasAudioEffectProductUnit()'");
+                return ((Components.State.AudioEffectProductUnit)GetComponent(StateComponentsLookup.AudioEffectProductUnit)).value;
+            } 
+            set {
+                ((Components.State.AudioEffectProductUnit)GetComponent(StateComponentsLookup.AudioEffectProductUnit)).value = value;
+            }
+        }
+
+        public Scripts.AudioEffectProductUnit audioEffectProductUnit { 
+            get {
+                if (!HasComponent(StateComponentsLookup.AudioEffectProductUnit)) throw new System.Exception("Entity does not have component 'AudioEffectProductUnit'. You can check safely with 'HasAudioEffectProductUnit()'");
+                return ((Components.State.AudioEffectProductUnit)GetComponent(StateComponentsLookup.AudioEffectProductUnit)).value;
+            } 
+            set {
+                var component = CreateComponent<Components.State.AudioEffectProductUnit>(StateComponentsLookup.AudioEffectProductUnit);
+                component.value = value;
+                ReplaceComponent(StateComponentsLookup.AudioEffectProductUnit, component);
+            }
+        }
+
+        public bool HasAudioEffectProductUnit() {
+            return HasComponent(StateComponentsLookup.AudioEffectProductUnit);
+        }
+
+        public void RemoveAudioEffectProductUnit() {
+            if (HasComponent(StateComponentsLookup.AudioEffectProductUnit)) { RemoveComponent(StateComponentsLookup.AudioEffectProductUnit); }
+        }
+
+        public void PingAudioEffectProductUnit() {
+            var component = GetComponent(StateComponentsLookup.AudioEffectProductUnit);
+            if (component != null) ReplaceComponent(StateComponentsLookup.AudioEffectProductUnit, component);
+            else if (component == null) ReplaceComponent(StateComponentsLookup.AudioEffectProductUnit, null);
+        }
+
+        // SubsManagerUnit
+        public Scripts.SubsManagerUnit _subsManagerUnit { 
+            get {
+                if (!HasComponent(StateComponentsLookup.SubsManagerUnit)) throw new System.Exception("Entity does not have component 'SubsManagerUnit'. You can check safely with 'HasSubsManagerUnit()'");
+                return ((Components.State.SubsManagerUnit)GetComponent(StateComponentsLookup.SubsManagerUnit)).value;
+            } 
+            set {
+                ((Components.State.SubsManagerUnit)GetComponent(StateComponentsLookup.SubsManagerUnit)).value = value;
+            }
+        }
+
+        public Scripts.SubsManagerUnit subsManagerUnit { 
+            get {
+                if (!HasComponent(StateComponentsLookup.SubsManagerUnit)) throw new System.Exception("Entity does not have component 'SubsManagerUnit'. You can check safely with 'HasSubsManagerUnit()'");
+                return ((Components.State.SubsManagerUnit)GetComponent(StateComponentsLookup.SubsManagerUnit)).value;
+            } 
+            set {
+                var component = CreateComponent<Components.State.SubsManagerUnit>(StateComponentsLookup.SubsManagerUnit);
+                component.value = value;
+                ReplaceComponent(StateComponentsLookup.SubsManagerUnit, component);
+            }
+        }
+
+        public bool HasSubsManagerUnit() {
+            return HasComponent(StateComponentsLookup.SubsManagerUnit);
+        }
+
+        public void RemoveSubsManagerUnit() {
+            if (HasComponent(StateComponentsLookup.SubsManagerUnit)) { RemoveComponent(StateComponentsLookup.SubsManagerUnit); }
+        }
+
+        public void PingSubsManagerUnit() {
+            var component = GetComponent(StateComponentsLookup.SubsManagerUnit);
+            if (component != null) ReplaceComponent(StateComponentsLookup.SubsManagerUnit, component);
+            else if (component == null) ReplaceComponent(StateComponentsLookup.SubsManagerUnit, null);
         }
     }
 
