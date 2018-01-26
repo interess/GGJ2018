@@ -8,8 +8,11 @@ namespace DZ.Game.Declaration
         {
             // Flag
             var FlagEvent = Component();
-            var FlagTrash = Component();
-            var FlagTrashValidated = Component();
+            var FlagTrash = Component().Universal;
+            var FlagTrashValidated = Component().Universal.Group;
+
+            // Trash
+            var TrashTimer = Component<float>().Universal;
         }
     }
 
@@ -18,11 +21,24 @@ namespace DZ.Game.Declaration
         public State()
         {
             // Flag
-            var FlagTrash = Component();
-            var FlagTrashValidated = Component();
+            var FlagTrash = Component().Universal;
+            var FlagTrashValidated = Component().Universal;
+
+            // Trash
+            var TrashTimer = Component<float>().Universal.Group;
 
             // Stage
             var StageManagerUnit = Component<Scripts.StageManagerUnit>().GroupSingle;
+
+            // Level
+            var LevelPart = Component().Group;
+
+            // Uid
+            var Uid = Component<int>().Index;
+            var UidUnit = Component<FS.Uid.Scripts.UidUnit>();
+
+            // Product
+            var ProductUnit = Component<FS.PrefabFactory.Scripts.ProductUnit>();
         }
     }
 }

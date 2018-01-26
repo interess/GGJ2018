@@ -103,6 +103,18 @@ namespace DZ.Game {
 		// Groups
 		//
 
+		// FlagTrashValidated Group
+		private IGroup<InputEntity> _flagTrashValidatedGroup;
+		public IGroup<InputEntity> flagTrashValidatedGroup {
+			get { 
+				if (_flagTrashValidatedGroup == null) {
+					_flagTrashValidatedGroup = GetGroup(InputMatcher.FlagTrashValidated);
+				}
+				return _flagTrashValidatedGroup; } }
+
+		public InputEntity[] flagTrashValidatedEntities { 
+			get { return flagTrashValidatedGroup.GetEntities(); } }
+		
 	}
 
 	public partial class StateContext {
@@ -148,6 +160,30 @@ namespace DZ.Game {
 		// Groups
 		//
 
+		// TrashTimer Group
+		private IGroup<StateEntity> _trashTimerGroup;
+		public IGroup<StateEntity> trashTimerGroup {
+			get { 
+				if (_trashTimerGroup == null) {
+					_trashTimerGroup = GetGroup(StateMatcher.TrashTimer);
+				}
+				return _trashTimerGroup; } }
+
+		public StateEntity[] trashTimerEntities { 
+			get { return trashTimerGroup.GetEntities(); } }
+		
+		// LevelPart Group
+		private IGroup<StateEntity> _levelPartGroup;
+		public IGroup<StateEntity> levelPartGroup {
+			get { 
+				if (_levelPartGroup == null) {
+					_levelPartGroup = GetGroup(StateMatcher.LevelPart);
+				}
+				return _levelPartGroup; } }
+
+		public StateEntity[] levelPartEntities { 
+			get { return levelPartGroup.GetEntities(); } }
+		
 	}
 
 

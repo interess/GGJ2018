@@ -27,12 +27,18 @@ namespace DZ.Game.Components {
         public partial class FlagTrash: Entitas.IComponent { }
         public partial class FlagTrashValidated: Entitas.IComponent { }
         // Value Components
+        public partial class TrashTimer: Entitas.IComponent { public float value; }
     }
     namespace State {
         // Flag Components
         public partial class FlagTrash: Entitas.IComponent { }
         public partial class FlagTrashValidated: Entitas.IComponent { }
+        public partial class LevelPart: Entitas.IComponent { }
         // Value Components
+        public partial class TrashTimer: Entitas.IComponent { public float value; }
         public partial class StageManagerUnit: Entitas.IComponent { public Scripts.StageManagerUnit value; }
+        public partial class Uid: Entitas.IComponent { public int value; }
+        public partial class UidUnit: Entitas.IComponent { public FS.Uid.Scripts.UidUnit value; }
+        public partial class ProductUnit: Entitas.IComponent { public FS.PrefabFactory.Scripts.ProductUnit value; }
     }
 }

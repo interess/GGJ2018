@@ -231,25 +231,29 @@ namespace DZ.Game {
         public const int FlagEvent = 0;
         public const int FlagTrash = 1;
         public const int FlagTrashValidated = 2;
+        public const int TrashTimer = 3;
 
-        public const int TotalComponents = 3;
+        public const int TotalComponents = 4;
 
         public static readonly Dictionary<string, int> componentsDict = new Dictionary<string, int> () {
             {"FlagEvent", 0 },
             {"FlagTrash", 1 },
-            {"FlagTrashValidated", 2 }
+            {"FlagTrashValidated", 2 },
+            {"TrashTimer", 3 }
         };
 
         public static readonly string[] componentNames = {
             "FlagEvent",
             "FlagTrash",
-            "FlagTrashValidated"
+            "FlagTrashValidated",
+            "TrashTimer"
         };
 
         public static readonly System.Type[] componentTypes = {
             typeof(Components.Input.FlagEvent),
             typeof(Components.Input.FlagTrash),
-            typeof(Components.Input.FlagTrashValidated)
+            typeof(Components.Input.FlagTrashValidated),
+            typeof(Components.Input.TrashTimer)
         };
 
         public static int GetComponentIndex(string name) {
@@ -289,34 +293,57 @@ namespace DZ.Game {
 
             ) 
         {
+            uidIndex = new DZ.Game.Indexes.State.UidIndex(this);
         }
 
+        /// Value: Uid  
+        public DZ.Game.Indexes.State.IUidIndex uidIndex;
 
     }
 
     public static class StateComponentsLookup {
         public const int FlagTrash = 0;
         public const int FlagTrashValidated = 1;
-        public const int StageManagerUnit = 2;
+        public const int TrashTimer = 2;
+        public const int StageManagerUnit = 3;
+        public const int LevelPart = 4;
+        public const int Uid = 5;
+        public const int UidUnit = 6;
+        public const int ProductUnit = 7;
 
-        public const int TotalComponents = 3;
+        public const int TotalComponents = 8;
 
         public static readonly Dictionary<string, int> componentsDict = new Dictionary<string, int> () {
             {"FlagTrash", 0 },
             {"FlagTrashValidated", 1 },
-            {"StageManagerUnit", 2 }
+            {"TrashTimer", 2 },
+            {"StageManagerUnit", 3 },
+            {"LevelPart", 4 },
+            {"Uid", 5 },
+            {"UidUnit", 6 },
+            {"ProductUnit", 7 }
         };
 
         public static readonly string[] componentNames = {
             "FlagTrash",
             "FlagTrashValidated",
-            "StageManagerUnit"
+            "TrashTimer",
+            "StageManagerUnit",
+            "LevelPart",
+            "Uid",
+            "UidUnit",
+            "ProductUnit"
         };
 
         public static readonly System.Type[] componentTypes = {
             typeof(Components.State.FlagTrash),
             typeof(Components.State.FlagTrashValidated),
-            typeof(Components.State.StageManagerUnit)
+            typeof(Components.State.TrashTimer),
+            typeof(Components.State.StageManagerUnit),
+            typeof(Components.State.LevelPart),
+            typeof(Components.State.Uid),
+            typeof(Components.State.UidUnit),
+            typeof(Components.State.ProductUnit)
         };
 
         public static int GetComponentIndex(string name) {

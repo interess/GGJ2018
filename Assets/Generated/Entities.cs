@@ -238,6 +238,27 @@ namespace DZ.Core {
 
 }
 namespace DZ.Game {
+    public interface IFlagTrashEntity : Entitas.IEntity {
+        bool flagTrash { get; set; }
+        bool HasFlagTrash();
+        void RemoveFlagTrash();
+        void PingFlagTrash();
+    }
+
+    public interface IFlagTrashValidatedEntity : Entitas.IEntity {
+        bool flagTrashValidated { get; set; }
+        bool HasFlagTrashValidated();
+        void RemoveFlagTrashValidated();
+        void PingFlagTrashValidated();
+    }
+
+    public interface ITrashTimerEntity : Entitas.IEntity {
+        float trashTimer { get; set; }
+        bool HasTrashTimer();
+        void RemoveTrashTimer();
+        void PingTrashTimer();
+    }
+
     public sealed partial class InputEntity: Entitas.Entity, Entitas.IEntity {
         public InputEntity AddComponentByName(string name) {
             var componentIndex = InputComponentsLookup.GetComponentIndex(name);
@@ -344,6 +365,43 @@ namespace DZ.Game {
         //
         // Value Components
         //
+
+        // TrashTimer
+        public float _trashTimer { 
+            get {
+                if (!HasComponent(InputComponentsLookup.TrashTimer)) throw new System.Exception("Entity does not have component 'TrashTimer'. You can check safely with 'HasTrashTimer()'");
+                return ((Components.Input.TrashTimer)GetComponent(InputComponentsLookup.TrashTimer)).value;
+            } 
+            set {
+                ((Components.Input.TrashTimer)GetComponent(InputComponentsLookup.TrashTimer)).value = value;
+            }
+        }
+
+        public float trashTimer { 
+            get {
+                if (!HasComponent(InputComponentsLookup.TrashTimer)) throw new System.Exception("Entity does not have component 'TrashTimer'. You can check safely with 'HasTrashTimer()'");
+                return ((Components.Input.TrashTimer)GetComponent(InputComponentsLookup.TrashTimer)).value;
+            } 
+            set {
+                var component = CreateComponent<Components.Input.TrashTimer>(InputComponentsLookup.TrashTimer);
+                component.value = value;
+                ReplaceComponent(InputComponentsLookup.TrashTimer, component);
+            }
+        }
+
+        public bool HasTrashTimer() {
+            return HasComponent(InputComponentsLookup.TrashTimer);
+        }
+
+        public void RemoveTrashTimer() {
+            if (HasComponent(InputComponentsLookup.TrashTimer)) { RemoveComponent(InputComponentsLookup.TrashTimer); }
+        }
+
+        public void PingTrashTimer() {
+            var component = GetComponent(InputComponentsLookup.TrashTimer);
+            if (component != null) ReplaceComponent(InputComponentsLookup.TrashTimer, component);
+            else if (component == null) ReplaceComponent(InputComponentsLookup.TrashTimer, null);
+        }
     }
 
     public sealed partial class StateEntity: Entitas.Entity, Entitas.IEntity {
@@ -420,9 +478,75 @@ namespace DZ.Game {
             else if (component == null) ReplaceComponent(StateComponentsLookup.FlagTrashValidated, null);
         }
 
+        // LevelPart
+        static readonly Components.State.LevelPart _levelPartComponent = new Components.State.LevelPart();
+        public bool levelPart {
+            get { return HasComponent(StateComponentsLookup.LevelPart); }
+            set {
+                if (value != levelPart) {
+                    if (value) {
+                        AddComponent(StateComponentsLookup.LevelPart, _levelPartComponent);
+                    } else {
+                        RemoveComponent(StateComponentsLookup.LevelPart);
+                    }
+                }
+            }
+        }
+
+        public bool HasLevelPart() {
+            return HasComponent(StateComponentsLookup.LevelPart);
+        }
+
+        public void RemoveLevelPart() {
+            RemoveComponent(StateComponentsLookup.LevelPart);
+        }
+
+        public void PingLevelPart() {
+            var component = GetComponent(StateComponentsLookup.LevelPart);
+            if (component != null) ReplaceComponent(StateComponentsLookup.LevelPart, component);
+            else if (component == null) ReplaceComponent(StateComponentsLookup.LevelPart, null);
+        }
+
         //
         // Value Components
         //
+
+        // TrashTimer
+        public float _trashTimer { 
+            get {
+                if (!HasComponent(StateComponentsLookup.TrashTimer)) throw new System.Exception("Entity does not have component 'TrashTimer'. You can check safely with 'HasTrashTimer()'");
+                return ((Components.State.TrashTimer)GetComponent(StateComponentsLookup.TrashTimer)).value;
+            } 
+            set {
+                ((Components.State.TrashTimer)GetComponent(StateComponentsLookup.TrashTimer)).value = value;
+            }
+        }
+
+        public float trashTimer { 
+            get {
+                if (!HasComponent(StateComponentsLookup.TrashTimer)) throw new System.Exception("Entity does not have component 'TrashTimer'. You can check safely with 'HasTrashTimer()'");
+                return ((Components.State.TrashTimer)GetComponent(StateComponentsLookup.TrashTimer)).value;
+            } 
+            set {
+                var component = CreateComponent<Components.State.TrashTimer>(StateComponentsLookup.TrashTimer);
+                component.value = value;
+                ReplaceComponent(StateComponentsLookup.TrashTimer, component);
+            }
+        }
+
+        public bool HasTrashTimer() {
+            return HasComponent(StateComponentsLookup.TrashTimer);
+        }
+
+        public void RemoveTrashTimer() {
+            if (HasComponent(StateComponentsLookup.TrashTimer)) { RemoveComponent(StateComponentsLookup.TrashTimer); }
+        }
+
+        public void PingTrashTimer() {
+            var component = GetComponent(StateComponentsLookup.TrashTimer);
+            if (component != null) ReplaceComponent(StateComponentsLookup.TrashTimer, component);
+            else if (component == null) ReplaceComponent(StateComponentsLookup.TrashTimer, null);
+        }
 
         // StageManagerUnit
         public Scripts.StageManagerUnit _stageManagerUnit { 
@@ -459,6 +583,117 @@ namespace DZ.Game {
             var component = GetComponent(StateComponentsLookup.StageManagerUnit);
             if (component != null) ReplaceComponent(StateComponentsLookup.StageManagerUnit, component);
             else if (component == null) ReplaceComponent(StateComponentsLookup.StageManagerUnit, null);
+        }
+
+        // Uid
+        public int _uid { 
+            get {
+                if (!HasComponent(StateComponentsLookup.Uid)) throw new System.Exception("Entity does not have component 'Uid'. You can check safely with 'HasUid()'");
+                return ((Components.State.Uid)GetComponent(StateComponentsLookup.Uid)).value;
+            } 
+            set {
+                ((Components.State.Uid)GetComponent(StateComponentsLookup.Uid)).value = value;
+            }
+        }
+
+        public int uid { 
+            get {
+                if (!HasComponent(StateComponentsLookup.Uid)) throw new System.Exception("Entity does not have component 'Uid'. You can check safely with 'HasUid()'");
+                return ((Components.State.Uid)GetComponent(StateComponentsLookup.Uid)).value;
+            } 
+            set {
+                var component = CreateComponent<Components.State.Uid>(StateComponentsLookup.Uid);
+                component.value = value;
+                ReplaceComponent(StateComponentsLookup.Uid, component);
+            }
+        }
+
+        public bool HasUid() {
+            return HasComponent(StateComponentsLookup.Uid);
+        }
+
+        public void RemoveUid() {
+            if (HasComponent(StateComponentsLookup.Uid)) { RemoveComponent(StateComponentsLookup.Uid); }
+        }
+
+        public void PingUid() {
+            var component = GetComponent(StateComponentsLookup.Uid);
+            if (component != null) ReplaceComponent(StateComponentsLookup.Uid, component);
+            else if (component == null) ReplaceComponent(StateComponentsLookup.Uid, null);
+        }
+
+        // UidUnit
+        public FS.Uid.Scripts.UidUnit _uidUnit { 
+            get {
+                if (!HasComponent(StateComponentsLookup.UidUnit)) throw new System.Exception("Entity does not have component 'UidUnit'. You can check safely with 'HasUidUnit()'");
+                return ((Components.State.UidUnit)GetComponent(StateComponentsLookup.UidUnit)).value;
+            } 
+            set {
+                ((Components.State.UidUnit)GetComponent(StateComponentsLookup.UidUnit)).value = value;
+            }
+        }
+
+        public FS.Uid.Scripts.UidUnit uidUnit { 
+            get {
+                if (!HasComponent(StateComponentsLookup.UidUnit)) throw new System.Exception("Entity does not have component 'UidUnit'. You can check safely with 'HasUidUnit()'");
+                return ((Components.State.UidUnit)GetComponent(StateComponentsLookup.UidUnit)).value;
+            } 
+            set {
+                var component = CreateComponent<Components.State.UidUnit>(StateComponentsLookup.UidUnit);
+                component.value = value;
+                ReplaceComponent(StateComponentsLookup.UidUnit, component);
+            }
+        }
+
+        public bool HasUidUnit() {
+            return HasComponent(StateComponentsLookup.UidUnit);
+        }
+
+        public void RemoveUidUnit() {
+            if (HasComponent(StateComponentsLookup.UidUnit)) { RemoveComponent(StateComponentsLookup.UidUnit); }
+        }
+
+        public void PingUidUnit() {
+            var component = GetComponent(StateComponentsLookup.UidUnit);
+            if (component != null) ReplaceComponent(StateComponentsLookup.UidUnit, component);
+            else if (component == null) ReplaceComponent(StateComponentsLookup.UidUnit, null);
+        }
+
+        // ProductUnit
+        public FS.PrefabFactory.Scripts.ProductUnit _productUnit { 
+            get {
+                if (!HasComponent(StateComponentsLookup.ProductUnit)) throw new System.Exception("Entity does not have component 'ProductUnit'. You can check safely with 'HasProductUnit()'");
+                return ((Components.State.ProductUnit)GetComponent(StateComponentsLookup.ProductUnit)).value;
+            } 
+            set {
+                ((Components.State.ProductUnit)GetComponent(StateComponentsLookup.ProductUnit)).value = value;
+            }
+        }
+
+        public FS.PrefabFactory.Scripts.ProductUnit productUnit { 
+            get {
+                if (!HasComponent(StateComponentsLookup.ProductUnit)) throw new System.Exception("Entity does not have component 'ProductUnit'. You can check safely with 'HasProductUnit()'");
+                return ((Components.State.ProductUnit)GetComponent(StateComponentsLookup.ProductUnit)).value;
+            } 
+            set {
+                var component = CreateComponent<Components.State.ProductUnit>(StateComponentsLookup.ProductUnit);
+                component.value = value;
+                ReplaceComponent(StateComponentsLookup.ProductUnit, component);
+            }
+        }
+
+        public bool HasProductUnit() {
+            return HasComponent(StateComponentsLookup.ProductUnit);
+        }
+
+        public void RemoveProductUnit() {
+            if (HasComponent(StateComponentsLookup.ProductUnit)) { RemoveComponent(StateComponentsLookup.ProductUnit); }
+        }
+
+        public void PingProductUnit() {
+            var component = GetComponent(StateComponentsLookup.ProductUnit);
+            if (component != null) ReplaceComponent(StateComponentsLookup.ProductUnit, component);
+            else if (component == null) ReplaceComponent(StateComponentsLookup.ProductUnit, null);
         }
     }
 
