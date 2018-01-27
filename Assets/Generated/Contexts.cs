@@ -234,8 +234,10 @@ namespace DZ.Game {
         public const int TrashTimer = 3;
         public const int EventId = 4;
         public const int ChannelSwitchEvent = 5;
+        public const int SubsRecordStartEvent = 6;
+        public const int SubsRecordStopEvent = 7;
 
-        public const int TotalComponents = 6;
+        public const int TotalComponents = 8;
 
         public static readonly Dictionary<string, int> componentsDict = new Dictionary<string, int> () {
             {"FlagEvent", 0 },
@@ -243,7 +245,9 @@ namespace DZ.Game {
             {"FlagTrashValidated", 2 },
             {"TrashTimer", 3 },
             {"EventId", 4 },
-            {"ChannelSwitchEvent", 5 }
+            {"ChannelSwitchEvent", 5 },
+            {"SubsRecordStartEvent", 6 },
+            {"SubsRecordStopEvent", 7 }
         };
 
         public static readonly string[] componentNames = {
@@ -252,7 +256,9 @@ namespace DZ.Game {
             "FlagTrashValidated",
             "TrashTimer",
             "EventId",
-            "ChannelSwitchEvent"
+            "ChannelSwitchEvent",
+            "SubsRecordStartEvent",
+            "SubsRecordStopEvent"
         };
 
         public static readonly System.Type[] componentTypes = {
@@ -261,7 +267,9 @@ namespace DZ.Game {
             typeof(Components.Input.FlagTrashValidated),
             typeof(Components.Input.TrashTimer),
             typeof(Components.Input.EventId),
-            typeof(Components.Input.ChannelSwitchEvent)
+            typeof(Components.Input.ChannelSwitchEvent),
+            typeof(Components.Input.SubsRecordStartEvent),
+            typeof(Components.Input.SubsRecordStopEvent)
         };
 
         public static int GetComponentIndex(string name) {
@@ -336,10 +344,11 @@ namespace DZ.Game {
         public const int SubsManagerUnit = 17;
         public const int Channel = 18;
         public const int ChannelInfoUnit = 19;
-        public const int WorldTime = 20;
-        public const int WorldTimeSpeed = 21;
+        public const int ChannelRecording = 20;
+        public const int WorldTime = 21;
+        public const int WorldTimeSpeed = 22;
 
-        public const int TotalComponents = 22;
+        public const int TotalComponents = 23;
 
         public static readonly Dictionary<string, int> componentsDict = new Dictionary<string, int> () {
             {"FlagTrash", 0 },
@@ -362,8 +371,9 @@ namespace DZ.Game {
             {"SubsManagerUnit", 17 },
             {"Channel", 18 },
             {"ChannelInfoUnit", 19 },
-            {"WorldTime", 20 },
-            {"WorldTimeSpeed", 21 }
+            {"ChannelRecording", 20 },
+            {"WorldTime", 21 },
+            {"WorldTimeSpeed", 22 }
         };
 
         public static readonly string[] componentNames = {
@@ -387,6 +397,7 @@ namespace DZ.Game {
             "SubsManagerUnit",
             "Channel",
             "ChannelInfoUnit",
+            "ChannelRecording",
             "WorldTime",
             "WorldTimeSpeed"
         };
@@ -412,6 +423,7 @@ namespace DZ.Game {
             typeof(Components.State.SubsManagerUnit),
             typeof(Components.State.Channel),
             typeof(Components.State.ChannelInfoUnit),
+            typeof(Components.State.ChannelRecording),
             typeof(Components.State.WorldTime),
             typeof(Components.State.WorldTimeSpeed)
         };

@@ -7,6 +7,7 @@ namespace DZ.Game.Scripts
 {
 	public class SubsManagerUnit : MonoBehaviour
 	{
+		public SubsSelectorUnit subsSelectorUnit;
 		public GameObject channelInfoPrefab;
 		public GameObject subsWordPrefab;
 		public RectTransform channelInfoRectTransform;
@@ -32,6 +33,10 @@ namespace DZ.Game.Scripts
 			{
 				__channelInfoFactoryUnit = gameObject.AddComponent<FS.PrefabFactory.Scripts.FactoryUnit>();
 				__channelInfoFactoryUnit.Initialize(channelInfoPrefab, 10);
+			}
+
+			if (subsSelectorUnit == null) {
+				Debug.LogError("SubsManagerUnit | SubsSelectorUnit is null. This will cause errors");
 			}
 
 			if (dialogOwnerColors.Length < 10)
@@ -87,6 +92,7 @@ namespace DZ.Game.Scripts
 					if (word.Contains("---"))
 					{
 						currentWord = Regex.Replace(word, "---", "");
+						if (currentWord.Length == 0) { continue; }
 						var indexString = currentWord.Substring(0, 1);
 						currentWord = currentWord.Substring(1, currentWord.Length - 1);
 						int.TryParse(indexString, out dialogOwnerIndex);
@@ -148,6 +154,19 @@ namespace DZ.Game.Scripts
 			}
 
 			__currentChannelIndex = channelIndex;
+		}
+
+		public void MoveSubs(float speed)
+		{
+			foreach (var item in channelRectTransforms)
+			{
+				item.transform.Translate(new Vector3(-speed * Time.deltaTime, 0, 0));
+			}
+		}
+
+		public void SetRecording(bool value)
+		{
+			subsSelectorUnit.SetSelectction(value);
 		}
 
 		public void Reset()

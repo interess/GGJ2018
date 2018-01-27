@@ -391,6 +391,64 @@ namespace DZ.Game {
             else if (component == null) ReplaceComponent(InputComponentsLookup.ChannelSwitchEvent, null);
         }
 
+        // SubsRecordStartEvent
+        static readonly Components.Input.SubsRecordStartEvent _subsRecordStartEventComponent = new Components.Input.SubsRecordStartEvent();
+        public bool subsRecordStartEvent {
+            get { return HasComponent(InputComponentsLookup.SubsRecordStartEvent); }
+            set {
+                if (value != subsRecordStartEvent) {
+                    if (value) {
+                        AddComponent(InputComponentsLookup.SubsRecordStartEvent, _subsRecordStartEventComponent);
+                    } else {
+                        RemoveComponent(InputComponentsLookup.SubsRecordStartEvent);
+                    }
+                }
+            }
+        }
+
+        public bool HasSubsRecordStartEvent() {
+            return HasComponent(InputComponentsLookup.SubsRecordStartEvent);
+        }
+
+        public void RemoveSubsRecordStartEvent() {
+            RemoveComponent(InputComponentsLookup.SubsRecordStartEvent);
+        }
+
+        public void PingSubsRecordStartEvent() {
+            var component = GetComponent(InputComponentsLookup.SubsRecordStartEvent);
+            if (component != null) ReplaceComponent(InputComponentsLookup.SubsRecordStartEvent, component);
+            else if (component == null) ReplaceComponent(InputComponentsLookup.SubsRecordStartEvent, null);
+        }
+
+        // SubsRecordStopEvent
+        static readonly Components.Input.SubsRecordStopEvent _subsRecordStopEventComponent = new Components.Input.SubsRecordStopEvent();
+        public bool subsRecordStopEvent {
+            get { return HasComponent(InputComponentsLookup.SubsRecordStopEvent); }
+            set {
+                if (value != subsRecordStopEvent) {
+                    if (value) {
+                        AddComponent(InputComponentsLookup.SubsRecordStopEvent, _subsRecordStopEventComponent);
+                    } else {
+                        RemoveComponent(InputComponentsLookup.SubsRecordStopEvent);
+                    }
+                }
+            }
+        }
+
+        public bool HasSubsRecordStopEvent() {
+            return HasComponent(InputComponentsLookup.SubsRecordStopEvent);
+        }
+
+        public void RemoveSubsRecordStopEvent() {
+            RemoveComponent(InputComponentsLookup.SubsRecordStopEvent);
+        }
+
+        public void PingSubsRecordStopEvent() {
+            var component = GetComponent(InputComponentsLookup.SubsRecordStopEvent);
+            if (component != null) ReplaceComponent(InputComponentsLookup.SubsRecordStopEvent, component);
+            else if (component == null) ReplaceComponent(InputComponentsLookup.SubsRecordStopEvent, null);
+        }
+
         //
         // Value Components
         //
@@ -687,6 +745,35 @@ namespace DZ.Game {
             var component = GetComponent(StateComponentsLookup.View);
             if (component != null) ReplaceComponent(StateComponentsLookup.View, component);
             else if (component == null) ReplaceComponent(StateComponentsLookup.View, null);
+        }
+
+        // ChannelRecording
+        static readonly Components.State.ChannelRecording _channelRecordingComponent = new Components.State.ChannelRecording();
+        public bool channelRecording {
+            get { return HasComponent(StateComponentsLookup.ChannelRecording); }
+            set {
+                if (value != channelRecording) {
+                    if (value) {
+                        AddComponent(StateComponentsLookup.ChannelRecording, _channelRecordingComponent);
+                    } else {
+                        RemoveComponent(StateComponentsLookup.ChannelRecording);
+                    }
+                }
+            }
+        }
+
+        public bool HasChannelRecording() {
+            return HasComponent(StateComponentsLookup.ChannelRecording);
+        }
+
+        public void RemoveChannelRecording() {
+            RemoveComponent(StateComponentsLookup.ChannelRecording);
+        }
+
+        public void PingChannelRecording() {
+            var component = GetComponent(StateComponentsLookup.ChannelRecording);
+            if (component != null) ReplaceComponent(StateComponentsLookup.ChannelRecording, component);
+            else if (component == null) ReplaceComponent(StateComponentsLookup.ChannelRecording, null);
         }
 
         //

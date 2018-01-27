@@ -19,6 +19,10 @@ namespace DZ.Game.Declaration
 
             // Channel
             var ChannelSwitchEvent = Component();
+
+            // Subs
+            var SubsRecordStartEvent = Component();
+            var SubsRecordStopEvent = Component();
         }
     }
 
@@ -68,11 +72,12 @@ namespace DZ.Game.Declaration
             // Channels
             var Channel = Component<int>().Index.Group;
             var ChannelInfoUnit = Component<Scripts.ChannelInfoUnit>();
+            var ChannelRecording = Component();
 
             var ChannelActive = Group(Matcher.All(Channel, FlagActive)).Single;
 
             // WorldTime
-            var WorldTime = Component<float>();
+            var WorldTime = Component<float>().GroupSingle;
             var WorldTimeSpeed = Component<float>();
         }
     }

@@ -10,6 +10,7 @@ namespace DZ.Game
 		{
 			Add(new Systems.Common.Before());
 
+			Add(new Systems.WorldTime.Chain());
 			Add(new Systems.Stage.Chain());
 			Add(new Systems.Audio.Chain());
 			Add(new Systems.Level.Chain());

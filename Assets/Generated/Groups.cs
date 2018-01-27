@@ -323,6 +323,39 @@ namespace DZ.Game {
 
 		public bool HasChannelActive() {	return channelActiveGroup.count == 1;	}
 
+		// WorldTime Group
+		private IGroup<StateEntity> _worldTimeGroup;
+		public IGroup<StateEntity> worldTimeGroup {
+			get { 
+				if (_worldTimeGroup == null) {
+					_worldTimeGroup = GetGroup(StateMatcher.WorldTime);
+				}
+				return _worldTimeGroup; } }
+
+		public StateEntity worldTimeEntity {
+			get {
+				var cachedGroup = worldTimeGroup;
+				if (cachedGroup.count > 1) {
+					return null;
+				}
+				if (cachedGroup.count == 0) {
+					return null;
+				}
+				return cachedGroup.GetSingleEntity(); } }
+
+		public float worldTime { 
+			get {
+				if (worldTimeEntity == null) throw new System.Exception("StateContext has 0 or more than 1 entity with component 'WorldTime'. You can check safely with 'HasWorldTime()'");
+				return worldTimeEntity.worldTime;
+			}	
+			set { 
+				if (worldTimeGroup.count > 1) throw new System.Exception("StateContext has more than 1 entity with component 'WorldTime'. You can check safely with 'HasWorldTime()'");
+				else if (worldTimeGroup.count == 0) this.CreateEntity().worldTime = value;
+				else worldTimeEntity.worldTime = value;
+			}
+		}
+		public bool HasWorldTime() {	return worldTimeGroup.count == 1;	}
+
 
 		//
 		// Groups

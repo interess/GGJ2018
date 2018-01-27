@@ -16,6 +16,11 @@ namespace DZ.Game.Systems.Level
             Add(new SwitchChannelOnEvent());
             Add(new SetActiveChannelInfoUnit());
             Add(new SetActiveChannelOnManagerUnit());
+            Add(new MoveSubsOnActiveLevel());
+
+            Add(new StartSubsRecordingOnEvent());
+            Add(new StopSubsRecordingOnEvent());
+            Add(new SetRecordingStateOnSubsManager());
 
             Add(new UnloadActiveLevel());
 
@@ -88,6 +93,18 @@ namespace DZ.Game.Systems.Level
 
                 // TODO: Add loading subs manager
                 state.subsManagerUnitEntity.flagLoaded = false;
+                state.subsManagerUnit.Reset();
+            }
+        }
+
+        public class MoveSubsOnActiveLevel : ExecuteSystem
+        {
+            protected override void Act()
+            {
+                if (state.HasLevelActiveLoaded())
+                {
+                    state.subsManagerUnit.MoveSubs(state.worldTimeEntity.worldTimeSpeed);
+                }
             }
         }
 
@@ -163,6 +180,59 @@ namespace DZ.Game.Systems.Level
                         }
                     }
                 }
+            }
+        }
+
+        public class StartSubsRecordingOnEvent : InputReactiveSystem
+        {
+            protected override void SetTriggers()
+            {
+                Trigger(InputMatcher.SubsRecordStartEvent.Added());
+            }
+
+            protected override void Act(List<InputEntity> entities)
+            {
+                Debug.Log("Staert");
+                if (state.HasChannelActive())
+                {
+                    state.channelActiveEntity.channelRecording = true;
+                }
+            }
+        }
+
+        public class StopSubsRecordingOnEvent : InputReactiveSystem
+        {
+            protected override void SetTriggers()
+            {
+                Trigger(InputMatcher.SubsRecordStopEvent.Added());
+            }
+
+            protected override void Act(List<InputEntity> entities)
+            {
+                Debug.Log("Stop");
+                if (state.HasChannelActive())
+                {
+                    state.channelActiveEntity.channelRecording = false;
+                }
+            }
+        }
+
+        public class SetRecordingStateOnSubsManager : StateReactiveSystem
+        {
+            protected override void SetTriggers()
+            {
+                Trigger(StateMatcher.AllOf(StateMatcher.Channel, StateMatcher.ChannelRecording).Added());
+                Trigger(StateMatcher.AllOf(StateMatcher.Channel, StateMatcher.ChannelRecording).Removed());
+            }
+
+            protected override bool Filter(StateEntity entity)
+            {
+                return entity.HasChannel();
+            }
+
+            protected override void Act(List<StateEntity> entities)
+            {
+                state.subsManagerUnit.SetRecording(state.channelActiveEntity.channelRecording);
             }
         }
 

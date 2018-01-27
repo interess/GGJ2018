@@ -27,6 +27,8 @@ namespace DZ.Game.Components {
         public partial class FlagTrash: Entitas.IComponent { }
         public partial class FlagTrashValidated: Entitas.IComponent { }
         public partial class ChannelSwitchEvent: Entitas.IComponent { }
+        public partial class SubsRecordStartEvent: Entitas.IComponent { }
+        public partial class SubsRecordStopEvent: Entitas.IComponent { }
         // Value Components
         public partial class TrashTimer: Entitas.IComponent { public float value; }
         public partial class EventId: Entitas.IComponent { public string value; }
@@ -40,6 +42,7 @@ namespace DZ.Game.Components {
         public partial class LevelPart: Entitas.IComponent { }
         public partial class Level: Entitas.IComponent { }
         public partial class View: Entitas.IComponent { }
+        public partial class ChannelRecording: Entitas.IComponent { }
         // Value Components
         public partial class TrashTimer: Entitas.IComponent { public float value; }
         public partial class StageManagerUnit: Entitas.IComponent { public Scripts.StageManagerUnit value; }

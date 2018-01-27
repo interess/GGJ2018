@@ -5,5 +5,14 @@
 ---0 . . . 
 ---1 I'm good, everything is going well since George came back from mines! He's free now! We're free now! Kids are so happy! 
 ---0 . . . . . . . . 
----1Lena, are you still there? Lena? Are you crying? 
+---1 Lena, are you still there? Lena? Are you crying? 
 ---0 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+---3 Hi, is this doctor Lewis?
+---0 . . . 
+---4 Yes, who's asking? 
+---0 . . . 
+---3 It's Roberto, Paul told me to call you for the benzoymet…**
+---0 . . . . . . . . . . . . .  
+---5 Hey Alina, Slasvssya Sowoke. I've been on the market today, they got fresh tomatos from the south, so good! I'm glad we live here and our Leader takes us to the brighter future! 
+---0 . . .
+---6 Hi... I don't know for the tomatos, Kira, but the life is not going so well. My kneels hurt and there is nothing doctors can do, as *The Party gives less and less money to the medicine*, more and more for the army...
