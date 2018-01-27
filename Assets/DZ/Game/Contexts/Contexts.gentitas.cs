@@ -40,6 +40,11 @@ namespace DZ.Game.Declaration
 
             // Level
             var LevelPart = Component().Group;
+            var Level = Component().Group;
+            var LevelIndex = Component<int>().Index;
+
+            var LevelActive = Group(Matcher.All(Level, FlagActive)).Single;
+            var LevelActiveLoaded = Group(Matcher.All(Level, FlagActive, FlagLoaded)).Single;
 
             // Uid
             var Uid = Component<int>().Index;

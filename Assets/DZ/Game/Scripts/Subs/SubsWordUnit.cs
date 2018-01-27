@@ -28,7 +28,7 @@ namespace DZ.Game.Scripts
             _text.text = value;
         }
 
-        public float GetWitdth()
+        public float GetWidth()
         {
             return rectTransform.sizeDelta.x;
         }

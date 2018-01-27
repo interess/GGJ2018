@@ -7,15 +7,17 @@ namespace DZ.Game.Scripts
 {
 	public class SubsManagerUnit : MonoBehaviour
 	{
+		public GameObject channelInfoPrefab;
 		public GameObject subsWordPrefab;
+		public RectTransform channelInfoRectTransform;
 		public RectTransform[] channelRectTransforms;
 		public float spaceWidth = 10f;
 
 		public Color[] dialogOwnerColors;
 
 		private FS.PrefabFactory.Scripts.FactoryUnit __subsWordFactoryUnit;
+		private FS.PrefabFactory.Scripts.FactoryUnit __channelInfoFactoryUnit;
 		private List<SubsWordUnit> __wordUnitsLookup = new List<SubsWordUnit>();
-		private float __cumulativeWidth;
 		private int __currentChannelIndex;
 
 		public void Initialize()
@@ -24,6 +26,12 @@ namespace DZ.Game.Scripts
 			{
 				__subsWordFactoryUnit = gameObject.AddComponent<FS.PrefabFactory.Scripts.FactoryUnit>();
 				__subsWordFactoryUnit.Initialize(subsWordPrefab, 40);
+			}
+
+			if (__channelInfoFactoryUnit == null)
+			{
+				__channelInfoFactoryUnit = gameObject.AddComponent<FS.PrefabFactory.Scripts.FactoryUnit>();
+				__channelInfoFactoryUnit.Initialize(channelInfoPrefab, 10);
 			}
 
 			if (dialogOwnerColors.Length < 10)
@@ -51,6 +59,8 @@ namespace DZ.Game.Scripts
 				var channelIndex = i + 1;
 				var subsTextAsset = subsTextAssets[i];
 
+				var channelName = "Fucking Channel " + channelIndex;
+
 				var subsString = subsTextAsset.ToString();
 				subsString = Regex.Replace(subsString, "(\r\n|\r|\n)", " ", RegexOptions.Multiline);
 				var words = subsString.Split(' ');
@@ -59,6 +69,7 @@ namespace DZ.Game.Scripts
 				var dialogOwnerIndex = 0;
 				var currentWord = "";
 				var currentIsTargetMode = false;
+				var currentWordList = new List<SubsWordUnit>();
 
 				foreach (var word in words)
 				{
@@ -90,21 +101,32 @@ namespace DZ.Game.Scripts
 					wordUnit.SetText(currentWord);
 					wordUnit.transform.SetParent(channelRectTransforms[channelIndex - 1], false);
 					__wordUnitsLookup.Add(wordUnit);
+					currentWordList.Add(wordUnit);
 				}
 
-				yield return new WaitForEndOfFrame();
-
-				var baseOffset = 20f;
-
-				foreach (var wordUnit in __wordUnitsLookup)
+				for (int n = 0; n < 3; n++)
 				{
-					wordUnit.rectTransform.anchoredPosition = new Vector2(__cumulativeWidth + baseOffset, 0f);
-					__cumulativeWidth += spaceWidth + wordUnit.GetWitdth();
+					yield return new WaitForEndOfFrame();
 				}
+
+				var cumulativeWidth = 0f;
+
+				foreach (var wordUnit in currentWordList)
+				{
+					wordUnit.rectTransform.anchoredPosition = new Vector2(cumulativeWidth, 0f);
+					cumulativeWidth = cumulativeWidth + spaceWidth + wordUnit.GetWidth();
+				}
+
+				var channelInfoProductUnit = __channelInfoFactoryUnit.Spawn();
+				var channelInfoUnit = channelInfoProductUnit.GetComponent<ChannelInfoUnit>();
+				channelInfoUnit.transform.SetParent(channelInfoRectTransform, false);
+				channelInfoUnit.transform.localScale = Vector3.one;
+				channelInfoUnit.Reset();
+				channelInfoUnit.SetName(channelName);
 
 				var channelEntity = Contexts.state.CreateViewEntity();
 				channelEntity.levelPart = true;
-				channelEntity.channelInfoUnit = channelRectTransforms[channelIndex - 1].GetComponent<ChannelInfoUnit>();
+				channelEntity.channelInfoUnit = channelInfoUnit;
 				channelEntity.channel = channelIndex;
 			}
 
@@ -136,8 +158,6 @@ namespace DZ.Game.Scripts
 			}
 
 			__wordUnitsLookup.Clear();
-
-			__cumulativeWidth = 0f;
 		}
 	}
 }

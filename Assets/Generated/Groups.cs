@@ -155,6 +155,52 @@ namespace DZ.Game {
 		}
 		public bool HasStageManagerUnit() {	return stageManagerUnitGroup.count == 1;	}
 
+		// LevelActive Group
+		private IGroup<StateEntity> _levelActiveGroup;
+		public IGroup<StateEntity> levelActiveGroup {
+			get { 
+				if (_levelActiveGroup == null) {
+					return GetGroup(Matcher<StateEntity>
+								.AllOf(StateMatcher.Level, StateMatcher.FlagActive));
+				}
+				return _levelActiveGroup; } }
+
+		public StateEntity levelActiveEntity {
+			get {
+				var cachedGroup = levelActiveGroup;
+				if (cachedGroup.count > 1) {
+					return null;
+				}
+				if (cachedGroup.count == 0) {
+					return null;
+				}
+				return cachedGroup.GetSingleEntity(); } }
+
+		public bool HasLevelActive() {	return levelActiveGroup.count == 1;	}
+
+		// LevelActiveLoaded Group
+		private IGroup<StateEntity> _levelActiveLoadedGroup;
+		public IGroup<StateEntity> levelActiveLoadedGroup {
+			get { 
+				if (_levelActiveLoadedGroup == null) {
+					return GetGroup(Matcher<StateEntity>
+								.AllOf(StateMatcher.Level, StateMatcher.FlagActive, StateMatcher.FlagLoaded));
+				}
+				return _levelActiveLoadedGroup; } }
+
+		public StateEntity levelActiveLoadedEntity {
+			get {
+				var cachedGroup = levelActiveLoadedGroup;
+				if (cachedGroup.count > 1) {
+					return null;
+				}
+				if (cachedGroup.count == 0) {
+					return null;
+				}
+				return cachedGroup.GetSingleEntity(); } }
+
+		public bool HasLevelActiveLoaded() {	return levelActiveLoadedGroup.count == 1;	}
+
 		// AudioManagerUnit Group
 		private IGroup<StateEntity> _audioManagerUnitGroup;
 		public IGroup<StateEntity> audioManagerUnitGroup {
@@ -305,6 +351,18 @@ namespace DZ.Game {
 
 		public StateEntity[] levelPartEntities { 
 			get { return levelPartGroup.GetEntities(); } }
+		
+		// Level Group
+		private IGroup<StateEntity> _levelGroup;
+		public IGroup<StateEntity> levelGroup {
+			get { 
+				if (_levelGroup == null) {
+					_levelGroup = GetGroup(StateMatcher.Level);
+				}
+				return _levelGroup; } }
+
+		public StateEntity[] levelEntities { 
+			get { return levelGroup.GetEntities(); } }
 		
 		// View Group
 		private IGroup<StateEntity> _viewGroup;

@@ -301,10 +301,13 @@ namespace DZ.Game {
 
             ) 
         {
+            levelIndexIndex = new DZ.Game.Indexes.State.LevelIndexIndex(this);
             uidIndex = new DZ.Game.Indexes.State.UidIndex(this);
             channelIndex = new DZ.Game.Indexes.State.ChannelIndex(this);
         }
 
+        /// Value: LevelIndex  
+        public DZ.Game.Indexes.State.ILevelIndexIndex levelIndexIndex;
         /// Value: Uid  
         public DZ.Game.Indexes.State.IUidIndex uidIndex;
         /// Value: Channel  
@@ -320,21 +323,23 @@ namespace DZ.Game {
         public const int TrashTimer = 4;
         public const int StageManagerUnit = 5;
         public const int LevelPart = 6;
-        public const int Uid = 7;
-        public const int UidUnit = 8;
-        public const int ProductUnit = 9;
-        public const int View = 10;
-        public const int AudioManagerUnit = 11;
-        public const int AudioEffectManagerUnit = 12;
-        public const int AudioEffectUnit = 13;
-        public const int AudioEffectProductUnit = 14;
-        public const int SubsManagerUnit = 15;
-        public const int Channel = 16;
-        public const int ChannelInfoUnit = 17;
-        public const int WorldTime = 18;
-        public const int WorldTimeSpeed = 19;
+        public const int Level = 7;
+        public const int LevelIndex = 8;
+        public const int Uid = 9;
+        public const int UidUnit = 10;
+        public const int ProductUnit = 11;
+        public const int View = 12;
+        public const int AudioManagerUnit = 13;
+        public const int AudioEffectManagerUnit = 14;
+        public const int AudioEffectUnit = 15;
+        public const int AudioEffectProductUnit = 16;
+        public const int SubsManagerUnit = 17;
+        public const int Channel = 18;
+        public const int ChannelInfoUnit = 19;
+        public const int WorldTime = 20;
+        public const int WorldTimeSpeed = 21;
 
-        public const int TotalComponents = 20;
+        public const int TotalComponents = 22;
 
         public static readonly Dictionary<string, int> componentsDict = new Dictionary<string, int> () {
             {"FlagTrash", 0 },
@@ -344,19 +349,21 @@ namespace DZ.Game {
             {"TrashTimer", 4 },
             {"StageManagerUnit", 5 },
             {"LevelPart", 6 },
-            {"Uid", 7 },
-            {"UidUnit", 8 },
-            {"ProductUnit", 9 },
-            {"View", 10 },
-            {"AudioManagerUnit", 11 },
-            {"AudioEffectManagerUnit", 12 },
-            {"AudioEffectUnit", 13 },
-            {"AudioEffectProductUnit", 14 },
-            {"SubsManagerUnit", 15 },
-            {"Channel", 16 },
-            {"ChannelInfoUnit", 17 },
-            {"WorldTime", 18 },
-            {"WorldTimeSpeed", 19 }
+            {"Level", 7 },
+            {"LevelIndex", 8 },
+            {"Uid", 9 },
+            {"UidUnit", 10 },
+            {"ProductUnit", 11 },
+            {"View", 12 },
+            {"AudioManagerUnit", 13 },
+            {"AudioEffectManagerUnit", 14 },
+            {"AudioEffectUnit", 15 },
+            {"AudioEffectProductUnit", 16 },
+            {"SubsManagerUnit", 17 },
+            {"Channel", 18 },
+            {"ChannelInfoUnit", 19 },
+            {"WorldTime", 20 },
+            {"WorldTimeSpeed", 21 }
         };
 
         public static readonly string[] componentNames = {
@@ -367,6 +374,8 @@ namespace DZ.Game {
             "TrashTimer",
             "StageManagerUnit",
             "LevelPart",
+            "Level",
+            "LevelIndex",
             "Uid",
             "UidUnit",
             "ProductUnit",
@@ -390,6 +399,8 @@ namespace DZ.Game {
             typeof(Components.State.TrashTimer),
             typeof(Components.State.StageManagerUnit),
             typeof(Components.State.LevelPart),
+            typeof(Components.State.Level),
+            typeof(Components.State.LevelIndex),
             typeof(Components.State.Uid),
             typeof(Components.State.UidUnit),
             typeof(Components.State.ProductUnit),

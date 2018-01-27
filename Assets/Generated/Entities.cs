@@ -631,6 +631,35 @@ namespace DZ.Game {
             else if (component == null) ReplaceComponent(StateComponentsLookup.LevelPart, null);
         }
 
+        // Level
+        static readonly Components.State.Level _levelComponent = new Components.State.Level();
+        public bool level {
+            get { return HasComponent(StateComponentsLookup.Level); }
+            set {
+                if (value != level) {
+                    if (value) {
+                        AddComponent(StateComponentsLookup.Level, _levelComponent);
+                    } else {
+                        RemoveComponent(StateComponentsLookup.Level);
+                    }
+                }
+            }
+        }
+
+        public bool HasLevel() {
+            return HasComponent(StateComponentsLookup.Level);
+        }
+
+        public void RemoveLevel() {
+            RemoveComponent(StateComponentsLookup.Level);
+        }
+
+        public void PingLevel() {
+            var component = GetComponent(StateComponentsLookup.Level);
+            if (component != null) ReplaceComponent(StateComponentsLookup.Level, component);
+            else if (component == null) ReplaceComponent(StateComponentsLookup.Level, null);
+        }
+
         // View
         static readonly Components.State.View _viewComponent = new Components.State.View();
         public bool view {
@@ -736,6 +765,43 @@ namespace DZ.Game {
             var component = GetComponent(StateComponentsLookup.StageManagerUnit);
             if (component != null) ReplaceComponent(StateComponentsLookup.StageManagerUnit, component);
             else if (component == null) ReplaceComponent(StateComponentsLookup.StageManagerUnit, null);
+        }
+
+        // LevelIndex
+        public int _levelIndex { 
+            get {
+                if (!HasComponent(StateComponentsLookup.LevelIndex)) throw new System.Exception("Entity does not have component 'LevelIndex'. You can check safely with 'HasLevelIndex()'");
+                return ((Components.State.LevelIndex)GetComponent(StateComponentsLookup.LevelIndex)).value;
+            } 
+            set {
+                ((Components.State.LevelIndex)GetComponent(StateComponentsLookup.LevelIndex)).value = value;
+            }
+        }
+
+        public int levelIndex { 
+            get {
+                if (!HasComponent(StateComponentsLookup.LevelIndex)) throw new System.Exception("Entity does not have component 'LevelIndex'. You can check safely with 'HasLevelIndex()'");
+                return ((Components.State.LevelIndex)GetComponent(StateComponentsLookup.LevelIndex)).value;
+            } 
+            set {
+                var component = CreateComponent<Components.State.LevelIndex>(StateComponentsLookup.LevelIndex);
+                component.value = value;
+                ReplaceComponent(StateComponentsLookup.LevelIndex, component);
+            }
+        }
+
+        public bool HasLevelIndex() {
+            return HasComponent(StateComponentsLookup.LevelIndex);
+        }
+
+        public void RemoveLevelIndex() {
+            if (HasComponent(StateComponentsLookup.LevelIndex)) { RemoveComponent(StateComponentsLookup.LevelIndex); }
+        }
+
+        public void PingLevelIndex() {
+            var component = GetComponent(StateComponentsLookup.LevelIndex);
+            if (component != null) ReplaceComponent(StateComponentsLookup.LevelIndex, component);
+            else if (component == null) ReplaceComponent(StateComponentsLookup.LevelIndex, null);
         }
 
         // Uid

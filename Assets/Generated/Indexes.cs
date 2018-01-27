@@ -142,6 +142,132 @@ namespace DZ.Game.Indexes {
 	namespace Input {
 	}
 	namespace State {
+        public interface ILevelIndexIndex {
+            /// Value: LevelIndex  
+            StateEntity FindSingle(int value);
+            /// Value: LevelIndex  
+            HashSet<StateEntity> Find(int value);
+            int GetCount(int value);
+        }
+
+        public class LevelIndexIndex : Entitas.Gentitas.Index<int, StateEntity>, ILevelIndexIndex
+        {
+            IGroup<StateEntity> groupToWatch;
+
+            public LevelIndexIndex(StateContext context) : base()
+            {
+                groupToWatch = context.GetGroup(Matcher<StateEntity>.AllOf(StateMatcher.LevelIndex));
+                groupToWatch.OnEntityAdded += Added;
+                groupToWatch.OnEntityUpdated += Updated;
+                groupToWatch.OnEntityRemoved += Removed;
+            }
+
+            ~LevelIndexIndex () {
+                groupToWatch.OnEntityAdded -= Added;
+                groupToWatch.OnEntityUpdated -= Updated;
+                groupToWatch.OnEntityRemoved -= Removed;
+            }
+
+            protected override bool Filter(StateEntity entity)
+            {
+                return entity.HasLevelIndex() ;
+            }
+
+            void Remove(StateEntity entity, int value) {
+                if (lookup.ContainsKey(value))
+                {
+                    var list = lookup[value];
+                    if (list.Contains(entity)) list.Remove(entity);
+                }
+            }
+
+            void HandleEntity(StateEntity entity, int value)
+            {
+                if (entity.HasLevelIndex()) {
+                    if (Filter(entity))
+                    {
+                        HashSet<StateEntity> result;
+                        lookup.TryGetValue(value, out result);
+                        if (result == null) {
+                            result = new HashSet<StateEntity>();
+                            lookup.Add(value, result);
+                            result.Add(entity);
+                        } else {
+                            if (!result.Contains(entity)) result.Add(entity);
+                        }
+                    }
+                    else
+                    {
+                        Remove(entity, value);
+                    }
+                } else {
+                    Remove(entity, value);
+                }
+            }
+
+            void HandleEntity(StateEntity entity, int value, int previousValue)
+            {
+                if (value != previousValue)
+                {
+                    Remove(entity, previousValue);
+                }
+                
+                HandleEntity(entity, value);
+            }
+
+            void Added(IGroup<StateEntity> group, StateEntity entity, int index, IComponent component)
+            {
+                HandleEntity(entity, ((Components.State.LevelIndex)component).value);
+            }
+
+            void Updated(IGroup<StateEntity> group, StateEntity entity, int index, IComponent previousComponent, IComponent component)
+            {
+                HandleEntity(entity, ((Components.State.LevelIndex)component).value, ((Components.State.LevelIndex)previousComponent).value);
+            }
+
+            void Removed(IGroup<StateEntity> group, StateEntity entity, int index, IComponent component)
+            {
+                HandleEntity(entity, ((Components.State.LevelIndex)component).value);
+            }
+
+            public StateEntity FindSingle(int value)
+            {
+                HashSet<StateEntity> result;
+                lookup.TryGetValue(value, out result);
+
+                if (result == null || result.Count == 0) return null;
+                if (result.Count > 1) {
+                    UnityEngine.Debug.LogError("DZ.Game.LevelIndexIndex has more than 1 entity with value " + value);
+                    return null;
+                }
+                
+                var enumarator = result.GetEnumerator();
+                enumarator.MoveNext();
+                
+                return enumarator.Current;
+            }
+
+            public HashSet<StateEntity> Find(int value)
+            {
+                HashSet<StateEntity> result;
+                lookup.TryGetValue(value, out result);
+
+                if (result == null) {
+                    result = lookup[value] = new HashSet<StateEntity>();
+                }
+
+                return result;
+            }
+
+            public int GetCount(int value)
+            {
+                HashSet<StateEntity> result;
+                lookup.TryGetValue(value, out result);
+
+                if (result == null) return 0;
+                return result.Count;
+            }
+        }
         public interface IUidIndex {
             /// Value: Uid  
             StateEntity FindSingle(int value);

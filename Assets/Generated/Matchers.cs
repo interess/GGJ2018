@@ -333,6 +333,34 @@ namespace DZ.Game {
             }
         }
 
+        static IMatcher<StateEntity> _matcherLevel;
+
+        public static IMatcher<StateEntity> Level {
+            get {
+                if(_matcherLevel == null) {
+                    var matcher = (Matcher<StateEntity>)Matcher<StateEntity>.AllOf(StateComponentsLookup.Level);
+                    matcher.componentNames = StateComponentsLookup.componentNames;
+                    _matcherLevel = matcher;
+                }
+
+                return _matcherLevel;
+            }
+        }
+
+        static IMatcher<StateEntity> _matcherLevelIndex;
+
+        public static IMatcher<StateEntity> LevelIndex {
+            get {
+                if(_matcherLevelIndex == null) {
+                    var matcher = (Matcher<StateEntity>)Matcher<StateEntity>.AllOf(StateComponentsLookup.LevelIndex);
+                    matcher.componentNames = StateComponentsLookup.componentNames;
+                    _matcherLevelIndex = matcher;
+                }
+
+                return _matcherLevelIndex;
+            }
+        }
+
         static IMatcher<StateEntity> _matcherUid;
 
         public static IMatcher<StateEntity> Uid {

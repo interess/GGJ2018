@@ -38,10 +38,12 @@ namespace DZ.Game.Components {
         public partial class FlagLoaded: Entitas.IComponent { }
         public partial class FlagActive: Entitas.IComponent { }
         public partial class LevelPart: Entitas.IComponent { }
+        public partial class Level: Entitas.IComponent { }
         public partial class View: Entitas.IComponent { }
         // Value Components
         public partial class TrashTimer: Entitas.IComponent { public float value; }
         public partial class StageManagerUnit: Entitas.IComponent { public Scripts.StageManagerUnit value; }
+        public partial class LevelIndex: Entitas.IComponent { public int value; }
         public partial class Uid: Entitas.IComponent { public int value; }
         public partial class UidUnit: Entitas.IComponent { public FS.Uid.Scripts.UidUnit value; }
         public partial class ProductUnit: Entitas.IComponent { public FS.PrefabFactory.Scripts.ProductUnit value; }
