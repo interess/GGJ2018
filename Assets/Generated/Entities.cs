@@ -449,6 +449,64 @@ namespace DZ.Game {
             else if (component == null) ReplaceComponent(InputComponentsLookup.SubsRecordStopEvent, null);
         }
 
+        // ModalOpenEvent
+        static readonly Components.Input.ModalOpenEvent _modalOpenEventComponent = new Components.Input.ModalOpenEvent();
+        public bool modalOpenEvent {
+            get { return HasComponent(InputComponentsLookup.ModalOpenEvent); }
+            set {
+                if (value != modalOpenEvent) {
+                    if (value) {
+                        AddComponent(InputComponentsLookup.ModalOpenEvent, _modalOpenEventComponent);
+                    } else {
+                        RemoveComponent(InputComponentsLookup.ModalOpenEvent);
+                    }
+                }
+            }
+        }
+
+        public bool HasModalOpenEvent() {
+            return HasComponent(InputComponentsLookup.ModalOpenEvent);
+        }
+
+        public void RemoveModalOpenEvent() {
+            RemoveComponent(InputComponentsLookup.ModalOpenEvent);
+        }
+
+        public void PingModalOpenEvent() {
+            var component = GetComponent(InputComponentsLookup.ModalOpenEvent);
+            if (component != null) ReplaceComponent(InputComponentsLookup.ModalOpenEvent, component);
+            else if (component == null) ReplaceComponent(InputComponentsLookup.ModalOpenEvent, null);
+        }
+
+        // ModalCloseEvent
+        static readonly Components.Input.ModalCloseEvent _modalCloseEventComponent = new Components.Input.ModalCloseEvent();
+        public bool modalCloseEvent {
+            get { return HasComponent(InputComponentsLookup.ModalCloseEvent); }
+            set {
+                if (value != modalCloseEvent) {
+                    if (value) {
+                        AddComponent(InputComponentsLookup.ModalCloseEvent, _modalCloseEventComponent);
+                    } else {
+                        RemoveComponent(InputComponentsLookup.ModalCloseEvent);
+                    }
+                }
+            }
+        }
+
+        public bool HasModalCloseEvent() {
+            return HasComponent(InputComponentsLookup.ModalCloseEvent);
+        }
+
+        public void RemoveModalCloseEvent() {
+            RemoveComponent(InputComponentsLookup.ModalCloseEvent);
+        }
+
+        public void PingModalCloseEvent() {
+            var component = GetComponent(InputComponentsLookup.ModalCloseEvent);
+            if (component != null) ReplaceComponent(InputComponentsLookup.ModalCloseEvent, component);
+            else if (component == null) ReplaceComponent(InputComponentsLookup.ModalCloseEvent, null);
+        }
+
         //
         // Value Components
         //
@@ -525,6 +583,43 @@ namespace DZ.Game {
             var component = GetComponent(InputComponentsLookup.EventId);
             if (component != null) ReplaceComponent(InputComponentsLookup.EventId, component);
             else if (component == null) ReplaceComponent(InputComponentsLookup.EventId, null);
+        }
+
+        // ModalId
+        public string _modalId { 
+            get {
+                if (!HasComponent(InputComponentsLookup.ModalId)) throw new System.Exception("Entity does not have component 'ModalId'. You can check safely with 'HasModalId()'");
+                return ((Components.Input.ModalId)GetComponent(InputComponentsLookup.ModalId)).value;
+            } 
+            set {
+                ((Components.Input.ModalId)GetComponent(InputComponentsLookup.ModalId)).value = value;
+            }
+        }
+
+        public string modalId { 
+            get {
+                if (!HasComponent(InputComponentsLookup.ModalId)) throw new System.Exception("Entity does not have component 'ModalId'. You can check safely with 'HasModalId()'");
+                return ((Components.Input.ModalId)GetComponent(InputComponentsLookup.ModalId)).value;
+            } 
+            set {
+                var component = CreateComponent<Components.Input.ModalId>(InputComponentsLookup.ModalId);
+                component.value = value;
+                ReplaceComponent(InputComponentsLookup.ModalId, component);
+            }
+        }
+
+        public bool HasModalId() {
+            return HasComponent(InputComponentsLookup.ModalId);
+        }
+
+        public void RemoveModalId() {
+            if (HasComponent(InputComponentsLookup.ModalId)) { RemoveComponent(InputComponentsLookup.ModalId); }
+        }
+
+        public void PingModalId() {
+            var component = GetComponent(InputComponentsLookup.ModalId);
+            if (component != null) ReplaceComponent(InputComponentsLookup.ModalId, component);
+            else if (component == null) ReplaceComponent(InputComponentsLookup.ModalId, null);
         }
     }
 
@@ -658,6 +753,35 @@ namespace DZ.Game {
             var component = GetComponent(StateComponentsLookup.FlagActive);
             if (component != null) ReplaceComponent(StateComponentsLookup.FlagActive, component);
             else if (component == null) ReplaceComponent(StateComponentsLookup.FlagActive, null);
+        }
+
+        // FlagOpened
+        static readonly Components.State.FlagOpened _flagOpenedComponent = new Components.State.FlagOpened();
+        public bool flagOpened {
+            get { return HasComponent(StateComponentsLookup.FlagOpened); }
+            set {
+                if (value != flagOpened) {
+                    if (value) {
+                        AddComponent(StateComponentsLookup.FlagOpened, _flagOpenedComponent);
+                    } else {
+                        RemoveComponent(StateComponentsLookup.FlagOpened);
+                    }
+                }
+            }
+        }
+
+        public bool HasFlagOpened() {
+            return HasComponent(StateComponentsLookup.FlagOpened);
+        }
+
+        public void RemoveFlagOpened() {
+            RemoveComponent(StateComponentsLookup.FlagOpened);
+        }
+
+        public void PingFlagOpened() {
+            var component = GetComponent(StateComponentsLookup.FlagOpened);
+            if (component != null) ReplaceComponent(StateComponentsLookup.FlagOpened, component);
+            else if (component == null) ReplaceComponent(StateComponentsLookup.FlagOpened, null);
         }
 
         // LevelPart
@@ -1021,6 +1145,43 @@ namespace DZ.Game {
             var component = GetComponent(StateComponentsLookup.LevelIndex);
             if (component != null) ReplaceComponent(StateComponentsLookup.LevelIndex, component);
             else if (component == null) ReplaceComponent(StateComponentsLookup.LevelIndex, null);
+        }
+
+        // LevelControllerUnit
+        public Scripts.LevelControllerUnit _levelControllerUnit { 
+            get {
+                if (!HasComponent(StateComponentsLookup.LevelControllerUnit)) throw new System.Exception("Entity does not have component 'LevelControllerUnit'. You can check safely with 'HasLevelControllerUnit()'");
+                return ((Components.State.LevelControllerUnit)GetComponent(StateComponentsLookup.LevelControllerUnit)).value;
+            } 
+            set {
+                ((Components.State.LevelControllerUnit)GetComponent(StateComponentsLookup.LevelControllerUnit)).value = value;
+            }
+        }
+
+        public Scripts.LevelControllerUnit levelControllerUnit { 
+            get {
+                if (!HasComponent(StateComponentsLookup.LevelControllerUnit)) throw new System.Exception("Entity does not have component 'LevelControllerUnit'. You can check safely with 'HasLevelControllerUnit()'");
+                return ((Components.State.LevelControllerUnit)GetComponent(StateComponentsLookup.LevelControllerUnit)).value;
+            } 
+            set {
+                var component = CreateComponent<Components.State.LevelControllerUnit>(StateComponentsLookup.LevelControllerUnit);
+                component.value = value;
+                ReplaceComponent(StateComponentsLookup.LevelControllerUnit, component);
+            }
+        }
+
+        public bool HasLevelControllerUnit() {
+            return HasComponent(StateComponentsLookup.LevelControllerUnit);
+        }
+
+        public void RemoveLevelControllerUnit() {
+            if (HasComponent(StateComponentsLookup.LevelControllerUnit)) { RemoveComponent(StateComponentsLookup.LevelControllerUnit); }
+        }
+
+        public void PingLevelControllerUnit() {
+            var component = GetComponent(StateComponentsLookup.LevelControllerUnit);
+            if (component != null) ReplaceComponent(StateComponentsLookup.LevelControllerUnit, component);
+            else if (component == null) ReplaceComponent(StateComponentsLookup.LevelControllerUnit, null);
         }
 
         // Uid
@@ -1724,6 +1885,265 @@ namespace DZ.Game {
             var component = GetComponent(StateComponentsLookup.PositionWorld);
             if (component != null) ReplaceComponent(StateComponentsLookup.PositionWorld, component);
             else if (component == null) ReplaceComponent(StateComponentsLookup.PositionWorld, null);
+        }
+
+        // MenuButtonUnit
+        public Scripts.MenuButtonUnit _menuButtonUnit { 
+            get {
+                if (!HasComponent(StateComponentsLookup.MenuButtonUnit)) throw new System.Exception("Entity does not have component 'MenuButtonUnit'. You can check safely with 'HasMenuButtonUnit()'");
+                return ((Components.State.MenuButtonUnit)GetComponent(StateComponentsLookup.MenuButtonUnit)).value;
+            } 
+            set {
+                ((Components.State.MenuButtonUnit)GetComponent(StateComponentsLookup.MenuButtonUnit)).value = value;
+            }
+        }
+
+        public Scripts.MenuButtonUnit menuButtonUnit { 
+            get {
+                if (!HasComponent(StateComponentsLookup.MenuButtonUnit)) throw new System.Exception("Entity does not have component 'MenuButtonUnit'. You can check safely with 'HasMenuButtonUnit()'");
+                return ((Components.State.MenuButtonUnit)GetComponent(StateComponentsLookup.MenuButtonUnit)).value;
+            } 
+            set {
+                var component = CreateComponent<Components.State.MenuButtonUnit>(StateComponentsLookup.MenuButtonUnit);
+                component.value = value;
+                ReplaceComponent(StateComponentsLookup.MenuButtonUnit, component);
+            }
+        }
+
+        public bool HasMenuButtonUnit() {
+            return HasComponent(StateComponentsLookup.MenuButtonUnit);
+        }
+
+        public void RemoveMenuButtonUnit() {
+            if (HasComponent(StateComponentsLookup.MenuButtonUnit)) { RemoveComponent(StateComponentsLookup.MenuButtonUnit); }
+        }
+
+        public void PingMenuButtonUnit() {
+            var component = GetComponent(StateComponentsLookup.MenuButtonUnit);
+            if (component != null) ReplaceComponent(StateComponentsLookup.MenuButtonUnit, component);
+            else if (component == null) ReplaceComponent(StateComponentsLookup.MenuButtonUnit, null);
+        }
+
+        // MenuButtonId
+        public string _menuButtonId { 
+            get {
+                if (!HasComponent(StateComponentsLookup.MenuButtonId)) throw new System.Exception("Entity does not have component 'MenuButtonId'. You can check safely with 'HasMenuButtonId()'");
+                return ((Components.State.MenuButtonId)GetComponent(StateComponentsLookup.MenuButtonId)).value;
+            } 
+            set {
+                ((Components.State.MenuButtonId)GetComponent(StateComponentsLookup.MenuButtonId)).value = value;
+            }
+        }
+
+        public string menuButtonId { 
+            get {
+                if (!HasComponent(StateComponentsLookup.MenuButtonId)) throw new System.Exception("Entity does not have component 'MenuButtonId'. You can check safely with 'HasMenuButtonId()'");
+                return ((Components.State.MenuButtonId)GetComponent(StateComponentsLookup.MenuButtonId)).value;
+            } 
+            set {
+                var component = CreateComponent<Components.State.MenuButtonId>(StateComponentsLookup.MenuButtonId);
+                component.value = value;
+                ReplaceComponent(StateComponentsLookup.MenuButtonId, component);
+            }
+        }
+
+        public bool HasMenuButtonId() {
+            return HasComponent(StateComponentsLookup.MenuButtonId);
+        }
+
+        public void RemoveMenuButtonId() {
+            if (HasComponent(StateComponentsLookup.MenuButtonId)) { RemoveComponent(StateComponentsLookup.MenuButtonId); }
+        }
+
+        public void PingMenuButtonId() {
+            var component = GetComponent(StateComponentsLookup.MenuButtonId);
+            if (component != null) ReplaceComponent(StateComponentsLookup.MenuButtonId, component);
+            else if (component == null) ReplaceComponent(StateComponentsLookup.MenuButtonId, null);
+        }
+
+        // LightUnit
+        public Scripts.LightUnit _lightUnit { 
+            get {
+                if (!HasComponent(StateComponentsLookup.LightUnit)) throw new System.Exception("Entity does not have component 'LightUnit'. You can check safely with 'HasLightUnit()'");
+                return ((Components.State.LightUnit)GetComponent(StateComponentsLookup.LightUnit)).value;
+            } 
+            set {
+                ((Components.State.LightUnit)GetComponent(StateComponentsLookup.LightUnit)).value = value;
+            }
+        }
+
+        public Scripts.LightUnit lightUnit { 
+            get {
+                if (!HasComponent(StateComponentsLookup.LightUnit)) throw new System.Exception("Entity does not have component 'LightUnit'. You can check safely with 'HasLightUnit()'");
+                return ((Components.State.LightUnit)GetComponent(StateComponentsLookup.LightUnit)).value;
+            } 
+            set {
+                var component = CreateComponent<Components.State.LightUnit>(StateComponentsLookup.LightUnit);
+                component.value = value;
+                ReplaceComponent(StateComponentsLookup.LightUnit, component);
+            }
+        }
+
+        public bool HasLightUnit() {
+            return HasComponent(StateComponentsLookup.LightUnit);
+        }
+
+        public void RemoveLightUnit() {
+            if (HasComponent(StateComponentsLookup.LightUnit)) { RemoveComponent(StateComponentsLookup.LightUnit); }
+        }
+
+        public void PingLightUnit() {
+            var component = GetComponent(StateComponentsLookup.LightUnit);
+            if (component != null) ReplaceComponent(StateComponentsLookup.LightUnit, component);
+            else if (component == null) ReplaceComponent(StateComponentsLookup.LightUnit, null);
+        }
+
+        // LigthId
+        public string _ligthId { 
+            get {
+                if (!HasComponent(StateComponentsLookup.LigthId)) throw new System.Exception("Entity does not have component 'LigthId'. You can check safely with 'HasLigthId()'");
+                return ((Components.State.LigthId)GetComponent(StateComponentsLookup.LigthId)).value;
+            } 
+            set {
+                ((Components.State.LigthId)GetComponent(StateComponentsLookup.LigthId)).value = value;
+            }
+        }
+
+        public string ligthId { 
+            get {
+                if (!HasComponent(StateComponentsLookup.LigthId)) throw new System.Exception("Entity does not have component 'LigthId'. You can check safely with 'HasLigthId()'");
+                return ((Components.State.LigthId)GetComponent(StateComponentsLookup.LigthId)).value;
+            } 
+            set {
+                var component = CreateComponent<Components.State.LigthId>(StateComponentsLookup.LigthId);
+                component.value = value;
+                ReplaceComponent(StateComponentsLookup.LigthId, component);
+            }
+        }
+
+        public bool HasLigthId() {
+            return HasComponent(StateComponentsLookup.LigthId);
+        }
+
+        public void RemoveLigthId() {
+            if (HasComponent(StateComponentsLookup.LigthId)) { RemoveComponent(StateComponentsLookup.LigthId); }
+        }
+
+        public void PingLigthId() {
+            var component = GetComponent(StateComponentsLookup.LigthId);
+            if (component != null) ReplaceComponent(StateComponentsLookup.LigthId, component);
+            else if (component == null) ReplaceComponent(StateComponentsLookup.LigthId, null);
+        }
+
+        // ModalUnit
+        public Scripts.ModalUnit _modalUnit { 
+            get {
+                if (!HasComponent(StateComponentsLookup.ModalUnit)) throw new System.Exception("Entity does not have component 'ModalUnit'. You can check safely with 'HasModalUnit()'");
+                return ((Components.State.ModalUnit)GetComponent(StateComponentsLookup.ModalUnit)).value;
+            } 
+            set {
+                ((Components.State.ModalUnit)GetComponent(StateComponentsLookup.ModalUnit)).value = value;
+            }
+        }
+
+        public Scripts.ModalUnit modalUnit { 
+            get {
+                if (!HasComponent(StateComponentsLookup.ModalUnit)) throw new System.Exception("Entity does not have component 'ModalUnit'. You can check safely with 'HasModalUnit()'");
+                return ((Components.State.ModalUnit)GetComponent(StateComponentsLookup.ModalUnit)).value;
+            } 
+            set {
+                var component = CreateComponent<Components.State.ModalUnit>(StateComponentsLookup.ModalUnit);
+                component.value = value;
+                ReplaceComponent(StateComponentsLookup.ModalUnit, component);
+            }
+        }
+
+        public bool HasModalUnit() {
+            return HasComponent(StateComponentsLookup.ModalUnit);
+        }
+
+        public void RemoveModalUnit() {
+            if (HasComponent(StateComponentsLookup.ModalUnit)) { RemoveComponent(StateComponentsLookup.ModalUnit); }
+        }
+
+        public void PingModalUnit() {
+            var component = GetComponent(StateComponentsLookup.ModalUnit);
+            if (component != null) ReplaceComponent(StateComponentsLookup.ModalUnit, component);
+            else if (component == null) ReplaceComponent(StateComponentsLookup.ModalUnit, null);
+        }
+
+        // ModalId
+        public string _modalId { 
+            get {
+                if (!HasComponent(StateComponentsLookup.ModalId)) throw new System.Exception("Entity does not have component 'ModalId'. You can check safely with 'HasModalId()'");
+                return ((Components.State.ModalId)GetComponent(StateComponentsLookup.ModalId)).value;
+            } 
+            set {
+                ((Components.State.ModalId)GetComponent(StateComponentsLookup.ModalId)).value = value;
+            }
+        }
+
+        public string modalId { 
+            get {
+                if (!HasComponent(StateComponentsLookup.ModalId)) throw new System.Exception("Entity does not have component 'ModalId'. You can check safely with 'HasModalId()'");
+                return ((Components.State.ModalId)GetComponent(StateComponentsLookup.ModalId)).value;
+            } 
+            set {
+                var component = CreateComponent<Components.State.ModalId>(StateComponentsLookup.ModalId);
+                component.value = value;
+                ReplaceComponent(StateComponentsLookup.ModalId, component);
+            }
+        }
+
+        public bool HasModalId() {
+            return HasComponent(StateComponentsLookup.ModalId);
+        }
+
+        public void RemoveModalId() {
+            if (HasComponent(StateComponentsLookup.ModalId)) { RemoveComponent(StateComponentsLookup.ModalId); }
+        }
+
+        public void PingModalId() {
+            var component = GetComponent(StateComponentsLookup.ModalId);
+            if (component != null) ReplaceComponent(StateComponentsLookup.ModalId, component);
+            else if (component == null) ReplaceComponent(StateComponentsLookup.ModalId, null);
+        }
+
+        // OverlayUnit
+        public Scripts.OverlayUnit _overlayUnit { 
+            get {
+                if (!HasComponent(StateComponentsLookup.OverlayUnit)) throw new System.Exception("Entity does not have component 'OverlayUnit'. You can check safely with 'HasOverlayUnit()'");
+                return ((Components.State.OverlayUnit)GetComponent(StateComponentsLookup.OverlayUnit)).value;
+            } 
+            set {
+                ((Components.State.OverlayUnit)GetComponent(StateComponentsLookup.OverlayUnit)).value = value;
+            }
+        }
+
+        public Scripts.OverlayUnit overlayUnit { 
+            get {
+                if (!HasComponent(StateComponentsLookup.OverlayUnit)) throw new System.Exception("Entity does not have component 'OverlayUnit'. You can check safely with 'HasOverlayUnit()'");
+                return ((Components.State.OverlayUnit)GetComponent(StateComponentsLookup.OverlayUnit)).value;
+            } 
+            set {
+                var component = CreateComponent<Components.State.OverlayUnit>(StateComponentsLookup.OverlayUnit);
+                component.value = value;
+                ReplaceComponent(StateComponentsLookup.OverlayUnit, component);
+            }
+        }
+
+        public bool HasOverlayUnit() {
+            return HasComponent(StateComponentsLookup.OverlayUnit);
+        }
+
+        public void RemoveOverlayUnit() {
+            if (HasComponent(StateComponentsLookup.OverlayUnit)) { RemoveComponent(StateComponentsLookup.OverlayUnit); }
+        }
+
+        public void PingOverlayUnit() {
+            var component = GetComponent(StateComponentsLookup.OverlayUnit);
+            if (component != null) ReplaceComponent(StateComponentsLookup.OverlayUnit, component);
+            else if (component == null) ReplaceComponent(StateComponentsLookup.OverlayUnit, null);
         }
     }
 

@@ -14,6 +14,8 @@ namespace DZ.Game.Scripts
         private bool __currentIsMale;
         private bool __isPlaying;
 
+        private float __timeSinceLastPlay;
+
         public void Initialize()
         {
             if (maleAudioClips.Length < 1)
@@ -43,8 +45,19 @@ namespace DZ.Game.Scripts
             __isPlaying = false;
         }
 
+        private void Update()
+        {
+            __timeSinceLastPlay += Time.deltaTime;
+
+            if (__timeSinceLastPlay > 1f)
+            {
+                Stop();
+            }
+        }
+
         public void PlayMan(bool allowContinue = true)
         {
+            __timeSinceLastPlay = 0;
             if (__isPlaying) { return; }
             if (__currentIsMale && allowContinue && __audioSource.clip != null)
             {
@@ -64,6 +77,7 @@ namespace DZ.Game.Scripts
 
         public void PlayWoman(bool allowContinue = true)
         {
+            __timeSinceLastPlay = 0;
             if (__isPlaying) { return; }
             if (!__currentIsMale && allowContinue && __audioSource.clip != null)
             {

@@ -29,9 +29,12 @@ namespace DZ.Game.Components {
         public partial class ChannelSwitchEvent: Entitas.IComponent { }
         public partial class SubsRecordStartEvent: Entitas.IComponent { }
         public partial class SubsRecordStopEvent: Entitas.IComponent { }
+        public partial class ModalOpenEvent: Entitas.IComponent { }
+        public partial class ModalCloseEvent: Entitas.IComponent { }
         // Value Components
         public partial class TrashTimer: Entitas.IComponent { public float value; }
         public partial class EventId: Entitas.IComponent { public string value; }
+        public partial class ModalId: Entitas.IComponent { public string value; }
     }
     namespace State {
         // Flag Components
@@ -39,6 +42,7 @@ namespace DZ.Game.Components {
         public partial class FlagTrashValidated: Entitas.IComponent { }
         public partial class FlagLoaded: Entitas.IComponent { }
         public partial class FlagActive: Entitas.IComponent { }
+        public partial class FlagOpened: Entitas.IComponent { }
         public partial class LevelPart: Entitas.IComponent { }
         public partial class Level: Entitas.IComponent { }
         public partial class View: Entitas.IComponent { }
@@ -51,6 +55,7 @@ namespace DZ.Game.Components {
         public partial class FactoryId: Entitas.IComponent { public string value; }
         public partial class StageManagerUnit: Entitas.IComponent { public Scripts.StageManagerUnit value; }
         public partial class LevelIndex: Entitas.IComponent { public int value; }
+        public partial class LevelControllerUnit: Entitas.IComponent { public Scripts.LevelControllerUnit value; }
         public partial class Uid: Entitas.IComponent { public int value; }
         public partial class UidUnit: Entitas.IComponent { public FS.Uid.Scripts.UidUnit value; }
         public partial class ProductUnit: Entitas.IComponent { public FS.PrefabFactory.Scripts.ProductUnit value; }
@@ -70,5 +75,12 @@ namespace DZ.Game.Components {
         public partial class EffectFactoryUnit: Entitas.IComponent { public Scripts.EffectFactoryUnit value; }
         public partial class ConfigId: Entitas.IComponent { public string value; }
         public partial class PositionWorld: Entitas.IComponent { public UnityEngine.Vector2 value; }
+        public partial class MenuButtonUnit: Entitas.IComponent { public Scripts.MenuButtonUnit value; }
+        public partial class MenuButtonId: Entitas.IComponent { public string value; }
+        public partial class LightUnit: Entitas.IComponent { public Scripts.LightUnit value; }
+        public partial class LigthId: Entitas.IComponent { public string value; }
+        public partial class ModalUnit: Entitas.IComponent { public Scripts.ModalUnit value; }
+        public partial class ModalId: Entitas.IComponent { public string value; }
+        public partial class OverlayUnit: Entitas.IComponent { public Scripts.OverlayUnit value; }
     }
 }

@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4441851459622538}
   - component: {fileID: 114316895692858684}
   - component: {fileID: 114140089905095404}
+  - component: {fileID: 167325526254390448}
   m_Layer: 0
   m_Name: PhoneChannel
   m_TagString: Untagged
@@ -64,8 +65,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maleAudioClips:
-  - {fileID: 8300000, guid: 155e10c981046ca43a5840a5374085e7, type: 3}
-  - {fileID: 8300000, guid: 155e10c981046ca43a5840a5374085e7, type: 3}
+  - {fileID: 8300000, guid: ab90946bfc1f91f4aacc909cf5248668, type: 3}
+  - {fileID: 8300000, guid: fcb6d482a41c00047838d512a1f66e34, type: 3}
+  - {fileID: 8300000, guid: 63b82c5eba3838a45b4ba91e9e72160d, type: 3}
+  - {fileID: 8300000, guid: 8a50939be0eedd0459f4e3ba3df3f3cf, type: 3}
+  - {fileID: 8300000, guid: d8c46f13a43f8884db94e523b0412709, type: 3}
+  - {fileID: 8300000, guid: e866d7cbc5af86c45a32402c87fb6647, type: 3}
   femaleAudioClips:
-  - {fileID: 8300000, guid: 066469edb5919034f8d05e7ce3908c72, type: 3}
-  - {fileID: 8300000, guid: 34cb2cee9d0d20648a311de9e858e388, type: 3}
+  - {fileID: 8300000, guid: 2e2fa3378e6365147bc3bb02858f0291, type: 3}
+  - {fileID: 8300000, guid: 49e8a357f1501d34291d53c391a99246, type: 3}
+--- !u!167 &167325526254390448
+AudioReverbZone:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1687499583234870}
+  m_Enabled: 1
+  m_MinDistance: 10
+  m_MaxDistance: 15
+  m_ReverbPreset: 18
+  m_Room: -1000
+  m_RoomHF: -2500
+  m_DecayTime: 1.49
+  m_DecayHFRatio: 0.21
+  m_Reflections: -2780
+  m_ReflectionsDelay: 0.3
+  m_Reverb: -1434
+  m_ReverbDelay: 0.1
+  m_HFReference: 5000
+  m_Diffusion: 27
+  m_Density: 100
+  m_LFReference: 250
+  m_RoomLF: 0

@@ -13,6 +13,8 @@ namespace DZ.Game.Systems.Level
             Add(new InitSubsManagerUnit());
             Add(new InitPhoneManagerUnit());
 
+            Add(new CreateLevelControllers());
+
             Add(new LoadActiveLevel());
             Add(new SetActiveChannelInfoUnit());
             Add(new SetActiveChannelVoiceUnit());
@@ -32,7 +34,26 @@ namespace DZ.Game.Systems.Level
 
             Add(new SwitchChannelOnEvent());
 
-            Add(new LoadSandboxSubs());
+            Add(new HandlePlayButton());
+            Add(new HandleContinueButton());
+        }
+
+        public class CreateLevelControllers : InitializeSystem
+        {
+            protected override void Act()
+            {
+                var controllers = GameObject.FindObjectsOfType<Scripts.LevelControllerUnit>();
+
+                foreach (var item in controllers)
+                {
+                    var index = item.index;
+                    var entity = state.CreateEntity();
+                    entity.level = true;
+                    entity.levelIndex = index;
+                    entity.levelControllerUnit = item;
+                }
+
+            }
         }
 
         public class InitSubsManagerUnit : InitializeSystem
@@ -85,11 +106,7 @@ namespace DZ.Game.Systems.Level
                     var levelActiveEntity = state.levelActiveEntity;
                     if (!levelActiveEntity.flagLoaded)
                     {
-                        Debug.Log("Loading active level");
-                        Freaking.Fwait.Until(() =>
-                        {
-                            return state.subsManagerUnitEntity.flagLoaded;
-                        }).Done(() =>
+                        state.subsManagerUnit.LoadSubs(1, () =>
                         {
                             levelActiveEntity.flagLoaded = true;
 
@@ -161,51 +178,48 @@ namespace DZ.Game.Systems.Level
 
             protected override void Act(List<InputEntity> entities)
             {
-                foreach (var entity in entities)
+                if (state.HasChannelActive())
                 {
-                    if (state.HasChannelActive())
+                    state.CreateEffectEntity("ChannelSwitchEffect");
+
+                    var activeIndex = state.channelActiveEntity.channel;
+                    state.channelActiveEntity.flagActive = false;
+
+                    var foundNextChannel = false;
+                    var failedCounter = 0;
+
+                    while (!foundNextChannel)
                     {
-                        state.CreateEffectEntity("ChannelSwitchEffect");
-
-                        var activeIndex = state.channelActiveEntity.channel;
-                        state.channelActiveEntity.flagActive = false;
-
-                        var foundNextChannel = false;
-                        var failedCounter = 0;
-
-                        while (!foundNextChannel)
-                        {
-                            if (failedCounter > 2) { activeIndex = 1; }
-                            else
-                            {
-                                failedCounter += 1;
-
-                                activeIndex += 1;
-                            }
-
-                            var nextChannelEntity = state.channelIndex.FindSingle(activeIndex);
-                            if (nextChannelEntity != null)
-                            {
-                                nextChannelEntity.flagActive = true;
-                                foundNextChannel = true;
-                            }
-                            else if (failedCounter > 3)
-                            {
-                                Debug.LogError("No default channel found. This is unexpected and will cause errors");
-                            }
-                        }
-                    }
-                    else
-                    {
-                        var defaultChannelEntity = state.channelIndex.FindSingle(1);
-                        if (defaultChannelEntity != null)
-                        {
-                            defaultChannelEntity.flagActive = true;
-                        }
+                        if (failedCounter > 2) { activeIndex = 1; }
                         else
+                        {
+                            failedCounter += 1;
+
+                            activeIndex += 1;
+                        }
+
+                        var nextChannelEntity = state.channelIndex.FindSingle(activeIndex);
+                        if (nextChannelEntity != null)
+                        {
+                            nextChannelEntity.flagActive = true;
+                            foundNextChannel = true;
+                        }
+                        else if (failedCounter > 3)
                         {
                             Debug.LogError("No default channel found. This is unexpected and will cause errors");
                         }
+                    }
+                }
+                else
+                {
+                    var defaultChannelEntity = state.channelIndex.FindSingle(1);
+                    if (defaultChannelEntity != null)
+                    {
+                        defaultChannelEntity.flagActive = true;
+                    }
+                    else
+                    {
+                        Debug.LogError("No default channel found. This is unexpected and will cause errors");
                     }
                 }
             }
@@ -318,9 +332,11 @@ namespace DZ.Game.Systems.Level
         public class TriggerPhoneTalks : ExecuteSystem
         {
             private int __prevDialogIndex;
+
             protected override void Act()
             {
                 if (!state.HasLevelActiveLoaded()) { return; }
+
                 var anchor = state.phoneManagerUnit.phoneTriggerAnchor;
                 var gameCamera = state.stageManagerUnit.gameCameraUnit.camera;
 
@@ -357,11 +373,6 @@ namespace DZ.Game.Systems.Level
                             channelEntity.channelVoiceActive = false;
                             channelEntity.phoneChannelUnit.Stop();
                         }
-                    }
-                    else
-                    {
-                        // TODO: Stop all channels?
-                        // channelEntity.phoneChannelUnit.Stop();
                     }
                 }
             }
@@ -411,20 +422,51 @@ namespace DZ.Game.Systems.Level
             }
         }
 
-        // --- SANDBOX
-
-        public class LoadSandboxSubs : InitializeSystem
+        public class HandlePlayButton : InputReactiveSystem
         {
-            protected override void Act()
+            protected override void SetTriggers()
             {
-                var levelEntity = state.CreateEntity();
-                levelEntity.level = true;
-                levelEntity.flagActive = true;
+                Trigger(InputMatcher.AllOf(InputMatcher.EventId).Added());
+            }
 
-                state.subsManagerUnit.LoadSubs(1, () =>
+            protected override bool Filter(InputEntity entity)
+            {
+                return entity.eventId == "PlayButton";
+            }
+
+            protected override void Act(List<InputEntity> entities)
+            {
+                var currentLevelIndex = PlayerPrefs.GetInt("LastPassedLevel");
+                if (currentLevelIndex == 0) { currentLevelIndex = 1; }
+
+                var levelEntity = state.levelIndexIndex.FindSingle(currentLevelIndex);
+                if (levelEntity == null)
                 {
-                    state.subsManagerUnitEntity.flagLoaded = true;
-                });
+                    Debug.LogErrorFormat("Level with index {0} was not found", currentLevelIndex);
+                    return;
+                }
+                levelEntity.flagActive = true;
+            }
+        }
+
+        public class HandleContinueButton : InputReactiveSystem
+        {
+            protected override void SetTriggers()
+            {
+                Trigger(InputMatcher.AllOf(InputMatcher.EventId).Added());
+            }
+
+            protected override bool Filter(InputEntity entity)
+            {
+                return entity.eventId == "ContinueButton";
+            }
+
+            protected override void Act(List<InputEntity> entities)
+            {
+                if (state.HasLevelActive())
+                {
+                    state.levelActiveEntity.flagActive = false;
+                }
             }
         }
     }

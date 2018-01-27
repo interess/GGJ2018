@@ -23,6 +23,11 @@ namespace DZ.Game.Declaration
             // Subs
             var SubsRecordStartEvent = Component();
             var SubsRecordStopEvent = Component();
+
+            // Modal
+            var ModalOpenEvent = Component();
+            var ModalCloseEvent = Component();
+            var ModalId = Component<string>();
         }
     }
 
@@ -35,6 +40,7 @@ namespace DZ.Game.Declaration
             var FlagTrashValidated = Component().Universal;
             var FlagLoaded = Component();
             var FlagActive = Component();
+            var FlagOpened = Component();
 
             // Trash
             var TrashTimer = Component<float>().Universal.Group;
@@ -50,6 +56,7 @@ namespace DZ.Game.Declaration
             var LevelPart = Component().Group;
             var Level = Component().Group;
             var LevelIndex = Component<int>().Index;
+            var LevelControllerUnit = Component<Scripts.LevelControllerUnit>();
 
             var LevelActive = Group(Matcher.All(Level, FlagActive)).Single;
             var LevelActiveLoaded = Group(Matcher.All(Level, FlagActive, FlagLoaded)).Single;
@@ -102,6 +109,25 @@ namespace DZ.Game.Declaration
 
             // Position
             var PositionWorld = Component<UnityEngine.Vector2>();
+
+            // MenuButton
+            var MenuButtonUnit = Component<Scripts.MenuButtonUnit>();
+            var MenuButtonId = Component<string>().Index.Group;
+
+            // Light
+            var LightUnit = Component<Scripts.LightUnit>();
+            var LigthId = Component<string>().Index.Group;
+
+            // Modal
+            var ModalUnit = Component<Scripts.ModalUnit>();
+            var ModalId = Component<string>().Index;
+
+            var ModalOpened = Group(Matcher.All(ModalUnit, FlagOpened));
+            var ModalActive = Group(Matcher.All(ModalUnit, FlagOpened, FlagActive)).Single;
+
+            // Overlay
+            var OverlayUnit = Component<Scripts.OverlayUnit>().GroupSingle;
+
         }
     }
 }

@@ -74,10 +74,12 @@ namespace DZ.Game.Scripts
 
 			for (int i = 0; i < subsTextAssets.Length; i++)
 			{
+				yield return new WaitForEndOfFrame();
+
 				var channelIndex = i + 1;
 				var subsTextAsset = subsTextAssets[i];
 
-				var channelName = "Fucking Channel " + channelIndex;
+				var channelName = "Channel " + channelIndex;
 
 				var subsString = subsTextAsset.ToString();
 				subsString = Regex.Replace(subsString, "(\r\n|\r|\n)", " ", RegexOptions.Multiline);
@@ -101,7 +103,7 @@ namespace DZ.Game.Scripts
 						isTargetMode = !isTargetMode;
 					}
 
-					if (word == ".")
+					if (word == "." || string.IsNullOrEmpty(word) || word == " ")
 					{
 						isEmpty = true;
 					}
@@ -134,8 +136,8 @@ namespace DZ.Game.Scripts
 					wordUnit.dialogOwnerIndex = dayIndex * 10000 + i * 100 + dialogOwnerIndex;
 					wordUnit.SetColor(dialogOwnerColors[dialogOwnerIndex]);
 					wordUnit.SetText(currentWord);
-					wordUnit.rectTransform.anchoredPosition = new Vector2(1920, 0);
 					wordUnit.transform.SetParent(channelRectTransforms[channelIndex - 1], false);
+					wordUnit.text.raycastTarget = false;
 					__wordUnitsLookup.Add(wordUnit);
 					currentWordList.Add(wordUnit);
 				}
@@ -151,6 +153,7 @@ namespace DZ.Game.Scripts
 				{
 					wordUnit.rectTransform.anchoredPosition = new Vector2(cumulativeWidth, 0f);
 					cumulativeWidth = cumulativeWidth + wordUnit.GetWidth();
+					wordUnit.text.raycastTarget = true;
 				}
 
 				var channelInfoProductUnit = __channelInfoFactoryUnit.Spawn();

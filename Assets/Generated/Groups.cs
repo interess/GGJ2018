@@ -422,6 +422,62 @@ namespace DZ.Game {
 		}
 		public bool HasWorldTime() {	return worldTimeGroup.count == 1;	}
 
+		// ModalActive Group
+		private IGroup<StateEntity> _modalActiveGroup;
+		public IGroup<StateEntity> modalActiveGroup {
+			get { 
+				if (_modalActiveGroup == null) {
+					return GetGroup(Matcher<StateEntity>
+								.AllOf(StateMatcher.ModalUnit, StateMatcher.FlagOpened, StateMatcher.FlagActive));
+				}
+				return _modalActiveGroup; } }
+
+		public StateEntity modalActiveEntity {
+			get {
+				var cachedGroup = modalActiveGroup;
+				if (cachedGroup.count > 1) {
+					return null;
+				}
+				if (cachedGroup.count == 0) {
+					return null;
+				}
+				return cachedGroup.GetSingleEntity(); } }
+
+		public bool HasModalActive() {	return modalActiveGroup.count == 1;	}
+
+		// OverlayUnit Group
+		private IGroup<StateEntity> _overlayUnitGroup;
+		public IGroup<StateEntity> overlayUnitGroup {
+			get { 
+				if (_overlayUnitGroup == null) {
+					_overlayUnitGroup = GetGroup(StateMatcher.OverlayUnit);
+				}
+				return _overlayUnitGroup; } }
+
+		public StateEntity overlayUnitEntity {
+			get {
+				var cachedGroup = overlayUnitGroup;
+				if (cachedGroup.count > 1) {
+					return null;
+				}
+				if (cachedGroup.count == 0) {
+					return null;
+				}
+				return cachedGroup.GetSingleEntity(); } }
+
+		public Scripts.OverlayUnit overlayUnit { 
+			get {
+				if (overlayUnitEntity == null) throw new System.Exception("StateContext has 0 or more than 1 entity with component 'OverlayUnit'. You can check safely with 'HasOverlayUnit()'");
+				return overlayUnitEntity.overlayUnit;
+			}	
+			set { 
+				if (overlayUnitGroup.count > 1) throw new System.Exception("StateContext has more than 1 entity with component 'OverlayUnit'. You can check safely with 'HasOverlayUnit()'");
+				else if (overlayUnitGroup.count == 0) this.CreateEntity().overlayUnit = value;
+				else overlayUnitEntity.overlayUnit = value;
+			}
+		}
+		public bool HasOverlayUnit() {	return overlayUnitGroup.count == 1;	}
+
 
 		//
 		// Groups
@@ -498,6 +554,43 @@ namespace DZ.Game {
 
 		public StateEntity[] configIdEntities { 
 			get { return configIdGroup.GetEntities(); } }
+		
+		// MenuButtonId Group
+		private IGroup<StateEntity> _menuButtonIdGroup;
+		public IGroup<StateEntity> menuButtonIdGroup {
+			get { 
+				if (_menuButtonIdGroup == null) {
+					_menuButtonIdGroup = GetGroup(StateMatcher.MenuButtonId);
+				}
+				return _menuButtonIdGroup; } }
+
+		public StateEntity[] menuButtonIdEntities { 
+			get { return menuButtonIdGroup.GetEntities(); } }
+		
+		// LigthId Group
+		private IGroup<StateEntity> _ligthIdGroup;
+		public IGroup<StateEntity> ligthIdGroup {
+			get { 
+				if (_ligthIdGroup == null) {
+					_ligthIdGroup = GetGroup(StateMatcher.LigthId);
+				}
+				return _ligthIdGroup; } }
+
+		public StateEntity[] ligthIdEntities { 
+			get { return ligthIdGroup.GetEntities(); } }
+		
+		// ModalOpened Group
+		private IGroup<StateEntity> _modalOpenedGroup;
+		public IGroup<StateEntity> modalOpenedGroup {
+			get { 
+				if (_modalOpenedGroup == null) {
+					return GetGroup(Matcher<StateEntity>
+								.AllOf(StateMatcher.ModalUnit, StateMatcher.FlagOpened));
+				}
+				return _modalOpenedGroup; } }
+
+		public StateEntity[] modalOpenedEntities { 
+			get { return modalOpenedGroup.GetEntities(); } }
 		
 	}
 

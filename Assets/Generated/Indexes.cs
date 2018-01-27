@@ -772,5 +772,383 @@ namespace DZ.Game.Indexes {
                 return result.Count;
             }
         }
+        public interface IMenuButtonIdIndex {
+            /// Value: MenuButtonId  
+            StateEntity FindSingle(string value);
+            /// Value: MenuButtonId  
+            HashSet<StateEntity> Find(string value);
+            int GetCount(string value);
+        }
+
+        public class MenuButtonIdIndex : Entitas.Gentitas.Index<string, StateEntity>, IMenuButtonIdIndex
+        {
+            IGroup<StateEntity> groupToWatch;
+
+            public MenuButtonIdIndex(StateContext context) : base()
+            {
+                groupToWatch = context.GetGroup(Matcher<StateEntity>.AllOf(StateMatcher.MenuButtonId));
+                groupToWatch.OnEntityAdded += Added;
+                groupToWatch.OnEntityUpdated += Updated;
+                groupToWatch.OnEntityRemoved += Removed;
+            }
+
+            ~MenuButtonIdIndex () {
+                groupToWatch.OnEntityAdded -= Added;
+                groupToWatch.OnEntityUpdated -= Updated;
+                groupToWatch.OnEntityRemoved -= Removed;
+            }
+
+            protected override bool Filter(StateEntity entity)
+            {
+                return entity.HasMenuButtonId() ;
+            }
+
+            void Remove(StateEntity entity, string value) {
+                if (lookup.ContainsKey(value))
+                {
+                    var list = lookup[value];
+                    if (list.Contains(entity)) list.Remove(entity);
+                }
+            }
+
+            void HandleEntity(StateEntity entity, string value)
+            {
+                if (entity.HasMenuButtonId()) {
+                    if (Filter(entity))
+                    {
+                        HashSet<StateEntity> result;
+                        lookup.TryGetValue(value, out result);
+                        if (result == null) {
+                            result = new HashSet<StateEntity>();
+                            lookup.Add(value, result);
+                            result.Add(entity);
+                        } else {
+                            if (!result.Contains(entity)) result.Add(entity);
+                        }
+                    }
+                    else
+                    {
+                        Remove(entity, value);
+                    }
+                } else {
+                    Remove(entity, value);
+                }
+            }
+
+            void HandleEntity(StateEntity entity, string value, string previousValue)
+            {
+                if (value != previousValue)
+                {
+                    Remove(entity, previousValue);
+                }
+                
+                HandleEntity(entity, value);
+            }
+
+            void Added(IGroup<StateEntity> group, StateEntity entity, int index, IComponent component)
+            {
+                HandleEntity(entity, ((Components.State.MenuButtonId)component).value);
+            }
+
+            void Updated(IGroup<StateEntity> group, StateEntity entity, int index, IComponent previousComponent, IComponent component)
+            {
+                HandleEntity(entity, ((Components.State.MenuButtonId)component).value, ((Components.State.MenuButtonId)previousComponent).value);
+            }
+
+            void Removed(IGroup<StateEntity> group, StateEntity entity, int index, IComponent component)
+            {
+                HandleEntity(entity, ((Components.State.MenuButtonId)component).value);
+            }
+
+            public StateEntity FindSingle(string value)
+            {
+                HashSet<StateEntity> result;
+                lookup.TryGetValue(value, out result);
+
+                if (result == null || result.Count == 0) return null;
+                if (result.Count > 1) {
+                    UnityEngine.Debug.LogError("DZ.Game.MenuButtonIdIndex has more than 1 entity with value " + value);
+                    return null;
+                }
+                
+                var enumarator = result.GetEnumerator();
+                enumarator.MoveNext();
+                
+                return enumarator.Current;
+            }
+
+            public HashSet<StateEntity> Find(string value)
+            {
+                HashSet<StateEntity> result;
+                lookup.TryGetValue(value, out result);
+
+                if (result == null) {
+                    result = lookup[value] = new HashSet<StateEntity>();
+                }
+
+                return result;
+            }
+
+            public int GetCount(string value)
+            {
+                HashSet<StateEntity> result;
+                lookup.TryGetValue(value, out result);
+
+                if (result == null) return 0;
+                return result.Count;
+            }
+        }
+        public interface ILigthIdIndex {
+            /// Value: LigthId  
+            StateEntity FindSingle(string value);
+            /// Value: LigthId  
+            HashSet<StateEntity> Find(string value);
+            int GetCount(string value);
+        }
+
+        public class LigthIdIndex : Entitas.Gentitas.Index<string, StateEntity>, ILigthIdIndex
+        {
+            IGroup<StateEntity> groupToWatch;
+
+            public LigthIdIndex(StateContext context) : base()
+            {
+                groupToWatch = context.GetGroup(Matcher<StateEntity>.AllOf(StateMatcher.LigthId));
+                groupToWatch.OnEntityAdded += Added;
+                groupToWatch.OnEntityUpdated += Updated;
+                groupToWatch.OnEntityRemoved += Removed;
+            }
+
+            ~LigthIdIndex () {
+                groupToWatch.OnEntityAdded -= Added;
+                groupToWatch.OnEntityUpdated -= Updated;
+                groupToWatch.OnEntityRemoved -= Removed;
+            }
+
+            protected override bool Filter(StateEntity entity)
+            {
+                return entity.HasLigthId() ;
+            }
+
+            void Remove(StateEntity entity, string value) {
+                if (lookup.ContainsKey(value))
+                {
+                    var list = lookup[value];
+                    if (list.Contains(entity)) list.Remove(entity);
+                }
+            }
+
+            void HandleEntity(StateEntity entity, string value)
+            {
+                if (entity.HasLigthId()) {
+                    if (Filter(entity))
+                    {
+                        HashSet<StateEntity> result;
+                        lookup.TryGetValue(value, out result);
+                        if (result == null) {
+                            result = new HashSet<StateEntity>();
+                            lookup.Add(value, result);
+                            result.Add(entity);
+                        } else {
+                            if (!result.Contains(entity)) result.Add(entity);
+                        }
+                    }
+                    else
+                    {
+                        Remove(entity, value);
+                    }
+                } else {
+                    Remove(entity, value);
+                }
+            }
+
+            void HandleEntity(StateEntity entity, string value, string previousValue)
+            {
+                if (value != previousValue)
+                {
+                    Remove(entity, previousValue);
+                }
+                
+                HandleEntity(entity, value);
+            }
+
+            void Added(IGroup<StateEntity> group, StateEntity entity, int index, IComponent component)
+            {
+                HandleEntity(entity, ((Components.State.LigthId)component).value);
+            }
+
+            void Updated(IGroup<StateEntity> group, StateEntity entity, int index, IComponent previousComponent, IComponent component)
+            {
+                HandleEntity(entity, ((Components.State.LigthId)component).value, ((Components.State.LigthId)previousComponent).value);
+            }
+
+            void Removed(IGroup<StateEntity> group, StateEntity entity, int index, IComponent component)
+            {
+                HandleEntity(entity, ((Components.State.LigthId)component).value);
+            }
+
+            public StateEntity FindSingle(string value)
+            {
+                HashSet<StateEntity> result;
+                lookup.TryGetValue(value, out result);
+
+                if (result == null || result.Count == 0) return null;
+                if (result.Count > 1) {
+                    UnityEngine.Debug.LogError("DZ.Game.LigthIdIndex has more than 1 entity with value " + value);
+                    return null;
+                }
+                
+                var enumarator = result.GetEnumerator();
+                enumarator.MoveNext();
+                
+                return enumarator.Current;
+            }
+
+            public HashSet<StateEntity> Find(string value)
+            {
+                HashSet<StateEntity> result;
+                lookup.TryGetValue(value, out result);
+
+                if (result == null) {
+                    result = lookup[value] = new HashSet<StateEntity>();
+                }
+
+                return result;
+            }
+
+            public int GetCount(string value)
+            {
+                HashSet<StateEntity> result;
+                lookup.TryGetValue(value, out result);
+
+                if (result == null) return 0;
+                return result.Count;
+            }
+        }
+        public interface IModalIdIndex {
+            /// Value: ModalId  
+            StateEntity FindSingle(string value);
+            /// Value: ModalId  
+            HashSet<StateEntity> Find(string value);
+            int GetCount(string value);
+        }
+
+        public class ModalIdIndex : Entitas.Gentitas.Index<string, StateEntity>, IModalIdIndex
+        {
+            IGroup<StateEntity> groupToWatch;
+
+            public ModalIdIndex(StateContext context) : base()
+            {
+                groupToWatch = context.GetGroup(Matcher<StateEntity>.AllOf(StateMatcher.ModalId));
+                groupToWatch.OnEntityAdded += Added;
+                groupToWatch.OnEntityUpdated += Updated;
+                groupToWatch.OnEntityRemoved += Removed;
+            }
+
+            ~ModalIdIndex () {
+                groupToWatch.OnEntityAdded -= Added;
+                groupToWatch.OnEntityUpdated -= Updated;
+                groupToWatch.OnEntityRemoved -= Removed;
+            }
+
+            protected override bool Filter(StateEntity entity)
+            {
+                return entity.HasModalId() ;
+            }
+
+            void Remove(StateEntity entity, string value) {
+                if (lookup.ContainsKey(value))
+                {
+                    var list = lookup[value];
+                    if (list.Contains(entity)) list.Remove(entity);
+                }
+            }
+
+            void HandleEntity(StateEntity entity, string value)
+            {
+                if (entity.HasModalId()) {
+                    if (Filter(entity))
+                    {
+                        HashSet<StateEntity> result;
+                        lookup.TryGetValue(value, out result);
+                        if (result == null) {
+                            result = new HashSet<StateEntity>();
+                            lookup.Add(value, result);
+                            result.Add(entity);
+                        } else {
+                            if (!result.Contains(entity)) result.Add(entity);
+                        }
+                    }
+                    else
+                    {
+                        Remove(entity, value);
+                    }
+                } else {
+                    Remove(entity, value);
+                }
+            }
+
+            void HandleEntity(StateEntity entity, string value, string previousValue)
+            {
+                if (value != previousValue)
+                {
+                    Remove(entity, previousValue);
+                }
+                
+                HandleEntity(entity, value);
+            }
+
+            void Added(IGroup<StateEntity> group, StateEntity entity, int index, IComponent component)
+            {
+                HandleEntity(entity, ((Components.State.ModalId)component).value);
+            }
+
+            void Updated(IGroup<StateEntity> group, StateEntity entity, int index, IComponent previousComponent, IComponent component)
+            {
+                HandleEntity(entity, ((Components.State.ModalId)component).value, ((Components.State.ModalId)previousComponent).value);
+            }
+
+            void Removed(IGroup<StateEntity> group, StateEntity entity, int index, IComponent component)
+            {
+                HandleEntity(entity, ((Components.State.ModalId)component).value);
+            }
+
+            public StateEntity FindSingle(string value)
+            {
+                HashSet<StateEntity> result;
+                lookup.TryGetValue(value, out result);
+
+                if (result == null || result.Count == 0) return null;
+                if (result.Count > 1) {
+                    UnityEngine.Debug.LogError("DZ.Game.ModalIdIndex has more than 1 entity with value " + value);
+                    return null;
+                }
+                
+                var enumarator = result.GetEnumerator();
+                enumarator.MoveNext();
+                
+                return enumarator.Current;
+            }
+
+            public HashSet<StateEntity> Find(string value)
+            {
+                HashSet<StateEntity> result;
+                lookup.TryGetValue(value, out result);
+
+                if (result == null) {
+                    result = lookup[value] = new HashSet<StateEntity>();
+                }
+
+                return result;
+            }
+
+            public int GetCount(string value)
+            {
+                HashSet<StateEntity> result;
+                lookup.TryGetValue(value, out result);
+
+                if (result == null) return 0;
+                return result.Count;
+            }
+        }
 	}
 }
