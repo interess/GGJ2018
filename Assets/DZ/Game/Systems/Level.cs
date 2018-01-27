@@ -12,6 +12,7 @@ namespace DZ.Game.Systems.Level
         {
             Add(new InitSubsManagerUnit());
             Add(new LoadSandboxSubs());
+            Add(new SetActiveChannelOnManagerUnit());
         }
 
         public class InitSubsManagerUnit : InitializeSystem
@@ -32,14 +33,31 @@ namespace DZ.Game.Systems.Level
             }
         }
 
+        public class SetActiveChannelOnManagerUnit : StateReactiveSystem
+        {
+            protected override void SetTriggers()
+            {
+                Trigger(StateMatcher.AllOf(StateMatcher.Channel, StateMatcher.FlagActive).Added());
+            }
+
+            protected override void Act(List<StateEntity> entities)
+            {
+                state.subsManagerUnit.SetChannel(state.channelActiveEntity.channel);
+            }
+        }
+
+        // --- SANDBOX
+
         public class LoadSandboxSubs : InitializeSystem
         {
             protected override void Act()
             {
-                state.subsManagerUnit.LoadSubs("1_1", () =>
+                state.subsManagerUnit.LoadSubs(1, () =>
                 {
                     state.subsManagerUnitEntity.flagLoaded = true;
                 });
+
+                state.subsManagerUnit.SetChannel(1);
             }
         }
     }

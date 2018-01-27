@@ -362,6 +362,35 @@ namespace DZ.Game {
             else if (component == null) ReplaceComponent(InputComponentsLookup.FlagTrashValidated, null);
         }
 
+        // ChannelSwitchEvent
+        static readonly Components.Input.ChannelSwitchEvent _channelSwitchEventComponent = new Components.Input.ChannelSwitchEvent();
+        public bool channelSwitchEvent {
+            get { return HasComponent(InputComponentsLookup.ChannelSwitchEvent); }
+            set {
+                if (value != channelSwitchEvent) {
+                    if (value) {
+                        AddComponent(InputComponentsLookup.ChannelSwitchEvent, _channelSwitchEventComponent);
+                    } else {
+                        RemoveComponent(InputComponentsLookup.ChannelSwitchEvent);
+                    }
+                }
+            }
+        }
+
+        public bool HasChannelSwitchEvent() {
+            return HasComponent(InputComponentsLookup.ChannelSwitchEvent);
+        }
+
+        public void RemoveChannelSwitchEvent() {
+            RemoveComponent(InputComponentsLookup.ChannelSwitchEvent);
+        }
+
+        public void PingChannelSwitchEvent() {
+            var component = GetComponent(InputComponentsLookup.ChannelSwitchEvent);
+            if (component != null) ReplaceComponent(InputComponentsLookup.ChannelSwitchEvent, component);
+            else if (component == null) ReplaceComponent(InputComponentsLookup.ChannelSwitchEvent, null);
+        }
+
         //
         // Value Components
         //
@@ -542,6 +571,35 @@ namespace DZ.Game {
             var component = GetComponent(StateComponentsLookup.FlagLoaded);
             if (component != null) ReplaceComponent(StateComponentsLookup.FlagLoaded, component);
             else if (component == null) ReplaceComponent(StateComponentsLookup.FlagLoaded, null);
+        }
+
+        // FlagActive
+        static readonly Components.State.FlagActive _flagActiveComponent = new Components.State.FlagActive();
+        public bool flagActive {
+            get { return HasComponent(StateComponentsLookup.FlagActive); }
+            set {
+                if (value != flagActive) {
+                    if (value) {
+                        AddComponent(StateComponentsLookup.FlagActive, _flagActiveComponent);
+                    } else {
+                        RemoveComponent(StateComponentsLookup.FlagActive);
+                    }
+                }
+            }
+        }
+
+        public bool HasFlagActive() {
+            return HasComponent(StateComponentsLookup.FlagActive);
+        }
+
+        public void RemoveFlagActive() {
+            RemoveComponent(StateComponentsLookup.FlagActive);
+        }
+
+        public void PingFlagActive() {
+            var component = GetComponent(StateComponentsLookup.FlagActive);
+            if (component != null) ReplaceComponent(StateComponentsLookup.FlagActive, component);
+            else if (component == null) ReplaceComponent(StateComponentsLookup.FlagActive, null);
         }
 
         // LevelPart
@@ -974,6 +1032,154 @@ namespace DZ.Game {
             var component = GetComponent(StateComponentsLookup.SubsManagerUnit);
             if (component != null) ReplaceComponent(StateComponentsLookup.SubsManagerUnit, component);
             else if (component == null) ReplaceComponent(StateComponentsLookup.SubsManagerUnit, null);
+        }
+
+        // Channel
+        public int _channel { 
+            get {
+                if (!HasComponent(StateComponentsLookup.Channel)) throw new System.Exception("Entity does not have component 'Channel'. You can check safely with 'HasChannel()'");
+                return ((Components.State.Channel)GetComponent(StateComponentsLookup.Channel)).value;
+            } 
+            set {
+                ((Components.State.Channel)GetComponent(StateComponentsLookup.Channel)).value = value;
+            }
+        }
+
+        public int channel { 
+            get {
+                if (!HasComponent(StateComponentsLookup.Channel)) throw new System.Exception("Entity does not have component 'Channel'. You can check safely with 'HasChannel()'");
+                return ((Components.State.Channel)GetComponent(StateComponentsLookup.Channel)).value;
+            } 
+            set {
+                var component = CreateComponent<Components.State.Channel>(StateComponentsLookup.Channel);
+                component.value = value;
+                ReplaceComponent(StateComponentsLookup.Channel, component);
+            }
+        }
+
+        public bool HasChannel() {
+            return HasComponent(StateComponentsLookup.Channel);
+        }
+
+        public void RemoveChannel() {
+            if (HasComponent(StateComponentsLookup.Channel)) { RemoveComponent(StateComponentsLookup.Channel); }
+        }
+
+        public void PingChannel() {
+            var component = GetComponent(StateComponentsLookup.Channel);
+            if (component != null) ReplaceComponent(StateComponentsLookup.Channel, component);
+            else if (component == null) ReplaceComponent(StateComponentsLookup.Channel, null);
+        }
+
+        // ChannelInfoUnit
+        public Scripts.ChannelInfoUnit _channelInfoUnit { 
+            get {
+                if (!HasComponent(StateComponentsLookup.ChannelInfoUnit)) throw new System.Exception("Entity does not have component 'ChannelInfoUnit'. You can check safely with 'HasChannelInfoUnit()'");
+                return ((Components.State.ChannelInfoUnit)GetComponent(StateComponentsLookup.ChannelInfoUnit)).value;
+            } 
+            set {
+                ((Components.State.ChannelInfoUnit)GetComponent(StateComponentsLookup.ChannelInfoUnit)).value = value;
+            }
+        }
+
+        public Scripts.ChannelInfoUnit channelInfoUnit { 
+            get {
+                if (!HasComponent(StateComponentsLookup.ChannelInfoUnit)) throw new System.Exception("Entity does not have component 'ChannelInfoUnit'. You can check safely with 'HasChannelInfoUnit()'");
+                return ((Components.State.ChannelInfoUnit)GetComponent(StateComponentsLookup.ChannelInfoUnit)).value;
+            } 
+            set {
+                var component = CreateComponent<Components.State.ChannelInfoUnit>(StateComponentsLookup.ChannelInfoUnit);
+                component.value = value;
+                ReplaceComponent(StateComponentsLookup.ChannelInfoUnit, component);
+            }
+        }
+
+        public bool HasChannelInfoUnit() {
+            return HasComponent(StateComponentsLookup.ChannelInfoUnit);
+        }
+
+        public void RemoveChannelInfoUnit() {
+            if (HasComponent(StateComponentsLookup.ChannelInfoUnit)) { RemoveComponent(StateComponentsLookup.ChannelInfoUnit); }
+        }
+
+        public void PingChannelInfoUnit() {
+            var component = GetComponent(StateComponentsLookup.ChannelInfoUnit);
+            if (component != null) ReplaceComponent(StateComponentsLookup.ChannelInfoUnit, component);
+            else if (component == null) ReplaceComponent(StateComponentsLookup.ChannelInfoUnit, null);
+        }
+
+        // WorldTime
+        public float _worldTime { 
+            get {
+                if (!HasComponent(StateComponentsLookup.WorldTime)) throw new System.Exception("Entity does not have component 'WorldTime'. You can check safely with 'HasWorldTime()'");
+                return ((Components.State.WorldTime)GetComponent(StateComponentsLookup.WorldTime)).value;
+            } 
+            set {
+                ((Components.State.WorldTime)GetComponent(StateComponentsLookup.WorldTime)).value = value;
+            }
+        }
+
+        public float worldTime { 
+            get {
+                if (!HasComponent(StateComponentsLookup.WorldTime)) throw new System.Exception("Entity does not have component 'WorldTime'. You can check safely with 'HasWorldTime()'");
+                return ((Components.State.WorldTime)GetComponent(StateComponentsLookup.WorldTime)).value;
+            } 
+            set {
+                var component = CreateComponent<Components.State.WorldTime>(StateComponentsLookup.WorldTime);
+                component.value = value;
+                ReplaceComponent(StateComponentsLookup.WorldTime, component);
+            }
+        }
+
+        public bool HasWorldTime() {
+            return HasComponent(StateComponentsLookup.WorldTime);
+        }
+
+        public void RemoveWorldTime() {
+            if (HasComponent(StateComponentsLookup.WorldTime)) { RemoveComponent(StateComponentsLookup.WorldTime); }
+        }
+
+        public void PingWorldTime() {
+            var component = GetComponent(StateComponentsLookup.WorldTime);
+            if (component != null) ReplaceComponent(StateComponentsLookup.WorldTime, component);
+            else if (component == null) ReplaceComponent(StateComponentsLookup.WorldTime, null);
+        }
+
+        // WorldTimeSpeed
+        public float _worldTimeSpeed { 
+            get {
+                if (!HasComponent(StateComponentsLookup.WorldTimeSpeed)) throw new System.Exception("Entity does not have component 'WorldTimeSpeed'. You can check safely with 'HasWorldTimeSpeed()'");
+                return ((Components.State.WorldTimeSpeed)GetComponent(StateComponentsLookup.WorldTimeSpeed)).value;
+            } 
+            set {
+                ((Components.State.WorldTimeSpeed)GetComponent(StateComponentsLookup.WorldTimeSpeed)).value = value;
+            }
+        }
+
+        public float worldTimeSpeed { 
+            get {
+                if (!HasComponent(StateComponentsLookup.WorldTimeSpeed)) throw new System.Exception("Entity does not have component 'WorldTimeSpeed'. You can check safely with 'HasWorldTimeSpeed()'");
+                return ((Components.State.WorldTimeSpeed)GetComponent(StateComponentsLookup.WorldTimeSpeed)).value;
+            } 
+            set {
+                var component = CreateComponent<Components.State.WorldTimeSpeed>(StateComponentsLookup.WorldTimeSpeed);
+                component.value = value;
+                ReplaceComponent(StateComponentsLookup.WorldTimeSpeed, component);
+            }
+        }
+
+        public bool HasWorldTimeSpeed() {
+            return HasComponent(StateComponentsLookup.WorldTimeSpeed);
+        }
+
+        public void RemoveWorldTimeSpeed() {
+            if (HasComponent(StateComponentsLookup.WorldTimeSpeed)) { RemoveComponent(StateComponentsLookup.WorldTimeSpeed); }
+        }
+
+        public void PingWorldTimeSpeed() {
+            var component = GetComponent(StateComponentsLookup.WorldTimeSpeed);
+            if (component != null) ReplaceComponent(StateComponentsLookup.WorldTimeSpeed, component);
+            else if (component == null) ReplaceComponent(StateComponentsLookup.WorldTimeSpeed, null);
         }
     }
 

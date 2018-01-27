@@ -254,6 +254,29 @@ namespace DZ.Game {
 		}
 		public bool HasSubsManagerUnit() {	return subsManagerUnitGroup.count == 1;	}
 
+		// ChannelActive Group
+		private IGroup<StateEntity> _channelActiveGroup;
+		public IGroup<StateEntity> channelActiveGroup {
+			get { 
+				if (_channelActiveGroup == null) {
+					return GetGroup(Matcher<StateEntity>
+								.AllOf(StateMatcher.Channel, StateMatcher.FlagActive));
+				}
+				return _channelActiveGroup; } }
+
+		public StateEntity channelActiveEntity {
+			get {
+				var cachedGroup = channelActiveGroup;
+				if (cachedGroup.count > 1) {
+					return null;
+				}
+				if (cachedGroup.count == 0) {
+					return null;
+				}
+				return cachedGroup.GetSingleEntity(); } }
+
+		public bool HasChannelActive() {	return channelActiveGroup.count == 1;	}
+
 
 		//
 		// Groups
@@ -294,6 +317,18 @@ namespace DZ.Game {
 
 		public StateEntity[] viewEntities { 
 			get { return viewGroup.GetEntities(); } }
+		
+		// Channel Group
+		private IGroup<StateEntity> _channelGroup;
+		public IGroup<StateEntity> channelGroup {
+			get { 
+				if (_channelGroup == null) {
+					_channelGroup = GetGroup(StateMatcher.Channel);
+				}
+				return _channelGroup; } }
+
+		public StateEntity[] channelEntities { 
+			get { return channelGroup.GetEntities(); } }
 		
 	}
 

@@ -16,6 +16,9 @@ namespace DZ.Game.Declaration
 
             // Event
             var EventId = Component<string>();
+
+            // Channel
+            var ChannelSwitchEvent = Component();
         }
     }
 
@@ -27,6 +30,7 @@ namespace DZ.Game.Declaration
             var FlagTrash = Component().Universal;
             var FlagTrashValidated = Component().Universal;
             var FlagLoaded = Component();
+            var FlagActive = Component();
 
             // Trash
             var TrashTimer = Component<float>().Universal.Group;
@@ -55,6 +59,16 @@ namespace DZ.Game.Declaration
 
             // Subs
             var SubsManagerUnit = Component<Scripts.SubsManagerUnit>().GroupSingle;
+
+            // Channels
+            var Channel = Component<int>().Index.Group;
+            var ChannelInfoUnit = Component<Scripts.ChannelInfoUnit>();
+
+            var ChannelActive = Group(Matcher.All(Channel, FlagActive)).Single;
+
+            // WorldTime
+            var WorldTime = Component<float>();
+            var WorldTimeSpeed = Component<float>();
         }
     }
 }

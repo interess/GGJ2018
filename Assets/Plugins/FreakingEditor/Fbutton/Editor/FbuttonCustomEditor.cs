@@ -48,7 +48,9 @@ namespace FreakingEditor
                     EditorGUILayout.BeginVertical();
                     var methodsParameters = method.GetParameters();
 
-                    if (parameters[m] == null) parameters[m] = new object[0];
+                    if (parameters[m] == null) {
+                        parameters[m] = new object[0];
+                    }
                     if (parameters[m].Length != methodsParameters.Length) parameters[m] = new object[methodsParameters.Length];
 
                     for (int i = 0; i < parameters[m].Length; i++)

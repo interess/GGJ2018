@@ -26,6 +26,7 @@ namespace DZ.Game.Components {
         public partial class FlagEvent: Entitas.IComponent { }
         public partial class FlagTrash: Entitas.IComponent { }
         public partial class FlagTrashValidated: Entitas.IComponent { }
+        public partial class ChannelSwitchEvent: Entitas.IComponent { }
         // Value Components
         public partial class TrashTimer: Entitas.IComponent { public float value; }
         public partial class EventId: Entitas.IComponent { public string value; }
@@ -35,6 +36,7 @@ namespace DZ.Game.Components {
         public partial class FlagTrash: Entitas.IComponent { }
         public partial class FlagTrashValidated: Entitas.IComponent { }
         public partial class FlagLoaded: Entitas.IComponent { }
+        public partial class FlagActive: Entitas.IComponent { }
         public partial class LevelPart: Entitas.IComponent { }
         public partial class View: Entitas.IComponent { }
         // Value Components
@@ -48,5 +50,9 @@ namespace DZ.Game.Components {
         public partial class AudioEffectUnit: Entitas.IComponent { public Scripts.AudioEffectUnit value; }
         public partial class AudioEffectProductUnit: Entitas.IComponent { public Scripts.AudioEffectProductUnit value; }
         public partial class SubsManagerUnit: Entitas.IComponent { public Scripts.SubsManagerUnit value; }
+        public partial class Channel: Entitas.IComponent { public int value; }
+        public partial class ChannelInfoUnit: Entitas.IComponent { public Scripts.ChannelInfoUnit value; }
+        public partial class WorldTime: Entitas.IComponent { public float value; }
+        public partial class WorldTimeSpeed: Entitas.IComponent { public float value; }
     }
 }

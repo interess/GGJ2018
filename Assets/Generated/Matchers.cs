@@ -202,6 +202,20 @@ namespace DZ.Game {
             }
         }
 
+        static IMatcher<InputEntity> _matcherChannelSwitchEvent;
+
+        public static IMatcher<InputEntity> ChannelSwitchEvent {
+            get {
+                if(_matcherChannelSwitchEvent == null) {
+                    var matcher = (Matcher<InputEntity>)Matcher<InputEntity>.AllOf(InputComponentsLookup.ChannelSwitchEvent);
+                    matcher.componentNames = InputComponentsLookup.componentNames;
+                    _matcherChannelSwitchEvent = matcher;
+                }
+
+                return _matcherChannelSwitchEvent;
+            }
+        }
+
     }
 
     public sealed partial class StateMatcher {
@@ -260,6 +274,20 @@ namespace DZ.Game {
                 }
 
                 return _matcherFlagLoaded;
+            }
+        }
+
+        static IMatcher<StateEntity> _matcherFlagActive;
+
+        public static IMatcher<StateEntity> FlagActive {
+            get {
+                if(_matcherFlagActive == null) {
+                    var matcher = (Matcher<StateEntity>)Matcher<StateEntity>.AllOf(StateComponentsLookup.FlagActive);
+                    matcher.componentNames = StateComponentsLookup.componentNames;
+                    _matcherFlagActive = matcher;
+                }
+
+                return _matcherFlagActive;
             }
         }
 
@@ -428,6 +456,62 @@ namespace DZ.Game {
                 }
 
                 return _matcherSubsManagerUnit;
+            }
+        }
+
+        static IMatcher<StateEntity> _matcherChannel;
+
+        public static IMatcher<StateEntity> Channel {
+            get {
+                if(_matcherChannel == null) {
+                    var matcher = (Matcher<StateEntity>)Matcher<StateEntity>.AllOf(StateComponentsLookup.Channel);
+                    matcher.componentNames = StateComponentsLookup.componentNames;
+                    _matcherChannel = matcher;
+                }
+
+                return _matcherChannel;
+            }
+        }
+
+        static IMatcher<StateEntity> _matcherChannelInfoUnit;
+
+        public static IMatcher<StateEntity> ChannelInfoUnit {
+            get {
+                if(_matcherChannelInfoUnit == null) {
+                    var matcher = (Matcher<StateEntity>)Matcher<StateEntity>.AllOf(StateComponentsLookup.ChannelInfoUnit);
+                    matcher.componentNames = StateComponentsLookup.componentNames;
+                    _matcherChannelInfoUnit = matcher;
+                }
+
+                return _matcherChannelInfoUnit;
+            }
+        }
+
+        static IMatcher<StateEntity> _matcherWorldTime;
+
+        public static IMatcher<StateEntity> WorldTime {
+            get {
+                if(_matcherWorldTime == null) {
+                    var matcher = (Matcher<StateEntity>)Matcher<StateEntity>.AllOf(StateComponentsLookup.WorldTime);
+                    matcher.componentNames = StateComponentsLookup.componentNames;
+                    _matcherWorldTime = matcher;
+                }
+
+                return _matcherWorldTime;
+            }
+        }
+
+        static IMatcher<StateEntity> _matcherWorldTimeSpeed;
+
+        public static IMatcher<StateEntity> WorldTimeSpeed {
+            get {
+                if(_matcherWorldTimeSpeed == null) {
+                    var matcher = (Matcher<StateEntity>)Matcher<StateEntity>.AllOf(StateComponentsLookup.WorldTimeSpeed);
+                    matcher.componentNames = StateComponentsLookup.componentNames;
+                    _matcherWorldTimeSpeed = matcher;
+                }
+
+                return _matcherWorldTimeSpeed;
             }
         }
 

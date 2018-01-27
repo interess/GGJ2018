@@ -233,15 +233,17 @@ namespace DZ.Game {
         public const int FlagTrashValidated = 2;
         public const int TrashTimer = 3;
         public const int EventId = 4;
+        public const int ChannelSwitchEvent = 5;
 
-        public const int TotalComponents = 5;
+        public const int TotalComponents = 6;
 
         public static readonly Dictionary<string, int> componentsDict = new Dictionary<string, int> () {
             {"FlagEvent", 0 },
             {"FlagTrash", 1 },
             {"FlagTrashValidated", 2 },
             {"TrashTimer", 3 },
-            {"EventId", 4 }
+            {"EventId", 4 },
+            {"ChannelSwitchEvent", 5 }
         };
 
         public static readonly string[] componentNames = {
@@ -249,7 +251,8 @@ namespace DZ.Game {
             "FlagTrash",
             "FlagTrashValidated",
             "TrashTimer",
-            "EventId"
+            "EventId",
+            "ChannelSwitchEvent"
         };
 
         public static readonly System.Type[] componentTypes = {
@@ -257,7 +260,8 @@ namespace DZ.Game {
             typeof(Components.Input.FlagTrash),
             typeof(Components.Input.FlagTrashValidated),
             typeof(Components.Input.TrashTimer),
-            typeof(Components.Input.EventId)
+            typeof(Components.Input.EventId),
+            typeof(Components.Input.ChannelSwitchEvent)
         };
 
         public static int GetComponentIndex(string name) {
@@ -298,10 +302,13 @@ namespace DZ.Game {
             ) 
         {
             uidIndex = new DZ.Game.Indexes.State.UidIndex(this);
+            channelIndex = new DZ.Game.Indexes.State.ChannelIndex(this);
         }
 
         /// Value: Uid  
         public DZ.Game.Indexes.State.IUidIndex uidIndex;
+        /// Value: Channel  
+        public DZ.Game.Indexes.State.IChannelIndex channelIndex;
 
     }
 
@@ -309,43 +316,54 @@ namespace DZ.Game {
         public const int FlagTrash = 0;
         public const int FlagTrashValidated = 1;
         public const int FlagLoaded = 2;
-        public const int TrashTimer = 3;
-        public const int StageManagerUnit = 4;
-        public const int LevelPart = 5;
-        public const int Uid = 6;
-        public const int UidUnit = 7;
-        public const int ProductUnit = 8;
-        public const int View = 9;
-        public const int AudioManagerUnit = 10;
-        public const int AudioEffectManagerUnit = 11;
-        public const int AudioEffectUnit = 12;
-        public const int AudioEffectProductUnit = 13;
-        public const int SubsManagerUnit = 14;
+        public const int FlagActive = 3;
+        public const int TrashTimer = 4;
+        public const int StageManagerUnit = 5;
+        public const int LevelPart = 6;
+        public const int Uid = 7;
+        public const int UidUnit = 8;
+        public const int ProductUnit = 9;
+        public const int View = 10;
+        public const int AudioManagerUnit = 11;
+        public const int AudioEffectManagerUnit = 12;
+        public const int AudioEffectUnit = 13;
+        public const int AudioEffectProductUnit = 14;
+        public const int SubsManagerUnit = 15;
+        public const int Channel = 16;
+        public const int ChannelInfoUnit = 17;
+        public const int WorldTime = 18;
+        public const int WorldTimeSpeed = 19;
 
-        public const int TotalComponents = 15;
+        public const int TotalComponents = 20;
 
         public static readonly Dictionary<string, int> componentsDict = new Dictionary<string, int> () {
             {"FlagTrash", 0 },
             {"FlagTrashValidated", 1 },
             {"FlagLoaded", 2 },
-            {"TrashTimer", 3 },
-            {"StageManagerUnit", 4 },
-            {"LevelPart", 5 },
-            {"Uid", 6 },
-            {"UidUnit", 7 },
-            {"ProductUnit", 8 },
-            {"View", 9 },
-            {"AudioManagerUnit", 10 },
-            {"AudioEffectManagerUnit", 11 },
-            {"AudioEffectUnit", 12 },
-            {"AudioEffectProductUnit", 13 },
-            {"SubsManagerUnit", 14 }
+            {"FlagActive", 3 },
+            {"TrashTimer", 4 },
+            {"StageManagerUnit", 5 },
+            {"LevelPart", 6 },
+            {"Uid", 7 },
+            {"UidUnit", 8 },
+            {"ProductUnit", 9 },
+            {"View", 10 },
+            {"AudioManagerUnit", 11 },
+            {"AudioEffectManagerUnit", 12 },
+            {"AudioEffectUnit", 13 },
+            {"AudioEffectProductUnit", 14 },
+            {"SubsManagerUnit", 15 },
+            {"Channel", 16 },
+            {"ChannelInfoUnit", 17 },
+            {"WorldTime", 18 },
+            {"WorldTimeSpeed", 19 }
         };
 
         public static readonly string[] componentNames = {
             "FlagTrash",
             "FlagTrashValidated",
             "FlagLoaded",
+            "FlagActive",
             "TrashTimer",
             "StageManagerUnit",
             "LevelPart",
@@ -357,13 +375,18 @@ namespace DZ.Game {
             "AudioEffectManagerUnit",
             "AudioEffectUnit",
             "AudioEffectProductUnit",
-            "SubsManagerUnit"
+            "SubsManagerUnit",
+            "Channel",
+            "ChannelInfoUnit",
+            "WorldTime",
+            "WorldTimeSpeed"
         };
 
         public static readonly System.Type[] componentTypes = {
             typeof(Components.State.FlagTrash),
             typeof(Components.State.FlagTrashValidated),
             typeof(Components.State.FlagLoaded),
+            typeof(Components.State.FlagActive),
             typeof(Components.State.TrashTimer),
             typeof(Components.State.StageManagerUnit),
             typeof(Components.State.LevelPart),
@@ -375,7 +398,11 @@ namespace DZ.Game {
             typeof(Components.State.AudioEffectManagerUnit),
             typeof(Components.State.AudioEffectUnit),
             typeof(Components.State.AudioEffectProductUnit),
-            typeof(Components.State.SubsManagerUnit)
+            typeof(Components.State.SubsManagerUnit),
+            typeof(Components.State.Channel),
+            typeof(Components.State.ChannelInfoUnit),
+            typeof(Components.State.WorldTime),
+            typeof(Components.State.WorldTimeSpeed)
         };
 
         public static int GetComponentIndex(string name) {
