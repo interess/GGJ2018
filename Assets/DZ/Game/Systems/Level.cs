@@ -22,6 +22,8 @@ namespace DZ.Game.Systems.Level
             Add(new StopSubsRecordingOnEvent());
             Add(new SetRecordingStateOnSubsManager());
 
+            Add(new RayCastWords());
+
             Add(new UnloadActiveLevel());
 
             Add(new LoadSandboxSubs());
@@ -192,7 +194,6 @@ namespace DZ.Game.Systems.Level
 
             protected override void Act(List<InputEntity> entities)
             {
-                Debug.Log("Staert");
                 if (state.HasChannelActive())
                 {
                     state.channelActiveEntity.channelRecording = true;
@@ -209,7 +210,6 @@ namespace DZ.Game.Systems.Level
 
             protected override void Act(List<InputEntity> entities)
             {
-                Debug.Log("Stop");
                 if (state.HasChannelActive())
                 {
                     state.channelActiveEntity.channelRecording = false;
@@ -233,6 +233,41 @@ namespace DZ.Game.Systems.Level
             protected override void Act(List<StateEntity> entities)
             {
                 state.subsManagerUnit.SetRecording(state.channelActiveEntity.channelRecording);
+            }
+        }
+
+        public class RayCastWords : ExecuteSystem
+        {
+            protected override void Act()
+            {
+                if (state.HasChannelActive())
+                {
+                    if (state.channelActiveEntity.channelRecording)
+                    {
+                        var anchor = state.subsManagerUnit.subsSelectorTriggerAnchor;
+                        var gameCamera = state.stageManagerUnit.gameCameraUnit.camera;
+
+                        var anchorPositionScreen = gameCamera.WorldToScreenPoint(anchor.position);
+                        UnityEngine.EventSystems.PointerEventData pointerData = new UnityEngine.EventSystems.PointerEventData(UnityEngine.EventSystems.EventSystem.current);
+                        pointerData.position = anchorPositionScreen;
+                        var results = new List<UnityEngine.EventSystems.RaycastResult>();
+                        UnityEngine.EventSystems.EventSystem.current.RaycastAll(pointerData, results);
+
+                        foreach (var item in results)
+                        {
+                            var wordUnit = item.gameObject.GetComponent<Scripts.SubsWordUnit>();
+                            if (wordUnit != null)
+                            {
+                                if (!wordUnit.isEmpty)
+                                {
+                                    // Debug.Log(wordUnit.text.text); 
+                                    wordUnit.SetColor(Color.white);
+                                }
+                            }
+                        }
+
+                    }
+                }
             }
         }
 

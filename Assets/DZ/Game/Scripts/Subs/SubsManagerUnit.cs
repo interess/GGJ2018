@@ -7,6 +7,7 @@ namespace DZ.Game.Scripts
 {
 	public class SubsManagerUnit : MonoBehaviour
 	{
+		public RectTransform subsSelectorTriggerAnchor;
 		public SubsSelectorUnit subsSelectorUnit;
 		public GameObject channelInfoPrefab;
 		public GameObject subsWordPrefab;
@@ -35,7 +36,13 @@ namespace DZ.Game.Scripts
 				__channelInfoFactoryUnit.Initialize(channelInfoPrefab, 10);
 			}
 
-			if (subsSelectorUnit == null) {
+			if (subsSelectorTriggerAnchor == null)
+			{
+				Debug.LogError("SubsManagerUnit | SubsSelectorTriggerAnchor is null. This will cause errors");
+			}
+
+			if (subsSelectorUnit == null)
+			{
 				Debug.LogError("SubsManagerUnit | SubsSelectorUnit is null. This will cause errors");
 			}
 
@@ -75,6 +82,7 @@ namespace DZ.Game.Scripts
 				var currentWord = "";
 				var currentIsTargetMode = false;
 				var currentWordList = new List<SubsWordUnit>();
+				var isEmpty = false;
 
 				foreach (var word in words)
 				{
@@ -85,6 +93,15 @@ namespace DZ.Game.Scripts
 					{
 						currentWord = Regex.Replace(word, @"\*", "");
 						isTargetMode = !isTargetMode;
+					}
+
+					if (word == ".")
+					{
+						isEmpty = true;
+					}
+					else
+					{
+						isEmpty = false;
 					}
 
 					if (isTargetMode) { currentIsTargetMode = true; }
@@ -103,6 +120,7 @@ namespace DZ.Game.Scripts
 					var productUnit = (SubsWordProductUnit) __subsWordFactoryUnit.Spawn();
 					var wordUnit = productUnit.subsWordUnit;
 					wordUnit.isTarget = false;
+					wordUnit.isEmpty = isEmpty;
 					wordUnit.SetColor(dialogOwnerColors[dialogOwnerIndex]);
 					wordUnit.SetText(currentWord);
 					wordUnit.transform.SetParent(channelRectTransforms[channelIndex - 1], false);
@@ -143,13 +161,16 @@ namespace DZ.Game.Scripts
 		{
 			for (int i = 0; i < channelRectTransforms.Length; i++)
 			{
+				var canvasGroup = channelRectTransforms[i].GetComponent<CanvasGroup>();
 				if (i == channelIndex - 1)
 				{
-					channelRectTransforms[i].GetComponent<CanvasGroup>().alpha = 1f;
+					canvasGroup.alpha = 1f;
+					canvasGroup.blocksRaycasts = true;
 				}
 				else
 				{
-					channelRectTransforms[i].GetComponent<CanvasGroup>().alpha = 0f;
+					canvasGroup.alpha = 0f;
+					canvasGroup.blocksRaycasts = false;
 				}
 			}
 

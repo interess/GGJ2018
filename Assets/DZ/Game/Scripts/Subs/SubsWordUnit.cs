@@ -8,7 +8,7 @@ namespace DZ.Game.Scripts
     public class SubsWordUnit : MonoBehaviour
     {
         private Text __text;
-        protected Text _text { get { if (__text == null) { __text = GetComponent<Text>(); } return __text; } }
+        public Text text { get { if (__text == null) { __text = GetComponent<Text>(); } return __text; } }
 
         private RectTransform __rectTransform;
         public RectTransform rectTransform { get { if (__rectTransform == null) { __rectTransform = GetComponent<RectTransform>(); } return __rectTransform; } }
@@ -17,15 +17,16 @@ namespace DZ.Game.Scripts
         public FS.PrefabFactory.Scripts.ProductUnit productUnit { get { if (__productUnit == null) { __productUnit = GetComponent<FS.PrefabFactory.Scripts.ProductUnit>(); } return __productUnit; } }
 
         public bool isTarget;
+        public bool isEmpty;
 
         public void SetColor(Color value)
         {
-            _text.color = value;
+            text.color = value;
         }
 
         public void SetText(string value)
         {
-            _text.text = value;
+            text.text = value;
         }
 
         public float GetWidth()

@@ -493,11 +493,11 @@ RectTransform:
   m_Children:
   - {fileID: 1661137586}
   m_Father: {fileID: 973215390}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 332, y: -851}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 332, y: 228}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &566444014
@@ -1031,6 +1031,7 @@ RectTransform:
   m_Children:
   - {fileID: 1293610406}
   - {fileID: 945456894}
+  - {fileID: 1255095365}
   - {fileID: 566444013}
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -1169,6 +1170,39 @@ RectTransform:
   m_PrefabParentObject: {fileID: 224803660267768130, guid: cae9ecff05bcfe448b46802c4b375616,
     type: 2}
   m_PrefabInternal: {fileID: 1179054817}
+--- !u!1 &1255095364
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1255095365}
+  m_Layer: 5
+  m_Name: SubsSelectorTrigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1255095365
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1255095364}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 973215390}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 340, y: 0}
+  m_SizeDelta: {x: 100, y: 200}
+  m_Pivot: {x: 0.5, y: 0}
 --- !u!1 &1293610405
 GameObject:
   m_ObjectHideFlags: 0
@@ -1297,7 +1331,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2db2e02e7b7566f44854a2715365f01c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  subsSelectorUnit: {fileID: 0}
+  subsSelectorTriggerAnchor: {fileID: 1255095365}
+  subsSelectorUnit: {fileID: 566444014}
   channelInfoPrefab: {fileID: 1113124334506798, guid: 87fd82a1c67113b48a16e47cf4345b5f,
     type: 2}
   subsWordPrefab: {fileID: 1121137094426620, guid: 776d0e990af346a4781a8b2062e35963,
@@ -1374,7 +1409,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.49870616, g: 0.5661765, b: 0.37051255, a: 0.409}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []

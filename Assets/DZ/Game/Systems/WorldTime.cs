@@ -20,7 +20,7 @@ namespace DZ.Game.Systems.WorldTime
         {
             var worldTimeEntity = state.CreateEntity();
             worldTimeEntity.worldTime = 0f;
-            worldTimeEntity.worldTimeSpeed = 1.5f;
+            worldTimeEntity.worldTimeSpeed = 4f;
         }
     }
 
