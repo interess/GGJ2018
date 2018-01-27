@@ -571,6 +571,20 @@ namespace DZ.Game {
             }
         }
 
+        static IMatcher<StateEntity> _matcherPhoneManagerUnit;
+
+        public static IMatcher<StateEntity> PhoneManagerUnit {
+            get {
+                if(_matcherPhoneManagerUnit == null) {
+                    var matcher = (Matcher<StateEntity>)Matcher<StateEntity>.AllOf(StateComponentsLookup.PhoneManagerUnit);
+                    matcher.componentNames = StateComponentsLookup.componentNames;
+                    _matcherPhoneManagerUnit = matcher;
+                }
+
+                return _matcherPhoneManagerUnit;
+            }
+        }
+
         static IMatcher<StateEntity> _matcherWorldTime;
 
         public static IMatcher<StateEntity> WorldTime {

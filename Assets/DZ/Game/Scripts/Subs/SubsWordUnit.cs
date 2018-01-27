@@ -18,6 +18,8 @@ namespace DZ.Game.Scripts
 
         public bool isTarget;
         public bool isEmpty;
+        public bool isMale;
+        public int dialogOwnerIndex;
 
         public void SetColor(Color value)
         {

@@ -62,11 +62,14 @@ namespace DZ.Game.Scripts
             {
                 audioSource_1.clip = clip;
                 audioSource_1.Play();
+
+                __activeAudioSorce = 1;
             }
             else
             {
                 if (__activeAudioSorce == 1)
                 {
+                    __activeAudioSorce = 2;
                     __activeAudioSorce = 2;
                     audioSource_2.clip = clip;
                     audioSource_2.volume = 0f;
@@ -79,6 +82,7 @@ namespace DZ.Game.Scripts
                 }
                 else
                 {
+                    __activeAudioSorce = 1;
                     audioSource_1.clip = clip;
                     audioSource_1.volume = 0f;
                     audioSource_1.DOFade(1f, 1f);

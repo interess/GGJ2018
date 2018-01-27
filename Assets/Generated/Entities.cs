@@ -1298,6 +1298,43 @@ namespace DZ.Game {
             else if (component == null) ReplaceComponent(StateComponentsLookup.ChannelInfoUnit, null);
         }
 
+        // PhoneManagerUnit
+        public Scripts.PhoneManagerUnit _phoneManagerUnit { 
+            get {
+                if (!HasComponent(StateComponentsLookup.PhoneManagerUnit)) throw new System.Exception("Entity does not have component 'PhoneManagerUnit'. You can check safely with 'HasPhoneManagerUnit()'");
+                return ((Components.State.PhoneManagerUnit)GetComponent(StateComponentsLookup.PhoneManagerUnit)).value;
+            } 
+            set {
+                ((Components.State.PhoneManagerUnit)GetComponent(StateComponentsLookup.PhoneManagerUnit)).value = value;
+            }
+        }
+
+        public Scripts.PhoneManagerUnit phoneManagerUnit { 
+            get {
+                if (!HasComponent(StateComponentsLookup.PhoneManagerUnit)) throw new System.Exception("Entity does not have component 'PhoneManagerUnit'. You can check safely with 'HasPhoneManagerUnit()'");
+                return ((Components.State.PhoneManagerUnit)GetComponent(StateComponentsLookup.PhoneManagerUnit)).value;
+            } 
+            set {
+                var component = CreateComponent<Components.State.PhoneManagerUnit>(StateComponentsLookup.PhoneManagerUnit);
+                component.value = value;
+                ReplaceComponent(StateComponentsLookup.PhoneManagerUnit, component);
+            }
+        }
+
+        public bool HasPhoneManagerUnit() {
+            return HasComponent(StateComponentsLookup.PhoneManagerUnit);
+        }
+
+        public void RemovePhoneManagerUnit() {
+            if (HasComponent(StateComponentsLookup.PhoneManagerUnit)) { RemoveComponent(StateComponentsLookup.PhoneManagerUnit); }
+        }
+
+        public void PingPhoneManagerUnit() {
+            var component = GetComponent(StateComponentsLookup.PhoneManagerUnit);
+            if (component != null) ReplaceComponent(StateComponentsLookup.PhoneManagerUnit, component);
+            else if (component == null) ReplaceComponent(StateComponentsLookup.PhoneManagerUnit, null);
+        }
+
         // WorldTime
         public float _worldTime { 
             get {

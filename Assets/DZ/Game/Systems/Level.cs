@@ -11,6 +11,7 @@ namespace DZ.Game.Systems.Level
         public Chain() : base("DZ.Game.Level")
         {
             Add(new InitSubsManagerUnit());
+            Add(new InitPhoneManagerUnit());
 
             Add(new LoadActiveLevel());
             Add(new SwitchChannelOnEvent());
@@ -23,6 +24,7 @@ namespace DZ.Game.Systems.Level
             Add(new SetRecordingStateOnSubsManager());
 
             Add(new RayCastWords());
+            Add(new TriggerPhoneTalks());
 
             Add(new UnloadActiveLevel());
 
@@ -37,13 +39,31 @@ namespace DZ.Game.Systems.Level
 
                 if (managerUnit == null)
                 {
-                    throw new FS.Exceptions.ObjectOfTypeNotFoundException(typeof(Scripts.StageManagerUnit));
+                    throw new FS.Exceptions.ObjectOfTypeNotFoundException(typeof(Scripts.SubsManagerUnit));
                 }
 
                 managerUnit.Initialize();
 
                 var entity = state.CreateEntity();
                 entity.subsManagerUnit = managerUnit;
+            }
+        }
+
+        public class InitPhoneManagerUnit : InitializeSystem
+        {
+            protected override void Act()
+            {
+                var managerUnit = GameObject.FindObjectOfType<Scripts.PhoneManagerUnit>();
+
+                if (managerUnit == null)
+                {
+                    throw new FS.Exceptions.ObjectOfTypeNotFoundException(typeof(Scripts.PhoneManagerUnit));
+                }
+
+                managerUnit.Initialize();
+
+                var entity = state.CreateEntity();
+                entity.phoneManagerUnit = managerUnit;
             }
         }
 
@@ -141,6 +161,8 @@ namespace DZ.Game.Systems.Level
                 {
                     if (state.HasChannelActive())
                     {
+                        Contexts.state.phoneManagerUnit.Stop();
+
                         var activeIndex = state.channelActiveEntity.channel;
                         state.channelActiveEntity.flagActive = false;
 
@@ -267,6 +289,58 @@ namespace DZ.Game.Systems.Level
                         }
 
                     }
+                }
+            }
+        }
+
+        public class TriggerPhoneTalks : ExecuteSystem
+        {
+            private int __prevDialogIndex;
+            protected override void Act()
+            {
+                if (state.HasChannelActive())
+                {
+                    var anchor = state.phoneManagerUnit.phoneTriggerAnchor;
+                    var gameCamera = state.stageManagerUnit.gameCameraUnit.camera;
+
+                    var anchorPositionScreen = gameCamera.WorldToScreenPoint(anchor.position);
+                    UnityEngine.EventSystems.PointerEventData pointerData = new UnityEngine.EventSystems.PointerEventData(UnityEngine.EventSystems.EventSystem.current);
+                    pointerData.position = anchorPositionScreen;
+                    var results = new List<UnityEngine.EventSystems.RaycastResult>();
+                    UnityEngine.EventSystems.EventSystem.current.RaycastAll(pointerData, results);
+
+                    foreach (var item in results)
+                    {
+                        var wordUnit = item.gameObject.GetComponent<Scripts.SubsWordUnit>();
+                        if (wordUnit != null)
+                        {
+                            if (!wordUnit.isEmpty)
+                            {
+                                if (wordUnit.isMale)
+                                {
+                                    Contexts.state.phoneManagerUnit.PlayMan(__prevDialogIndex == wordUnit.dialogOwnerIndex);
+                                }
+                                else
+                                {
+                                    Contexts.state.phoneManagerUnit.PlayWoman(__prevDialogIndex == wordUnit.dialogOwnerIndex);
+                                }
+
+                                __prevDialogIndex = wordUnit.dialogOwnerIndex;
+                            }
+                            else
+                            {
+                                Contexts.state.phoneManagerUnit.Stop();
+                            }
+                        }
+                        else
+                        {
+                            Contexts.state.phoneManagerUnit.Stop();
+                        }
+                    }
+                }
+                else
+                {
+                    Contexts.state.phoneManagerUnit.Stop();
                 }
             }
         }

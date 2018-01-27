@@ -79,6 +79,9 @@ namespace DZ.Game.Declaration
 
             var ChannelActive = Group(Matcher.All(Channel, FlagActive)).Single;
 
+            // Phone
+            var PhoneManagerUnit = Component<Scripts.PhoneManagerUnit>().GroupSingle;
+
             // WorldTime
             var WorldTime = Component<float>().GroupSingle;
             var WorldTimeSpeed = Component<float>();

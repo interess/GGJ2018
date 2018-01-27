@@ -346,10 +346,11 @@ namespace DZ.Game {
         public const int Channel = 19;
         public const int ChannelInfoUnit = 20;
         public const int ChannelRecording = 21;
-        public const int WorldTime = 22;
-        public const int WorldTimeSpeed = 23;
+        public const int PhoneManagerUnit = 22;
+        public const int WorldTime = 23;
+        public const int WorldTimeSpeed = 24;
 
-        public const int TotalComponents = 24;
+        public const int TotalComponents = 25;
 
         public static readonly Dictionary<string, int> componentsDict = new Dictionary<string, int> () {
             {"FlagTrash", 0 },
@@ -374,8 +375,9 @@ namespace DZ.Game {
             {"Channel", 19 },
             {"ChannelInfoUnit", 20 },
             {"ChannelRecording", 21 },
-            {"WorldTime", 22 },
-            {"WorldTimeSpeed", 23 }
+            {"PhoneManagerUnit", 22 },
+            {"WorldTime", 23 },
+            {"WorldTimeSpeed", 24 }
         };
 
         public static readonly string[] componentNames = {
@@ -401,6 +403,7 @@ namespace DZ.Game {
             "Channel",
             "ChannelInfoUnit",
             "ChannelRecording",
+            "PhoneManagerUnit",
             "WorldTime",
             "WorldTimeSpeed"
         };
@@ -428,6 +431,7 @@ namespace DZ.Game {
             typeof(Components.State.Channel),
             typeof(Components.State.ChannelInfoUnit),
             typeof(Components.State.ChannelRecording),
+            typeof(Components.State.PhoneManagerUnit),
             typeof(Components.State.WorldTime),
             typeof(Components.State.WorldTimeSpeed)
         };

@@ -356,6 +356,39 @@ namespace DZ.Game {
 
 		public bool HasChannelActive() {	return channelActiveGroup.count == 1;	}
 
+		// PhoneManagerUnit Group
+		private IGroup<StateEntity> _phoneManagerUnitGroup;
+		public IGroup<StateEntity> phoneManagerUnitGroup {
+			get { 
+				if (_phoneManagerUnitGroup == null) {
+					_phoneManagerUnitGroup = GetGroup(StateMatcher.PhoneManagerUnit);
+				}
+				return _phoneManagerUnitGroup; } }
+
+		public StateEntity phoneManagerUnitEntity {
+			get {
+				var cachedGroup = phoneManagerUnitGroup;
+				if (cachedGroup.count > 1) {
+					return null;
+				}
+				if (cachedGroup.count == 0) {
+					return null;
+				}
+				return cachedGroup.GetSingleEntity(); } }
+
+		public Scripts.PhoneManagerUnit phoneManagerUnit { 
+			get {
+				if (phoneManagerUnitEntity == null) throw new System.Exception("StateContext has 0 or more than 1 entity with component 'PhoneManagerUnit'. You can check safely with 'HasPhoneManagerUnit()'");
+				return phoneManagerUnitEntity.phoneManagerUnit;
+			}	
+			set { 
+				if (phoneManagerUnitGroup.count > 1) throw new System.Exception("StateContext has more than 1 entity with component 'PhoneManagerUnit'. You can check safely with 'HasPhoneManagerUnit()'");
+				else if (phoneManagerUnitGroup.count == 0) this.CreateEntity().phoneManagerUnit = value;
+				else phoneManagerUnitEntity.phoneManagerUnit = value;
+			}
+		}
+		public bool HasPhoneManagerUnit() {	return phoneManagerUnitGroup.count == 1;	}
+
 		// WorldTime Group
 		private IGroup<StateEntity> _worldTimeGroup;
 		public IGroup<StateEntity> worldTimeGroup {

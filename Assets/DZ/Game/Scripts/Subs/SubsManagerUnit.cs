@@ -121,6 +121,8 @@ namespace DZ.Game.Scripts
 					var wordUnit = productUnit.subsWordUnit;
 					wordUnit.isTarget = false;
 					wordUnit.isEmpty = isEmpty;
+					wordUnit.isMale = IsMale(dialogOwnerIndex);
+					wordUnit.dialogOwnerIndex = dayIndex * 10000 + i * 100 + dialogOwnerIndex;
 					wordUnit.SetColor(dialogOwnerColors[dialogOwnerIndex]);
 					wordUnit.SetText(currentWord);
 					wordUnit.transform.SetParent(channelRectTransforms[channelIndex - 1], false);
@@ -198,6 +200,11 @@ namespace DZ.Game.Scripts
 			}
 
 			__wordUnitsLookup.Clear();
+		}
+
+		private bool IsMale(int dialogOwnerIndex)
+		{
+			return dialogOwnerIndex == 3 || dialogOwnerIndex == 4;
 		}
 	}
 }
