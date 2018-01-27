@@ -135,6 +135,7 @@ namespace DZ.Game.Scripts
 					wordUnit.SetColor(dialogOwnerColors[dialogOwnerIndex]);
 					wordUnit.SetText(currentWord);
 					wordUnit.transform.SetParent(channelRectTransforms[channelIndex - 1], false);
+					wordUnit.rectTransform.anchoredPosition = new Vector2(1920, 0);
 					__wordUnitsLookup.Add(wordUnit);
 					currentWordList.Add(wordUnit);
 				}
@@ -158,10 +159,12 @@ namespace DZ.Game.Scripts
 				channelInfoUnit.transform.localScale = Vector3.one;
 				channelInfoUnit.Reset();
 				channelInfoUnit.SetName(channelName);
+				channelInfoUnit.SetActive(false);
 
 				var phoneChannelProductUnit = Contexts.state.phoneManagerUnit.Spawn();
 				var phoneChannelUnit = phoneChannelProductUnit.GetComponent<PhoneChannelUnit>();
 				phoneChannelUnit.Initialize();
+				phoneChannelUnit.SetActive(false);
 
 				var channelEntity = Contexts.state.CreateViewEntity();
 				channelEntity.levelPart = true;

@@ -599,6 +599,20 @@ namespace DZ.Game {
             }
         }
 
+        static IMatcher<StateEntity> _matcherChannelVoiceActive;
+
+        public static IMatcher<StateEntity> ChannelVoiceActive {
+            get {
+                if(_matcherChannelVoiceActive == null) {
+                    var matcher = (Matcher<StateEntity>)Matcher<StateEntity>.AllOf(StateComponentsLookup.ChannelVoiceActive);
+                    matcher.componentNames = StateComponentsLookup.componentNames;
+                    _matcherChannelVoiceActive = matcher;
+                }
+
+                return _matcherChannelVoiceActive;
+            }
+        }
+
         static IMatcher<StateEntity> _matcherPhoneChannelUnit;
 
         public static IMatcher<StateEntity> PhoneChannelUnit {

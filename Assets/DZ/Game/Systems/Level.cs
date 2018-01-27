@@ -14,8 +14,8 @@ namespace DZ.Game.Systems.Level
             Add(new InitPhoneManagerUnit());
 
             Add(new LoadActiveLevel());
-            Add(new SwitchChannelOnEvent());
             Add(new SetActiveChannelInfoUnit());
+            Add(new SetActiveChannelVoiceUnit());
             Add(new SetActiveChannelOnManagerUnit());
             Add(new MoveSubsOnActiveLevel());
 
@@ -29,6 +29,8 @@ namespace DZ.Game.Systems.Level
             Add(new TriggerPhoneTalks());
 
             Add(new UnloadActiveLevel());
+
+            Add(new SwitchChannelOnEvent());
 
             Add(new LoadSandboxSubs());
         }
@@ -318,6 +320,7 @@ namespace DZ.Game.Systems.Level
             private int __prevDialogIndex;
             protected override void Act()
             {
+                if (!state.HasLevelActiveLoaded()) { return; }
                 var anchor = state.phoneManagerUnit.phoneTriggerAnchor;
                 var gameCamera = state.stageManagerUnit.gameCameraUnit.camera;
 
@@ -337,6 +340,7 @@ namespace DZ.Game.Systems.Level
 
                         if (!wordUnit.isEmpty)
                         {
+                            channelEntity.channelVoiceActive = true;
                             if (wordUnit.isMale)
                             {
                                 channelEntity.phoneChannelUnit.PlayMan(__prevDialogIndex == wordUnit.dialogOwnerIndex);
@@ -350,6 +354,7 @@ namespace DZ.Game.Systems.Level
                         }
                         else
                         {
+                            channelEntity.channelVoiceActive = false;
                             channelEntity.phoneChannelUnit.Stop();
                         }
                     }
@@ -358,6 +363,28 @@ namespace DZ.Game.Systems.Level
                         // TODO: Stop all channels?
                         // channelEntity.phoneChannelUnit.Stop();
                     }
+                }
+            }
+        }
+
+        public class SetActiveChannelVoiceUnit : StateReactiveSystem
+        {
+            protected override void SetTriggers()
+            {
+                Trigger(StateMatcher.AllOf(StateMatcher.Channel, StateMatcher.ChannelInfoUnit, StateMatcher.ChannelVoiceActive).Added());
+                Trigger(StateMatcher.AllOf(StateMatcher.Channel, StateMatcher.ChannelInfoUnit).NoneOf(StateMatcher.ChannelVoiceActive).Added());
+            }
+
+            protected override bool Filter(StateEntity entity)
+            {
+                return entity.HasChannelInfoUnit();
+            }
+
+            protected override void Act(List<StateEntity> entities)
+            {
+                foreach (var entity in entities)
+                {
+                    entity.channelInfoUnit.SetVoiceActive(entity.channelVoiceActive);
                 }
             }
         }

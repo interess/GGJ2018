@@ -354,17 +354,18 @@ namespace DZ.Game {
         public const int Channel = 21;
         public const int ChannelInfoUnit = 22;
         public const int ChannelRecording = 23;
-        public const int PhoneChannelUnit = 24;
-        public const int PhoneManagerUnit = 25;
-        public const int WorldTime = 26;
-        public const int WorldTimeSpeed = 27;
-        public const int Effect = 28;
-        public const int EffectId = 29;
-        public const int EffectFactoryUnit = 30;
-        public const int ConfigId = 31;
-        public const int PositionWorld = 32;
+        public const int ChannelVoiceActive = 24;
+        public const int PhoneChannelUnit = 25;
+        public const int PhoneManagerUnit = 26;
+        public const int WorldTime = 27;
+        public const int WorldTimeSpeed = 28;
+        public const int Effect = 29;
+        public const int EffectId = 30;
+        public const int EffectFactoryUnit = 31;
+        public const int ConfigId = 32;
+        public const int PositionWorld = 33;
 
-        public const int TotalComponents = 33;
+        public const int TotalComponents = 34;
 
         public static readonly Dictionary<string, int> componentsDict = new Dictionary<string, int> () {
             {"FlagTrash", 0 },
@@ -391,15 +392,16 @@ namespace DZ.Game {
             {"Channel", 21 },
             {"ChannelInfoUnit", 22 },
             {"ChannelRecording", 23 },
-            {"PhoneChannelUnit", 24 },
-            {"PhoneManagerUnit", 25 },
-            {"WorldTime", 26 },
-            {"WorldTimeSpeed", 27 },
-            {"Effect", 28 },
-            {"EffectId", 29 },
-            {"EffectFactoryUnit", 30 },
-            {"ConfigId", 31 },
-            {"PositionWorld", 32 }
+            {"ChannelVoiceActive", 24 },
+            {"PhoneChannelUnit", 25 },
+            {"PhoneManagerUnit", 26 },
+            {"WorldTime", 27 },
+            {"WorldTimeSpeed", 28 },
+            {"Effect", 29 },
+            {"EffectId", 30 },
+            {"EffectFactoryUnit", 31 },
+            {"ConfigId", 32 },
+            {"PositionWorld", 33 }
         };
 
         public static readonly string[] componentNames = {
@@ -427,6 +429,7 @@ namespace DZ.Game {
             "Channel",
             "ChannelInfoUnit",
             "ChannelRecording",
+            "ChannelVoiceActive",
             "PhoneChannelUnit",
             "PhoneManagerUnit",
             "WorldTime",
@@ -463,6 +466,7 @@ namespace DZ.Game {
             typeof(Components.State.Channel),
             typeof(Components.State.ChannelInfoUnit),
             typeof(Components.State.ChannelRecording),
+            typeof(Components.State.ChannelVoiceActive),
             typeof(Components.State.PhoneChannelUnit),
             typeof(Components.State.PhoneManagerUnit),
             typeof(Components.State.WorldTime),

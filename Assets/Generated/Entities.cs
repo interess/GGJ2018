@@ -776,6 +776,35 @@ namespace DZ.Game {
             else if (component == null) ReplaceComponent(StateComponentsLookup.ChannelRecording, null);
         }
 
+        // ChannelVoiceActive
+        static readonly Components.State.ChannelVoiceActive _channelVoiceActiveComponent = new Components.State.ChannelVoiceActive();
+        public bool channelVoiceActive {
+            get { return HasComponent(StateComponentsLookup.ChannelVoiceActive); }
+            set {
+                if (value != channelVoiceActive) {
+                    if (value) {
+                        AddComponent(StateComponentsLookup.ChannelVoiceActive, _channelVoiceActiveComponent);
+                    } else {
+                        RemoveComponent(StateComponentsLookup.ChannelVoiceActive);
+                    }
+                }
+            }
+        }
+
+        public bool HasChannelVoiceActive() {
+            return HasComponent(StateComponentsLookup.ChannelVoiceActive);
+        }
+
+        public void RemoveChannelVoiceActive() {
+            RemoveComponent(StateComponentsLookup.ChannelVoiceActive);
+        }
+
+        public void PingChannelVoiceActive() {
+            var component = GetComponent(StateComponentsLookup.ChannelVoiceActive);
+            if (component != null) ReplaceComponent(StateComponentsLookup.ChannelVoiceActive, component);
+            else if (component == null) ReplaceComponent(StateComponentsLookup.ChannelVoiceActive, null);
+        }
+
         // Effect
         static readonly Components.State.Effect _effectComponent = new Components.State.Effect();
         public bool effect {

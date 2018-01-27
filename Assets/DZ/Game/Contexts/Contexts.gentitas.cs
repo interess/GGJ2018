@@ -80,6 +80,7 @@ namespace DZ.Game.Declaration
             var Channel = Component<int>().Index.Group;
             var ChannelInfoUnit = Component<Scripts.ChannelInfoUnit>();
             var ChannelRecording = Component();
+            var ChannelVoiceActive = Component();
 
             var ChannelActive = Group(Matcher.All(Channel, FlagActive)).Single;
 
