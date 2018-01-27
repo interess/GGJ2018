@@ -142,6 +142,132 @@ namespace DZ.Game.Indexes {
 	namespace Input {
 	}
 	namespace State {
+        public interface IFactoryIdIndex {
+            /// Value: FactoryId  
+            StateEntity FindSingle(string value);
+            /// Value: FactoryId  
+            HashSet<StateEntity> Find(string value);
+            int GetCount(string value);
+        }
+
+        public class FactoryIdIndex : Entitas.Gentitas.Index<string, StateEntity>, IFactoryIdIndex
+        {
+            IGroup<StateEntity> groupToWatch;
+
+            public FactoryIdIndex(StateContext context) : base()
+            {
+                groupToWatch = context.GetGroup(Matcher<StateEntity>.AllOf(StateMatcher.FactoryId));
+                groupToWatch.OnEntityAdded += Added;
+                groupToWatch.OnEntityUpdated += Updated;
+                groupToWatch.OnEntityRemoved += Removed;
+            }
+
+            ~FactoryIdIndex () {
+                groupToWatch.OnEntityAdded -= Added;
+                groupToWatch.OnEntityUpdated -= Updated;
+                groupToWatch.OnEntityRemoved -= Removed;
+            }
+
+            protected override bool Filter(StateEntity entity)
+            {
+                return entity.HasFactoryId() ;
+            }
+
+            void Remove(StateEntity entity, string value) {
+                if (lookup.ContainsKey(value))
+                {
+                    var list = lookup[value];
+                    if (list.Contains(entity)) list.Remove(entity);
+                }
+            }
+
+            void HandleEntity(StateEntity entity, string value)
+            {
+                if (entity.HasFactoryId()) {
+                    if (Filter(entity))
+                    {
+                        HashSet<StateEntity> result;
+                        lookup.TryGetValue(value, out result);
+                        if (result == null) {
+                            result = new HashSet<StateEntity>();
+                            lookup.Add(value, result);
+                            result.Add(entity);
+                        } else {
+                            if (!result.Contains(entity)) result.Add(entity);
+                        }
+                    }
+                    else
+                    {
+                        Remove(entity, value);
+                    }
+                } else {
+                    Remove(entity, value);
+                }
+            }
+
+            void HandleEntity(StateEntity entity, string value, string previousValue)
+            {
+                if (value != previousValue)
+                {
+                    Remove(entity, previousValue);
+                }
+                
+                HandleEntity(entity, value);
+            }
+
+            void Added(IGroup<StateEntity> group, StateEntity entity, int index, IComponent component)
+            {
+                HandleEntity(entity, ((Components.State.FactoryId)component).value);
+            }
+
+            void Updated(IGroup<StateEntity> group, StateEntity entity, int index, IComponent previousComponent, IComponent component)
+            {
+                HandleEntity(entity, ((Components.State.FactoryId)component).value, ((Components.State.FactoryId)previousComponent).value);
+            }
+
+            void Removed(IGroup<StateEntity> group, StateEntity entity, int index, IComponent component)
+            {
+                HandleEntity(entity, ((Components.State.FactoryId)component).value);
+            }
+
+            public StateEntity FindSingle(string value)
+            {
+                HashSet<StateEntity> result;
+                lookup.TryGetValue(value, out result);
+
+                if (result == null || result.Count == 0) return null;
+                if (result.Count > 1) {
+                    UnityEngine.Debug.LogError("DZ.Game.FactoryIdIndex has more than 1 entity with value " + value);
+                    return null;
+                }
+                
+                var enumarator = result.GetEnumerator();
+                enumarator.MoveNext();
+                
+                return enumarator.Current;
+            }
+
+            public HashSet<StateEntity> Find(string value)
+            {
+                HashSet<StateEntity> result;
+                lookup.TryGetValue(value, out result);
+
+                if (result == null) {
+                    result = lookup[value] = new HashSet<StateEntity>();
+                }
+
+                return result;
+            }
+
+            public int GetCount(string value)
+            {
+                HashSet<StateEntity> result;
+                lookup.TryGetValue(value, out result);
+
+                if (result == null) return 0;
+                return result.Count;
+            }
+        }
         public interface ILevelIndexIndex {
             /// Value: LevelIndex  
             StateEntity FindSingle(int value);
@@ -512,6 +638,132 @@ namespace DZ.Game.Indexes {
             }
 
             public int GetCount(int value)
+            {
+                HashSet<StateEntity> result;
+                lookup.TryGetValue(value, out result);
+
+                if (result == null) return 0;
+                return result.Count;
+            }
+        }
+        public interface IConfigIdIndex {
+            /// Value: ConfigId  
+            StateEntity FindSingle(string value);
+            /// Value: ConfigId  
+            HashSet<StateEntity> Find(string value);
+            int GetCount(string value);
+        }
+
+        public class ConfigIdIndex : Entitas.Gentitas.Index<string, StateEntity>, IConfigIdIndex
+        {
+            IGroup<StateEntity> groupToWatch;
+
+            public ConfigIdIndex(StateContext context) : base()
+            {
+                groupToWatch = context.GetGroup(Matcher<StateEntity>.AllOf(StateMatcher.ConfigId));
+                groupToWatch.OnEntityAdded += Added;
+                groupToWatch.OnEntityUpdated += Updated;
+                groupToWatch.OnEntityRemoved += Removed;
+            }
+
+            ~ConfigIdIndex () {
+                groupToWatch.OnEntityAdded -= Added;
+                groupToWatch.OnEntityUpdated -= Updated;
+                groupToWatch.OnEntityRemoved -= Removed;
+            }
+
+            protected override bool Filter(StateEntity entity)
+            {
+                return entity.HasConfigId() ;
+            }
+
+            void Remove(StateEntity entity, string value) {
+                if (lookup.ContainsKey(value))
+                {
+                    var list = lookup[value];
+                    if (list.Contains(entity)) list.Remove(entity);
+                }
+            }
+
+            void HandleEntity(StateEntity entity, string value)
+            {
+                if (entity.HasConfigId()) {
+                    if (Filter(entity))
+                    {
+                        HashSet<StateEntity> result;
+                        lookup.TryGetValue(value, out result);
+                        if (result == null) {
+                            result = new HashSet<StateEntity>();
+                            lookup.Add(value, result);
+                            result.Add(entity);
+                        } else {
+                            if (!result.Contains(entity)) result.Add(entity);
+                        }
+                    }
+                    else
+                    {
+                        Remove(entity, value);
+                    }
+                } else {
+                    Remove(entity, value);
+                }
+            }
+
+            void HandleEntity(StateEntity entity, string value, string previousValue)
+            {
+                if (value != previousValue)
+                {
+                    Remove(entity, previousValue);
+                }
+                
+                HandleEntity(entity, value);
+            }
+
+            void Added(IGroup<StateEntity> group, StateEntity entity, int index, IComponent component)
+            {
+                HandleEntity(entity, ((Components.State.ConfigId)component).value);
+            }
+
+            void Updated(IGroup<StateEntity> group, StateEntity entity, int index, IComponent previousComponent, IComponent component)
+            {
+                HandleEntity(entity, ((Components.State.ConfigId)component).value, ((Components.State.ConfigId)previousComponent).value);
+            }
+
+            void Removed(IGroup<StateEntity> group, StateEntity entity, int index, IComponent component)
+            {
+                HandleEntity(entity, ((Components.State.ConfigId)component).value);
+            }
+
+            public StateEntity FindSingle(string value)
+            {
+                HashSet<StateEntity> result;
+                lookup.TryGetValue(value, out result);
+
+                if (result == null || result.Count == 0) return null;
+                if (result.Count > 1) {
+                    UnityEngine.Debug.LogError("DZ.Game.ConfigIdIndex has more than 1 entity with value " + value);
+                    return null;
+                }
+                
+                var enumarator = result.GetEnumerator();
+                enumarator.MoveNext();
+                
+                return enumarator.Current;
+            }
+
+            public HashSet<StateEntity> Find(string value)
+            {
+                HashSet<StateEntity> result;
+                lookup.TryGetValue(value, out result);
+
+                if (result == null) {
+                    result = lookup[value] = new HashSet<StateEntity>();
+                }
+
+                return result;
+            }
+
+            public int GetCount(string value)
             {
                 HashSet<StateEntity> result;
                 lookup.TryGetValue(value, out result);

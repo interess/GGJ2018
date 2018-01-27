@@ -39,6 +39,10 @@ namespace DZ.Game.Declaration
             // Trash
             var TrashTimer = Component<float>().Universal.Group;
 
+            // Factory
+            var FactoryUnit = Component<FS.PrefabFactory.Scripts.FactoryUnit>();
+            var FactoryId = Component<string>().Index;
+
             // Stage
             var StageManagerUnit = Component<Scripts.StageManagerUnit>().GroupSingle;
 
@@ -85,6 +89,17 @@ namespace DZ.Game.Declaration
             // WorldTime
             var WorldTime = Component<float>().GroupSingle;
             var WorldTimeSpeed = Component<float>();
+
+            // Effect
+            var Effect = Component();
+            var EffectId = Component<string>();
+            var EffectFactoryUnit = Component<Scripts.EffectFactoryUnit>();
+
+            // Config
+            var ConfigId = Component<string>().Group.Index;
+
+            // Position
+            var PositionWorld = Component<UnityEngine.Vector2>();
         }
     }
 }

@@ -776,6 +776,35 @@ namespace DZ.Game {
             else if (component == null) ReplaceComponent(StateComponentsLookup.ChannelRecording, null);
         }
 
+        // Effect
+        static readonly Components.State.Effect _effectComponent = new Components.State.Effect();
+        public bool effect {
+            get { return HasComponent(StateComponentsLookup.Effect); }
+            set {
+                if (value != effect) {
+                    if (value) {
+                        AddComponent(StateComponentsLookup.Effect, _effectComponent);
+                    } else {
+                        RemoveComponent(StateComponentsLookup.Effect);
+                    }
+                }
+            }
+        }
+
+        public bool HasEffect() {
+            return HasComponent(StateComponentsLookup.Effect);
+        }
+
+        public void RemoveEffect() {
+            RemoveComponent(StateComponentsLookup.Effect);
+        }
+
+        public void PingEffect() {
+            var component = GetComponent(StateComponentsLookup.Effect);
+            if (component != null) ReplaceComponent(StateComponentsLookup.Effect, component);
+            else if (component == null) ReplaceComponent(StateComponentsLookup.Effect, null);
+        }
+
         //
         // Value Components
         //
@@ -815,6 +844,80 @@ namespace DZ.Game {
             var component = GetComponent(StateComponentsLookup.TrashTimer);
             if (component != null) ReplaceComponent(StateComponentsLookup.TrashTimer, component);
             else if (component == null) ReplaceComponent(StateComponentsLookup.TrashTimer, null);
+        }
+
+        // FactoryUnit
+        public FS.PrefabFactory.Scripts.FactoryUnit _factoryUnit { 
+            get {
+                if (!HasComponent(StateComponentsLookup.FactoryUnit)) throw new System.Exception("Entity does not have component 'FactoryUnit'. You can check safely with 'HasFactoryUnit()'");
+                return ((Components.State.FactoryUnit)GetComponent(StateComponentsLookup.FactoryUnit)).value;
+            } 
+            set {
+                ((Components.State.FactoryUnit)GetComponent(StateComponentsLookup.FactoryUnit)).value = value;
+            }
+        }
+
+        public FS.PrefabFactory.Scripts.FactoryUnit factoryUnit { 
+            get {
+                if (!HasComponent(StateComponentsLookup.FactoryUnit)) throw new System.Exception("Entity does not have component 'FactoryUnit'. You can check safely with 'HasFactoryUnit()'");
+                return ((Components.State.FactoryUnit)GetComponent(StateComponentsLookup.FactoryUnit)).value;
+            } 
+            set {
+                var component = CreateComponent<Components.State.FactoryUnit>(StateComponentsLookup.FactoryUnit);
+                component.value = value;
+                ReplaceComponent(StateComponentsLookup.FactoryUnit, component);
+            }
+        }
+
+        public bool HasFactoryUnit() {
+            return HasComponent(StateComponentsLookup.FactoryUnit);
+        }
+
+        public void RemoveFactoryUnit() {
+            if (HasComponent(StateComponentsLookup.FactoryUnit)) { RemoveComponent(StateComponentsLookup.FactoryUnit); }
+        }
+
+        public void PingFactoryUnit() {
+            var component = GetComponent(StateComponentsLookup.FactoryUnit);
+            if (component != null) ReplaceComponent(StateComponentsLookup.FactoryUnit, component);
+            else if (component == null) ReplaceComponent(StateComponentsLookup.FactoryUnit, null);
+        }
+
+        // FactoryId
+        public string _factoryId { 
+            get {
+                if (!HasComponent(StateComponentsLookup.FactoryId)) throw new System.Exception("Entity does not have component 'FactoryId'. You can check safely with 'HasFactoryId()'");
+                return ((Components.State.FactoryId)GetComponent(StateComponentsLookup.FactoryId)).value;
+            } 
+            set {
+                ((Components.State.FactoryId)GetComponent(StateComponentsLookup.FactoryId)).value = value;
+            }
+        }
+
+        public string factoryId { 
+            get {
+                if (!HasComponent(StateComponentsLookup.FactoryId)) throw new System.Exception("Entity does not have component 'FactoryId'. You can check safely with 'HasFactoryId()'");
+                return ((Components.State.FactoryId)GetComponent(StateComponentsLookup.FactoryId)).value;
+            } 
+            set {
+                var component = CreateComponent<Components.State.FactoryId>(StateComponentsLookup.FactoryId);
+                component.value = value;
+                ReplaceComponent(StateComponentsLookup.FactoryId, component);
+            }
+        }
+
+        public bool HasFactoryId() {
+            return HasComponent(StateComponentsLookup.FactoryId);
+        }
+
+        public void RemoveFactoryId() {
+            if (HasComponent(StateComponentsLookup.FactoryId)) { RemoveComponent(StateComponentsLookup.FactoryId); }
+        }
+
+        public void PingFactoryId() {
+            var component = GetComponent(StateComponentsLookup.FactoryId);
+            if (component != null) ReplaceComponent(StateComponentsLookup.FactoryId, component);
+            else if (component == null) ReplaceComponent(StateComponentsLookup.FactoryId, null);
         }
 
         // StageManagerUnit
@@ -1407,6 +1510,154 @@ namespace DZ.Game {
             var component = GetComponent(StateComponentsLookup.WorldTimeSpeed);
             if (component != null) ReplaceComponent(StateComponentsLookup.WorldTimeSpeed, component);
             else if (component == null) ReplaceComponent(StateComponentsLookup.WorldTimeSpeed, null);
+        }
+
+        // EffectId
+        public string _effectId { 
+            get {
+                if (!HasComponent(StateComponentsLookup.EffectId)) throw new System.Exception("Entity does not have component 'EffectId'. You can check safely with 'HasEffectId()'");
+                return ((Components.State.EffectId)GetComponent(StateComponentsLookup.EffectId)).value;
+            } 
+            set {
+                ((Components.State.EffectId)GetComponent(StateComponentsLookup.EffectId)).value = value;
+            }
+        }
+
+        public string effectId { 
+            get {
+                if (!HasComponent(StateComponentsLookup.EffectId)) throw new System.Exception("Entity does not have component 'EffectId'. You can check safely with 'HasEffectId()'");
+                return ((Components.State.EffectId)GetComponent(StateComponentsLookup.EffectId)).value;
+            } 
+            set {
+                var component = CreateComponent<Components.State.EffectId>(StateComponentsLookup.EffectId);
+                component.value = value;
+                ReplaceComponent(StateComponentsLookup.EffectId, component);
+            }
+        }
+
+        public bool HasEffectId() {
+            return HasComponent(StateComponentsLookup.EffectId);
+        }
+
+        public void RemoveEffectId() {
+            if (HasComponent(StateComponentsLookup.EffectId)) { RemoveComponent(StateComponentsLookup.EffectId); }
+        }
+
+        public void PingEffectId() {
+            var component = GetComponent(StateComponentsLookup.EffectId);
+            if (component != null) ReplaceComponent(StateComponentsLookup.EffectId, component);
+            else if (component == null) ReplaceComponent(StateComponentsLookup.EffectId, null);
+        }
+
+        // EffectFactoryUnit
+        public Scripts.EffectFactoryUnit _effectFactoryUnit { 
+            get {
+                if (!HasComponent(StateComponentsLookup.EffectFactoryUnit)) throw new System.Exception("Entity does not have component 'EffectFactoryUnit'. You can check safely with 'HasEffectFactoryUnit()'");
+                return ((Components.State.EffectFactoryUnit)GetComponent(StateComponentsLookup.EffectFactoryUnit)).value;
+            } 
+            set {
+                ((Components.State.EffectFactoryUnit)GetComponent(StateComponentsLookup.EffectFactoryUnit)).value = value;
+            }
+        }
+
+        public Scripts.EffectFactoryUnit effectFactoryUnit { 
+            get {
+                if (!HasComponent(StateComponentsLookup.EffectFactoryUnit)) throw new System.Exception("Entity does not have component 'EffectFactoryUnit'. You can check safely with 'HasEffectFactoryUnit()'");
+                return ((Components.State.EffectFactoryUnit)GetComponent(StateComponentsLookup.EffectFactoryUnit)).value;
+            } 
+            set {
+                var component = CreateComponent<Components.State.EffectFactoryUnit>(StateComponentsLookup.EffectFactoryUnit);
+                component.value = value;
+                ReplaceComponent(StateComponentsLookup.EffectFactoryUnit, component);
+            }
+        }
+
+        public bool HasEffectFactoryUnit() {
+            return HasComponent(StateComponentsLookup.EffectFactoryUnit);
+        }
+
+        public void RemoveEffectFactoryUnit() {
+            if (HasComponent(StateComponentsLookup.EffectFactoryUnit)) { RemoveComponent(StateComponentsLookup.EffectFactoryUnit); }
+        }
+
+        public void PingEffectFactoryUnit() {
+            var component = GetComponent(StateComponentsLookup.EffectFactoryUnit);
+            if (component != null) ReplaceComponent(StateComponentsLookup.EffectFactoryUnit, component);
+            else if (component == null) ReplaceComponent(StateComponentsLookup.EffectFactoryUnit, null);
+        }
+
+        // ConfigId
+        public string _configId { 
+            get {
+                if (!HasComponent(StateComponentsLookup.ConfigId)) throw new System.Exception("Entity does not have component 'ConfigId'. You can check safely with 'HasConfigId()'");
+                return ((Components.State.ConfigId)GetComponent(StateComponentsLookup.ConfigId)).value;
+            } 
+            set {
+                ((Components.State.ConfigId)GetComponent(StateComponentsLookup.ConfigId)).value = value;
+            }
+        }
+
+        public string configId { 
+            get {
+                if (!HasComponent(StateComponentsLookup.ConfigId)) throw new System.Exception("Entity does not have component 'ConfigId'. You can check safely with 'HasConfigId()'");
+                return ((Components.State.ConfigId)GetComponent(StateComponentsLookup.ConfigId)).value;
+            } 
+            set {
+                var component = CreateComponent<Components.State.ConfigId>(StateComponentsLookup.ConfigId);
+                component.value = value;
+                ReplaceComponent(StateComponentsLookup.ConfigId, component);
+            }
+        }
+
+        public bool HasConfigId() {
+            return HasComponent(StateComponentsLookup.ConfigId);
+        }
+
+        public void RemoveConfigId() {
+            if (HasComponent(StateComponentsLookup.ConfigId)) { RemoveComponent(StateComponentsLookup.ConfigId); }
+        }
+
+        public void PingConfigId() {
+            var component = GetComponent(StateComponentsLookup.ConfigId);
+            if (component != null) ReplaceComponent(StateComponentsLookup.ConfigId, component);
+            else if (component == null) ReplaceComponent(StateComponentsLookup.ConfigId, null);
+        }
+
+        // PositionWorld
+        public UnityEngine.Vector2 _positionWorld { 
+            get {
+                if (!HasComponent(StateComponentsLookup.PositionWorld)) throw new System.Exception("Entity does not have component 'PositionWorld'. You can check safely with 'HasPositionWorld()'");
+                return ((Components.State.PositionWorld)GetComponent(StateComponentsLookup.PositionWorld)).value;
+            } 
+            set {
+                ((Components.State.PositionWorld)GetComponent(StateComponentsLookup.PositionWorld)).value = value;
+            }
+        }
+
+        public UnityEngine.Vector2 positionWorld { 
+            get {
+                if (!HasComponent(StateComponentsLookup.PositionWorld)) throw new System.Exception("Entity does not have component 'PositionWorld'. You can check safely with 'HasPositionWorld()'");
+                return ((Components.State.PositionWorld)GetComponent(StateComponentsLookup.PositionWorld)).value;
+            } 
+            set {
+                var component = CreateComponent<Components.State.PositionWorld>(StateComponentsLookup.PositionWorld);
+                component.value = value;
+                ReplaceComponent(StateComponentsLookup.PositionWorld, component);
+            }
+        }
+
+        public bool HasPositionWorld() {
+            return HasComponent(StateComponentsLookup.PositionWorld);
+        }
+
+        public void RemovePositionWorld() {
+            if (HasComponent(StateComponentsLookup.PositionWorld)) { RemoveComponent(StateComponentsLookup.PositionWorld); }
+        }
+
+        public void PingPositionWorld() {
+            var component = GetComponent(StateComponentsLookup.PositionWorld);
+            if (component != null) ReplaceComponent(StateComponentsLookup.PositionWorld, component);
+            else if (component == null) ReplaceComponent(StateComponentsLookup.PositionWorld, null);
         }
     }
 

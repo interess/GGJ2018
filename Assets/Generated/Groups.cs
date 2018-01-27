@@ -487,6 +487,18 @@ namespace DZ.Game {
 		public StateEntity[] channelEntities { 
 			get { return channelGroup.GetEntities(); } }
 		
+		// ConfigId Group
+		private IGroup<StateEntity> _configIdGroup;
+		public IGroup<StateEntity> configIdGroup {
+			get { 
+				if (_configIdGroup == null) {
+					_configIdGroup = GetGroup(StateMatcher.ConfigId);
+				}
+				return _configIdGroup; } }
+
+		public StateEntity[] configIdEntities { 
+			get { return configIdGroup.GetEntities(); } }
+		
 	}
 
 

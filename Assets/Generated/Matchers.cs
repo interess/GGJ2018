@@ -333,6 +333,34 @@ namespace DZ.Game {
             }
         }
 
+        static IMatcher<StateEntity> _matcherFactoryUnit;
+
+        public static IMatcher<StateEntity> FactoryUnit {
+            get {
+                if(_matcherFactoryUnit == null) {
+                    var matcher = (Matcher<StateEntity>)Matcher<StateEntity>.AllOf(StateComponentsLookup.FactoryUnit);
+                    matcher.componentNames = StateComponentsLookup.componentNames;
+                    _matcherFactoryUnit = matcher;
+                }
+
+                return _matcherFactoryUnit;
+            }
+        }
+
+        static IMatcher<StateEntity> _matcherFactoryId;
+
+        public static IMatcher<StateEntity> FactoryId {
+            get {
+                if(_matcherFactoryId == null) {
+                    var matcher = (Matcher<StateEntity>)Matcher<StateEntity>.AllOf(StateComponentsLookup.FactoryId);
+                    matcher.componentNames = StateComponentsLookup.componentNames;
+                    _matcherFactoryId = matcher;
+                }
+
+                return _matcherFactoryId;
+            }
+        }
+
         static IMatcher<StateEntity> _matcherStageManagerUnit;
 
         public static IMatcher<StateEntity> StageManagerUnit {
@@ -610,6 +638,76 @@ namespace DZ.Game {
                 }
 
                 return _matcherWorldTimeSpeed;
+            }
+        }
+
+        static IMatcher<StateEntity> _matcherEffect;
+
+        public static IMatcher<StateEntity> Effect {
+            get {
+                if(_matcherEffect == null) {
+                    var matcher = (Matcher<StateEntity>)Matcher<StateEntity>.AllOf(StateComponentsLookup.Effect);
+                    matcher.componentNames = StateComponentsLookup.componentNames;
+                    _matcherEffect = matcher;
+                }
+
+                return _matcherEffect;
+            }
+        }
+
+        static IMatcher<StateEntity> _matcherEffectId;
+
+        public static IMatcher<StateEntity> EffectId {
+            get {
+                if(_matcherEffectId == null) {
+                    var matcher = (Matcher<StateEntity>)Matcher<StateEntity>.AllOf(StateComponentsLookup.EffectId);
+                    matcher.componentNames = StateComponentsLookup.componentNames;
+                    _matcherEffectId = matcher;
+                }
+
+                return _matcherEffectId;
+            }
+        }
+
+        static IMatcher<StateEntity> _matcherEffectFactoryUnit;
+
+        public static IMatcher<StateEntity> EffectFactoryUnit {
+            get {
+                if(_matcherEffectFactoryUnit == null) {
+                    var matcher = (Matcher<StateEntity>)Matcher<StateEntity>.AllOf(StateComponentsLookup.EffectFactoryUnit);
+                    matcher.componentNames = StateComponentsLookup.componentNames;
+                    _matcherEffectFactoryUnit = matcher;
+                }
+
+                return _matcherEffectFactoryUnit;
+            }
+        }
+
+        static IMatcher<StateEntity> _matcherConfigId;
+
+        public static IMatcher<StateEntity> ConfigId {
+            get {
+                if(_matcherConfigId == null) {
+                    var matcher = (Matcher<StateEntity>)Matcher<StateEntity>.AllOf(StateComponentsLookup.ConfigId);
+                    matcher.componentNames = StateComponentsLookup.componentNames;
+                    _matcherConfigId = matcher;
+                }
+
+                return _matcherConfigId;
+            }
+        }
+
+        static IMatcher<StateEntity> _matcherPositionWorld;
+
+        public static IMatcher<StateEntity> PositionWorld {
+            get {
+                if(_matcherPositionWorld == null) {
+                    var matcher = (Matcher<StateEntity>)Matcher<StateEntity>.AllOf(StateComponentsLookup.PositionWorld);
+                    matcher.componentNames = StateComponentsLookup.componentNames;
+                    _matcherPositionWorld = matcher;
+                }
+
+                return _matcherPositionWorld;
             }
         }
 

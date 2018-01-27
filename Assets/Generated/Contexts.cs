@@ -309,17 +309,23 @@ namespace DZ.Game {
 
             ) 
         {
+            factoryIdIndex = new DZ.Game.Indexes.State.FactoryIdIndex(this);
             levelIndexIndex = new DZ.Game.Indexes.State.LevelIndexIndex(this);
             uidIndex = new DZ.Game.Indexes.State.UidIndex(this);
             channelIndex = new DZ.Game.Indexes.State.ChannelIndex(this);
+            configIdIndex = new DZ.Game.Indexes.State.ConfigIdIndex(this);
         }
 
+        /// Value: FactoryId  
+        public DZ.Game.Indexes.State.IFactoryIdIndex factoryIdIndex;
         /// Value: LevelIndex  
         public DZ.Game.Indexes.State.ILevelIndexIndex levelIndexIndex;
         /// Value: Uid  
         public DZ.Game.Indexes.State.IUidIndex uidIndex;
         /// Value: Channel  
         public DZ.Game.Indexes.State.IChannelIndex channelIndex;
+        /// Value: ConfigId  
+        public DZ.Game.Indexes.State.IConfigIdIndex configIdIndex;
 
     }
 
@@ -329,28 +335,35 @@ namespace DZ.Game {
         public const int FlagLoaded = 2;
         public const int FlagActive = 3;
         public const int TrashTimer = 4;
-        public const int StageManagerUnit = 5;
-        public const int LevelPart = 6;
-        public const int Level = 7;
-        public const int LevelIndex = 8;
-        public const int Uid = 9;
-        public const int UidUnit = 10;
-        public const int ProductUnit = 11;
-        public const int View = 12;
-        public const int AudioManagerUnit = 13;
-        public const int AudioEffectManagerUnit = 14;
-        public const int AudioEffectUnit = 15;
-        public const int AudioEffectProductUnit = 16;
-        public const int MusicManagerUnit = 17;
-        public const int SubsManagerUnit = 18;
-        public const int Channel = 19;
-        public const int ChannelInfoUnit = 20;
-        public const int ChannelRecording = 21;
-        public const int PhoneManagerUnit = 22;
-        public const int WorldTime = 23;
-        public const int WorldTimeSpeed = 24;
+        public const int FactoryUnit = 5;
+        public const int FactoryId = 6;
+        public const int StageManagerUnit = 7;
+        public const int LevelPart = 8;
+        public const int Level = 9;
+        public const int LevelIndex = 10;
+        public const int Uid = 11;
+        public const int UidUnit = 12;
+        public const int ProductUnit = 13;
+        public const int View = 14;
+        public const int AudioManagerUnit = 15;
+        public const int AudioEffectManagerUnit = 16;
+        public const int AudioEffectUnit = 17;
+        public const int AudioEffectProductUnit = 18;
+        public const int MusicManagerUnit = 19;
+        public const int SubsManagerUnit = 20;
+        public const int Channel = 21;
+        public const int ChannelInfoUnit = 22;
+        public const int ChannelRecording = 23;
+        public const int PhoneManagerUnit = 24;
+        public const int WorldTime = 25;
+        public const int WorldTimeSpeed = 26;
+        public const int Effect = 27;
+        public const int EffectId = 28;
+        public const int EffectFactoryUnit = 29;
+        public const int ConfigId = 30;
+        public const int PositionWorld = 31;
 
-        public const int TotalComponents = 25;
+        public const int TotalComponents = 32;
 
         public static readonly Dictionary<string, int> componentsDict = new Dictionary<string, int> () {
             {"FlagTrash", 0 },
@@ -358,26 +371,33 @@ namespace DZ.Game {
             {"FlagLoaded", 2 },
             {"FlagActive", 3 },
             {"TrashTimer", 4 },
-            {"StageManagerUnit", 5 },
-            {"LevelPart", 6 },
-            {"Level", 7 },
-            {"LevelIndex", 8 },
-            {"Uid", 9 },
-            {"UidUnit", 10 },
-            {"ProductUnit", 11 },
-            {"View", 12 },
-            {"AudioManagerUnit", 13 },
-            {"AudioEffectManagerUnit", 14 },
-            {"AudioEffectUnit", 15 },
-            {"AudioEffectProductUnit", 16 },
-            {"MusicManagerUnit", 17 },
-            {"SubsManagerUnit", 18 },
-            {"Channel", 19 },
-            {"ChannelInfoUnit", 20 },
-            {"ChannelRecording", 21 },
-            {"PhoneManagerUnit", 22 },
-            {"WorldTime", 23 },
-            {"WorldTimeSpeed", 24 }
+            {"FactoryUnit", 5 },
+            {"FactoryId", 6 },
+            {"StageManagerUnit", 7 },
+            {"LevelPart", 8 },
+            {"Level", 9 },
+            {"LevelIndex", 10 },
+            {"Uid", 11 },
+            {"UidUnit", 12 },
+            {"ProductUnit", 13 },
+            {"View", 14 },
+            {"AudioManagerUnit", 15 },
+            {"AudioEffectManagerUnit", 16 },
+            {"AudioEffectUnit", 17 },
+            {"AudioEffectProductUnit", 18 },
+            {"MusicManagerUnit", 19 },
+            {"SubsManagerUnit", 20 },
+            {"Channel", 21 },
+            {"ChannelInfoUnit", 22 },
+            {"ChannelRecording", 23 },
+            {"PhoneManagerUnit", 24 },
+            {"WorldTime", 25 },
+            {"WorldTimeSpeed", 26 },
+            {"Effect", 27 },
+            {"EffectId", 28 },
+            {"EffectFactoryUnit", 29 },
+            {"ConfigId", 30 },
+            {"PositionWorld", 31 }
         };
 
         public static readonly string[] componentNames = {
@@ -386,6 +406,8 @@ namespace DZ.Game {
             "FlagLoaded",
             "FlagActive",
             "TrashTimer",
+            "FactoryUnit",
+            "FactoryId",
             "StageManagerUnit",
             "LevelPart",
             "Level",
@@ -405,7 +427,12 @@ namespace DZ.Game {
             "ChannelRecording",
             "PhoneManagerUnit",
             "WorldTime",
-            "WorldTimeSpeed"
+            "WorldTimeSpeed",
+            "Effect",
+            "EffectId",
+            "EffectFactoryUnit",
+            "ConfigId",
+            "PositionWorld"
         };
 
         public static readonly System.Type[] componentTypes = {
@@ -414,6 +441,8 @@ namespace DZ.Game {
             typeof(Components.State.FlagLoaded),
             typeof(Components.State.FlagActive),
             typeof(Components.State.TrashTimer),
+            typeof(Components.State.FactoryUnit),
+            typeof(Components.State.FactoryId),
             typeof(Components.State.StageManagerUnit),
             typeof(Components.State.LevelPart),
             typeof(Components.State.Level),
@@ -433,7 +462,12 @@ namespace DZ.Game {
             typeof(Components.State.ChannelRecording),
             typeof(Components.State.PhoneManagerUnit),
             typeof(Components.State.WorldTime),
-            typeof(Components.State.WorldTimeSpeed)
+            typeof(Components.State.WorldTimeSpeed),
+            typeof(Components.State.Effect),
+            typeof(Components.State.EffectId),
+            typeof(Components.State.EffectFactoryUnit),
+            typeof(Components.State.ConfigId),
+            typeof(Components.State.PositionWorld)
         };
 
         public static int GetComponentIndex(string name) {

@@ -43,8 +43,11 @@ namespace DZ.Game.Components {
         public partial class Level: Entitas.IComponent { }
         public partial class View: Entitas.IComponent { }
         public partial class ChannelRecording: Entitas.IComponent { }
+        public partial class Effect: Entitas.IComponent { }
         // Value Components
         public partial class TrashTimer: Entitas.IComponent { public float value; }
+        public partial class FactoryUnit: Entitas.IComponent { public FS.PrefabFactory.Scripts.FactoryUnit value; }
+        public partial class FactoryId: Entitas.IComponent { public string value; }
         public partial class StageManagerUnit: Entitas.IComponent { public Scripts.StageManagerUnit value; }
         public partial class LevelIndex: Entitas.IComponent { public int value; }
         public partial class Uid: Entitas.IComponent { public int value; }
@@ -61,5 +64,9 @@ namespace DZ.Game.Components {
         public partial class PhoneManagerUnit: Entitas.IComponent { public Scripts.PhoneManagerUnit value; }
         public partial class WorldTime: Entitas.IComponent { public float value; }
         public partial class WorldTimeSpeed: Entitas.IComponent { public float value; }
+        public partial class EffectId: Entitas.IComponent { public string value; }
+        public partial class EffectFactoryUnit: Entitas.IComponent { public Scripts.EffectFactoryUnit value; }
+        public partial class ConfigId: Entitas.IComponent { public string value; }
+        public partial class PositionWorld: Entitas.IComponent { public UnityEngine.Vector2 value; }
     }
 }

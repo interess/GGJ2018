@@ -162,6 +162,7 @@ namespace DZ.Game.Systems.Level
                     if (state.HasChannelActive())
                     {
                         Contexts.state.phoneManagerUnit.Stop();
+                        state.CreateEffectEntity("ChannelSwitchEffect");
 
                         var activeIndex = state.channelActiveEntity.channel;
                         state.channelActiveEntity.flagActive = false;
