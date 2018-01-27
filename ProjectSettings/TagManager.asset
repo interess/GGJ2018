@@ -14,10 +14,10 @@ TagManager:
   - 
   - 
   - Loading
-  - 
-  - 
-  - 
-  - 
+  - Furniture
+  - Walls
+  - Character
+  - Shelf
   - 
   - 
   - 
@@ -40,4 +40,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: HUD
+    uniqueID: 3171822963
     locked: 0

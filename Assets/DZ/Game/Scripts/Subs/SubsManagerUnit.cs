@@ -134,8 +134,8 @@ namespace DZ.Game.Scripts
 					wordUnit.dialogOwnerIndex = dayIndex * 10000 + i * 100 + dialogOwnerIndex;
 					wordUnit.SetColor(dialogOwnerColors[dialogOwnerIndex]);
 					wordUnit.SetText(currentWord);
-					wordUnit.transform.SetParent(channelRectTransforms[channelIndex - 1], false);
 					wordUnit.rectTransform.anchoredPosition = new Vector2(1920, 0);
+					wordUnit.transform.SetParent(channelRectTransforms[channelIndex - 1], false);
 					__wordUnitsLookup.Add(wordUnit);
 					currentWordList.Add(wordUnit);
 				}
