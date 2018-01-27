@@ -336,6 +336,53 @@ RectTransform:
   m_PrefabParentObject: {fileID: 224803660267768130, guid: cae9ecff05bcfe448b46802c4b375616,
     type: 2}
   m_PrefabInternal: {fileID: 178684788}
+--- !u!1 &218230943
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 218230944}
+  - component: {fileID: 218230945}
+  m_Layer: 0
+  m_Name: Music
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &218230944
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 218230943}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 970154892}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &218230945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 218230943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21abb95355e81fb45bf2f872b825564f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalAudioClips:
+  - {fileID: 8300000, guid: 2fcbbca5f14a8b24b8b4dc82154a07cd, type: 3}
+  intenseAudioClips:
+  - {fileID: 8300000, guid: c947624c00df090448114dbdb653eb76, type: 3}
+  menuAudioClips:
+  - {fileID: 8300000, guid: 4be74255b37b81c479ab1afd984c34dd, type: 3}
+  transitionDuration: 1
 --- !u!1001 &395571089
 Prefab:
   m_ObjectHideFlags: 0
@@ -941,6 +988,7 @@ Transform:
   - {fileID: 869585483}
   - {fileID: 1571239109}
   - {fileID: 781192617}
+  - {fileID: 218230944}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1301,7 +1349,7 @@ GameObject:
   - component: {fileID: 1571239109}
   - component: {fileID: 1571239110}
   m_Layer: 0
-  m_Name: SubsManager
+  m_Name: Subs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

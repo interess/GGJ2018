@@ -341,14 +341,15 @@ namespace DZ.Game {
         public const int AudioEffectManagerUnit = 14;
         public const int AudioEffectUnit = 15;
         public const int AudioEffectProductUnit = 16;
-        public const int SubsManagerUnit = 17;
-        public const int Channel = 18;
-        public const int ChannelInfoUnit = 19;
-        public const int ChannelRecording = 20;
-        public const int WorldTime = 21;
-        public const int WorldTimeSpeed = 22;
+        public const int MusicManagerUnit = 17;
+        public const int SubsManagerUnit = 18;
+        public const int Channel = 19;
+        public const int ChannelInfoUnit = 20;
+        public const int ChannelRecording = 21;
+        public const int WorldTime = 22;
+        public const int WorldTimeSpeed = 23;
 
-        public const int TotalComponents = 23;
+        public const int TotalComponents = 24;
 
         public static readonly Dictionary<string, int> componentsDict = new Dictionary<string, int> () {
             {"FlagTrash", 0 },
@@ -368,12 +369,13 @@ namespace DZ.Game {
             {"AudioEffectManagerUnit", 14 },
             {"AudioEffectUnit", 15 },
             {"AudioEffectProductUnit", 16 },
-            {"SubsManagerUnit", 17 },
-            {"Channel", 18 },
-            {"ChannelInfoUnit", 19 },
-            {"ChannelRecording", 20 },
-            {"WorldTime", 21 },
-            {"WorldTimeSpeed", 22 }
+            {"MusicManagerUnit", 17 },
+            {"SubsManagerUnit", 18 },
+            {"Channel", 19 },
+            {"ChannelInfoUnit", 20 },
+            {"ChannelRecording", 21 },
+            {"WorldTime", 22 },
+            {"WorldTimeSpeed", 23 }
         };
 
         public static readonly string[] componentNames = {
@@ -394,6 +396,7 @@ namespace DZ.Game {
             "AudioEffectManagerUnit",
             "AudioEffectUnit",
             "AudioEffectProductUnit",
+            "MusicManagerUnit",
             "SubsManagerUnit",
             "Channel",
             "ChannelInfoUnit",
@@ -420,6 +423,7 @@ namespace DZ.Game {
             typeof(Components.State.AudioEffectManagerUnit),
             typeof(Components.State.AudioEffectUnit),
             typeof(Components.State.AudioEffectProductUnit),
+            typeof(Components.State.MusicManagerUnit),
             typeof(Components.State.SubsManagerUnit),
             typeof(Components.State.Channel),
             typeof(Components.State.ChannelInfoUnit),

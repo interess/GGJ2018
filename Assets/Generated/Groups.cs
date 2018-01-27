@@ -267,6 +267,39 @@ namespace DZ.Game {
 		}
 		public bool HasAudioEffectManagerUnit() {	return audioEffectManagerUnitGroup.count == 1;	}
 
+		// MusicManagerUnit Group
+		private IGroup<StateEntity> _musicManagerUnitGroup;
+		public IGroup<StateEntity> musicManagerUnitGroup {
+			get { 
+				if (_musicManagerUnitGroup == null) {
+					_musicManagerUnitGroup = GetGroup(StateMatcher.MusicManagerUnit);
+				}
+				return _musicManagerUnitGroup; } }
+
+		public StateEntity musicManagerUnitEntity {
+			get {
+				var cachedGroup = musicManagerUnitGroup;
+				if (cachedGroup.count > 1) {
+					return null;
+				}
+				if (cachedGroup.count == 0) {
+					return null;
+				}
+				return cachedGroup.GetSingleEntity(); } }
+
+		public Scripts.MusicManagerUnit musicManagerUnit { 
+			get {
+				if (musicManagerUnitEntity == null) throw new System.Exception("StateContext has 0 or more than 1 entity with component 'MusicManagerUnit'. You can check safely with 'HasMusicManagerUnit()'");
+				return musicManagerUnitEntity.musicManagerUnit;
+			}	
+			set { 
+				if (musicManagerUnitGroup.count > 1) throw new System.Exception("StateContext has more than 1 entity with component 'MusicManagerUnit'. You can check safely with 'HasMusicManagerUnit()'");
+				else if (musicManagerUnitGroup.count == 0) this.CreateEntity().musicManagerUnit = value;
+				else musicManagerUnitEntity.musicManagerUnit = value;
+			}
+		}
+		public bool HasMusicManagerUnit() {	return musicManagerUnitGroup.count == 1;	}
+
 		// SubsManagerUnit Group
 		private IGroup<StateEntity> _subsManagerUnitGroup;
 		public IGroup<StateEntity> subsManagerUnitGroup {

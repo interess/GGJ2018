@@ -501,6 +501,20 @@ namespace DZ.Game {
             }
         }
 
+        static IMatcher<StateEntity> _matcherMusicManagerUnit;
+
+        public static IMatcher<StateEntity> MusicManagerUnit {
+            get {
+                if(_matcherMusicManagerUnit == null) {
+                    var matcher = (Matcher<StateEntity>)Matcher<StateEntity>.AllOf(StateComponentsLookup.MusicManagerUnit);
+                    matcher.componentNames = StateComponentsLookup.componentNames;
+                    _matcherMusicManagerUnit = matcher;
+                }
+
+                return _matcherMusicManagerUnit;
+            }
+        }
+
         static IMatcher<StateEntity> _matcherSubsManagerUnit;
 
         public static IMatcher<StateEntity> SubsManagerUnit {

@@ -10,6 +10,7 @@ namespace DZ.Game.Systems.Audio
         public Chain() : base("DZ.Game.Audio")
         {
             Add(new InitializeAudioManagerUnit());
+            Add(new InitializeMusicManagerUnit());
             Add(new InitializeAudioEffectManagerUnit());
         }
     }
@@ -27,6 +28,27 @@ namespace DZ.Game.Systems.Audio
 
             var entity = state.CreateEntity();
             entity.audioManagerUnit = managerUnit;
+
+            if (Env.linkEntitiesToGameObjects) { managerUnit.gameObject.LinkSafe(entity, state); }
+        }
+    }
+
+    public class InitializeMusicManagerUnit : InitializeSystem
+    {
+        protected override void Act()
+        {
+            var managerUnit = GameObject.FindObjectOfType<Scripts.MusicManagerUnit>();
+
+            if (managerUnit == null)
+            {
+                throw new FS.Exceptions.ObjectOfTypeNotFoundException(typeof(Scripts.MusicManagerUnit));
+            }
+
+            managerUnit.Initialize();
+            managerUnit.PlayNormal();
+
+            var entity = state.CreateEntity();
+            entity.musicManagerUnit = managerUnit;
 
             if (Env.linkEntitiesToGameObjects) { managerUnit.gameObject.LinkSafe(entity, state); }
         }

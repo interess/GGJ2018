@@ -66,6 +66,9 @@ namespace DZ.Game.Declaration
             var AudioEffectUnit = Component<Scripts.AudioEffectUnit>();
             var AudioEffectProductUnit = Component<Scripts.AudioEffectProductUnit>();
 
+            // Music
+            var MusicManagerUnit = Component<Scripts.MusicManagerUnit>().GroupSingle;
+
             // Subs
             var SubsManagerUnit = Component<Scripts.SubsManagerUnit>().GroupSingle;
 

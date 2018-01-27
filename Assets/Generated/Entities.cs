@@ -1150,6 +1150,43 @@ namespace DZ.Game {
             else if (component == null) ReplaceComponent(StateComponentsLookup.AudioEffectProductUnit, null);
         }
 
+        // MusicManagerUnit
+        public Scripts.MusicManagerUnit _musicManagerUnit { 
+            get {
+                if (!HasComponent(StateComponentsLookup.MusicManagerUnit)) throw new System.Exception("Entity does not have component 'MusicManagerUnit'. You can check safely with 'HasMusicManagerUnit()'");
+                return ((Components.State.MusicManagerUnit)GetComponent(StateComponentsLookup.MusicManagerUnit)).value;
+            } 
+            set {
+                ((Components.State.MusicManagerUnit)GetComponent(StateComponentsLookup.MusicManagerUnit)).value = value;
+            }
+        }
+
+        public Scripts.MusicManagerUnit musicManagerUnit { 
+            get {
+                if (!HasComponent(StateComponentsLookup.MusicManagerUnit)) throw new System.Exception("Entity does not have component 'MusicManagerUnit'. You can check safely with 'HasMusicManagerUnit()'");
+                return ((Components.State.MusicManagerUnit)GetComponent(StateComponentsLookup.MusicManagerUnit)).value;
+            } 
+            set {
+                var component = CreateComponent<Components.State.MusicManagerUnit>(StateComponentsLookup.MusicManagerUnit);
+                component.value = value;
+                ReplaceComponent(StateComponentsLookup.MusicManagerUnit, component);
+            }
+        }
+
+        public bool HasMusicManagerUnit() {
+            return HasComponent(StateComponentsLookup.MusicManagerUnit);
+        }
+
+        public void RemoveMusicManagerUnit() {
+            if (HasComponent(StateComponentsLookup.MusicManagerUnit)) { RemoveComponent(StateComponentsLookup.MusicManagerUnit); }
+        }
+
+        public void PingMusicManagerUnit() {
+            var component = GetComponent(StateComponentsLookup.MusicManagerUnit);
+            if (component != null) ReplaceComponent(StateComponentsLookup.MusicManagerUnit, component);
+            else if (component == null) ReplaceComponent(StateComponentsLookup.MusicManagerUnit, null);
+        }
+
         // SubsManagerUnit
         public Scripts.SubsManagerUnit _subsManagerUnit { 
             get {

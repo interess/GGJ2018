@@ -54,6 +54,7 @@ namespace DZ.Game.Components {
         public partial class AudioEffectManagerUnit: Entitas.IComponent { public Scripts.AudioEffectManagerUnit value; }
         public partial class AudioEffectUnit: Entitas.IComponent { public Scripts.AudioEffectUnit value; }
         public partial class AudioEffectProductUnit: Entitas.IComponent { public Scripts.AudioEffectProductUnit value; }
+        public partial class MusicManagerUnit: Entitas.IComponent { public Scripts.MusicManagerUnit value; }
         public partial class SubsManagerUnit: Entitas.IComponent { public Scripts.SubsManagerUnit value; }
         public partial class Channel: Entitas.IComponent { public int value; }
         public partial class ChannelInfoUnit: Entitas.IComponent { public Scripts.ChannelInfoUnit value; }
