@@ -19,6 +19,8 @@ namespace DZ.Game.Systems.Level
             Add(new SetActiveChannelOnManagerUnit());
             Add(new MoveSubsOnActiveLevel());
 
+            Add(new UpdatePhoneChannelUnitOnChannel());
+
             Add(new StartSubsRecordingOnEvent());
             Add(new StopSubsRecordingOnEvent());
             Add(new SetRecordingStateOnSubsManager());
@@ -161,7 +163,6 @@ namespace DZ.Game.Systems.Level
                 {
                     if (state.HasChannelActive())
                     {
-                        Contexts.state.phoneManagerUnit.Stop();
                         state.CreateEffectEntity("ChannelSwitchEffect");
 
                         var activeIndex = state.channelActiveEntity.channel;
@@ -204,6 +205,23 @@ namespace DZ.Game.Systems.Level
                             Debug.LogError("No default channel found. This is unexpected and will cause errors");
                         }
                     }
+                }
+            }
+        }
+
+        public class UpdatePhoneChannelUnitOnChannel : StateReactiveSystem
+        {
+            protected override void SetTriggers()
+            {
+                Trigger(StateMatcher.AllOf(StateMatcher.Channel, StateMatcher.PhoneChannelUnit, StateMatcher.FlagActive).Added());
+                Trigger(StateMatcher.AllOf(StateMatcher.Channel, StateMatcher.PhoneChannelUnit).NoneOf(StateMatcher.FlagActive).Added());
+            }
+
+            protected override void Act(List<StateEntity> entities)
+            {
+                foreach (var entity in entities)
+                {
+                    entity.phoneChannelUnit.SetActive(entity.flagActive);
                 }
             }
         }
@@ -281,6 +299,7 @@ namespace DZ.Game.Systems.Level
                             var wordUnit = item.gameObject.GetComponent<Scripts.SubsWordUnit>();
                             if (wordUnit != null)
                             {
+                                if (wordUnit.channelIndex != state.channelActiveEntity.channel) { continue; }
                                 if (!wordUnit.isEmpty)
                                 {
                                     // Debug.Log(wordUnit.text.text); 
@@ -299,49 +318,46 @@ namespace DZ.Game.Systems.Level
             private int __prevDialogIndex;
             protected override void Act()
             {
-                if (state.HasChannelActive())
+                var anchor = state.phoneManagerUnit.phoneTriggerAnchor;
+                var gameCamera = state.stageManagerUnit.gameCameraUnit.camera;
+
+                var anchorPositionScreen = gameCamera.WorldToScreenPoint(anchor.position);
+                UnityEngine.EventSystems.PointerEventData pointerData = new UnityEngine.EventSystems.PointerEventData(UnityEngine.EventSystems.EventSystem.current);
+                pointerData.position = anchorPositionScreen;
+                var results = new List<UnityEngine.EventSystems.RaycastResult>();
+                UnityEngine.EventSystems.EventSystem.current.RaycastAll(pointerData, results);
+
+                foreach (var item in results)
                 {
-                    var anchor = state.phoneManagerUnit.phoneTriggerAnchor;
-                    var gameCamera = state.stageManagerUnit.gameCameraUnit.camera;
-
-                    var anchorPositionScreen = gameCamera.WorldToScreenPoint(anchor.position);
-                    UnityEngine.EventSystems.PointerEventData pointerData = new UnityEngine.EventSystems.PointerEventData(UnityEngine.EventSystems.EventSystem.current);
-                    pointerData.position = anchorPositionScreen;
-                    var results = new List<UnityEngine.EventSystems.RaycastResult>();
-                    UnityEngine.EventSystems.EventSystem.current.RaycastAll(pointerData, results);
-
-                    foreach (var item in results)
+                    var wordUnit = item.gameObject.GetComponent<Scripts.SubsWordUnit>();
+                    if (wordUnit != null)
                     {
-                        var wordUnit = item.gameObject.GetComponent<Scripts.SubsWordUnit>();
-                        if (wordUnit != null)
-                        {
-                            if (!wordUnit.isEmpty)
-                            {
-                                if (wordUnit.isMale)
-                                {
-                                    Contexts.state.phoneManagerUnit.PlayMan(__prevDialogIndex == wordUnit.dialogOwnerIndex);
-                                }
-                                else
-                                {
-                                    Contexts.state.phoneManagerUnit.PlayWoman(__prevDialogIndex == wordUnit.dialogOwnerIndex);
-                                }
+                        var channelEntity = state.channelIndex.FindSingle(wordUnit.channelIndex);
+                        if (channelEntity == null) { continue; }
 
-                                __prevDialogIndex = wordUnit.dialogOwnerIndex;
+                        if (!wordUnit.isEmpty)
+                        {
+                            if (wordUnit.isMale)
+                            {
+                                channelEntity.phoneChannelUnit.PlayMan(__prevDialogIndex == wordUnit.dialogOwnerIndex);
                             }
                             else
                             {
-                                Contexts.state.phoneManagerUnit.Stop();
+                                channelEntity.phoneChannelUnit.PlayWoman(__prevDialogIndex == wordUnit.dialogOwnerIndex);
                             }
+
+                            __prevDialogIndex = wordUnit.dialogOwnerIndex;
                         }
                         else
                         {
-                            Contexts.state.phoneManagerUnit.Stop();
+                            channelEntity.phoneChannelUnit.Stop();
                         }
                     }
-                }
-                else
-                {
-                    Contexts.state.phoneManagerUnit.Stop();
+                    else
+                    {
+                        // TODO: Stop all channels?
+                        // channelEntity.phoneChannelUnit.Stop();
+                    }
                 }
             }
         }

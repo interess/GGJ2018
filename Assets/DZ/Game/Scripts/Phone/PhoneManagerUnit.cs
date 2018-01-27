@@ -1,31 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using Freaking.Extensions.GameObject;
 using UnityEngine;
 
 namespace DZ.Game.Scripts
 {
     public class PhoneManagerUnit : MonoBehaviour
     {
-        public AudioClip[] maleAudioClips;
-        public AudioClip[] femaleAudioClips;
-
         public RectTransform phoneTriggerAnchor;
+        public GameObject phoneChannelPrefab;
 
-        private AudioSource __audioSource;
-        private bool __currentIsMale;
-        private bool __isPlaying;
+        private FS.PrefabFactory.Scripts.FactoryUnit __factoryUnit;
 
         public void Initialize()
         {
-            if (maleAudioClips.Length < 1)
+            if (phoneChannelPrefab == null)
             {
-                Debug.LogError("PhoneManagerUnit | MaleAudioClips is less than 2. This may cayse errors");
-            }
-
-            if (femaleAudioClips.Length < 1)
-            {
-                Debug.LogError("PhoneManagerUnit | FemaleAudioClips is less than 2. This may cayse errors");
+                Debug.LogErrorFormat("Prefab is not set on {0}", gameObject.GetPath());
             }
 
             if (phoneTriggerAnchor == null)
@@ -33,54 +25,13 @@ namespace DZ.Game.Scripts
                 Debug.LogError("PhoneManagerUnit | PhoneTriggerAnchor is null. This will cause errors");
             }
 
-            __audioSource = gameObject.AddComponent<AudioSource>();
-            __audioSource.playOnAwake = false;
-            __audioSource.loop = true;
-            __audioSource.outputAudioMixerGroup = Contexts.state.audioManagerUnit.audioMixerRadioGroup;
+            __factoryUnit = gameObject.AddComponent<FS.PrefabFactory.Scripts.FactoryUnit>();
+            __factoryUnit.Initialize(phoneChannelPrefab, 5);
         }
 
-        public void Stop()
+        public FS.PrefabFactory.Scripts.ProductUnit Spawn()
         {
-            __audioSource.Stop();
-            __isPlaying = false;
-        }
-
-        public void PlayMan(bool allowContinue = true)
-        {
-            if (__isPlaying) { return; }
-            if (__currentIsMale && allowContinue && __audioSource.clip != null)
-            {
-                __audioSource.Play();
-            }
-            else
-            {
-                var randomNumber = Random.Range(0, maleAudioClips.Length);
-                __audioSource.clip = maleAudioClips[randomNumber];
-                __audioSource.time = Random.Range(0, 20f);
-                __audioSource.Play();
-            }
-
-            __isPlaying = true;
-            __currentIsMale = true;
-        }
-
-        public void PlayWoman(bool allowContinue = true)
-        {
-            if (__isPlaying) { return; }
-            if (!__currentIsMale && allowContinue && __audioSource.clip != null)
-            {
-                __audioSource.Play();
-            }
-            else
-            {
-                var randomNumber = Random.Range(0, femaleAudioClips.Length);
-                __audioSource.clip = femaleAudioClips[randomNumber];
-                __audioSource.time = Random.Range(0, 20f);
-                __audioSource.Play();
-            }
-
-            __isPlaying = true;
-            __currentIsMale = false;
+            return __factoryUnit.Spawn();
         }
     }
 }

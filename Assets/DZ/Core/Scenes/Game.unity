@@ -1454,6 +1454,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2db2e02e7b7566f44854a2715365f01c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  subsCanvas: {fileID: 973215389}
   subsSelectorTriggerAnchor: {fileID: 1255095365}
   subsSelectorUnit: {fileID: 566444014}
   channelInfoPrefab: {fileID: 1113124334506798, guid: 87fd82a1c67113b48a16e47cf4345b5f,
@@ -1592,17 +1593,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fbdce6fc558ca54e8ed964be38c8556, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maleAudioClips:
-  - {fileID: 8300000, guid: 6b8717ed0d348084ebd697b946c79df1, type: 3}
-  - {fileID: 8300000, guid: 155e10c981046ca43a5840a5374085e7, type: 3}
-  - {fileID: 8300000, guid: 8250740a1e9e49a42a9020181d9e82d8, type: 3}
-  - {fileID: 8300000, guid: 9b62b22fd3d53484b912223380565fd1, type: 3}
-  - {fileID: 8300000, guid: 029d3816d0719274f8ca5c0ff542e73d, type: 3}
-  - {fileID: 8300000, guid: cebabef94e7a45043850d636dd8245ca, type: 3}
-  femaleAudioClips:
-  - {fileID: 8300000, guid: ff8e43f1b926bd043aedfe6212fdbf25, type: 3}
-  - {fileID: 8300000, guid: 066469edb5919034f8d05e7ce3908c72, type: 3}
   phoneTriggerAnchor: {fileID: 1783648054}
+  phoneChannelPrefab: {fileID: 1687499583234870, guid: 278f3c15877da9a499cf1094a160ca13,
+    type: 2}
 --- !u!1001 &1683882576
 Prefab:
   m_ObjectHideFlags: 0

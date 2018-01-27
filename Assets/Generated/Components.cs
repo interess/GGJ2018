@@ -61,6 +61,7 @@ namespace DZ.Game.Components {
         public partial class SubsManagerUnit: Entitas.IComponent { public Scripts.SubsManagerUnit value; }
         public partial class Channel: Entitas.IComponent { public int value; }
         public partial class ChannelInfoUnit: Entitas.IComponent { public Scripts.ChannelInfoUnit value; }
+        public partial class PhoneChannelUnit: Entitas.IComponent { public Scripts.PhoneChannelUnit value; }
         public partial class PhoneManagerUnit: Entitas.IComponent { public Scripts.PhoneManagerUnit value; }
         public partial class WorldTime: Entitas.IComponent { public float value; }
         public partial class WorldTimeSpeed: Entitas.IComponent { public float value; }

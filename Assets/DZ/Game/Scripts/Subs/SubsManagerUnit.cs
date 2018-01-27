@@ -7,13 +7,14 @@ namespace DZ.Game.Scripts
 {
 	public class SubsManagerUnit : MonoBehaviour
 	{
+		public Canvas subsCanvas;
 		public RectTransform subsSelectorTriggerAnchor;
 		public SubsSelectorUnit subsSelectorUnit;
 		public GameObject channelInfoPrefab;
 		public GameObject subsWordPrefab;
 		public RectTransform channelInfoRectTransform;
 		public RectTransform[] channelRectTransforms;
-		public float spaceWidth = 10f;
+		public float spaceWidth = 70f;
 
 		public Color[] dialogOwnerColors;
 
@@ -34,6 +35,11 @@ namespace DZ.Game.Scripts
 			{
 				__channelInfoFactoryUnit = gameObject.AddComponent<FS.PrefabFactory.Scripts.FactoryUnit>();
 				__channelInfoFactoryUnit.Initialize(channelInfoPrefab, 10);
+			}
+
+			if (subsCanvas == null)
+			{
+				Debug.LogError("SubsManagerUnit | SubsCanvas is null. This will cause errors");
 			}
 
 			if (subsSelectorTriggerAnchor == null)
@@ -117,11 +123,14 @@ namespace DZ.Game.Scripts
 						else if (dialogOwnerIndex > 10) { dialogOwnerIndex = 10; }
 					}
 
+					currentWord = currentWord + " ";
+
 					var productUnit = (SubsWordProductUnit) __subsWordFactoryUnit.Spawn();
 					var wordUnit = productUnit.subsWordUnit;
 					wordUnit.isTarget = false;
 					wordUnit.isEmpty = isEmpty;
 					wordUnit.isMale = IsMale(dialogOwnerIndex);
+					wordUnit.channelIndex = channelIndex;
 					wordUnit.dialogOwnerIndex = dayIndex * 10000 + i * 100 + dialogOwnerIndex;
 					wordUnit.SetColor(dialogOwnerColors[dialogOwnerIndex]);
 					wordUnit.SetText(currentWord);
@@ -140,7 +149,7 @@ namespace DZ.Game.Scripts
 				foreach (var wordUnit in currentWordList)
 				{
 					wordUnit.rectTransform.anchoredPosition = new Vector2(cumulativeWidth, 0f);
-					cumulativeWidth = cumulativeWidth + spaceWidth + wordUnit.GetWidth();
+					cumulativeWidth = cumulativeWidth + wordUnit.GetWidth();
 				}
 
 				var channelInfoProductUnit = __channelInfoFactoryUnit.Spawn();
@@ -150,10 +159,15 @@ namespace DZ.Game.Scripts
 				channelInfoUnit.Reset();
 				channelInfoUnit.SetName(channelName);
 
+				var phoneChannelProductUnit = Contexts.state.phoneManagerUnit.Spawn();
+				var phoneChannelUnit = phoneChannelProductUnit.GetComponent<PhoneChannelUnit>();
+				phoneChannelUnit.Initialize();
+
 				var channelEntity = Contexts.state.CreateViewEntity();
 				channelEntity.levelPart = true;
 				channelEntity.channelInfoUnit = channelInfoUnit;
 				channelEntity.channel = channelIndex;
+				channelEntity.phoneChannelUnit = phoneChannelUnit;
 			}
 
 			if (callback != null) { callback(); }
@@ -167,12 +181,12 @@ namespace DZ.Game.Scripts
 				if (i == channelIndex - 1)
 				{
 					canvasGroup.alpha = 1f;
-					canvasGroup.blocksRaycasts = true;
+					// canvasGroup.blocksRaycasts = true;
 				}
 				else
 				{
 					canvasGroup.alpha = 0f;
-					canvasGroup.blocksRaycasts = false;
+					// canvasGroup.blocksRaycasts = false;
 				}
 			}
 

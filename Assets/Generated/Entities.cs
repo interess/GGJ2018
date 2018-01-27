@@ -1401,6 +1401,43 @@ namespace DZ.Game {
             else if (component == null) ReplaceComponent(StateComponentsLookup.ChannelInfoUnit, null);
         }
 
+        // PhoneChannelUnit
+        public Scripts.PhoneChannelUnit _phoneChannelUnit { 
+            get {
+                if (!HasComponent(StateComponentsLookup.PhoneChannelUnit)) throw new System.Exception("Entity does not have component 'PhoneChannelUnit'. You can check safely with 'HasPhoneChannelUnit()'");
+                return ((Components.State.PhoneChannelUnit)GetComponent(StateComponentsLookup.PhoneChannelUnit)).value;
+            } 
+            set {
+                ((Components.State.PhoneChannelUnit)GetComponent(StateComponentsLookup.PhoneChannelUnit)).value = value;
+            }
+        }
+
+        public Scripts.PhoneChannelUnit phoneChannelUnit { 
+            get {
+                if (!HasComponent(StateComponentsLookup.PhoneChannelUnit)) throw new System.Exception("Entity does not have component 'PhoneChannelUnit'. You can check safely with 'HasPhoneChannelUnit()'");
+                return ((Components.State.PhoneChannelUnit)GetComponent(StateComponentsLookup.PhoneChannelUnit)).value;
+            } 
+            set {
+                var component = CreateComponent<Components.State.PhoneChannelUnit>(StateComponentsLookup.PhoneChannelUnit);
+                component.value = value;
+                ReplaceComponent(StateComponentsLookup.PhoneChannelUnit, component);
+            }
+        }
+
+        public bool HasPhoneChannelUnit() {
+            return HasComponent(StateComponentsLookup.PhoneChannelUnit);
+        }
+
+        public void RemovePhoneChannelUnit() {
+            if (HasComponent(StateComponentsLookup.PhoneChannelUnit)) { RemoveComponent(StateComponentsLookup.PhoneChannelUnit); }
+        }
+
+        public void PingPhoneChannelUnit() {
+            var component = GetComponent(StateComponentsLookup.PhoneChannelUnit);
+            if (component != null) ReplaceComponent(StateComponentsLookup.PhoneChannelUnit, component);
+            else if (component == null) ReplaceComponent(StateComponentsLookup.PhoneChannelUnit, null);
+        }
+
         // PhoneManagerUnit
         public Scripts.PhoneManagerUnit _phoneManagerUnit { 
             get {
