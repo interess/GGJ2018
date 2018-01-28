@@ -14,30 +14,40 @@ namespace DZ.Game.Scripts
 
             var eventEntity = Contexts.input.CreateEventEntity();
             eventEntity.modalOpenEvent = true;
-            eventEntity.modalId = "DayTwo";
-
-            Freaking.Fwait.ForSecondsUnscaled(3f).Done(() =>
-            {
-                var rapport = PlayerPrefs.GetInt("Raports");
-
-                var letterEventEntity = Contexts.input.CreateEventEntity();
-                letterEventEntity.modalOpenEvent = true;
-                letterEventEntity.modalId = "SecondLetter";
-
-                if (rapport < 2) letterEventEntity.modalId += "Success";
-                else letterEventEntity.modalId += "Fail";
-
-                cachedLetterModalName = letterEventEntity.modalId;
-
-                var closeEventEntity = Contexts.input.CreateEventEntity();
-                closeEventEntity.modalCloseEvent = true;
-                closeEventEntity.modalId = "DayTwo";
-            });
-
+            eventEntity.modalId = "DayRadioOne";
         }
 
         public override void HandleLevelEvent(InputEntity entity)
         {
+            if (entity.HasEventId() && entity.eventId == "RadioDone_Done")
+            {
+                var closeEvent = Contexts.input.CreateEventEntity();
+                closeEvent.modalCloseEvent = true;
+                closeEvent.modalId = "DayRadioOne";
+
+                var eventEntity = Contexts.input.CreateEventEntity();
+                eventEntity.modalOpenEvent = true;
+                eventEntity.modalId = "DayTwo";
+
+                Freaking.Fwait.ForSecondsUnscaled(3f).Done(() =>
+                {
+                    var rapport = PlayerPrefs.GetInt("Raports");
+
+                    var letterEventEntity = Contexts.input.CreateEventEntity();
+                    letterEventEntity.modalOpenEvent = true;
+                    letterEventEntity.modalId = "SecondLetter";
+
+                    if (rapport < 2) letterEventEntity.modalId += "Success";
+                    else letterEventEntity.modalId += "Fail";
+
+                    cachedLetterModalName = letterEventEntity.modalId;
+
+                    var closeEventEntity = Contexts.input.CreateEventEntity();
+                    closeEventEntity.modalCloseEvent = true;
+                    closeEventEntity.modalId = "DayTwo";
+                });
+            }
+
             if (entity.HasEventId() && entity.eventId == "FirstLetter_Done")
             {
                 var eventEntity = Contexts.input.CreateEventEntity();

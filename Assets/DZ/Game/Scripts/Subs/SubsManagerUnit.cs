@@ -70,7 +70,7 @@ namespace DZ.Game.Scripts
 
 		private IEnumerator LoadSubsRoutine(int dayIndex, System.Action callback)
 		{
-			var subsTextAssets = Resources.LoadAll<TextAsset>("Subs/" + dayIndex.ToString());
+			var subsTextAssets = Resources.LoadAll<TextAsset>("SubsRus/" + dayIndex.ToString());
 
 			for (int i = 0; i < subsTextAssets.Length; i++)
 			{
@@ -129,7 +129,7 @@ namespace DZ.Game.Scripts
 						else if (dialogOwnerIndex > 10) { dialogOwnerIndex = 10; }
 					}
 
-					currentWord = currentWord ;
+					currentWord = currentWord;
 
 					var productUnit = (SubsWordProductUnit) __subsWordFactoryUnit.Spawn();
 					var wordUnit = productUnit.subsWordUnit;
