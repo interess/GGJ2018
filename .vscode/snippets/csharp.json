@@ -1,0 +1,166 @@
+{
+  "ExecuteSystem": {
+    "prefix": "executeSystem",
+    "body": [
+      "public class $1 : ExecuteSystem",
+      "{",
+      "    protected override void Act() {",
+      "    }",
+      "}"
+    ],
+    "description": "Creates ExecuteSystem template"
+  },
+  "InitializeSystem": {
+    "prefix": "initializeSystem",
+    "body": [
+      "public class $1 : InitializeSystem",
+      "{",
+      "    protected override void Act() {",
+      "    }",
+      "}"
+    ],
+    "description": "Creates InitializeSystem template"
+  },
+  "ChainSystem": {
+    "prefix": "chainSystem",
+    "body": [
+      "public class $1 : Entitas.Gentitas.Systems.ChainSystem",
+      "{",
+      "    public $1() : base(\"$2\") {",
+      "    }",
+      "}"
+    ],
+    "description": "Creates ChainSystem template"
+  },
+  "Kernel": {
+    "prefix": "kernel",
+    "body": [
+      "public class $1Kernel : Entitas.Gentitas.Kernel",
+      "{",
+      "    protected override void Setup() {",
+      "    }",
+      "}"
+    ],
+    "description": "Creates ChainSystem template"
+  },
+  "ReactiveSystem": {
+    "prefix": "reactiveSystem",
+    "body": [
+      "public class $1 : $2ReactiveSystem",
+      "{",
+      "    protected override void SetTriggers()",
+      "    {",
+      "    Trigger($2Matcher.$3);",
+      "    }",
+      "",
+      "    protected override void Act(List<$2Entity> entities) {",
+      "    }",
+      "}"
+    ],
+    "description": "Creates ExecuteSystem template"
+  },
+  "MultiReactiveSystem": {
+    "prefix": "multiReactiveSystem",
+    "body": [
+      "public interface $2Entity : $3 {}",
+      "public partial class $4Entity : $2Entity {}",
+      "",
+      "public class $1 : MultiReactiveSystem<$2Entity>",
+      "{",
+      "    protected override void SetTriggers()",
+      "    {",
+      "    }",
+      "",
+      "    protected override void Act(List<$2Entity> entities) {",
+      "    }",
+      "}"
+    ],
+    "description": "Creates ExecuteSystem template"
+  },
+  "Context": {
+    "prefix": "context",
+    "body": [
+      "public class $1 : Context",
+      "{",
+      "    public $1() {",
+      "    }",
+      "}"
+    ],
+    "description": "Creates ChainSystem template"
+  },
+  "Filter": {
+    "prefix": "filter",
+    "body": [
+      "protected override bool Filter ($1Entity entity)",
+      "{",
+      "}"
+    ],
+    "description": "Creates contract template"
+  },
+  "Act": {
+    "prefix": "act",
+    "body": [
+      "protected override void Act (List<$1Entity> entities)",
+      "{",
+      "}"
+    ],
+    "description": "Creates contract template"
+  },
+  "SetTriggers": {
+    "prefix": "setTriggers",
+    "body": [
+      "protected override void SetTriggers ()",
+      "{",
+      "}"
+    ],
+    "description": "Creates contract template"
+  },
+  "Trigger": {
+    "prefix": "trigger",
+    "body": [
+      "Trigger ($1);"
+    ],
+    "description": "Creates contract template"
+  },
+  "For Entities": {
+    "prefix": "forentities",
+    "body": [
+      "foreach (var entity in entities)",
+      "{",
+      "}"
+    ],
+    "description": "Creates contract template"
+  },
+  "CachedComponent": {
+    "prefix": "cachedComponent",
+    "body": [
+      "private $1 __$2;",
+      "protected $1 _$2 { get { if (__$2 == null) { __$2 = GetComponent<$1>(); } return __$2; } }"
+    ],
+    "description": "Creates cache component"
+  },
+  "CachedComponentPublic": {
+    "prefix": "cachedComponentPublic",
+    "body": [
+      "private $1 __$2;",
+      "public $1 $2 { get { if (__$2 == null) { __$2 = GetComponent<$1>(); } return __$2; } }"
+    ],
+    "description": "Creates cache component"
+  },
+  "CachedProperty": {
+    "prefix": "cachedProperty",
+    "body": [
+      "private $1 __$2;",
+      "protected $1 _$2 { get { return __$2; } }"
+    ],
+    "description": "Creates cache property"
+  },
+  "CachedPropertyPublic": {
+    "prefix": "cachedPropertyPublic",
+    "body": [
+      "private $1 __$2;",
+      "protected $1 $2 { get { return __$2; } }"
+    ],
+    "description": "Creates cache property"
+  }
+}

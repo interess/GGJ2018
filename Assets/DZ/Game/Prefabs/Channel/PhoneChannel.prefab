@@ -1,0 +1,99 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1687499583234870}
+  m_IsPrefabParent: 1
+--- !u!1 &1687499583234870
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4441851459622538}
+  - component: {fileID: 114316895692858684}
+  - component: {fileID: 114140089905095404}
+  - component: {fileID: 167325526254390448}
+  m_Layer: 0
+  m_Name: PhoneChannel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4441851459622538
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1687499583234870}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.160506, y: 0.17345797, z: 89.92807}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114140089905095404
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1687499583234870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fe3446ac5804464982f92fcd75a10b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114316895692858684
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1687499583234870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 143c1efc77aa2314b881b316e17fbd6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maleAudioClips:
+  - {fileID: 8300000, guid: ab90946bfc1f91f4aacc909cf5248668, type: 3}
+  - {fileID: 8300000, guid: fcb6d482a41c00047838d512a1f66e34, type: 3}
+  - {fileID: 8300000, guid: 63b82c5eba3838a45b4ba91e9e72160d, type: 3}
+  - {fileID: 8300000, guid: 8a50939be0eedd0459f4e3ba3df3f3cf, type: 3}
+  - {fileID: 8300000, guid: d8c46f13a43f8884db94e523b0412709, type: 3}
+  - {fileID: 8300000, guid: e866d7cbc5af86c45a32402c87fb6647, type: 3}
+  femaleAudioClips:
+  - {fileID: 8300000, guid: 2e2fa3378e6365147bc3bb02858f0291, type: 3}
+  - {fileID: 8300000, guid: 49e8a357f1501d34291d53c391a99246, type: 3}
+--- !u!167 &167325526254390448
+AudioReverbZone:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1687499583234870}
+  m_Enabled: 1
+  m_MinDistance: 10
+  m_MaxDistance: 15
+  m_ReverbPreset: 18
+  m_Room: -1000
+  m_RoomHF: -2500
+  m_DecayTime: 1.49
+  m_DecayHFRatio: 0.21
+  m_Reflections: -2780
+  m_ReflectionsDelay: 0.3
+  m_Reverb: -1434
+  m_ReverbDelay: 0.1
+  m_HFReference: 5000
+  m_Diffusion: 27
+  m_Density: 100
+  m_LFReference: 250
+  m_RoomLF: 0
