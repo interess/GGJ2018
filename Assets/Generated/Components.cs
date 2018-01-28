@@ -82,5 +82,7 @@ namespace DZ.Game.Components {
         public partial class ModalUnit: Entitas.IComponent { public Scripts.ModalUnit value; }
         public partial class ModalId: Entitas.IComponent { public string value; }
         public partial class OverlayUnit: Entitas.IComponent { public Scripts.OverlayUnit value; }
+        public partial class StickUnit: Entitas.IComponent { public Scripts.StickUnit value; }
+        public partial class CharacterUnit: Entitas.IComponent { public Scripts.CharacterUnit value; }
     }
 }

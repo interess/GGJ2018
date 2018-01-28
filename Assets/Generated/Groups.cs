@@ -478,6 +478,72 @@ namespace DZ.Game {
 		}
 		public bool HasOverlayUnit() {	return overlayUnitGroup.count == 1;	}
 
+		// StickUnit Group
+		private IGroup<StateEntity> _stickUnitGroup;
+		public IGroup<StateEntity> stickUnitGroup {
+			get { 
+				if (_stickUnitGroup == null) {
+					_stickUnitGroup = GetGroup(StateMatcher.StickUnit);
+				}
+				return _stickUnitGroup; } }
+
+		public StateEntity stickUnitEntity {
+			get {
+				var cachedGroup = stickUnitGroup;
+				if (cachedGroup.count > 1) {
+					return null;
+				}
+				if (cachedGroup.count == 0) {
+					return null;
+				}
+				return cachedGroup.GetSingleEntity(); } }
+
+		public Scripts.StickUnit stickUnit { 
+			get {
+				if (stickUnitEntity == null) throw new System.Exception("StateContext has 0 or more than 1 entity with component 'StickUnit'. You can check safely with 'HasStickUnit()'");
+				return stickUnitEntity.stickUnit;
+			}	
+			set { 
+				if (stickUnitGroup.count > 1) throw new System.Exception("StateContext has more than 1 entity with component 'StickUnit'. You can check safely with 'HasStickUnit()'");
+				else if (stickUnitGroup.count == 0) this.CreateEntity().stickUnit = value;
+				else stickUnitEntity.stickUnit = value;
+			}
+		}
+		public bool HasStickUnit() {	return stickUnitGroup.count == 1;	}
+
+		// CharacterUnit Group
+		private IGroup<StateEntity> _characterUnitGroup;
+		public IGroup<StateEntity> characterUnitGroup {
+			get { 
+				if (_characterUnitGroup == null) {
+					_characterUnitGroup = GetGroup(StateMatcher.CharacterUnit);
+				}
+				return _characterUnitGroup; } }
+
+		public StateEntity characterUnitEntity {
+			get {
+				var cachedGroup = characterUnitGroup;
+				if (cachedGroup.count > 1) {
+					return null;
+				}
+				if (cachedGroup.count == 0) {
+					return null;
+				}
+				return cachedGroup.GetSingleEntity(); } }
+
+		public Scripts.CharacterUnit characterUnit { 
+			get {
+				if (characterUnitEntity == null) throw new System.Exception("StateContext has 0 or more than 1 entity with component 'CharacterUnit'. You can check safely with 'HasCharacterUnit()'");
+				return characterUnitEntity.characterUnit;
+			}	
+			set { 
+				if (characterUnitGroup.count > 1) throw new System.Exception("StateContext has more than 1 entity with component 'CharacterUnit'. You can check safely with 'HasCharacterUnit()'");
+				else if (characterUnitGroup.count == 0) this.CreateEntity().characterUnit = value;
+				else characterUnitEntity.characterUnit = value;
+			}
+		}
+		public bool HasCharacterUnit() {	return characterUnitGroup.count == 1;	}
+
 
 		//
 		// Groups

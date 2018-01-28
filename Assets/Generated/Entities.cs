@@ -2145,6 +2145,80 @@ namespace DZ.Game {
             if (component != null) ReplaceComponent(StateComponentsLookup.OverlayUnit, component);
             else if (component == null) ReplaceComponent(StateComponentsLookup.OverlayUnit, null);
         }
+
+        // StickUnit
+        public Scripts.StickUnit _stickUnit { 
+            get {
+                if (!HasComponent(StateComponentsLookup.StickUnit)) throw new System.Exception("Entity does not have component 'StickUnit'. You can check safely with 'HasStickUnit()'");
+                return ((Components.State.StickUnit)GetComponent(StateComponentsLookup.StickUnit)).value;
+            } 
+            set {
+                ((Components.State.StickUnit)GetComponent(StateComponentsLookup.StickUnit)).value = value;
+            }
+        }
+
+        public Scripts.StickUnit stickUnit { 
+            get {
+                if (!HasComponent(StateComponentsLookup.StickUnit)) throw new System.Exception("Entity does not have component 'StickUnit'. You can check safely with 'HasStickUnit()'");
+                return ((Components.State.StickUnit)GetComponent(StateComponentsLookup.StickUnit)).value;
+            } 
+            set {
+                var component = CreateComponent<Components.State.StickUnit>(StateComponentsLookup.StickUnit);
+                component.value = value;
+                ReplaceComponent(StateComponentsLookup.StickUnit, component);
+            }
+        }
+
+        public bool HasStickUnit() {
+            return HasComponent(StateComponentsLookup.StickUnit);
+        }
+
+        public void RemoveStickUnit() {
+            if (HasComponent(StateComponentsLookup.StickUnit)) { RemoveComponent(StateComponentsLookup.StickUnit); }
+        }
+
+        public void PingStickUnit() {
+            var component = GetComponent(StateComponentsLookup.StickUnit);
+            if (component != null) ReplaceComponent(StateComponentsLookup.StickUnit, component);
+            else if (component == null) ReplaceComponent(StateComponentsLookup.StickUnit, null);
+        }
+
+        // CharacterUnit
+        public Scripts.CharacterUnit _characterUnit { 
+            get {
+                if (!HasComponent(StateComponentsLookup.CharacterUnit)) throw new System.Exception("Entity does not have component 'CharacterUnit'. You can check safely with 'HasCharacterUnit()'");
+                return ((Components.State.CharacterUnit)GetComponent(StateComponentsLookup.CharacterUnit)).value;
+            } 
+            set {
+                ((Components.State.CharacterUnit)GetComponent(StateComponentsLookup.CharacterUnit)).value = value;
+            }
+        }
+
+        public Scripts.CharacterUnit characterUnit { 
+            get {
+                if (!HasComponent(StateComponentsLookup.CharacterUnit)) throw new System.Exception("Entity does not have component 'CharacterUnit'. You can check safely with 'HasCharacterUnit()'");
+                return ((Components.State.CharacterUnit)GetComponent(StateComponentsLookup.CharacterUnit)).value;
+            } 
+            set {
+                var component = CreateComponent<Components.State.CharacterUnit>(StateComponentsLookup.CharacterUnit);
+                component.value = value;
+                ReplaceComponent(StateComponentsLookup.CharacterUnit, component);
+            }
+        }
+
+        public bool HasCharacterUnit() {
+            return HasComponent(StateComponentsLookup.CharacterUnit);
+        }
+
+        public void RemoveCharacterUnit() {
+            if (HasComponent(StateComponentsLookup.CharacterUnit)) { RemoveComponent(StateComponentsLookup.CharacterUnit); }
+        }
+
+        public void PingCharacterUnit() {
+            var component = GetComponent(StateComponentsLookup.CharacterUnit);
+            if (component != null) ReplaceComponent(StateComponentsLookup.CharacterUnit, component);
+            else if (component == null) ReplaceComponent(StateComponentsLookup.CharacterUnit, null);
+        }
     }
 
 }

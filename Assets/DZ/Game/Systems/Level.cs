@@ -12,6 +12,8 @@ namespace DZ.Game.Systems.Level
         {
             Add(new InitSubsManagerUnit());
             Add(new InitPhoneManagerUnit());
+            Add(new InitStickUnit());
+            Add(new InitCharacterUnit());
 
             Add(new CreateLevelControllers());
 
@@ -22,6 +24,7 @@ namespace DZ.Game.Systems.Level
             Add(new MoveSubsOnActiveLevel());
 
             Add(new UpdatePhoneChannelUnitOnChannel());
+            Add(new PlayCharacterAnimationOnChannelActive());
 
             Add(new StartSubsRecordingOnEvent());
             Add(new StopSubsRecordingOnEvent());
@@ -36,6 +39,40 @@ namespace DZ.Game.Systems.Level
 
             Add(new HandlePlayButton());
             Add(new HandleContinueButton());
+        }
+
+        public class InitCharacterUnit : InitializeSystem
+        {
+            protected override void Act()
+            {
+                var CharacterUnit = GameObject.FindObjectOfType<Scripts.CharacterUnit>();
+                if (CharacterUnit == null)
+                {
+                    throw new FS.Exceptions.ObjectOfTypeNotFoundException(typeof(Scripts.CharacterUnit));
+                }
+
+                CharacterUnit.Initialize();
+
+                var entity = state.CreateEntity();
+                entity.characterUnit = CharacterUnit;
+            }
+        }
+
+        public class InitStickUnit : InitializeSystem
+        {
+            protected override void Act()
+            {
+                var stickUnit = GameObject.FindObjectOfType<Scripts.StickUnit>();
+                if (stickUnit == null)
+                {
+                    throw new FS.Exceptions.ObjectOfTypeNotFoundException(typeof(Scripts.StickUnit));
+                }
+
+                stickUnit.Initialize();
+
+                var entity = state.CreateEntity();
+                entity.stickUnit = stickUnit;
+            }
         }
 
         public class CreateLevelControllers : InitializeSystem
@@ -146,6 +183,22 @@ namespace DZ.Game.Systems.Level
             }
         }
 
+        public class PlayCharacterAnimationOnChannelActive : StateReactiveSystem
+        {
+            protected override void SetTriggers()
+            {
+                Trigger(StateMatcher.AllOf(StateMatcher.Channel, StateMatcher.ChannelRecording).Added());
+                Trigger(StateMatcher.AllOf(StateMatcher.Channel, StateMatcher.ChannelRecording).Removed());
+            }
+
+            protected override void Act(List<StateEntity> entities)
+            {
+                var active = state.HasChannelActive() && state.channelActiveEntity.channelRecording;
+                state.stickUnit.SetSelected(active);
+                if (active) { state.characterUnit.MoveStick(); }
+            }
+        }
+
         public class MoveSubsOnActiveLevel : ExecuteSystem
         {
             protected override void Act()
@@ -187,6 +240,8 @@ namespace DZ.Game.Systems.Level
                 if (state.HasChannelActive())
                 {
                     state.CreateEffectEntity("ChannelSwitchEffect");
+                    state.stickUnit.Move(Random.Range(1, 3));
+                    state.characterUnit.MoveStick();
 
                     var activeIndex = state.channelActiveEntity.channel;
                     state.channelActiveEntity.flagActive = false;

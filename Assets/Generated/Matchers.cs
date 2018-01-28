@@ -907,6 +907,34 @@ namespace DZ.Game {
             }
         }
 
+        static IMatcher<StateEntity> _matcherStickUnit;
+
+        public static IMatcher<StateEntity> StickUnit {
+            get {
+                if(_matcherStickUnit == null) {
+                    var matcher = (Matcher<StateEntity>)Matcher<StateEntity>.AllOf(StateComponentsLookup.StickUnit);
+                    matcher.componentNames = StateComponentsLookup.componentNames;
+                    _matcherStickUnit = matcher;
+                }
+
+                return _matcherStickUnit;
+            }
+        }
+
+        static IMatcher<StateEntity> _matcherCharacterUnit;
+
+        public static IMatcher<StateEntity> CharacterUnit {
+            get {
+                if(_matcherCharacterUnit == null) {
+                    var matcher = (Matcher<StateEntity>)Matcher<StateEntity>.AllOf(StateComponentsLookup.CharacterUnit);
+                    matcher.componentNames = StateComponentsLookup.componentNames;
+                    _matcherCharacterUnit = matcher;
+                }
+
+                return _matcherCharacterUnit;
+            }
+        }
+
     }
 
 }

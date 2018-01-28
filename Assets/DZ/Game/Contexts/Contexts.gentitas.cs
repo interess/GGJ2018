@@ -128,6 +128,12 @@ namespace DZ.Game.Declaration
             // Overlay
             var OverlayUnit = Component<Scripts.OverlayUnit>().GroupSingle;
 
+            // Stick
+            var StickUnit = Component<Scripts.StickUnit>().GroupSingle;
+
+            // Character
+            var CharacterUnit = Component<Scripts.CharacterUnit>().GroupSingle;
+
         }
     }
 }
