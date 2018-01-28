@@ -681,6 +681,35 @@ namespace DZ.Game {
             else if (component == null) ReplaceComponent(InputComponentsLookup.ScoreLightEvent, null);
         }
 
+        // GameOverEvent
+        static readonly Components.Input.GameOverEvent _gameOverEventComponent = new Components.Input.GameOverEvent();
+        public bool gameOverEvent {
+            get { return HasComponent(InputComponentsLookup.GameOverEvent); }
+            set {
+                if (value != gameOverEvent) {
+                    if (value) {
+                        AddComponent(InputComponentsLookup.GameOverEvent, _gameOverEventComponent);
+                    } else {
+                        RemoveComponent(InputComponentsLookup.GameOverEvent);
+                    }
+                }
+            }
+        }
+
+        public bool HasGameOverEvent() {
+            return HasComponent(InputComponentsLookup.GameOverEvent);
+        }
+
+        public void RemoveGameOverEvent() {
+            RemoveComponent(InputComponentsLookup.GameOverEvent);
+        }
+
+        public void PingGameOverEvent() {
+            var component = GetComponent(InputComponentsLookup.GameOverEvent);
+            if (component != null) ReplaceComponent(InputComponentsLookup.GameOverEvent, component);
+            else if (component == null) ReplaceComponent(InputComponentsLookup.GameOverEvent, null);
+        }
+
         //
         // Value Components
         //

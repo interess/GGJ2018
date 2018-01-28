@@ -25,6 +25,7 @@ namespace DZ.Game.Systems.Level
             Add(new SetActiveChannelVoiceUnit());
             Add(new SetActiveChannelOnManagerUnit());
             Add(new MoveSubsOnActiveLevel());
+            Add(new HandleGameOverEvent());
 
             Add(new UpdatePhoneChannelUnitOnChannel());
             Add(new PlayCharacterAnimationOnChannelActive());
@@ -187,6 +188,43 @@ namespace DZ.Game.Systems.Level
             }
         }
 
+        public class HandleGameOverEvent : InputReactiveSystem
+        {
+            protected override void SetTriggers()
+            {
+                Trigger(InputMatcher.GameOverEvent.Added());
+            }
+
+            protected override void Act(List<InputEntity> entities)
+            {
+                var eventEntity = Contexts.input.CreateEventEntity();
+                eventEntity.modalOpenEvent = true;
+                eventEntity.modalId = "GameOver";
+
+                PlayerPrefs.SetInt("Warnings", 0);
+                PlayerPrefs.SetInt("Raports", 0);
+                PlayerPrefs.SetInt("Levels", 0);
+
+                Freaking.Fwait.ForSecondsUnscaled(1f)
+                    .Done(() =>
+                    {
+                        state.levelActiveEntity.flagActive = false;
+                        
+                    });
+
+                Freaking.Fwait.ForSecondsUnscaled(2f)
+                    .Done(() =>
+                    {
+                        var closeEventEntity = Contexts.input.CreateEventEntity();
+                        closeEventEntity.modalCloseEvent = true;
+                        closeEventEntity.modalId = "GameOver";
+
+                        var buttonEntity = input.CreateEventEntity();
+                        buttonEntity.eventId = "PlayButton";
+                    });
+            }
+        }
+
         public class LoadActiveLevel : StateReactiveSystem
         {
             protected override void SetTriggers()
@@ -203,6 +241,8 @@ namespace DZ.Game.Systems.Level
                     {
                         state.subsManagerUnit.LoadSubs(1, () =>
                         {
+                            state.ticketManagerUnit.Init(PlayerPrefs.GetInt("Raports"), PlayerPrefs.GetInt("Warnings"));
+
                             levelActiveEntity.flagLoaded = true;
 
                             var channelSwitchEventEntity = input.CreateEventEntity();

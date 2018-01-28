@@ -37,6 +37,7 @@ namespace DZ.Game.Components {
         public partial class MistakeLightEvent: Entitas.IComponent { }
         public partial class ScoreHeavyEvent: Entitas.IComponent { }
         public partial class ScoreLightEvent: Entitas.IComponent { }
+        public partial class GameOverEvent: Entitas.IComponent { }
         // Value Components
         public partial class TrashTimer: Entitas.IComponent { public float value; }
         public partial class EventId: Entitas.IComponent { public string value; }

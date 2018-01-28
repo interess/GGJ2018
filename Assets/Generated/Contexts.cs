@@ -246,8 +246,9 @@ namespace DZ.Game {
         public const int ScoreHeavyEvent = 15;
         public const int ScoreLightEvent = 16;
         public const int WordLength = 17;
+        public const int GameOverEvent = 18;
 
-        public const int TotalComponents = 18;
+        public const int TotalComponents = 19;
 
         public static readonly Dictionary<string, int> componentsDict = new Dictionary<string, int> () {
             {"FlagEvent", 0 },
@@ -267,7 +268,8 @@ namespace DZ.Game {
             {"MistakeLightEvent", 14 },
             {"ScoreHeavyEvent", 15 },
             {"ScoreLightEvent", 16 },
-            {"WordLength", 17 }
+            {"WordLength", 17 },
+            {"GameOverEvent", 18 }
         };
 
         public static readonly string[] componentNames = {
@@ -288,7 +290,8 @@ namespace DZ.Game {
             "MistakeLightEvent",
             "ScoreHeavyEvent",
             "ScoreLightEvent",
-            "WordLength"
+            "WordLength",
+            "GameOverEvent"
         };
 
         public static readonly System.Type[] componentTypes = {
@@ -309,7 +312,8 @@ namespace DZ.Game {
             typeof(Components.Input.MistakeLightEvent),
             typeof(Components.Input.ScoreHeavyEvent),
             typeof(Components.Input.ScoreLightEvent),
-            typeof(Components.Input.WordLength)
+            typeof(Components.Input.WordLength),
+            typeof(Components.Input.GameOverEvent)
         };
 
         public static int GetComponentIndex(string name) {

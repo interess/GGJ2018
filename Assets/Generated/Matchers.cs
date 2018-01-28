@@ -384,6 +384,20 @@ namespace DZ.Game {
             }
         }
 
+        static IMatcher<InputEntity> _matcherGameOverEvent;
+
+        public static IMatcher<InputEntity> GameOverEvent {
+            get {
+                if(_matcherGameOverEvent == null) {
+                    var matcher = (Matcher<InputEntity>)Matcher<InputEntity>.AllOf(InputComponentsLookup.GameOverEvent);
+                    matcher.componentNames = InputComponentsLookup.componentNames;
+                    _matcherGameOverEvent = matcher;
+                }
+
+                return _matcherGameOverEvent;
+            }
+        }
+
     }
 
     public sealed partial class StateMatcher {

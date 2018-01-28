@@ -42,6 +42,8 @@ namespace DZ.Game.Declaration
             var ScoreLightEvent = Component();
 
             var WordLength = Component<int>();
+
+            var GameOverEvent = Component();
         }
     }
 

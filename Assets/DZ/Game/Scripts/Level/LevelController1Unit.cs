@@ -42,7 +42,7 @@ namespace DZ.Game.Scripts
                 Contexts.state.levelActiveEntity.levelSubsSpeed = Contexts.state.worldTimeEntity.worldTimeSpeed;
             }
 
-            var baseScore = -3;
+            var baseScore = -4;
 
             if (!Contexts.state.HasScore())
             {
@@ -61,8 +61,6 @@ namespace DZ.Game.Scripts
             {
                 Contexts.state.score -= 1;
             }
-
-            Debug.Log(Contexts.state.score);
 
             var finalWarning = false;
             var finalRaport = false;
@@ -118,8 +116,8 @@ namespace DZ.Game.Scripts
 
         void GameOver()
         {
-            Debug.Log("GameOver - ");
-            // Go to menu, clean player prefs
+            var entity = Contexts.input.CreateEventEntity();
+            entity.gameOverEvent = true;
         }
     }
 }
