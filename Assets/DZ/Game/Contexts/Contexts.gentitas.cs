@@ -74,6 +74,7 @@ namespace DZ.Game.Declaration
             var LevelIndex = Component<int>().Index;
             var LevelControllerUnit = Component<Scripts.LevelControllerUnit>();
             var LevelSubsSpeed = Component<float>();
+            var LevelFinished = Component();
 
             var LevelActive = Group(Matcher.All(Level, FlagActive)).Single;
             var LevelActiveLoaded = Group(Matcher.All(Level, FlagActive, FlagLoaded)).Single;
@@ -105,6 +106,7 @@ namespace DZ.Game.Declaration
             var ChannelInfoUnit = Component<Scripts.ChannelInfoUnit>().GroupSingle;
             var ChannelRecording = Component();
             var ChannelVoiceActive = Component();
+            var ChannelFinished = Component();
 
             var ChannelActive = Group(Matcher.All(Channel, FlagActive)).Single;
 

@@ -43,7 +43,7 @@ namespace DZ.Game.Scripts
 					raportTicket.GetComponent<Image>().color = color;
 				}
 
-				if (i < numberOfRaports)
+				if (i < numberOfWarnings)
 				{
 					warningTicket.GetComponent<Image>().color = Color.white;
 				}
@@ -54,6 +54,15 @@ namespace DZ.Game.Scripts
 					warningTicket.GetComponent<Image>().color = color;
 				}
 			}
+		}
+
+		[FreakingEditor.FbuttonPlay]
+		public void RemoveRaport()
+		{
+			numberOfRaports--;
+
+			var prevRapport = raportTickets[numberOfRaports];
+			prevRapport.GetComponent<Image>().DOFade(1f, 0.1f);
 		}
 
 		[FreakingEditor.FbuttonPlay]
@@ -79,7 +88,7 @@ namespace DZ.Game.Scripts
 			nextRaport.GetComponent<Image>().DOFade(1f, 0.1f);
 			nextRaport.DOScale(Vector3.one, 0.3f).OnComplete(() =>
 			{
-				Freaking.Fwait.ForSeconds(1.5f).Done(() =>
+				Freaking.Fwait.ForSeconds(1f).Done(() =>
 				{
 					nextRaport.DOMove(raportAnchor.position, 0.5f).SetEase(Ease.OutQuart);
 				});

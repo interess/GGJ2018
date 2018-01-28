@@ -103,15 +103,12 @@ namespace DZ.Game.Systems.Modal
                 {
                     modalEntity.flagOpened = true;
 
-                    if (!modalEntity.HasFlagActive() && state.HasModalActive() && !entity.modalOpenBackgroundEvent)
+                    if (!modalEntity.HasFlagActive() && state.HasModalActive())
                     {
                         state.modalActiveEntity.flagActive = false;
                     }
 
-                    if (!entity.modalOpenBackgroundEvent)
-                    {
-                        modalEntity.flagActive = true;
-                    }
+                    modalEntity.flagActive = true;
 
                     // TODO: effect manager play
                 }

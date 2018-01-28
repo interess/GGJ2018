@@ -91,19 +91,16 @@ namespace DZ.Game.Scripts
 				var currentIsTargetMode = false;
 				var currentWordList = new List<SubsWordUnit>();
 				var isEmpty = false;
+				var isEnd = false;
 
 				foreach (var word in words)
 				{
 					currentWord = word;
-					currentIsTargetMode = isTargetMode;
+					currentIsTargetMode = word.Contains("*");
 
-					if (word.Contains("*"))
-					{
-						currentWord = Regex.Replace(word, @"\*", "");
-						isTargetMode = !isTargetMode;
-					}
+					currentWord = Regex.Replace(currentWord, @"\*", "");
 
-					if (word == "." || string.IsNullOrEmpty(word) || word == " ")
+					if (currentWord == "." || string.IsNullOrEmpty(currentWord.Trim()) || currentWord == " ")
 					{
 						isEmpty = true;
 					}
@@ -113,6 +110,13 @@ namespace DZ.Game.Scripts
 					}
 
 					if (isTargetMode) { currentIsTargetMode = true; }
+
+					isEnd = word == "END";
+
+					if (isEnd)
+					{
+						currentWord = " ";
+					}
 
 					if (word.Contains("---"))
 					{
@@ -125,11 +129,11 @@ namespace DZ.Game.Scripts
 						else if (dialogOwnerIndex > 10) { dialogOwnerIndex = 10; }
 					}
 
-					currentWord = currentWord + " ";
+					currentWord = currentWord ;
 
 					var productUnit = (SubsWordProductUnit) __subsWordFactoryUnit.Spawn();
 					var wordUnit = productUnit.subsWordUnit;
-					wordUnit.isTarget = false;
+					wordUnit.isTarget = currentIsTargetMode && !isEmpty;
 					wordUnit.isEmpty = isEmpty;
 					wordUnit.isMale = IsMale(dialogOwnerIndex);
 					wordUnit.channelIndex = channelIndex;
@@ -141,6 +145,7 @@ namespace DZ.Game.Scripts
 					wordUnit.isMarkedDev = false;
 					wordUnit.isSpoken = false;
 					wordUnit.isScored = false;
+					wordUnit.isEnd = isEnd;
 					__wordUnitsLookup.Add(wordUnit);
 					currentWordList.Add(wordUnit);
 

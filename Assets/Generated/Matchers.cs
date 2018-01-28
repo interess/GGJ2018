@@ -613,6 +613,20 @@ namespace DZ.Game {
             }
         }
 
+        static IMatcher<StateEntity> _matcherLevelFinished;
+
+        public static IMatcher<StateEntity> LevelFinished {
+            get {
+                if(_matcherLevelFinished == null) {
+                    var matcher = (Matcher<StateEntity>)Matcher<StateEntity>.AllOf(StateComponentsLookup.LevelFinished);
+                    matcher.componentNames = StateComponentsLookup.componentNames;
+                    _matcherLevelFinished = matcher;
+                }
+
+                return _matcherLevelFinished;
+            }
+        }
+
         static IMatcher<StateEntity> _matcherUid;
 
         public static IMatcher<StateEntity> Uid {
@@ -806,6 +820,20 @@ namespace DZ.Game {
                 }
 
                 return _matcherChannelVoiceActive;
+            }
+        }
+
+        static IMatcher<StateEntity> _matcherChannelFinished;
+
+        public static IMatcher<StateEntity> ChannelFinished {
+            get {
+                if(_matcherChannelFinished == null) {
+                    var matcher = (Matcher<StateEntity>)Matcher<StateEntity>.AllOf(StateComponentsLookup.ChannelFinished);
+                    matcher.componentNames = StateComponentsLookup.componentNames;
+                    _matcherChannelFinished = matcher;
+                }
+
+                return _matcherChannelFinished;
             }
         }
 

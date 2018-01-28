@@ -53,9 +53,11 @@ namespace DZ.Game.Components {
         public partial class FlagOpened: Entitas.IComponent { }
         public partial class LevelPart: Entitas.IComponent { }
         public partial class Level: Entitas.IComponent { }
+        public partial class LevelFinished: Entitas.IComponent { }
         public partial class View: Entitas.IComponent { }
         public partial class ChannelRecording: Entitas.IComponent { }
         public partial class ChannelVoiceActive: Entitas.IComponent { }
+        public partial class ChannelFinished: Entitas.IComponent { }
         public partial class Effect: Entitas.IComponent { }
         // Value Components
         public partial class TrashTimer: Entitas.IComponent { public float value; }

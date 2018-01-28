@@ -13,6 +13,9 @@ namespace DZ.Game.Scripts
 		private RectTransform __rectTransform;
 		protected RectTransform _rectTransform { get { if (__rectTransform == null) { __rectTransform = GetComponent<RectTransform>(); } return __rectTransform; } }
 
+		private AudioSource __audioSource;
+		protected AudioSource _audioSource { get { if (__audioSource == null) { __audioSource = GetComponent<AudioSource>(); } return __audioSource; } }
+
 		// public float downRotation;
 		// public float upRotation;
 
@@ -26,6 +29,15 @@ namespace DZ.Game.Scripts
 		public void SetSelectction(bool value)
 		{
 			_animator.SetBool("Active", value);
+
+			if (value)
+			{
+				_audioSource.Play();
+			}
+			else
+			{
+				_audioSource.Stop();
+			}
 
 			// _rectTransform.DOKill(false);
 

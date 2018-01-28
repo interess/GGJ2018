@@ -397,43 +397,45 @@ namespace DZ.Game {
         public const int LevelIndex = 11;
         public const int LevelControllerUnit = 12;
         public const int LevelSubsSpeed = 13;
-        public const int Uid = 14;
-        public const int UidUnit = 15;
-        public const int ProductUnit = 16;
-        public const int View = 17;
-        public const int AudioManagerUnit = 18;
-        public const int AudioEffectManagerUnit = 19;
-        public const int AudioEffectUnit = 20;
-        public const int AudioEffectProductUnit = 21;
-        public const int MusicManagerUnit = 22;
-        public const int SubsManagerUnit = 23;
-        public const int Channel = 24;
-        public const int ChannelInfoUnit = 25;
-        public const int ChannelRecording = 26;
-        public const int ChannelVoiceActive = 27;
-        public const int PhoneChannelUnit = 28;
-        public const int PhoneManagerUnit = 29;
-        public const int WorldTime = 30;
-        public const int WorldTimeSpeed = 31;
-        public const int Effect = 32;
-        public const int EffectId = 33;
-        public const int EffectFactoryUnit = 34;
-        public const int ConfigId = 35;
-        public const int PositionWorld = 36;
-        public const int MenuButtonUnit = 37;
-        public const int MenuButtonId = 38;
-        public const int LightUnit = 39;
-        public const int LigthId = 40;
-        public const int ModalUnit = 41;
-        public const int ModalId = 42;
-        public const int OverlayUnit = 43;
-        public const int StickUnit = 44;
-        public const int CharacterUnit = 45;
-        public const int HudUnit = 46;
-        public const int TicketManagerUnit = 47;
-        public const int Score = 48;
+        public const int LevelFinished = 14;
+        public const int Uid = 15;
+        public const int UidUnit = 16;
+        public const int ProductUnit = 17;
+        public const int View = 18;
+        public const int AudioManagerUnit = 19;
+        public const int AudioEffectManagerUnit = 20;
+        public const int AudioEffectUnit = 21;
+        public const int AudioEffectProductUnit = 22;
+        public const int MusicManagerUnit = 23;
+        public const int SubsManagerUnit = 24;
+        public const int Channel = 25;
+        public const int ChannelInfoUnit = 26;
+        public const int ChannelRecording = 27;
+        public const int ChannelVoiceActive = 28;
+        public const int ChannelFinished = 29;
+        public const int PhoneChannelUnit = 30;
+        public const int PhoneManagerUnit = 31;
+        public const int WorldTime = 32;
+        public const int WorldTimeSpeed = 33;
+        public const int Effect = 34;
+        public const int EffectId = 35;
+        public const int EffectFactoryUnit = 36;
+        public const int ConfigId = 37;
+        public const int PositionWorld = 38;
+        public const int MenuButtonUnit = 39;
+        public const int MenuButtonId = 40;
+        public const int LightUnit = 41;
+        public const int LigthId = 42;
+        public const int ModalUnit = 43;
+        public const int ModalId = 44;
+        public const int OverlayUnit = 45;
+        public const int StickUnit = 46;
+        public const int CharacterUnit = 47;
+        public const int HudUnit = 48;
+        public const int TicketManagerUnit = 49;
+        public const int Score = 50;
 
-        public const int TotalComponents = 49;
+        public const int TotalComponents = 51;
 
         public static readonly Dictionary<string, int> componentsDict = new Dictionary<string, int> () {
             {"FlagTrash", 0 },
@@ -450,41 +452,43 @@ namespace DZ.Game {
             {"LevelIndex", 11 },
             {"LevelControllerUnit", 12 },
             {"LevelSubsSpeed", 13 },
-            {"Uid", 14 },
-            {"UidUnit", 15 },
-            {"ProductUnit", 16 },
-            {"View", 17 },
-            {"AudioManagerUnit", 18 },
-            {"AudioEffectManagerUnit", 19 },
-            {"AudioEffectUnit", 20 },
-            {"AudioEffectProductUnit", 21 },
-            {"MusicManagerUnit", 22 },
-            {"SubsManagerUnit", 23 },
-            {"Channel", 24 },
-            {"ChannelInfoUnit", 25 },
-            {"ChannelRecording", 26 },
-            {"ChannelVoiceActive", 27 },
-            {"PhoneChannelUnit", 28 },
-            {"PhoneManagerUnit", 29 },
-            {"WorldTime", 30 },
-            {"WorldTimeSpeed", 31 },
-            {"Effect", 32 },
-            {"EffectId", 33 },
-            {"EffectFactoryUnit", 34 },
-            {"ConfigId", 35 },
-            {"PositionWorld", 36 },
-            {"MenuButtonUnit", 37 },
-            {"MenuButtonId", 38 },
-            {"LightUnit", 39 },
-            {"LigthId", 40 },
-            {"ModalUnit", 41 },
-            {"ModalId", 42 },
-            {"OverlayUnit", 43 },
-            {"StickUnit", 44 },
-            {"CharacterUnit", 45 },
-            {"HudUnit", 46 },
-            {"TicketManagerUnit", 47 },
-            {"Score", 48 }
+            {"LevelFinished", 14 },
+            {"Uid", 15 },
+            {"UidUnit", 16 },
+            {"ProductUnit", 17 },
+            {"View", 18 },
+            {"AudioManagerUnit", 19 },
+            {"AudioEffectManagerUnit", 20 },
+            {"AudioEffectUnit", 21 },
+            {"AudioEffectProductUnit", 22 },
+            {"MusicManagerUnit", 23 },
+            {"SubsManagerUnit", 24 },
+            {"Channel", 25 },
+            {"ChannelInfoUnit", 26 },
+            {"ChannelRecording", 27 },
+            {"ChannelVoiceActive", 28 },
+            {"ChannelFinished", 29 },
+            {"PhoneChannelUnit", 30 },
+            {"PhoneManagerUnit", 31 },
+            {"WorldTime", 32 },
+            {"WorldTimeSpeed", 33 },
+            {"Effect", 34 },
+            {"EffectId", 35 },
+            {"EffectFactoryUnit", 36 },
+            {"ConfigId", 37 },
+            {"PositionWorld", 38 },
+            {"MenuButtonUnit", 39 },
+            {"MenuButtonId", 40 },
+            {"LightUnit", 41 },
+            {"LigthId", 42 },
+            {"ModalUnit", 43 },
+            {"ModalId", 44 },
+            {"OverlayUnit", 45 },
+            {"StickUnit", 46 },
+            {"CharacterUnit", 47 },
+            {"HudUnit", 48 },
+            {"TicketManagerUnit", 49 },
+            {"Score", 50 }
         };
 
         public static readonly string[] componentNames = {
@@ -502,6 +506,7 @@ namespace DZ.Game {
             "LevelIndex",
             "LevelControllerUnit",
             "LevelSubsSpeed",
+            "LevelFinished",
             "Uid",
             "UidUnit",
             "ProductUnit",
@@ -516,6 +521,7 @@ namespace DZ.Game {
             "ChannelInfoUnit",
             "ChannelRecording",
             "ChannelVoiceActive",
+            "ChannelFinished",
             "PhoneChannelUnit",
             "PhoneManagerUnit",
             "WorldTime",
@@ -554,6 +560,7 @@ namespace DZ.Game {
             typeof(Components.State.LevelIndex),
             typeof(Components.State.LevelControllerUnit),
             typeof(Components.State.LevelSubsSpeed),
+            typeof(Components.State.LevelFinished),
             typeof(Components.State.Uid),
             typeof(Components.State.UidUnit),
             typeof(Components.State.ProductUnit),
@@ -568,6 +575,7 @@ namespace DZ.Game {
             typeof(Components.State.ChannelInfoUnit),
             typeof(Components.State.ChannelRecording),
             typeof(Components.State.ChannelVoiceActive),
+            typeof(Components.State.ChannelFinished),
             typeof(Components.State.PhoneChannelUnit),
             typeof(Components.State.PhoneManagerUnit),
             typeof(Components.State.WorldTime),

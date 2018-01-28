@@ -14,6 +14,7 @@ namespace DZ.Game.Systems.Menu
             Add(new InitLightUnits());
             Add(new InvertMenuButtonUnitsOnLevelActive());
             Add(new SetLightsOnLevelActive());
+            Add(new HandleExitButton());
         }
 
         public class InitMenuButtonUnits : InitializeSystem
@@ -87,6 +88,24 @@ namespace DZ.Game.Systems.Menu
                 {
                     item.lightUnit.SetActive(!isLevel);
                 }
+            }
+        }
+
+        public class HandleExitButton : InputReactiveSystem
+        {
+            protected override void SetTriggers()
+            {
+                Trigger(InputMatcher.EventId.Added());
+            }
+
+            protected override bool Filter(InputEntity entity)
+            {
+                return entity.eventId == "ExitButton";
+            }
+
+            protected override void Act(List<InputEntity> entities)
+            {
+                Application.Quit();
             }
         }
     }

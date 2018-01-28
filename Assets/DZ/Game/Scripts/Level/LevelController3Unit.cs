@@ -3,29 +3,26 @@ using UnityEngine.Assertions;
 
 namespace DZ.Game.Scripts
 {
-    public class LevelController1Unit : LevelControllerUnit
+    public class LevelController3Unit : LevelControllerUnit
     {
-        bool firstHelperShown = false;
-
         public override void OnStart()
         {
             Debug.Log("Level start");
 
-            firstHelperShown = false;
-
             var eventEntity = Contexts.input.CreateEventEntity();
             eventEntity.modalOpenEvent = true;
-            eventEntity.modalId = "DayOne";
+            eventEntity.modalId = "DayThree";
 
             Freaking.Fwait.ForSecondsUnscaled(3f).Done(() =>
             {
-                var introEventEntity = Contexts.input.CreateEventEntity();
-                introEventEntity.modalOpenEvent = true;
-                introEventEntity.modalId = "IntroLetter";
+                var letterEventEntity = Contexts.input.CreateEventEntity();
+                letterEventEntity.modalOpenEvent = true;
+                // letterEventEntity.modalOpenBackgroundEvent = true;
+                letterEventEntity.modalId = "FirstLetter";
 
                 var closeEventEntity = Contexts.input.CreateEventEntity();
                 closeEventEntity.modalCloseEvent = true;
-                closeEventEntity.modalId = "DayOne";
+                closeEventEntity.modalId = "DayThree";
             });
 
             // TODO: Start subs flow by events from here
@@ -35,22 +32,11 @@ namespace DZ.Game.Scripts
 
         public override void HandleLevelEvent(InputEntity entity)
         {
-            if (entity.HasEventId() && entity.eventId == "IntroLetter_Done")
-            {
-                var letterEventEntity = Contexts.input.CreateEventEntity();
-                letterEventEntity.modalOpenEvent = true;
-                letterEventEntity.modalId = "FirstLetter";
-
-                var eventEntity = Contexts.input.CreateEventEntity();
-                eventEntity.modalCloseEvent = true;
-                eventEntity.modalId = "IntroLetter";
-            }
-
             if (entity.HasEventId() && entity.eventId == "FirstLetter_Done")
             {
-                var letterEventEntity = Contexts.input.CreateEventEntity();
-                letterEventEntity.modalCloseEvent = true;
-                letterEventEntity.modalId = "FirstLetter";
+                var eventEntity = Contexts.input.CreateEventEntity();
+                eventEntity.modalCloseEvent = true;
+                eventEntity.modalId = "FirstLetter";
 
                 Contexts.state.hudUnit.SetActive(true);
                 Contexts.state.levelActiveEntity.levelSubsSpeed = Contexts.state.worldTimeEntity.worldTimeSpeed;
@@ -65,11 +51,11 @@ namespace DZ.Game.Scripts
 
             if (entity.HasScoreHeavyEvent())
             {
-                Contexts.state.score += 30 + entity.wordLength * 2;
+                Contexts.state.score += 100 + entity.wordLength * 2;
             }
             else if (entity.HasMistakeHeavyEvent())
             {
-                Contexts.state.score -= 30;
+                Contexts.state.score -= (10 + entity.wordLength);
             }
             else if (entity.HasMistakeLightEvent())
             {
@@ -79,30 +65,7 @@ namespace DZ.Game.Scripts
             var finalWarning = false;
             var finalRaport = false;
 
-            if (Contexts.state.score < -15)
-            {
-                Contexts.state.score = baseScore;
-
-                var numberOfRaports = PlayerPrefs.GetInt("Raports");
-                numberOfRaports++;
-                PlayerPrefs.SetInt("Raports", numberOfRaports);
-
-                if (numberOfRaports >= 3)
-                {
-                    finalRaport = true;
-                    PlayerPrefs.SetInt("Raports", 0);
-                    GameOver();
-                }
-
-                if (!firstHelperShown)
-                {
-                    OnFirstHeavyRapport();
-                    firstHelperShown = true;
-                }
-
-                Contexts.state.ticketManagerUnit.AddRaport(finalRaport);
-            }
-            else if (Contexts.state.score < -5)
+            if (Contexts.state.score < -5)
             {
                 Contexts.state.score = baseScore;
 
@@ -132,29 +95,23 @@ namespace DZ.Game.Scripts
                 Contexts.state.ticketManagerUnit.AddWarning(finalWarning);
 
             }
-
-        }
-
-        void OnFirstHeavyRapport()
-        {
-            Freaking.Fwait.ForSecondsUnscaled(1f).Done(() =>
+            else if (Contexts.state.score < -15)
             {
-                var eventEntity = Contexts.input.CreateEventEntity();
-                eventEntity.modalOpenEvent = true;
-                eventEntity.modalId = "FirstHelper";
-            });
+                Contexts.state.score = baseScore;
 
-            Freaking.Fwait.ForSecondsUnscaled(3f).Done(() =>
-            {
                 var numberOfRaports = PlayerPrefs.GetInt("Raports");
-                numberOfRaports--;
-                if (numberOfRaports < 0) numberOfRaports = 0;
+                numberOfRaports++;
                 PlayerPrefs.SetInt("Raports", numberOfRaports);
 
-                Contexts.state.ticketManagerUnit.Init(0, PlayerPrefs.GetInt("Warnings"));
+                if (numberOfRaports >= 3)
+                {
+                    finalRaport = true;
+                    PlayerPrefs.SetInt("Raports", 0);
+                    GameOver();
+                }
 
-                // Contexts.state.ticketManagerUnit.RemoveRaport();
-            });
+                Contexts.state.ticketManagerUnit.AddRaport(finalRaport);
+            }
         }
 
         void GameOver()

@@ -49,7 +49,7 @@ namespace DZ.Game.Scripts
 			_isInverted = value;
 		}
 
-		public void OnMouseOver()
+		public virtual void OnMouseOver()
 		{
 			if (UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
 			{
@@ -58,6 +58,8 @@ namespace DZ.Game.Scripts
 
 			if (_isInverted && extraSprite == null) { return; }
 			// Incrase small light intensity
+
+			Contexts.state.CreateEffectEntity("TVOverEffect");
 
 			foreach (var item in lights)
 			{
@@ -70,7 +72,7 @@ namespace DZ.Game.Scripts
 			}
 		}
 
-		public void OnMouseExit()
+		public virtual void OnMouseExit()
 		{
 			if (_isInverted && extraSprite == null) { return; }
 
@@ -85,7 +87,7 @@ namespace DZ.Game.Scripts
 			}
 		}
 
-		public void OnMouseDown()
+		public virtual void OnMouseDown()
 		{
 			if (UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
 			{

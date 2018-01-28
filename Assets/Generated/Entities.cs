@@ -1082,6 +1082,35 @@ namespace DZ.Game {
             else if (component == null) ReplaceComponent(StateComponentsLookup.Level, null);
         }
 
+        // LevelFinished
+        static readonly Components.State.LevelFinished _levelFinishedComponent = new Components.State.LevelFinished();
+        public bool levelFinished {
+            get { return HasComponent(StateComponentsLookup.LevelFinished); }
+            set {
+                if (value != levelFinished) {
+                    if (value) {
+                        AddComponent(StateComponentsLookup.LevelFinished, _levelFinishedComponent);
+                    } else {
+                        RemoveComponent(StateComponentsLookup.LevelFinished);
+                    }
+                }
+            }
+        }
+
+        public bool HasLevelFinished() {
+            return HasComponent(StateComponentsLookup.LevelFinished);
+        }
+
+        public void RemoveLevelFinished() {
+            RemoveComponent(StateComponentsLookup.LevelFinished);
+        }
+
+        public void PingLevelFinished() {
+            var component = GetComponent(StateComponentsLookup.LevelFinished);
+            if (component != null) ReplaceComponent(StateComponentsLookup.LevelFinished, component);
+            else if (component == null) ReplaceComponent(StateComponentsLookup.LevelFinished, null);
+        }
+
         // View
         static readonly Components.State.View _viewComponent = new Components.State.View();
         public bool view {
@@ -1167,6 +1196,35 @@ namespace DZ.Game {
             var component = GetComponent(StateComponentsLookup.ChannelVoiceActive);
             if (component != null) ReplaceComponent(StateComponentsLookup.ChannelVoiceActive, component);
             else if (component == null) ReplaceComponent(StateComponentsLookup.ChannelVoiceActive, null);
+        }
+
+        // ChannelFinished
+        static readonly Components.State.ChannelFinished _channelFinishedComponent = new Components.State.ChannelFinished();
+        public bool channelFinished {
+            get { return HasComponent(StateComponentsLookup.ChannelFinished); }
+            set {
+                if (value != channelFinished) {
+                    if (value) {
+                        AddComponent(StateComponentsLookup.ChannelFinished, _channelFinishedComponent);
+                    } else {
+                        RemoveComponent(StateComponentsLookup.ChannelFinished);
+                    }
+                }
+            }
+        }
+
+        public bool HasChannelFinished() {
+            return HasComponent(StateComponentsLookup.ChannelFinished);
+        }
+
+        public void RemoveChannelFinished() {
+            RemoveComponent(StateComponentsLookup.ChannelFinished);
+        }
+
+        public void PingChannelFinished() {
+            var component = GetComponent(StateComponentsLookup.ChannelFinished);
+            if (component != null) ReplaceComponent(StateComponentsLookup.ChannelFinished, component);
+            else if (component == null) ReplaceComponent(StateComponentsLookup.ChannelFinished, null);
         }
 
         // Effect

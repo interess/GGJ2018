@@ -1,0 +1,48 @@
+---3 Hermes, you hear me?
+---0 . . .
+---6 Yes, Roberto. You want something?
+---0 . . .
+---3 Yes, Hermes, I do. Meet me at the post office tomorrow morning, we'll have some business to do.
+---0 . . .
+---6 Business? Are you talking about that deal, the *deal which will make us rich and free?
+---0 . . .
+---3 Yes, Hermes. Roberto out. Tomorrow. Post office. Morning.
+---0 . . .
+---3 I'll be waiting.
+---0 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+---5 Madame Berghoff?
+---0 . . .
+---1 Oui.
+---0 . . .
+---5 Super. Avez-vous *rempli tous les documents nécessaires?
+---0 . . .
+---1 Oui. Je suis prêt à *partir.
+---0 . . .
+---5 Ta prononciation va bien, je pense que tu es prête.
+---0 . . .
+---1 Alors on se retrouve chez toi demain?
+---0 . . .
+---5 Oui. A bientôt.
+---0 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+---2 And, so, the city is great from it's borders to the central park. All the streets, all the corners - a true socialism spirit gets through them, and you feel it. Like, everywhere. And we got to the Emerald river, it was about 10 minutes walking from our hotel. And it's truly emerald - the color amazes, you can't stop looking into the water reflection, it's like diving into it, flowing with it's water. Then we got to the opera theater, and - guess what - the sound was mind blowing, I have never felt so close to the art itself…
+---0 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+---5 Yunone? Hi, it's Anya.
+---0 . . .
+---1 O, hi Anya. Anything happened?
+---0 . . .
+---5 Hi, it's alright. I just wanted to ask if you got homework tasks for social culture and, uhm, for nation history.
+---0 . . .
+---1 Oh yes, I do have them! Give me a moment…
+---0 . . . . . . . . . .
+---1 I see… It's War for Freedom, paragraph 13, page 153. For national history, of course. For social culture it's Marketing issues in social behavior, paragraph 8, page 121. 
+---0 . . . 
+---5 My gosh, you saved me, Yunone!
+---0 . . .
+---1 Nevermind! Anything else?
+---0 . . .
+---5 No, thanks again! Have a good day!
+---0 . . .
+---1 Thanks, you too!
+---0 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+
+END

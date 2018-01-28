@@ -38,6 +38,7 @@ namespace DZ.Game.Systems.Level
             Add(new TriggerPhoneTalks());
             Add(new TriggerScore());
 
+            Add(new HandleChannelFinished());
             Add(new UnloadActiveLevel());
 
             Add(new SwitchChannelOnEvent());
@@ -209,7 +210,7 @@ namespace DZ.Game.Systems.Level
                     .Done(() =>
                     {
                         state.levelActiveEntity.flagActive = false;
-                        
+
                     });
 
                 Freaking.Fwait.ForSecondsUnscaled(2f)
@@ -239,11 +240,18 @@ namespace DZ.Game.Systems.Level
                     var levelActiveEntity = state.levelActiveEntity;
                     if (!levelActiveEntity.flagLoaded)
                     {
-                        state.subsManagerUnit.LoadSubs(1, () =>
+                        state.subsManagerUnit.LoadSubs(levelActiveEntity.levelIndex, () =>
                         {
+
                             state.ticketManagerUnit.Init(PlayerPrefs.GetInt("Raports"), PlayerPrefs.GetInt("Warnings"));
 
                             levelActiveEntity.flagLoaded = true;
+
+                            var channelGroup = Contexts.state.channelGroup;
+                            foreach (var entity in channelGroup)
+                            {
+                                entity.channelFinished = false;
+                            }
 
                             var channelSwitchEventEntity = input.CreateEventEntity();
                             channelSwitchEventEntity.channelSwitchEvent = true;
@@ -339,6 +347,11 @@ namespace DZ.Game.Systems.Level
 
             protected override void Act(List<InputEntity> entities)
             {
+                foreach (var entity in entities)
+                {
+                    entity.levelEvent = true;
+                }
+
                 if (state.HasChannelActive())
                 {
                     state.CreateEffectEntity("ChannelSwitchEffect");
@@ -571,11 +584,23 @@ namespace DZ.Game.Systems.Level
                     var wordUnit = item.gameObject.GetComponent<Scripts.SubsWordUnit>();
                     if (wordUnit != null)
                     {
+                        if (wordUnit.isEnd)
+                        {
+                            var channelEntity = state.channelIndex.FindSingle(wordUnit.channelIndex);
+                            Debug.Log("Ended: " + wordUnit.channelIndex + " " + wordUnit.text.text);
+                            if (channelEntity != null)
+                            {
+                                channelEntity.channelFinished = true;
+                            }
+                            continue;
+                        }
+
                         if (wordUnit.isScored) { continue; }
                         wordUnit.isScored = true;
 
                         if (wordUnit.isTarget)
                         {
+                            Debug.Log("Word is target:  " + wordUnit.text.text);
                             if (!wordUnit.isMarked)
                             {
                                 var eventEntity = input.CreateEventEntity();
@@ -658,6 +683,10 @@ namespace DZ.Game.Systems.Level
                 var currentLevelIndex = PlayerPrefs.GetInt("LastPassedLevel");
                 if (currentLevelIndex == 0) { currentLevelIndex = 1; }
 
+                PlayerPrefs.SetInt("Warnings", 0);
+                PlayerPrefs.SetInt("Raports", 0);
+                PlayerPrefs.SetInt("Levels", 0);
+
                 var levelEntity = state.levelIndexIndex.FindSingle(currentLevelIndex);
                 if (levelEntity == null)
                 {
@@ -720,6 +749,64 @@ namespace DZ.Game.Systems.Level
                     {
                         state.levelActiveLoadedEntity.levelControllerUnit.HandleLevelEvent(entity);
                     }
+                }
+            }
+        }
+
+        public class HandleChannelFinished : StateReactiveSystem
+        {
+            protected override void SetTriggers()
+            {
+                Trigger(StateMatcher.AllOf(StateMatcher.Channel, StateMatcher.ChannelFinished).Added());
+            }
+
+            protected override void Act(List<StateEntity> entities)
+            {
+                var allFinished = true;
+                var channelGroup = state.channelGroup;
+
+                foreach (var entity in channelGroup)
+                {
+                    if (!entity.channelFinished)
+                    {
+                        allFinished = false;
+                        break;
+                    }
+                }
+
+                if (allFinished)
+                {
+                    state.levelActiveLoadedEntity.levelFinished = true;
+
+                    var levelIndex = state.levelActiveEntity.levelIndex;
+                    levelIndex += 1;
+                    PlayerPrefs.SetInt("Levels", levelIndex);
+
+                    var eventEntity = Contexts.input.CreateEventEntity();
+                    eventEntity.modalOpenEvent = true;
+                    eventEntity.modalId = "LevelFinished";
+
+                    Freaking.Fwait.ForSecondsUnscaled(2f).Done(() =>
+                    {
+                        var levelEntity = state.levelIndexIndex.FindSingle(levelIndex);
+                        if (levelEntity == null)
+                        {
+                            var buttonEventEntity = Contexts.input.CreateEventEntity();
+                            buttonEventEntity.eventId = "MenuButton";
+
+                            Debug.LogErrorFormat("Level with index {0} was not found", levelIndex);
+                        }
+                        else
+                        {
+                            levelEntity.flagActive = true;
+                        }
+
+                        var closeEventEntity = Contexts.input.CreateEventEntity();
+                        closeEventEntity.modalCloseEvent = true;
+                        closeEventEntity.modalId = "LevelFinished";
+                    });
+
+                    state.levelActiveLoadedEntity.flagActive = false;
                 }
             }
         }
