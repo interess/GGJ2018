@@ -610,6 +610,39 @@ namespace DZ.Game {
 		}
 		public bool HasHudUnit() {	return hudUnitGroup.count == 1;	}
 
+		// TicketManagerUnit Group
+		private IGroup<StateEntity> _ticketManagerUnitGroup;
+		public IGroup<StateEntity> ticketManagerUnitGroup {
+			get { 
+				if (_ticketManagerUnitGroup == null) {
+					_ticketManagerUnitGroup = GetGroup(StateMatcher.TicketManagerUnit);
+				}
+				return _ticketManagerUnitGroup; } }
+
+		public StateEntity ticketManagerUnitEntity {
+			get {
+				var cachedGroup = ticketManagerUnitGroup;
+				if (cachedGroup.count > 1) {
+					return null;
+				}
+				if (cachedGroup.count == 0) {
+					return null;
+				}
+				return cachedGroup.GetSingleEntity(); } }
+
+		public Scripts.TicketManagerUnit ticketManagerUnit { 
+			get {
+				if (ticketManagerUnitEntity == null) throw new System.Exception("StateContext has 0 or more than 1 entity with component 'TicketManagerUnit'. You can check safely with 'HasTicketManagerUnit()'");
+				return ticketManagerUnitEntity.ticketManagerUnit;
+			}	
+			set { 
+				if (ticketManagerUnitGroup.count > 1) throw new System.Exception("StateContext has more than 1 entity with component 'TicketManagerUnit'. You can check safely with 'HasTicketManagerUnit()'");
+				else if (ticketManagerUnitGroup.count == 0) this.CreateEntity().ticketManagerUnit = value;
+				else ticketManagerUnitEntity.ticketManagerUnit = value;
+			}
+		}
+		public bool HasTicketManagerUnit() {	return ticketManagerUnitGroup.count == 1;	}
+
 
 		//
 		// Groups

@@ -88,5 +88,6 @@ namespace DZ.Game.Components {
         public partial class StickUnit: Entitas.IComponent { public Scripts.StickUnit value; }
         public partial class CharacterUnit: Entitas.IComponent { public Scripts.CharacterUnit value; }
         public partial class HudUnit: Entitas.IComponent { public Scripts.HudUnit value; }
+        public partial class TicketManagerUnit: Entitas.IComponent { public Scripts.TicketManagerUnit value; }
     }
 }

@@ -2351,6 +2351,43 @@ namespace DZ.Game {
             if (component != null) ReplaceComponent(StateComponentsLookup.HudUnit, component);
             else if (component == null) ReplaceComponent(StateComponentsLookup.HudUnit, null);
         }
+
+        // TicketManagerUnit
+        public Scripts.TicketManagerUnit _ticketManagerUnit { 
+            get {
+                if (!HasComponent(StateComponentsLookup.TicketManagerUnit)) throw new System.Exception("Entity does not have component 'TicketManagerUnit'. You can check safely with 'HasTicketManagerUnit()'");
+                return ((Components.State.TicketManagerUnit)GetComponent(StateComponentsLookup.TicketManagerUnit)).value;
+            } 
+            set {
+                ((Components.State.TicketManagerUnit)GetComponent(StateComponentsLookup.TicketManagerUnit)).value = value;
+            }
+        }
+
+        public Scripts.TicketManagerUnit ticketManagerUnit { 
+            get {
+                if (!HasComponent(StateComponentsLookup.TicketManagerUnit)) throw new System.Exception("Entity does not have component 'TicketManagerUnit'. You can check safely with 'HasTicketManagerUnit()'");
+                return ((Components.State.TicketManagerUnit)GetComponent(StateComponentsLookup.TicketManagerUnit)).value;
+            } 
+            set {
+                var component = CreateComponent<Components.State.TicketManagerUnit>(StateComponentsLookup.TicketManagerUnit);
+                component.value = value;
+                ReplaceComponent(StateComponentsLookup.TicketManagerUnit, component);
+            }
+        }
+
+        public bool HasTicketManagerUnit() {
+            return HasComponent(StateComponentsLookup.TicketManagerUnit);
+        }
+
+        public void RemoveTicketManagerUnit() {
+            if (HasComponent(StateComponentsLookup.TicketManagerUnit)) { RemoveComponent(StateComponentsLookup.TicketManagerUnit); }
+        }
+
+        public void PingTicketManagerUnit() {
+            var component = GetComponent(StateComponentsLookup.TicketManagerUnit);
+            if (component != null) ReplaceComponent(StateComponentsLookup.TicketManagerUnit, component);
+            else if (component == null) ReplaceComponent(StateComponentsLookup.TicketManagerUnit, null);
+        }
     }
 
 }

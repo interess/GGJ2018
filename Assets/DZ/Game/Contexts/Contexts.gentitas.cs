@@ -142,6 +142,9 @@ namespace DZ.Game.Declaration
             // HUD
             var HudUnit = Component<Scripts.HudUnit>().GroupSingle;
 
+            // Ticket
+            var TicketManagerUnit = Component<Scripts.TicketManagerUnit>().GroupSingle;
+
         }
     }
 }

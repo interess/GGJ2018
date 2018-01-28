@@ -991,6 +991,20 @@ namespace DZ.Game {
             }
         }
 
+        static IMatcher<StateEntity> _matcherTicketManagerUnit;
+
+        public static IMatcher<StateEntity> TicketManagerUnit {
+            get {
+                if(_matcherTicketManagerUnit == null) {
+                    var matcher = (Matcher<StateEntity>)Matcher<StateEntity>.AllOf(StateComponentsLookup.TicketManagerUnit);
+                    matcher.componentNames = StateComponentsLookup.componentNames;
+                    _matcherTicketManagerUnit = matcher;
+                }
+
+                return _matcherTicketManagerUnit;
+            }
+        }
+
     }
 
 }

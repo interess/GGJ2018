@@ -16,6 +16,7 @@ namespace DZ.Game.Systems.Level
             Add(new InitCharacterUnit());
             Add(new InitChannelInfoUnit());
             Add(new InitHUD());
+            Add(new InitTicketManager());
 
             Add(new CreateLevelControllers());
 
@@ -45,6 +46,23 @@ namespace DZ.Game.Systems.Level
 
             Add(new DelegateLevelStartLogicToController());
             Add(new DelegateLevelEvents());
+        }
+
+        public class InitTicketManager : InitializeSystem
+        {
+            protected override void Act()
+            {
+                var ticketManagerUnit = GameObject.FindObjectOfType<Scripts.TicketManagerUnit>();
+                if (ticketManagerUnit == null)
+                {
+                    throw new FS.Exceptions.ObjectOfTypeNotFoundException(typeof(Scripts.TicketManagerUnit));
+                }
+
+                ticketManagerUnit.Init(0, 0);
+
+                var entity = state.CreateEntity();
+                entity.ticketManagerUnit = ticketManagerUnit;
+            }
         }
 
         public class InitHUD : InitializeSystem

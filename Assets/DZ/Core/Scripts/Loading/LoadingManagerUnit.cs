@@ -34,7 +34,7 @@ namespace DZ.Core.Scripts
         [FreakingEditor.FbuttonPlay]
         public void DoHide()
         {
-            canvasGroup.DOFade(0f, 0.1f).SetDelay(.5f);
+            canvasGroup.DOFade(0f, canvasFadeDuration).SetDelay(.5f);
             canvasGroup.blocksRaycasts = false;
         }
     }

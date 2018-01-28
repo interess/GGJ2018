@@ -406,8 +406,9 @@ namespace DZ.Game {
         public const int StickUnit = 44;
         public const int CharacterUnit = 45;
         public const int HudUnit = 46;
+        public const int TicketManagerUnit = 47;
 
-        public const int TotalComponents = 47;
+        public const int TotalComponents = 48;
 
         public static readonly Dictionary<string, int> componentsDict = new Dictionary<string, int> () {
             {"FlagTrash", 0 },
@@ -456,7 +457,8 @@ namespace DZ.Game {
             {"OverlayUnit", 43 },
             {"StickUnit", 44 },
             {"CharacterUnit", 45 },
-            {"HudUnit", 46 }
+            {"HudUnit", 46 },
+            {"TicketManagerUnit", 47 }
         };
 
         public static readonly string[] componentNames = {
@@ -506,7 +508,8 @@ namespace DZ.Game {
             "OverlayUnit",
             "StickUnit",
             "CharacterUnit",
-            "HudUnit"
+            "HudUnit",
+            "TicketManagerUnit"
         };
 
         public static readonly System.Type[] componentTypes = {
@@ -556,7 +559,8 @@ namespace DZ.Game {
             typeof(Components.State.OverlayUnit),
             typeof(Components.State.StickUnit),
             typeof(Components.State.CharacterUnit),
-            typeof(Components.State.HudUnit)
+            typeof(Components.State.HudUnit),
+            typeof(Components.State.TicketManagerUnit)
         };
 
         public static int GetComponentIndex(string name) {
