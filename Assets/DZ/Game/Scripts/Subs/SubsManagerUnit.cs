@@ -137,24 +137,27 @@ namespace DZ.Game.Scripts
 					wordUnit.SetColor(dialogOwnerColors[dialogOwnerIndex]);
 					wordUnit.SetText(currentWord);
 					wordUnit.transform.SetParent(channelRectTransforms[channelIndex - 1], false);
-					wordUnit.text.raycastTarget = false;
 					__wordUnitsLookup.Add(wordUnit);
 					currentWordList.Add(wordUnit);
+
+					var entity = Contexts.state.CreateViewEntity();
+					entity.productUnit = productUnit;
+					entity.levelPart = true;
 				}
 
-				for (int n = 0; n < 3; n++)
-				{
-					yield return new WaitForEndOfFrame();
-				}
+				// for (int n = 0; n < 3; n++)
+				// {
+				// 	yield return new WaitForEndOfFrame();
+				// }
 
-				var cumulativeWidth = 0f;
+				// var cumulativeWidth = 0f;
 
-				foreach (var wordUnit in currentWordList)
-				{
-					wordUnit.rectTransform.anchoredPosition = new Vector2(cumulativeWidth, 0f);
-					cumulativeWidth = cumulativeWidth + wordUnit.GetWidth();
-					wordUnit.text.raycastTarget = true;
-				}
+				// foreach (var wordUnit in currentWordList)
+				// {
+				// 	wordUnit.rectTransform.anchoredPosition = new Vector2(cumulativeWidth, 0f);
+				// 	cumulativeWidth = cumulativeWidth + wordUnit.GetWidth();
+				// 	wordUnit.text.raycastTarget = true;
+				// }
 
 				var channelInfoProductUnit = __channelInfoFactoryUnit.Spawn();
 				var channelInfoUnit = channelInfoProductUnit.GetComponent<ChannelInfoUnit>();
@@ -164,6 +167,10 @@ namespace DZ.Game.Scripts
 				channelInfoUnit.SetName(channelName);
 				channelInfoUnit.SetActive(false);
 
+				var channelInfoEntity = Contexts.state.CreateViewEntity();
+				channelInfoEntity.productUnit = channelInfoProductUnit;
+				channelInfoEntity.levelPart = true;
+
 				var phoneChannelProductUnit = Contexts.state.phoneManagerUnit.Spawn();
 				var phoneChannelUnit = phoneChannelProductUnit.GetComponent<PhoneChannelUnit>();
 				phoneChannelUnit.Initialize();
@@ -171,6 +178,7 @@ namespace DZ.Game.Scripts
 
 				var channelEntity = Contexts.state.CreateViewEntity();
 				channelEntity.levelPart = true;
+				channelEntity.productUnit = phoneChannelProductUnit;
 				channelEntity.channelInfoUnit = channelInfoUnit;
 				channelEntity.channel = channelIndex;
 				channelEntity.phoneChannelUnit = phoneChannelUnit;
@@ -183,7 +191,7 @@ namespace DZ.Game.Scripts
 		{
 			for (int i = 0; i < channelRectTransforms.Length; i++)
 			{
-				var canvasGroup = channelRectTransforms[i].GetComponent<CanvasGroup>();
+				var canvasGroup = channelRectTransforms[i].GetComponentInParent<CanvasGroup>();
 				if (i == channelIndex - 1)
 				{
 					canvasGroup.alpha = 1f;
@@ -214,9 +222,9 @@ namespace DZ.Game.Scripts
 
 		public void Reset()
 		{
-			foreach (var wordUnit in __wordUnitsLookup)
+			foreach (var item in channelRectTransforms)
 			{
-				wordUnit.productUnit.Despawn();
+				item.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
 			}
 
 			__wordUnitsLookup.Clear();

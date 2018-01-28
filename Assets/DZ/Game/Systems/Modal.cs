@@ -69,6 +69,8 @@ namespace DZ.Game.Systems.Modal
                 throw new FS.Exceptions.ObjectOfTypeNotFoundException(typeof(Scripts.OverlayUnit));
             }
 
+            overlayUnit.SetActive(false);
+
             var overlayEntity = state.CreateEntity();
             overlayEntity.overlayUnit = overlayUnit;
 

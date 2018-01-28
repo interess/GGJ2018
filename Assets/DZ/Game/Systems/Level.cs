@@ -137,6 +137,12 @@ namespace DZ.Game.Systems.Level
                 // TODO: Add loading subs manager
                 state.subsManagerUnitEntity.flagLoaded = false;
                 state.subsManagerUnit.Reset();
+
+                var levelPartGroup = state.levelPartGroup;
+                foreach (var entity in levelPartGroup)
+                {
+                    entity.flagTrash = true;
+                }
             }
         }
 
