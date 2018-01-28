@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,34 +8,29 @@ namespace DZ.Game.Scripts
 {
 	public class ChannelInfoUnit : MonoBehaviour
 	{
-		private Text __channelNameText;
-		protected Text _channelNameText { get { if (__channelNameText == null) { __channelNameText = transform.Find("Text").GetComponent<Text>(); } return __channelNameText; } }
-
-		private Image __activeIconImage;
-		protected Image _activeIconImage { get { if (__activeIconImage == null) { __activeIconImage = transform.Find("ActiveIcon").GetComponent<Image>(); } return __activeIconImage; } }
-
-		private Image __voiceIconImage;
-		protected Image _voiceIconImage { get { if (__voiceIconImage == null) { __voiceIconImage = transform.Find("VoiceIcon").GetComponent<Image>(); } return __voiceIconImage; } }
+		public Sprite channelVoiceActiveSprite;
+		public Sprite channelVoiceInactiveSprite;
+		public Image[] channelImages;
+		public Transform lineTransform;
+		public Transform[] lineAnchors;
 
 		public void Reset()
 		{
-			SetActive(false);
-			SetVoiceActive(false);
+			SetActive(1);
+			SetVoiceActive(false, 1);
+			SetVoiceActive(false, 2);
+			SetVoiceActive(false, 3);
+			SetVoiceActive(false, 4);
 		}
 
-		public void SetName(string value)
+		public void SetActive(int channelIndex)
 		{
-			_channelNameText.text = value;
+			lineTransform.DOMoveY(lineAnchors[channelIndex - 1].position.y, 0.5f);
 		}
 
-		public void SetActive(bool value)
+		public void SetVoiceActive(bool value, int channelIndex)
 		{
-			_activeIconImage.enabled = value;
-		}
-
-		public void SetVoiceActive(bool value)
-		{
-			_voiceIconImage.enabled = value;
+			channelImages[channelIndex - 1].sprite = value ? channelVoiceActiveSprite : channelVoiceInactiveSprite;
 		}
 	}
 }

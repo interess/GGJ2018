@@ -333,6 +333,39 @@ namespace DZ.Game {
 		}
 		public bool HasSubsManagerUnit() {	return subsManagerUnitGroup.count == 1;	}
 
+		// ChannelInfoUnit Group
+		private IGroup<StateEntity> _channelInfoUnitGroup;
+		public IGroup<StateEntity> channelInfoUnitGroup {
+			get { 
+				if (_channelInfoUnitGroup == null) {
+					_channelInfoUnitGroup = GetGroup(StateMatcher.ChannelInfoUnit);
+				}
+				return _channelInfoUnitGroup; } }
+
+		public StateEntity channelInfoUnitEntity {
+			get {
+				var cachedGroup = channelInfoUnitGroup;
+				if (cachedGroup.count > 1) {
+					return null;
+				}
+				if (cachedGroup.count == 0) {
+					return null;
+				}
+				return cachedGroup.GetSingleEntity(); } }
+
+		public Scripts.ChannelInfoUnit channelInfoUnit { 
+			get {
+				if (channelInfoUnitEntity == null) throw new System.Exception("StateContext has 0 or more than 1 entity with component 'ChannelInfoUnit'. You can check safely with 'HasChannelInfoUnit()'");
+				return channelInfoUnitEntity.channelInfoUnit;
+			}	
+			set { 
+				if (channelInfoUnitGroup.count > 1) throw new System.Exception("StateContext has more than 1 entity with component 'ChannelInfoUnit'. You can check safely with 'HasChannelInfoUnit()'");
+				else if (channelInfoUnitGroup.count == 0) this.CreateEntity().channelInfoUnit = value;
+				else channelInfoUnitEntity.channelInfoUnit = value;
+			}
+		}
+		public bool HasChannelInfoUnit() {	return channelInfoUnitGroup.count == 1;	}
+
 		// ChannelActive Group
 		private IGroup<StateEntity> _channelActiveGroup;
 		public IGroup<StateEntity> channelActiveGroup {

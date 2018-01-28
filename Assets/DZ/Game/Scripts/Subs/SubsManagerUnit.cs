@@ -160,18 +160,6 @@ namespace DZ.Game.Scripts
 				// 	wordUnit.text.raycastTarget = true;
 				// }
 
-				var channelInfoProductUnit = __channelInfoFactoryUnit.Spawn();
-				var channelInfoUnit = channelInfoProductUnit.GetComponent<ChannelInfoUnit>();
-				channelInfoUnit.transform.SetParent(channelInfoRectTransform, false);
-				channelInfoUnit.transform.localScale = Vector3.one;
-				channelInfoUnit.Reset();
-				channelInfoUnit.SetName(channelName);
-				channelInfoUnit.SetActive(false);
-
-				var channelInfoEntity = Contexts.state.CreateViewEntity();
-				channelInfoEntity.productUnit = channelInfoProductUnit;
-				channelInfoEntity.levelPart = true;
-
 				var phoneChannelProductUnit = Contexts.state.phoneManagerUnit.Spawn();
 				var phoneChannelUnit = phoneChannelProductUnit.GetComponent<PhoneChannelUnit>();
 				phoneChannelUnit.Initialize();
@@ -180,7 +168,6 @@ namespace DZ.Game.Scripts
 				var channelEntity = Contexts.state.CreateViewEntity();
 				channelEntity.levelPart = true;
 				channelEntity.productUnit = phoneChannelProductUnit;
-				channelEntity.channelInfoUnit = channelInfoUnit;
 				channelEntity.channel = channelIndex;
 				channelEntity.phoneChannelUnit = phoneChannelUnit;
 			}

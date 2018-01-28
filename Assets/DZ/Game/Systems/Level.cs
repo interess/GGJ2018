@@ -14,6 +14,7 @@ namespace DZ.Game.Systems.Level
             Add(new InitPhoneManagerUnit());
             Add(new InitStickUnit());
             Add(new InitCharacterUnit());
+            Add(new InitChannelInfoUnit());
 
             Add(new CreateLevelControllers());
 
@@ -43,23 +44,39 @@ namespace DZ.Game.Systems.Level
 
             Add(new DelegateLevelStartLogicToController());
             Add(new DelegateLevelEvents());
+        }
 
+        public class InitChannelInfoUnit : InitializeSystem
+        {
+            protected override void Act()
+            {
+                var channelInfoUnit = GameObject.FindObjectOfType<Scripts.ChannelInfoUnit>();
+                if (channelInfoUnit == null)
+                {
+                    throw new FS.Exceptions.ObjectOfTypeNotFoundException(typeof(Scripts.ChannelInfoUnit));
+                }
+
+                channelInfoUnit.Reset();
+
+                var entity = state.CreateEntity();
+                entity.channelInfoUnit = channelInfoUnit;
+            }
         }
 
         public class InitCharacterUnit : InitializeSystem
         {
             protected override void Act()
             {
-                var CharacterUnit = GameObject.FindObjectOfType<Scripts.CharacterUnit>();
-                if (CharacterUnit == null)
+                var characterUnit = GameObject.FindObjectOfType<Scripts.CharacterUnit>();
+                if (characterUnit == null)
                 {
                     throw new FS.Exceptions.ObjectOfTypeNotFoundException(typeof(Scripts.CharacterUnit));
                 }
 
-                CharacterUnit.Initialize();
+                characterUnit.Initialize();
 
                 var entity = state.CreateEntity();
-                entity.characterUnit = CharacterUnit;
+                entity.characterUnit = characterUnit;
             }
         }
 
@@ -490,21 +507,17 @@ namespace DZ.Game.Systems.Level
         {
             protected override void SetTriggers()
             {
-                Trigger(StateMatcher.AllOf(StateMatcher.Channel, StateMatcher.ChannelInfoUnit, StateMatcher.ChannelVoiceActive).Added());
-                Trigger(StateMatcher.AllOf(StateMatcher.Channel, StateMatcher.ChannelInfoUnit).NoneOf(StateMatcher.ChannelVoiceActive).Added());
-            }
-
-            protected override bool Filter(StateEntity entity)
-            {
-                return entity.HasChannelInfoUnit();
+                Trigger(StateMatcher.AllOf(StateMatcher.Channel, StateMatcher.ChannelVoiceActive).Added());
+                Trigger(StateMatcher.AllOf(StateMatcher.Channel).NoneOf(StateMatcher.ChannelVoiceActive).Added());
             }
 
             protected override void Act(List<StateEntity> entities)
             {
                 foreach (var entity in entities)
                 {
-                    entity.channelInfoUnit.SetVoiceActive(entity.channelVoiceActive);
+                    state.channelInfoUnit.SetVoiceActive(entity.channelVoiceActive, entity.channel);
                 }
+
             }
         }
 
@@ -512,20 +525,16 @@ namespace DZ.Game.Systems.Level
         {
             protected override void SetTriggers()
             {
-                Trigger(StateMatcher.AllOf(StateMatcher.Channel, StateMatcher.ChannelInfoUnit, StateMatcher.FlagActive).Added());
-                Trigger(StateMatcher.AllOf(StateMatcher.Channel, StateMatcher.ChannelInfoUnit).NoneOf(StateMatcher.FlagActive).Added());
+                Trigger(StateMatcher.AllOf(StateMatcher.Channel, StateMatcher.FlagActive).Added());
+                Trigger(StateMatcher.AllOf(StateMatcher.Channel).NoneOf(StateMatcher.FlagActive).Added());
             }
 
-            protected override bool Filter(StateEntity entity)
-            {
-                return entity.HasChannelInfoUnit();
-            }
 
             protected override void Act(List<StateEntity> entities)
             {
                 foreach (var entity in entities)
                 {
-                    entity.channelInfoUnit.SetActive(entity.flagActive);
+                    state.channelInfoUnit.SetActive(entity.channel);
                 }
             }
         }
