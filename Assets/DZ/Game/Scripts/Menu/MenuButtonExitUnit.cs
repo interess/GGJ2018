@@ -20,6 +20,8 @@ namespace DZ.Game.Scripts
             {
                 if (spriteRenderer.color != _cachedColor) { spriteRenderer.DOColor(_cachedColor, 0.3f); }
             }
+
+            _isInverted = value;
         }
     }
 }

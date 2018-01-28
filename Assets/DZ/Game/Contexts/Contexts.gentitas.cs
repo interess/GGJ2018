@@ -137,6 +137,9 @@ namespace DZ.Game.Declaration
             // Character
             var CharacterUnit = Component<Scripts.CharacterUnit>().GroupSingle;
 
+            // HUD
+            var HudUnit = Component<Scripts.HudUnit>().GroupSingle;
+
         }
     }
 }

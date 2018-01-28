@@ -15,6 +15,7 @@ namespace DZ.Game.Systems.Level
             Add(new InitStickUnit());
             Add(new InitCharacterUnit());
             Add(new InitChannelInfoUnit());
+            Add(new InitHUD());
 
             Add(new CreateLevelControllers());
 
@@ -44,6 +45,23 @@ namespace DZ.Game.Systems.Level
 
             Add(new DelegateLevelStartLogicToController());
             Add(new DelegateLevelEvents());
+        }
+
+        public class InitHUD : InitializeSystem
+        {
+            protected override void Act()
+            {
+                var hudUnit = GameObject.FindObjectOfType<Scripts.HudUnit>();
+                if (hudUnit == null)
+                {
+                    throw new FS.Exceptions.ObjectOfTypeNotFoundException(typeof(Scripts.HudUnit));
+                }
+
+                hudUnit.SetActive(false, true);
+
+                var entity = state.CreateEntity();
+                entity.hudUnit = hudUnit;
+            }
         }
 
         public class InitChannelInfoUnit : InitializeSystem
@@ -196,6 +214,7 @@ namespace DZ.Game.Systems.Level
                 // TODO: Add loading subs manager
                 state.subsManagerUnitEntity.flagLoaded = false;
                 state.subsManagerUnit.Reset();
+                state.hudUnit.SetActive(false);
 
                 var levelPartGroup = state.levelPartGroup;
                 foreach (var entity in levelPartGroup)
@@ -528,7 +547,6 @@ namespace DZ.Game.Systems.Level
                 Trigger(StateMatcher.AllOf(StateMatcher.Channel, StateMatcher.FlagActive).Added());
                 Trigger(StateMatcher.AllOf(StateMatcher.Channel).NoneOf(StateMatcher.FlagActive).Added());
             }
-
 
             protected override void Act(List<StateEntity> entities)
             {

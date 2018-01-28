@@ -949,6 +949,20 @@ namespace DZ.Game {
             }
         }
 
+        static IMatcher<StateEntity> _matcherHudUnit;
+
+        public static IMatcher<StateEntity> HudUnit {
+            get {
+                if(_matcherHudUnit == null) {
+                    var matcher = (Matcher<StateEntity>)Matcher<StateEntity>.AllOf(StateComponentsLookup.HudUnit);
+                    matcher.componentNames = StateComponentsLookup.componentNames;
+                    _matcherHudUnit = matcher;
+                }
+
+                return _matcherHudUnit;
+            }
+        }
+
     }
 
 }

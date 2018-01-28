@@ -577,6 +577,39 @@ namespace DZ.Game {
 		}
 		public bool HasCharacterUnit() {	return characterUnitGroup.count == 1;	}
 
+		// HudUnit Group
+		private IGroup<StateEntity> _hudUnitGroup;
+		public IGroup<StateEntity> hudUnitGroup {
+			get { 
+				if (_hudUnitGroup == null) {
+					_hudUnitGroup = GetGroup(StateMatcher.HudUnit);
+				}
+				return _hudUnitGroup; } }
+
+		public StateEntity hudUnitEntity {
+			get {
+				var cachedGroup = hudUnitGroup;
+				if (cachedGroup.count > 1) {
+					return null;
+				}
+				if (cachedGroup.count == 0) {
+					return null;
+				}
+				return cachedGroup.GetSingleEntity(); } }
+
+		public Scripts.HudUnit hudUnit { 
+			get {
+				if (hudUnitEntity == null) throw new System.Exception("StateContext has 0 or more than 1 entity with component 'HudUnit'. You can check safely with 'HasHudUnit()'");
+				return hudUnitEntity.hudUnit;
+			}	
+			set { 
+				if (hudUnitGroup.count > 1) throw new System.Exception("StateContext has more than 1 entity with component 'HudUnit'. You can check safely with 'HasHudUnit()'");
+				else if (hudUnitGroup.count == 0) this.CreateEntity().hudUnit = value;
+				else hudUnitEntity.hudUnit = value;
+			}
+		}
+		public bool HasHudUnit() {	return hudUnitGroup.count == 1;	}
+
 
 		//
 		// Groups

@@ -8,6 +8,7 @@ namespace DZ.Game.Scripts
         public override void OnStart()
         {
             Debug.Log("Level start");
+            Contexts.state.hudUnit.SetActive(true);
         }
 
         public override void HandleLevelEvent(InputEntity entity)

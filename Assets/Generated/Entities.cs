@@ -2248,6 +2248,43 @@ namespace DZ.Game {
             if (component != null) ReplaceComponent(StateComponentsLookup.CharacterUnit, component);
             else if (component == null) ReplaceComponent(StateComponentsLookup.CharacterUnit, null);
         }
+
+        // HudUnit
+        public Scripts.HudUnit _hudUnit { 
+            get {
+                if (!HasComponent(StateComponentsLookup.HudUnit)) throw new System.Exception("Entity does not have component 'HudUnit'. You can check safely with 'HasHudUnit()'");
+                return ((Components.State.HudUnit)GetComponent(StateComponentsLookup.HudUnit)).value;
+            } 
+            set {
+                ((Components.State.HudUnit)GetComponent(StateComponentsLookup.HudUnit)).value = value;
+            }
+        }
+
+        public Scripts.HudUnit hudUnit { 
+            get {
+                if (!HasComponent(StateComponentsLookup.HudUnit)) throw new System.Exception("Entity does not have component 'HudUnit'. You can check safely with 'HasHudUnit()'");
+                return ((Components.State.HudUnit)GetComponent(StateComponentsLookup.HudUnit)).value;
+            } 
+            set {
+                var component = CreateComponent<Components.State.HudUnit>(StateComponentsLookup.HudUnit);
+                component.value = value;
+                ReplaceComponent(StateComponentsLookup.HudUnit, component);
+            }
+        }
+
+        public bool HasHudUnit() {
+            return HasComponent(StateComponentsLookup.HudUnit);
+        }
+
+        public void RemoveHudUnit() {
+            if (HasComponent(StateComponentsLookup.HudUnit)) { RemoveComponent(StateComponentsLookup.HudUnit); }
+        }
+
+        public void PingHudUnit() {
+            var component = GetComponent(StateComponentsLookup.HudUnit);
+            if (component != null) ReplaceComponent(StateComponentsLookup.HudUnit, component);
+            else if (component == null) ReplaceComponent(StateComponentsLookup.HudUnit, null);
+        }
     }
 
 }
