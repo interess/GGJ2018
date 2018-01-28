@@ -286,6 +286,20 @@ namespace DZ.Game {
             }
         }
 
+        static IMatcher<InputEntity> _matcherLevelEvent;
+
+        public static IMatcher<InputEntity> LevelEvent {
+            get {
+                if(_matcherLevelEvent == null) {
+                    var matcher = (Matcher<InputEntity>)Matcher<InputEntity>.AllOf(InputComponentsLookup.LevelEvent);
+                    matcher.componentNames = InputComponentsLookup.componentNames;
+                    _matcherLevelEvent = matcher;
+                }
+
+                return _matcherLevelEvent;
+            }
+        }
+
     }
 
     public sealed partial class StateMatcher {

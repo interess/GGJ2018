@@ -31,6 +31,7 @@ namespace DZ.Game.Components {
         public partial class SubsRecordStopEvent: Entitas.IComponent { }
         public partial class ModalOpenEvent: Entitas.IComponent { }
         public partial class ModalCloseEvent: Entitas.IComponent { }
+        public partial class LevelEvent: Entitas.IComponent { }
         // Value Components
         public partial class TrashTimer: Entitas.IComponent { public float value; }
         public partial class EventId: Entitas.IComponent { public string value; }

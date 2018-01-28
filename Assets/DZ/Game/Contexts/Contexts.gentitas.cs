@@ -28,6 +28,9 @@ namespace DZ.Game.Declaration
             var ModalOpenEvent = Component();
             var ModalCloseEvent = Component();
             var ModalId = Component<string>();
+
+            // Level
+            var LevelEvent = Component();
         }
     }
 

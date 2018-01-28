@@ -32,6 +32,7 @@ namespace DZ.Game.Systems.Level
 
             Add(new RayCastWords());
             Add(new TriggerPhoneTalks());
+            Add(new TriggerScore());
 
             Add(new UnloadActiveLevel());
 
@@ -39,6 +40,10 @@ namespace DZ.Game.Systems.Level
 
             Add(new HandlePlayButton());
             Add(new HandleContinueButton());
+
+            Add(new DelegateLevelStartLogicToController());
+            Add(new DelegateLevelEvents());
+
         }
 
         public class InitCharacterUnit : InitializeSystem
@@ -381,6 +386,7 @@ namespace DZ.Game.Systems.Level
                                 {
                                     // Debug.Log(wordUnit.text.text); 
                                     wordUnit.SetColor(Color.white);
+                                    wordUnit.isMarked = true;
                                 }
                             }
                         }
@@ -433,6 +439,47 @@ namespace DZ.Game.Systems.Level
                         {
                             channelEntity.channelVoiceActive = false;
                             channelEntity.phoneChannelUnit.Stop();
+                        }
+                    }
+                }
+            }
+        }
+
+        public class TriggerScore : ExecuteSystem
+        {
+            private int __prevDialogIndex;
+
+            protected override void Act()
+            {
+                if (!state.HasLevelActiveLoaded()) { return; }
+
+                var anchor = state.phoneManagerUnit.scoreTriggerAnchor;
+                var gameCamera = state.stageManagerUnit.gameCameraUnit.camera;
+
+                var anchorPositionScreen = gameCamera.WorldToScreenPoint(anchor.position);
+                UnityEngine.EventSystems.PointerEventData pointerData = new UnityEngine.EventSystems.PointerEventData(UnityEngine.EventSystems.EventSystem.current);
+                pointerData.position = anchorPositionScreen;
+                var results = new List<UnityEngine.EventSystems.RaycastResult>();
+                UnityEngine.EventSystems.EventSystem.current.RaycastAll(pointerData, results);
+
+                foreach (var item in results)
+                {
+                    var wordUnit = item.gameObject.GetComponent<Scripts.SubsWordUnit>();
+                    if (wordUnit != null)
+                    {
+                        if (wordUnit.isTarget)
+                        {
+                            if (!wordUnit.isMarked)
+                            {
+                                Debug.Log("Big fuckup: word " + wordUnit.text.text);
+                            }
+                        }
+                        else
+                        {
+                            if (wordUnit.isMarked)
+                            {
+                                Debug.Log("Small fuckup: word " + wordUnit.text.text);
+                            }
                         }
                     }
                 }
@@ -527,6 +574,41 @@ namespace DZ.Game.Systems.Level
                 if (state.HasLevelActive())
                 {
                     state.levelActiveEntity.flagActive = false;
+                }
+            }
+        }
+
+        public class DelegateLevelStartLogicToController : StateReactiveSystem
+        {
+            protected override void SetTriggers()
+            {
+                Trigger(StateMatcher.AllOf(StateMatcher.Level, StateMatcher.FlagActive, StateMatcher.FlagLoaded).Added());
+            }
+
+            protected override void Act(List<StateEntity> entities)
+            {
+                if (state.HasLevelActiveLoaded())
+                {
+                    state.levelActiveLoadedEntity.levelControllerUnit.OnStart();
+                }
+            }
+        }
+
+        public class DelegateLevelEvents : InputReactiveSystem
+        {
+            protected override void SetTriggers()
+            {
+                Trigger(InputMatcher.LevelEvent.Added());
+            }
+
+            protected override void Act(List<InputEntity> entities)
+            {
+                if (state.HasLevelActiveLoaded())
+                {
+                    foreach (var entity in entities)
+                    {
+                        state.levelActiveLoadedEntity.levelControllerUnit.HandleLevelEvent(entity);
+                    }
                 }
             }
         }

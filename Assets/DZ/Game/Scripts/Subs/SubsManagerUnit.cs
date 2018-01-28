@@ -137,6 +137,7 @@ namespace DZ.Game.Scripts
 					wordUnit.SetColor(dialogOwnerColors[dialogOwnerIndex]);
 					wordUnit.SetText(currentWord);
 					wordUnit.transform.SetParent(channelRectTransforms[channelIndex - 1], false);
+					wordUnit.isMarked = false;
 					__wordUnitsLookup.Add(wordUnit);
 					currentWordList.Add(wordUnit);
 

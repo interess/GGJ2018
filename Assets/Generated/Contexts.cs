@@ -239,8 +239,9 @@ namespace DZ.Game {
         public const int ModalOpenEvent = 8;
         public const int ModalCloseEvent = 9;
         public const int ModalId = 10;
+        public const int LevelEvent = 11;
 
-        public const int TotalComponents = 11;
+        public const int TotalComponents = 12;
 
         public static readonly Dictionary<string, int> componentsDict = new Dictionary<string, int> () {
             {"FlagEvent", 0 },
@@ -253,7 +254,8 @@ namespace DZ.Game {
             {"SubsRecordStopEvent", 7 },
             {"ModalOpenEvent", 8 },
             {"ModalCloseEvent", 9 },
-            {"ModalId", 10 }
+            {"ModalId", 10 },
+            {"LevelEvent", 11 }
         };
 
         public static readonly string[] componentNames = {
@@ -267,7 +269,8 @@ namespace DZ.Game {
             "SubsRecordStopEvent",
             "ModalOpenEvent",
             "ModalCloseEvent",
-            "ModalId"
+            "ModalId",
+            "LevelEvent"
         };
 
         public static readonly System.Type[] componentTypes = {
@@ -281,7 +284,8 @@ namespace DZ.Game {
             typeof(Components.Input.SubsRecordStopEvent),
             typeof(Components.Input.ModalOpenEvent),
             typeof(Components.Input.ModalCloseEvent),
-            typeof(Components.Input.ModalId)
+            typeof(Components.Input.ModalId),
+            typeof(Components.Input.LevelEvent)
         };
 
         public static int GetComponentIndex(string name) {

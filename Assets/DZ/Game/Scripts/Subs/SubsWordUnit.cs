@@ -21,6 +21,7 @@ namespace DZ.Game.Scripts
         public bool isMale;
         public int dialogOwnerIndex;
         public int channelIndex;
+        public bool isMarked;
 
         public void SetColor(Color value)
         {

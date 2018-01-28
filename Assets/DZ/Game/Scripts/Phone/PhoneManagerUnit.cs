@@ -9,6 +9,7 @@ namespace DZ.Game.Scripts
     public class PhoneManagerUnit : MonoBehaviour
     {
         public RectTransform phoneTriggerAnchor;
+        public RectTransform scoreTriggerAnchor;
         public GameObject phoneChannelPrefab;
 
         private FS.PrefabFactory.Scripts.FactoryUnit __factoryUnit;
@@ -23,6 +24,11 @@ namespace DZ.Game.Scripts
             if (phoneTriggerAnchor == null)
             {
                 Debug.LogError("PhoneManagerUnit | PhoneTriggerAnchor is null. This will cause errors");
+            }
+
+            if (scoreTriggerAnchor == null)
+            {
+                Debug.LogError("PhoneManagerUnit | ScoreTriggerAnchors is null. This will cause errors");
             }
 
             __factoryUnit = gameObject.AddComponent<FS.PrefabFactory.Scripts.FactoryUnit>();

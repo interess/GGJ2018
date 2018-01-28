@@ -507,6 +507,35 @@ namespace DZ.Game {
             else if (component == null) ReplaceComponent(InputComponentsLookup.ModalCloseEvent, null);
         }
 
+        // LevelEvent
+        static readonly Components.Input.LevelEvent _levelEventComponent = new Components.Input.LevelEvent();
+        public bool levelEvent {
+            get { return HasComponent(InputComponentsLookup.LevelEvent); }
+            set {
+                if (value != levelEvent) {
+                    if (value) {
+                        AddComponent(InputComponentsLookup.LevelEvent, _levelEventComponent);
+                    } else {
+                        RemoveComponent(InputComponentsLookup.LevelEvent);
+                    }
+                }
+            }
+        }
+
+        public bool HasLevelEvent() {
+            return HasComponent(InputComponentsLookup.LevelEvent);
+        }
+
+        public void RemoveLevelEvent() {
+            RemoveComponent(InputComponentsLookup.LevelEvent);
+        }
+
+        public void PingLevelEvent() {
+            var component = GetComponent(InputComponentsLookup.LevelEvent);
+            if (component != null) ReplaceComponent(InputComponentsLookup.LevelEvent, component);
+            else if (component == null) ReplaceComponent(InputComponentsLookup.LevelEvent, null);
+        }
+
         //
         // Value Components
         //
