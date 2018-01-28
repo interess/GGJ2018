@@ -55,6 +55,8 @@ namespace DZ.Game.Systems.Modal
                     continue;
                 }
 
+                item.SetActive(false, true);
+
                 var modalEntity = state.CreateEntity();
                 modalEntity.modalId = item.id;
                 modalEntity.modalUnit = item;
@@ -101,12 +103,15 @@ namespace DZ.Game.Systems.Modal
                 {
                     modalEntity.flagOpened = true;
 
-                    if (!modalEntity.HasFlagActive() && state.HasModalActive())
+                    if (!modalEntity.HasFlagActive() && state.HasModalActive() && !entity.modalOpenBackgroundEvent)
                     {
                         state.modalActiveEntity.flagActive = false;
                     }
 
-                    modalEntity.flagActive = true;
+                    if (!entity.modalOpenBackgroundEvent)
+                    {
+                        modalEntity.flagActive = true;
+                    }
 
                     // TODO: effect manager play
                 }

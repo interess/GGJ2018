@@ -286,6 +286,20 @@ namespace DZ.Game {
             }
         }
 
+        static IMatcher<InputEntity> _matcherModalOpenBackgroundEvent;
+
+        public static IMatcher<InputEntity> ModalOpenBackgroundEvent {
+            get {
+                if(_matcherModalOpenBackgroundEvent == null) {
+                    var matcher = (Matcher<InputEntity>)Matcher<InputEntity>.AllOf(InputComponentsLookup.ModalOpenBackgroundEvent);
+                    matcher.componentNames = InputComponentsLookup.componentNames;
+                    _matcherModalOpenBackgroundEvent = matcher;
+                }
+
+                return _matcherModalOpenBackgroundEvent;
+            }
+        }
+
         static IMatcher<InputEntity> _matcherLevelEvent;
 
         public static IMatcher<InputEntity> LevelEvent {
@@ -498,6 +512,20 @@ namespace DZ.Game {
                 }
 
                 return _matcherLevelControllerUnit;
+            }
+        }
+
+        static IMatcher<StateEntity> _matcherLevelSubsSpeed;
+
+        public static IMatcher<StateEntity> LevelSubsSpeed {
+            get {
+                if(_matcherLevelSubsSpeed == null) {
+                    var matcher = (Matcher<StateEntity>)Matcher<StateEntity>.AllOf(StateComponentsLookup.LevelSubsSpeed);
+                    matcher.componentNames = StateComponentsLookup.componentNames;
+                    _matcherLevelSubsSpeed = matcher;
+                }
+
+                return _matcherLevelSubsSpeed;
             }
         }
 

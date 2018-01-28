@@ -507,6 +507,35 @@ namespace DZ.Game {
             else if (component == null) ReplaceComponent(InputComponentsLookup.ModalCloseEvent, null);
         }
 
+        // ModalOpenBackgroundEvent
+        static readonly Components.Input.ModalOpenBackgroundEvent _modalOpenBackgroundEventComponent = new Components.Input.ModalOpenBackgroundEvent();
+        public bool modalOpenBackgroundEvent {
+            get { return HasComponent(InputComponentsLookup.ModalOpenBackgroundEvent); }
+            set {
+                if (value != modalOpenBackgroundEvent) {
+                    if (value) {
+                        AddComponent(InputComponentsLookup.ModalOpenBackgroundEvent, _modalOpenBackgroundEventComponent);
+                    } else {
+                        RemoveComponent(InputComponentsLookup.ModalOpenBackgroundEvent);
+                    }
+                }
+            }
+        }
+
+        public bool HasModalOpenBackgroundEvent() {
+            return HasComponent(InputComponentsLookup.ModalOpenBackgroundEvent);
+        }
+
+        public void RemoveModalOpenBackgroundEvent() {
+            RemoveComponent(InputComponentsLookup.ModalOpenBackgroundEvent);
+        }
+
+        public void PingModalOpenBackgroundEvent() {
+            var component = GetComponent(InputComponentsLookup.ModalOpenBackgroundEvent);
+            if (component != null) ReplaceComponent(InputComponentsLookup.ModalOpenBackgroundEvent, component);
+            else if (component == null) ReplaceComponent(InputComponentsLookup.ModalOpenBackgroundEvent, null);
+        }
+
         // LevelEvent
         static readonly Components.Input.LevelEvent _levelEventComponent = new Components.Input.LevelEvent();
         public bool levelEvent {
@@ -1211,6 +1240,43 @@ namespace DZ.Game {
             var component = GetComponent(StateComponentsLookup.LevelControllerUnit);
             if (component != null) ReplaceComponent(StateComponentsLookup.LevelControllerUnit, component);
             else if (component == null) ReplaceComponent(StateComponentsLookup.LevelControllerUnit, null);
+        }
+
+        // LevelSubsSpeed
+        public float _levelSubsSpeed { 
+            get {
+                if (!HasComponent(StateComponentsLookup.LevelSubsSpeed)) throw new System.Exception("Entity does not have component 'LevelSubsSpeed'. You can check safely with 'HasLevelSubsSpeed()'");
+                return ((Components.State.LevelSubsSpeed)GetComponent(StateComponentsLookup.LevelSubsSpeed)).value;
+            } 
+            set {
+                ((Components.State.LevelSubsSpeed)GetComponent(StateComponentsLookup.LevelSubsSpeed)).value = value;
+            }
+        }
+
+        public float levelSubsSpeed { 
+            get {
+                if (!HasComponent(StateComponentsLookup.LevelSubsSpeed)) throw new System.Exception("Entity does not have component 'LevelSubsSpeed'. You can check safely with 'HasLevelSubsSpeed()'");
+                return ((Components.State.LevelSubsSpeed)GetComponent(StateComponentsLookup.LevelSubsSpeed)).value;
+            } 
+            set {
+                var component = CreateComponent<Components.State.LevelSubsSpeed>(StateComponentsLookup.LevelSubsSpeed);
+                component.value = value;
+                ReplaceComponent(StateComponentsLookup.LevelSubsSpeed, component);
+            }
+        }
+
+        public bool HasLevelSubsSpeed() {
+            return HasComponent(StateComponentsLookup.LevelSubsSpeed);
+        }
+
+        public void RemoveLevelSubsSpeed() {
+            if (HasComponent(StateComponentsLookup.LevelSubsSpeed)) { RemoveComponent(StateComponentsLookup.LevelSubsSpeed); }
+        }
+
+        public void PingLevelSubsSpeed() {
+            var component = GetComponent(StateComponentsLookup.LevelSubsSpeed);
+            if (component != null) ReplaceComponent(StateComponentsLookup.LevelSubsSpeed, component);
+            else if (component == null) ReplaceComponent(StateComponentsLookup.LevelSubsSpeed, null);
         }
 
         // Uid

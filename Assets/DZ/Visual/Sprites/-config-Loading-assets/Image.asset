@@ -33,7 +33,7 @@ MonoBehaviour:
     m_Alignment: 0
     m_SpritePivot: {x: 0.5, y: 0.5}
     m_SpritePixelsToUnits: 100
-    m_SpriteBorder: {x: 223, y: 485, z: 191, w: 497}
+    m_SpriteBorder: {x: 0, y: 0, z: 0, w: 0}
     m_GenerateCubemap: 6
     m_CubemapConvolution: 0
     m_SeamlessCubemap: 0

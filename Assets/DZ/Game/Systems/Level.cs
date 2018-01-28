@@ -246,7 +246,10 @@ namespace DZ.Game.Systems.Level
             {
                 if (state.HasLevelActiveLoaded())
                 {
-                    state.subsManagerUnit.MoveSubs(state.worldTimeEntity.worldTimeSpeed);
+                    if (state.levelActiveEntity.HasLevelSubsSpeed() && state.levelActiveEntity.levelSubsSpeed > 0)
+                    {
+                        state.subsManagerUnit.MoveSubs(state.levelActiveEntity.levelSubsSpeed);
+                    }
                 }
             }
         }

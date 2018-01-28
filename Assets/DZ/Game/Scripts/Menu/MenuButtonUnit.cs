@@ -51,6 +51,11 @@ namespace DZ.Game.Scripts
 
 		public void OnMouseOver()
 		{
+			if (UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
+			{
+				return;
+			}
+
 			if (_isInverted && extraSprite == null) { return; }
 			// Incrase small light intensity
 
@@ -82,6 +87,11 @@ namespace DZ.Game.Scripts
 
 		public void OnMouseDown()
 		{
+			if (UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
+			{
+				return;
+			}
+
 			if (_isInverted && extraSprite == null) { return; }
 
 			var entity = Contexts.input.CreateEventEntity();

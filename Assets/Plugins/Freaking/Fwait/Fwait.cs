@@ -16,7 +16,7 @@ namespace Freaking
                 if (_instance == null)
                 {
                     _instance = new GameObject().AddComponent<Fwait>();
-                    _instance.gameObject.name = "Freaking.Wait.Manager";
+                    _instance.gameObject.name = "Freaking.Fwait";
                     DontDestroyOnLoad(_instance);
                 }
 
@@ -26,19 +26,21 @@ namespace Freaking
 
         #endregion
 
-        private Dictionary<int, Fpromise> promises = new Dictionary<int, Fpromise>();
+        private Dictionary<int, FwaitPromise> promises = new Dictionary<int, FwaitPromise>();
         private Dictionary<int, System.Func<bool>> conditions = new Dictionary<int, System.Func<bool>>();
 
         private HashSet<int> timerIndicies = new HashSet<int>();
+        private HashSet<int> timerUnscaledIndicies = new HashSet<int>();
         private Dictionary<int, float> timers = new Dictionary<int, float>();
+        private Dictionary<int, float> timersUnscaled = new Dictionary<int, float>();
 
         private List<int> keysToDelete = new List<int>();
 
         private int index;
 
-        private Fpromise _Until(System.Func<bool> condition)
+        private FwaitPromise _Until(System.Func<bool> condition)
         {
-            var promise = new Fpromise();
+            var promise = new FwaitPromise();
 
             promises.Add(index, promise);
             conditions.Add(index, condition);
@@ -48,9 +50,9 @@ namespace Freaking
             return promise;
         }
 
-        private Fpromise _ForSeconds(float seconds)
+        private FwaitPromise _ForSeconds(float seconds)
         {
-            var promise = new Fpromise();
+            var promise = new FwaitPromise();
 
             promises.Add(index, promise);
             timers.Add(index, seconds);
@@ -61,12 +63,13 @@ namespace Freaking
             return promise;
         }
 
-        private Fpromise _ForRealSeconds(float seconds)
+        private FwaitPromise _ForSecondsUnscaled(float seconds)
         {
-            var promise = new Fpromise();
+            var promise = new FwaitPromise();
 
             promises.Add(index, promise);
-            timers.Add(index, seconds);
+            timersUnscaled.Add(index, seconds);
+            timerUnscaledIndicies.Add(index);
 
             index++;
 
@@ -95,6 +98,17 @@ namespace Freaking
                 }
             }
 
+            foreach (var i in timerUnscaledIndicies)
+            {
+                timersUnscaled[i] -= Time.unscaledDeltaTime;
+
+                if (timersUnscaled[i] < 0)
+                {
+                    promises[i].Resolve();
+                    keysToDelete.Add(i);
+                }
+            }
+
             if (keysToDelete.Count > 0)
             {
                 foreach (var key in keysToDelete)
@@ -106,20 +120,30 @@ namespace Freaking
                         timers.Remove(key);
                         timerIndicies.Remove(key);
                     }
+                    else if (timerUnscaledIndicies.Contains(key))
+                    {
+                        timersUnscaled.Remove(key);
+                        timerUnscaledIndicies.Remove(key);
+                    }
                 }
 
                 keysToDelete.Clear();
             }
         }
 
-        public static Fpromise Until(System.Func<bool> condition)
+        public static FwaitPromise Until(System.Func<bool> condition)
         {
             return instance._Until(condition);
         }
 
-        public static Fpromise ForSeconds(float seconds)
+        public static FwaitPromise ForSeconds(float seconds)
         {
             return instance._ForSeconds(seconds);
+        }
+
+        public static FwaitPromise ForSecondsUnscaled(float seconds)
+        {
+            return instance._ForSecondsUnscaled(seconds);
         }
     }
 }

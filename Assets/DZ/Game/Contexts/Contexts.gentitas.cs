@@ -28,6 +28,7 @@ namespace DZ.Game.Declaration
             var ModalOpenEvent = Component();
             var ModalCloseEvent = Component();
             var ModalId = Component<string>();
+            var ModalOpenBackgroundEvent = Component();
 
             // Level
             var LevelEvent = Component();
@@ -60,6 +61,7 @@ namespace DZ.Game.Declaration
             var Level = Component().Group;
             var LevelIndex = Component<int>().Index;
             var LevelControllerUnit = Component<Scripts.LevelControllerUnit>();
+            var LevelSubsSpeed = Component<float>();
 
             var LevelActive = Group(Matcher.All(Level, FlagActive)).Single;
             var LevelActiveLoaded = Group(Matcher.All(Level, FlagActive, FlagLoaded)).Single;
