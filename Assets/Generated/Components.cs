@@ -33,10 +33,15 @@ namespace DZ.Game.Components {
         public partial class ModalCloseEvent: Entitas.IComponent { }
         public partial class ModalOpenBackgroundEvent: Entitas.IComponent { }
         public partial class LevelEvent: Entitas.IComponent { }
+        public partial class MistakeHeavyEvent: Entitas.IComponent { }
+        public partial class MistakeLightEvent: Entitas.IComponent { }
+        public partial class ScoreHeavyEvent: Entitas.IComponent { }
+        public partial class ScoreLightEvent: Entitas.IComponent { }
         // Value Components
         public partial class TrashTimer: Entitas.IComponent { public float value; }
         public partial class EventId: Entitas.IComponent { public string value; }
         public partial class ModalId: Entitas.IComponent { public string value; }
+        public partial class WordLength: Entitas.IComponent { public int value; }
     }
     namespace State {
         // Flag Components
@@ -89,5 +94,6 @@ namespace DZ.Game.Components {
         public partial class CharacterUnit: Entitas.IComponent { public Scripts.CharacterUnit value; }
         public partial class HudUnit: Entitas.IComponent { public Scripts.HudUnit value; }
         public partial class TicketManagerUnit: Entitas.IComponent { public Scripts.TicketManagerUnit value; }
+        public partial class Score: Entitas.IComponent { public int value; }
     }
 }

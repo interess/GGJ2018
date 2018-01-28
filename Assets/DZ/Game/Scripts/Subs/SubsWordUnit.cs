@@ -22,6 +22,9 @@ namespace DZ.Game.Scripts
         public int dialogOwnerIndex;
         public int channelIndex;
         public bool isMarked;
+        public bool isMarkedDev;
+        public bool isSpoken;
+        public bool isScored;
 
         public void SetColor(Color value)
         {

@@ -314,6 +314,76 @@ namespace DZ.Game {
             }
         }
 
+        static IMatcher<InputEntity> _matcherMistakeHeavyEvent;
+
+        public static IMatcher<InputEntity> MistakeHeavyEvent {
+            get {
+                if(_matcherMistakeHeavyEvent == null) {
+                    var matcher = (Matcher<InputEntity>)Matcher<InputEntity>.AllOf(InputComponentsLookup.MistakeHeavyEvent);
+                    matcher.componentNames = InputComponentsLookup.componentNames;
+                    _matcherMistakeHeavyEvent = matcher;
+                }
+
+                return _matcherMistakeHeavyEvent;
+            }
+        }
+
+        static IMatcher<InputEntity> _matcherMistakeLightEvent;
+
+        public static IMatcher<InputEntity> MistakeLightEvent {
+            get {
+                if(_matcherMistakeLightEvent == null) {
+                    var matcher = (Matcher<InputEntity>)Matcher<InputEntity>.AllOf(InputComponentsLookup.MistakeLightEvent);
+                    matcher.componentNames = InputComponentsLookup.componentNames;
+                    _matcherMistakeLightEvent = matcher;
+                }
+
+                return _matcherMistakeLightEvent;
+            }
+        }
+
+        static IMatcher<InputEntity> _matcherScoreHeavyEvent;
+
+        public static IMatcher<InputEntity> ScoreHeavyEvent {
+            get {
+                if(_matcherScoreHeavyEvent == null) {
+                    var matcher = (Matcher<InputEntity>)Matcher<InputEntity>.AllOf(InputComponentsLookup.ScoreHeavyEvent);
+                    matcher.componentNames = InputComponentsLookup.componentNames;
+                    _matcherScoreHeavyEvent = matcher;
+                }
+
+                return _matcherScoreHeavyEvent;
+            }
+        }
+
+        static IMatcher<InputEntity> _matcherScoreLightEvent;
+
+        public static IMatcher<InputEntity> ScoreLightEvent {
+            get {
+                if(_matcherScoreLightEvent == null) {
+                    var matcher = (Matcher<InputEntity>)Matcher<InputEntity>.AllOf(InputComponentsLookup.ScoreLightEvent);
+                    matcher.componentNames = InputComponentsLookup.componentNames;
+                    _matcherScoreLightEvent = matcher;
+                }
+
+                return _matcherScoreLightEvent;
+            }
+        }
+
+        static IMatcher<InputEntity> _matcherWordLength;
+
+        public static IMatcher<InputEntity> WordLength {
+            get {
+                if(_matcherWordLength == null) {
+                    var matcher = (Matcher<InputEntity>)Matcher<InputEntity>.AllOf(InputComponentsLookup.WordLength);
+                    matcher.componentNames = InputComponentsLookup.componentNames;
+                    _matcherWordLength = matcher;
+                }
+
+                return _matcherWordLength;
+            }
+        }
+
     }
 
     public sealed partial class StateMatcher {
@@ -1002,6 +1072,20 @@ namespace DZ.Game {
                 }
 
                 return _matcherTicketManagerUnit;
+            }
+        }
+
+        static IMatcher<StateEntity> _matcherScore;
+
+        public static IMatcher<StateEntity> Score {
+            get {
+                if(_matcherScore == null) {
+                    var matcher = (Matcher<StateEntity>)Matcher<StateEntity>.AllOf(StateComponentsLookup.Score);
+                    matcher.componentNames = StateComponentsLookup.componentNames;
+                    _matcherScore = matcher;
+                }
+
+                return _matcherScore;
             }
         }
 

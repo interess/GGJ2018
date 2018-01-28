@@ -138,6 +138,9 @@ namespace DZ.Game.Scripts
 					wordUnit.SetText(currentWord);
 					wordUnit.transform.SetParent(channelRectTransforms[channelIndex - 1], false);
 					wordUnit.isMarked = false;
+					wordUnit.isMarkedDev = false;
+					wordUnit.isSpoken = false;
+					wordUnit.isScored = false;
 					__wordUnitsLookup.Add(wordUnit);
 					currentWordList.Add(wordUnit);
 

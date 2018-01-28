@@ -32,6 +32,16 @@ namespace DZ.Game.Declaration
 
             // Level
             var LevelEvent = Component();
+
+            // Mistake
+            var MistakeHeavyEvent = Component();
+            var MistakeLightEvent = Component();
+
+            // Score
+            var ScoreHeavyEvent = Component();
+            var ScoreLightEvent = Component();
+
+            var WordLength = Component<int>();
         }
     }
 
@@ -145,6 +155,8 @@ namespace DZ.Game.Declaration
             // Ticket
             var TicketManagerUnit = Component<Scripts.TicketManagerUnit>().GroupSingle;
 
+            // Mistakes
+            var Score = Component<int>().GroupSingle;
         }
     }
 }

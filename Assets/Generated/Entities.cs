@@ -565,6 +565,122 @@ namespace DZ.Game {
             else if (component == null) ReplaceComponent(InputComponentsLookup.LevelEvent, null);
         }
 
+        // MistakeHeavyEvent
+        static readonly Components.Input.MistakeHeavyEvent _mistakeHeavyEventComponent = new Components.Input.MistakeHeavyEvent();
+        public bool mistakeHeavyEvent {
+            get { return HasComponent(InputComponentsLookup.MistakeHeavyEvent); }
+            set {
+                if (value != mistakeHeavyEvent) {
+                    if (value) {
+                        AddComponent(InputComponentsLookup.MistakeHeavyEvent, _mistakeHeavyEventComponent);
+                    } else {
+                        RemoveComponent(InputComponentsLookup.MistakeHeavyEvent);
+                    }
+                }
+            }
+        }
+
+        public bool HasMistakeHeavyEvent() {
+            return HasComponent(InputComponentsLookup.MistakeHeavyEvent);
+        }
+
+        public void RemoveMistakeHeavyEvent() {
+            RemoveComponent(InputComponentsLookup.MistakeHeavyEvent);
+        }
+
+        public void PingMistakeHeavyEvent() {
+            var component = GetComponent(InputComponentsLookup.MistakeHeavyEvent);
+            if (component != null) ReplaceComponent(InputComponentsLookup.MistakeHeavyEvent, component);
+            else if (component == null) ReplaceComponent(InputComponentsLookup.MistakeHeavyEvent, null);
+        }
+
+        // MistakeLightEvent
+        static readonly Components.Input.MistakeLightEvent _mistakeLightEventComponent = new Components.Input.MistakeLightEvent();
+        public bool mistakeLightEvent {
+            get { return HasComponent(InputComponentsLookup.MistakeLightEvent); }
+            set {
+                if (value != mistakeLightEvent) {
+                    if (value) {
+                        AddComponent(InputComponentsLookup.MistakeLightEvent, _mistakeLightEventComponent);
+                    } else {
+                        RemoveComponent(InputComponentsLookup.MistakeLightEvent);
+                    }
+                }
+            }
+        }
+
+        public bool HasMistakeLightEvent() {
+            return HasComponent(InputComponentsLookup.MistakeLightEvent);
+        }
+
+        public void RemoveMistakeLightEvent() {
+            RemoveComponent(InputComponentsLookup.MistakeLightEvent);
+        }
+
+        public void PingMistakeLightEvent() {
+            var component = GetComponent(InputComponentsLookup.MistakeLightEvent);
+            if (component != null) ReplaceComponent(InputComponentsLookup.MistakeLightEvent, component);
+            else if (component == null) ReplaceComponent(InputComponentsLookup.MistakeLightEvent, null);
+        }
+
+        // ScoreHeavyEvent
+        static readonly Components.Input.ScoreHeavyEvent _scoreHeavyEventComponent = new Components.Input.ScoreHeavyEvent();
+        public bool scoreHeavyEvent {
+            get { return HasComponent(InputComponentsLookup.ScoreHeavyEvent); }
+            set {
+                if (value != scoreHeavyEvent) {
+                    if (value) {
+                        AddComponent(InputComponentsLookup.ScoreHeavyEvent, _scoreHeavyEventComponent);
+                    } else {
+                        RemoveComponent(InputComponentsLookup.ScoreHeavyEvent);
+                    }
+                }
+            }
+        }
+
+        public bool HasScoreHeavyEvent() {
+            return HasComponent(InputComponentsLookup.ScoreHeavyEvent);
+        }
+
+        public void RemoveScoreHeavyEvent() {
+            RemoveComponent(InputComponentsLookup.ScoreHeavyEvent);
+        }
+
+        public void PingScoreHeavyEvent() {
+            var component = GetComponent(InputComponentsLookup.ScoreHeavyEvent);
+            if (component != null) ReplaceComponent(InputComponentsLookup.ScoreHeavyEvent, component);
+            else if (component == null) ReplaceComponent(InputComponentsLookup.ScoreHeavyEvent, null);
+        }
+
+        // ScoreLightEvent
+        static readonly Components.Input.ScoreLightEvent _scoreLightEventComponent = new Components.Input.ScoreLightEvent();
+        public bool scoreLightEvent {
+            get { return HasComponent(InputComponentsLookup.ScoreLightEvent); }
+            set {
+                if (value != scoreLightEvent) {
+                    if (value) {
+                        AddComponent(InputComponentsLookup.ScoreLightEvent, _scoreLightEventComponent);
+                    } else {
+                        RemoveComponent(InputComponentsLookup.ScoreLightEvent);
+                    }
+                }
+            }
+        }
+
+        public bool HasScoreLightEvent() {
+            return HasComponent(InputComponentsLookup.ScoreLightEvent);
+        }
+
+        public void RemoveScoreLightEvent() {
+            RemoveComponent(InputComponentsLookup.ScoreLightEvent);
+        }
+
+        public void PingScoreLightEvent() {
+            var component = GetComponent(InputComponentsLookup.ScoreLightEvent);
+            if (component != null) ReplaceComponent(InputComponentsLookup.ScoreLightEvent, component);
+            else if (component == null) ReplaceComponent(InputComponentsLookup.ScoreLightEvent, null);
+        }
+
         //
         // Value Components
         //
@@ -678,6 +794,43 @@ namespace DZ.Game {
             var component = GetComponent(InputComponentsLookup.ModalId);
             if (component != null) ReplaceComponent(InputComponentsLookup.ModalId, component);
             else if (component == null) ReplaceComponent(InputComponentsLookup.ModalId, null);
+        }
+
+        // WordLength
+        public int _wordLength { 
+            get {
+                if (!HasComponent(InputComponentsLookup.WordLength)) throw new System.Exception("Entity does not have component 'WordLength'. You can check safely with 'HasWordLength()'");
+                return ((Components.Input.WordLength)GetComponent(InputComponentsLookup.WordLength)).value;
+            } 
+            set {
+                ((Components.Input.WordLength)GetComponent(InputComponentsLookup.WordLength)).value = value;
+            }
+        }
+
+        public int wordLength { 
+            get {
+                if (!HasComponent(InputComponentsLookup.WordLength)) throw new System.Exception("Entity does not have component 'WordLength'. You can check safely with 'HasWordLength()'");
+                return ((Components.Input.WordLength)GetComponent(InputComponentsLookup.WordLength)).value;
+            } 
+            set {
+                var component = CreateComponent<Components.Input.WordLength>(InputComponentsLookup.WordLength);
+                component.value = value;
+                ReplaceComponent(InputComponentsLookup.WordLength, component);
+            }
+        }
+
+        public bool HasWordLength() {
+            return HasComponent(InputComponentsLookup.WordLength);
+        }
+
+        public void RemoveWordLength() {
+            if (HasComponent(InputComponentsLookup.WordLength)) { RemoveComponent(InputComponentsLookup.WordLength); }
+        }
+
+        public void PingWordLength() {
+            var component = GetComponent(InputComponentsLookup.WordLength);
+            if (component != null) ReplaceComponent(InputComponentsLookup.WordLength, component);
+            else if (component == null) ReplaceComponent(InputComponentsLookup.WordLength, null);
         }
     }
 
@@ -2387,6 +2540,43 @@ namespace DZ.Game {
             var component = GetComponent(StateComponentsLookup.TicketManagerUnit);
             if (component != null) ReplaceComponent(StateComponentsLookup.TicketManagerUnit, component);
             else if (component == null) ReplaceComponent(StateComponentsLookup.TicketManagerUnit, null);
+        }
+
+        // Score
+        public int _score { 
+            get {
+                if (!HasComponent(StateComponentsLookup.Score)) throw new System.Exception("Entity does not have component 'Score'. You can check safely with 'HasScore()'");
+                return ((Components.State.Score)GetComponent(StateComponentsLookup.Score)).value;
+            } 
+            set {
+                ((Components.State.Score)GetComponent(StateComponentsLookup.Score)).value = value;
+            }
+        }
+
+        public int score { 
+            get {
+                if (!HasComponent(StateComponentsLookup.Score)) throw new System.Exception("Entity does not have component 'Score'. You can check safely with 'HasScore()'");
+                return ((Components.State.Score)GetComponent(StateComponentsLookup.Score)).value;
+            } 
+            set {
+                var component = CreateComponent<Components.State.Score>(StateComponentsLookup.Score);
+                component.value = value;
+                ReplaceComponent(StateComponentsLookup.Score, component);
+            }
+        }
+
+        public bool HasScore() {
+            return HasComponent(StateComponentsLookup.Score);
+        }
+
+        public void RemoveScore() {
+            if (HasComponent(StateComponentsLookup.Score)) { RemoveComponent(StateComponentsLookup.Score); }
+        }
+
+        public void PingScore() {
+            var component = GetComponent(StateComponentsLookup.Score);
+            if (component != null) ReplaceComponent(StateComponentsLookup.Score, component);
+            else if (component == null) ReplaceComponent(StateComponentsLookup.Score, null);
         }
     }
 

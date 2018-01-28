@@ -643,6 +643,39 @@ namespace DZ.Game {
 		}
 		public bool HasTicketManagerUnit() {	return ticketManagerUnitGroup.count == 1;	}
 
+		// Score Group
+		private IGroup<StateEntity> _scoreGroup;
+		public IGroup<StateEntity> scoreGroup {
+			get { 
+				if (_scoreGroup == null) {
+					_scoreGroup = GetGroup(StateMatcher.Score);
+				}
+				return _scoreGroup; } }
+
+		public StateEntity scoreEntity {
+			get {
+				var cachedGroup = scoreGroup;
+				if (cachedGroup.count > 1) {
+					return null;
+				}
+				if (cachedGroup.count == 0) {
+					return null;
+				}
+				return cachedGroup.GetSingleEntity(); } }
+
+		public int score { 
+			get {
+				if (scoreEntity == null) throw new System.Exception("StateContext has 0 or more than 1 entity with component 'Score'. You can check safely with 'HasScore()'");
+				return scoreEntity.score;
+			}	
+			set { 
+				if (scoreGroup.count > 1) throw new System.Exception("StateContext has more than 1 entity with component 'Score'. You can check safely with 'HasScore()'");
+				else if (scoreGroup.count == 0) this.CreateEntity().score = value;
+				else scoreEntity.score = value;
+			}
+		}
+		public bool HasScore() {	return scoreGroup.count == 1;	}
+
 
 		//
 		// Groups

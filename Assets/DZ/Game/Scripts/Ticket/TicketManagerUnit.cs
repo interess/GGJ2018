@@ -61,7 +61,7 @@ namespace DZ.Game.Scripts
 		{
 			if (!final)
 			{
-				if (numberOfRaports >= 2)
+				if (numberOfRaports >= 3)
 				{
 					final = true;
 				}
@@ -87,9 +87,11 @@ namespace DZ.Game.Scripts
 
 			numberOfRaports++;
 
+			if (numberOfRaports >= 3) { numberOfRaports = 0; }
+
 			if (!final)
 			{
-				Freaking.Fwait.ForSeconds(3f).Done(() =>
+				Freaking.Fwait.ForSeconds(5f).Done(() =>
 				{
 					doorAnimator.SetBool("Opened", false);
 					Contexts.state.CreateEffectEntity("DoorCloseEffect");
@@ -102,7 +104,7 @@ namespace DZ.Game.Scripts
 		{
 			if (!final)
 			{
-				if (numberOfWarnings >= 2)
+				if (numberOfWarnings >= 3)
 				{
 					final = true;
 				}
@@ -128,14 +130,21 @@ namespace DZ.Game.Scripts
 
 			numberOfWarnings++;
 
-			if (!final)
+			if (numberOfWarnings >= 3) { numberOfWarnings = 0; }
+
+			Freaking.Fwait.ForSeconds(2f).Done(() =>
 			{
-				Freaking.Fwait.ForSeconds(3f).Done(() =>
+				doorAnimator.SetBool("Opened", false);
+				Contexts.state.CreateEffectEntity("DoorCloseEffect");
+
+				if (final)
 				{
-					doorAnimator.SetBool("Opened", false);
-					Contexts.state.CreateEffectEntity("DoorCloseEffect");
-				});
-			}
+					foreach (var item in warningTickets)
+					{
+						item.GetComponent<Image>().DOFade(0, 0.3f);
+					}
+				}
+			});
 		}
 	}
 }

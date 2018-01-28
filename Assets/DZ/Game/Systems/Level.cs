@@ -438,6 +438,9 @@ namespace DZ.Game.Systems.Level
                             var wordUnit = item.gameObject.GetComponent<Scripts.SubsWordUnit>();
                             if (wordUnit != null)
                             {
+                                if (wordUnit.isMarkedDev) { continue; }
+                                wordUnit.isMarkedDev = true;
+
                                 if (wordUnit.channelIndex != state.channelActiveEntity.channel) { continue; }
                                 if (!wordUnit.isEmpty)
                                 {
@@ -475,6 +478,10 @@ namespace DZ.Game.Systems.Level
                     var wordUnit = item.gameObject.GetComponent<Scripts.SubsWordUnit>();
                     if (wordUnit != null)
                     {
+
+                        if (wordUnit.isSpoken) { continue; }
+                        wordUnit.isSpoken = true;
+
                         var channelEntity = state.channelIndex.FindSingle(wordUnit.channelIndex);
                         if (channelEntity == null) { continue; }
 
@@ -524,18 +531,34 @@ namespace DZ.Game.Systems.Level
                     var wordUnit = item.gameObject.GetComponent<Scripts.SubsWordUnit>();
                     if (wordUnit != null)
                     {
+                        if (wordUnit.isScored) { continue; }
+                        wordUnit.isScored = true;
+
                         if (wordUnit.isTarget)
                         {
                             if (!wordUnit.isMarked)
                             {
-                                Debug.Log("Big fuckup: word " + wordUnit.text.text);
+                                var eventEntity = input.CreateEventEntity();
+                                eventEntity.levelEvent = true;
+                                eventEntity.mistakeHeavyEvent = true;
+                                eventEntity.wordLength = wordUnit.text.text.Length;
+                            }
+                            else
+                            {
+                                var eventEntity = input.CreateEventEntity();
+                                eventEntity.levelEvent = true;
+                                eventEntity.scoreHeavyEvent = true;
+                                eventEntity.wordLength = wordUnit.text.text.Length;
                             }
                         }
                         else
                         {
                             if (wordUnit.isMarked)
                             {
-                                Debug.Log("Small fuckup: word " + wordUnit.text.text);
+                                var eventEntity = input.CreateEventEntity();
+                                eventEntity.levelEvent = true;
+                                eventEntity.mistakeLightEvent = true;
+                                eventEntity.wordLength = wordUnit.text.text.Length;
                             }
                         }
                     }
