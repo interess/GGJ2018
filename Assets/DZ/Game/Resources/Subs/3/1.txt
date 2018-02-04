@@ -1,0 +1,28 @@
+---1 Hey, Kira! Slavssya Sowoke! How are you, my dear? 
+---0 . . . 
+---5 Slavssya Sowoke, Shelly. Everything is alright, me and Michael just came back from Bugoria, we had a really nice trip there! Have you been to Bugoria yourself? 
+---0 . . . 
+---1 Yeah, back at the childhood, when they had the Artztek Social Education camp was still opened. Have you been there too? 
+---0 . . . 
+---5 Not when I were a young girl, but the bus we were on went by camp's closed gates. So bad our children won't be able to visit it. But, at least the new Social Labor Act of laws give them rides to the sea each 4 years! 
+---0 . . . 
+---1 Yeah… That's great, of course. By the way, your son, Graham… 
+---0 . . . 
+---5 He's gone to Institute, yes. He's a clever boy, he will handle it. And what about Caren? 
+---0 . . . . . . . . 
+---1 I… I *need *to go, Kira. Sorry. . . .
+---0 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+---7 Slavssya Sowoke, Social Party Control Bureau Officer #562-R is on the line. How can I help?
+---0 . . .
+---4 Slavssya Sowoke, officer. My name is Maya Saneva, Ost-Sareth, Rabenov st. 22A, appartment 12. My neighbor from upstairs is suspiciously low, I mean, quiet for last week or something. 
+---0 . . .
+---7 Citizen Saneva, your neighbor may be at the vacation. 
+---0 . . .
+---4 No she's not, fellow officer. She's lazy and has no work, no child, her husband is a criminal and she's alcoholic, pathetic piano-player who played her damn piano every day. Before. So she's up to something, or I don't know, please check it.
+---0 . . .
+---7 Calm down, citizen Saneva. Social Party Control Bureau will send someone to her. Slavssya Sowoke.
+---0 . . .
+---4 Slavssya Sowoke!
+---0 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+
+END

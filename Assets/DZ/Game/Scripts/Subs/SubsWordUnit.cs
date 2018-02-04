@@ -26,6 +26,8 @@ namespace DZ.Game.Scripts
         public bool isSpoken;
         public bool isScored;
         public bool isEnd;
+        public int mistakeScore;
+        public int scoreScore;
 
         public void SetColor(Color value)
         {

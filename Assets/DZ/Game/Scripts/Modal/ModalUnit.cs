@@ -11,6 +11,8 @@ namespace DZ.Game.Scripts
         public RectTransform modalRectTransform;
         public CanvasGroup modalCanvasGroup;
 
+        public GameObject[] enableGameObjects;
+
         UnityEngine.UI.GraphicRaycaster _graphicsRaycaster;
         protected UnityEngine.UI.GraphicRaycaster graphicsRaycaster { get { if (_graphicsRaycaster == null) _graphicsRaycaster = GetComponent<UnityEngine.UI.GraphicRaycaster>(); return _graphicsRaycaster; } }
 
@@ -35,6 +37,7 @@ namespace DZ.Game.Scripts
                 modalCanvasGroup.DOKill(false);
                 modalCanvasGroup.DOFade(value ? 1f : 0f, value ? openDuration : closeDuration);
             }
+
         }
 
         public void SetActive(bool value, bool fast = false)
@@ -56,6 +59,11 @@ namespace DZ.Game.Scripts
                     modalCanvasGroup.DOKill(false);
                     modalCanvasGroup.DOFade(0f, closeDuration);
                 }
+            }
+
+            foreach (var item in enableGameObjects)
+            {
+                item.SetActive(value);
             }
         }
     }

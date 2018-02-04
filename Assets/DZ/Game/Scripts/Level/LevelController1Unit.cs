@@ -6,11 +6,15 @@ namespace DZ.Game.Scripts
     public class LevelController1Unit : LevelControllerUnit
     {
         bool firstHelperShown = false;
+        bool raportShown;
+        bool warningShown;
 
         public override void OnStart()
         {
             Debug.Log("Level start");
 
+            raportShown = false;
+            warningShown = false;
             firstHelperShown = false;
 
             var eventEntity = Contexts.input.CreateEventEntity();
@@ -39,11 +43,22 @@ namespace DZ.Game.Scripts
             {
                 var letterEventEntity = Contexts.input.CreateEventEntity();
                 letterEventEntity.modalOpenEvent = true;
-                letterEventEntity.modalId = "FirstLetter";
+                letterEventEntity.modalId = "Newspaper";
 
                 var eventEntity = Contexts.input.CreateEventEntity();
                 eventEntity.modalCloseEvent = true;
                 eventEntity.modalId = "IntroLetter";
+            }
+
+            if (entity.HasEventId() && entity.eventId == "Newspaper_Done")
+            {
+                var letterEventEntity = Contexts.input.CreateEventEntity();
+                letterEventEntity.modalOpenEvent = true;
+                letterEventEntity.modalId = "FirstLetter";
+
+                var eventEntity = Contexts.input.CreateEventEntity();
+                eventEntity.modalCloseEvent = true;
+                eventEntity.modalId = "Newspaper";
             }
 
             if (entity.HasEventId() && entity.eventId == "FirstLetter_Done")
@@ -56,7 +71,7 @@ namespace DZ.Game.Scripts
                 Contexts.state.levelActiveEntity.levelSubsSpeed = Contexts.state.worldTimeEntity.worldTimeSpeed;
             }
 
-            var baseScore = 1;
+            var baseScore = 0;
 
             if (!Contexts.state.HasScore())
             {
@@ -65,11 +80,11 @@ namespace DZ.Game.Scripts
 
             if (entity.HasScoreHeavyEvent())
             {
-                Contexts.state.score += 30 + entity.wordLength * 2;
+                Contexts.state.score += entity.scoreHeavy;
             }
             else if (entity.HasMistakeHeavyEvent())
             {
-                Contexts.state.score -= 30;
+                Contexts.state.score -= entity.mistakeHeavy;
             }
             else if (entity.HasMistakeLightEvent())
             {
@@ -79,8 +94,9 @@ namespace DZ.Game.Scripts
             var finalWarning = false;
             var finalRaport = false;
 
-            if (Contexts.state.score < -15)
+            if (Contexts.state.score < -40 && !raportShown)
             {
+                raportShown = true;
                 Contexts.state.score = baseScore;
 
                 var numberOfRaports = PlayerPrefs.GetInt("Raports");
@@ -102,8 +118,9 @@ namespace DZ.Game.Scripts
 
                 Contexts.state.ticketManagerUnit.AddRaport(finalRaport);
             }
-            else if (Contexts.state.score < -5)
+            else if (Contexts.state.score < -20 && !warningShown)
             {
+                warningShown = true;
                 Contexts.state.score = baseScore;
 
                 var numberOfWarnings = PlayerPrefs.GetInt("Warnings");

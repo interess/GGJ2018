@@ -607,6 +607,7 @@ namespace DZ.Game.Systems.Level
                                 eventEntity.levelEvent = true;
                                 eventEntity.mistakeHeavyEvent = true;
                                 eventEntity.wordLength = wordUnit.text.text.Length;
+                                eventEntity.mistakeHeavy = wordUnit.mistakeScore;
                             }
                             else
                             {
@@ -614,6 +615,7 @@ namespace DZ.Game.Systems.Level
                                 eventEntity.levelEvent = true;
                                 eventEntity.scoreHeavyEvent = true;
                                 eventEntity.wordLength = wordUnit.text.text.Length;
+                                eventEntity.scoreHeavy = wordUnit.scoreScore;
                             }
                         }
                         else

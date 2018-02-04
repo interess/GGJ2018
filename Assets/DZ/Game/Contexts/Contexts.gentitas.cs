@@ -36,10 +36,12 @@ namespace DZ.Game.Declaration
             // Mistake
             var MistakeHeavyEvent = Component();
             var MistakeLightEvent = Component();
+            var MistakeHeavy = Component<int>();
 
             // Score
             var ScoreHeavyEvent = Component();
             var ScoreLightEvent = Component();
+            var ScoreHeavy = Component<int>();
 
             var WordLength = Component<int>();
 

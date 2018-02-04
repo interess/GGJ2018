@@ -1,0 +1,24 @@
+---0 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+---3 And, well, everything is great! Michelle is totally going to reward me for that! We've exceeded the plan in one and a half times! You know, like, all the Sowoke must swim in those clothes! Beautiful dresses, scarves, trousers, jackets, coats, and everything, everything, everything… And there are more coming! I feel so good after 12 hours of work when I go back home and by the street I see people, citizens, children in clothes made thanks to our factory!
+---0 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+---7 So, Maksim Johovich, in your opinion what is the most important study?
+---0 . . .
+---3 Most important? It's philosophy, of course, because both culture and social understanding of nature around us. Without philosophy we cannot build a constructive dialogue. 
+---0 . . .
+---7 And, if you say so, there is a constructive dialogue now?
+---0 . . .
+---3 Now? Maybe. Most important that there was, and there will be one. 
+---0 . . .
+---7 But haven't you say before that philosophy has no future, as it builds on our view and understanding of the past and the current moments?
+---0 . . .
+---3 I had. And yet, it was a past moment, and I understood it in another way. The difference means everything. Do you see a difference between Sowoke now and before?
+---0 . . .
+---7 Huh. Maksim Johovich, there are no Sowoke before this current moment, as it dies and reborns every second. In material ways, of course. Could you claim that after your door there is Sowoke street and not street of any other country?
+---0 . . .
+---3 If I had a map: yes. 
+---0 . . .
+---7 And do you have map?
+---0 . . .
+---3 Yes.
+
+END

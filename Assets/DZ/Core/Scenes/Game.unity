@@ -461,7 +461,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: b9899f4b2a5b8a841b025e4b5c53a89b, type: 3}
+    m_Font: {fileID: 12800000, guid: f6010dbd2ef4b6747aeb85fa7f6a7c69, type: 3}
     m_FontSize: 54
     m_FontStyle: 0
     m_BestFit: 0
@@ -473,16 +473,16 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Welcome to your workplace, Telecommunication Quality Officer #305-D! You've
-    already gone through the instructions of Internal Qualifications Operator, but
-    let me remind them once more:\r\n\r\nYour duty here is to listen and analyze phone
-    calls of Sowoke Respuplica citizen in real time, using QAT on your table. When
-    you hear something that offends Codex of great Sowoke Respublica, hold the marker
-    (Space) onto the transcription paper to mark this part of call as inappropriate!\r\n\r\nListen
-    carefully, as traitors may cover anywhere\u2026 Even in your own house! \r\n\r\nDon't
-    miss inappropriate behavior or words and don't be afraid to mark appropriate calls
-    as offencive! There's no time to doubt in our work!\r\n\r\nYou start your work
-    at 6:00 A.M.\r\n\r\nSlavssya Sowoke!\r\n"
+  m_Text: "Welcome to your workplace, <b>Telecommunication Quality Officer #305-D!</b>
+    You've already gone through the instructions of Internal Qualifications Operator,
+    but let me remind them once more:\r\n\r\nYour duty here is to listen and analyze
+    phone calls of Sowoke Respuplica citizen in real time, using QAT on your table.
+    When you hear something <b>that offends</b> Law and Order of great Sowoke Respublica,
+    <b>hold the marker (Space) onto the transcription paper to mark this part of call
+    as inappropriate!\r</b>\n\r\nListen carefully, as traitors may cover anywhere\u2026
+    Even in your own house! \r\n\r\nDon't miss inappropriate behavior or words and
+    don't be afraid to mark appropriate calls as offencive! There's no time to doubt
+    in our work!\r\n\r\nYou start your work at 6:00 A.M.\r\n\r\n<b>Slavssya Sowoke!\r</b>\n"
 --- !u!222 &37590506
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -627,6 +627,122 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lightId: Level
+--- !u!1 &78009012
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 78009013}
+  - component: {fileID: 78009018}
+  - component: {fileID: 78009017}
+  - component: {fileID: 78009016}
+  - component: {fileID: 78009015}
+  - component: {fileID: 78009014}
+  m_Layer: 5
+  m_Name: ThridLetter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &78009013
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 78009012}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.9995936, y: 0.9995936, z: 0.9995936}
+  m_Children:
+  - {fileID: 1214377769}
+  m_Father: {fileID: 2010686965}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -0.0000052452087, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &78009014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 78009012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1301386320, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!223 &78009015
+Canvas:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 78009012}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 1
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: -1123144333
+  m_SortingOrder: 2000
+  m_TargetDisplay: 0
+--- !u!114 &78009016
+MonoBehaviour:
+  m_ObjectHideFlags: 10
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 78009012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b046ff928d6ac4c0eb5573e12b07aa1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lastState: 1
+  lastStateBeforeSceneClose: 0
+--- !u!114 &78009017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 78009012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c8ccf8128f0c42cbaa05a1dbffa7a1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: ThirdLetter
+  modalRectTransform: {fileID: 78009013}
+  modalCanvasGroup: {fileID: 78009018}
+  enableGameObjects: []
+  openDuration: 0
+  closeDuration: 0
+--- !u!225 &78009018
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 78009012}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &82079178
 GameObject:
   m_ObjectHideFlags: 0
@@ -812,7 +928,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00000035762787, y: -2567}
+  m_AnchoredPosition: {x: -0.00000035762787, y: -2477}
   m_SizeDelta: {x: -300, y: 167}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &96994118
@@ -921,7 +1037,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: -- GET TO WORK --
+  m_Text: -- BACK TO WORK --
 --- !u!222 &96994123
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1127,7 +1243,7 @@ MonoBehaviour:
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: f6010dbd2ef4b6747aeb85fa7f6a7c69, type: 3}
   m_Color: {r: 0.16176468, g: 0.15938579, b: 0.15938579, a: 0.828}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
@@ -1136,7 +1252,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: b9899f4b2a5b8a841b025e4b5c53a89b, type: 3}
+    m_Font: {fileID: 12800000, guid: f6010dbd2ef4b6747aeb85fa7f6a7c69, type: 3}
     m_FontSize: 54
     m_FontStyle: 0
     m_BestFit: 0
@@ -1148,11 +1264,12 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Hello, fellow citizen, and welcome to the Telecommunication Bureau! As
-    it is written in the Social Foundation Order #2095, you are now a proud worker
-    of our organization, appointed as Telecommunication Quality Officer! \n\nWith
+  m_Text: "Hello, fellow citizen, and <b>welcome to the Telecommunication Bureau!</b>
+    As it is written in the Social Foundation Order #2095, you are now a proud worker
+    of our organization, appointed as <b>Telecommunication Quality Officer!</b> With
     the usage of latest bureau quality assurance technologies (QAT), you will help
-    us provide the best communication service to all of the Sowoke Respublica citizens!"
+    us provide the best communication service to all of the Sowoke Respublica citizens!
+    \n<b>Slavssya Sowoke!</b>"
 --- !u!222 &134921819
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1777,7 +1894,7 @@ RectTransform:
   m_Children:
   - {fileID: 172449421}
   m_Father: {fileID: 2010686965}
-  m_RootOrder: 9
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1847,6 +1964,7 @@ MonoBehaviour:
   id: DayThree
   modalRectTransform: {fileID: 158691811}
   modalCanvasGroup: {fileID: 158691816}
+  enableGameObjects: []
   openDuration: 0.4
   closeDuration: 1.5
 --- !u!225 &158691816
@@ -2125,7 +2243,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Day 16
+  m_Text: Day 12
 --- !u!222 &189929489
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2438,7 +2556,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -140}
-  m_SizeDelta: {x: -300, y: 2346}
+  m_SizeDelta: {x: -300, y: 2737}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &231099469
 MonoBehaviour:
@@ -2460,7 +2578,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: b9899f4b2a5b8a841b025e4b5c53a89b, type: 3}
+    m_Font: {fileID: 12800000, guid: f6010dbd2ef4b6747aeb85fa7f6a7c69, type: 3}
     m_FontSize: 54
     m_FontStyle: 0
     m_BestFit: 0
@@ -2472,16 +2590,17 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Telecommunication Quality Officer #305-D!\r\n\r\nI've received a report
-    about your unacceptable behavior on the workplace: you've missed an important
-    criminal fact from the line you're responsible for! I'll deny this report and
-    will make it for the first and the last time! Let me remind you most often criminal
-    cases in phone calls:\r\n\r\nDrug, weapon or acts of violence mention \r\nShowing
-    no respect for the Leader, the Party, their decisions or the glorious Sowoke Respublica
-    itself\r\nCrime discussion or conspiracy attempt\r\nEmigration discussion\r\n\r\nRemember,
-    TQO #305-D - three reports about unacceptable behavior will be evaluated as incompetency
-    and possibly judged as betrayal of the motherland! So be patient!\r\n\r\nSlavssya
-    Sowoke!\r\n"
+  m_Text: "<b>Telecommunication Quality Officer #305-D!\r</b>\n\r\nI've received a
+    report about your unacceptable behavior on the workplace: <b>you've missed an
+    important information from the line you're responsible for!</b> I'll deny this
+    report and will make it for the first and the last time! Let me remind you most
+    often criminal cases in phone calls:\r\n\r\n<b>PAY ATTENTION FOR\r</b>\n\r\n-
+    Forbidden or banned in Sowoke items, medicines, food, etc. mention\r\n- Weapon
+    or acts of violence mention \r\n- Showing no respect for the Leader, the Party,
+    their decisions or the glorious Sowoke Respublica itself\r\n- Crime discussion
+    or conspiracy attempt\r\n- Emigration discussion\r\n\r\nRemember, TQO #305-D -
+    more coming about unacceptable behavior will be evaluated as incompetency and
+    possibly judged as betrayal of the Rodina! So be patient!\r\n\r\n<b>Slavssya Sowoke!\r</b>\n"
 --- !u!222 &231099470
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3224,7 +3343,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: b9899f4b2a5b8a841b025e4b5c53a89b, type: 3}
+    m_Font: {fileID: 12800000, guid: f6010dbd2ef4b6747aeb85fa7f6a7c69, type: 3}
     m_FontSize: 54
     m_FontStyle: 0
     m_BestFit: 0
@@ -3236,26 +3355,70 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Telecommunication Quality Officer #305-D!\r\n\r\nI've received two more
-    reports about your unacceptable behavior on the workplace. Should I remind you
-    that three reports are enough to inspect your working proficiency and in case
-    of any suspicious\u2026 discoveries, you will be accused of the most important
-    law violation. You know which law I'm talking about here.\r\n\r\nTry to work better
-    and, if you will be patient enough today, we may call one of the reports off for
-    your amendment. Now, remind you about new cases:\r\n\r\nKids (citizens younger
-    than 14 years) at home with adult citizens\r\n\r\nAlso you have a special task
-    today: detect enemy spy. Bureau of External Community have gave us the approximate
-    location of him (her), and we give you 5 nearest houses phone lines to watch over
-    them (Double Space to change phone line). Mark \"inappropriate\" anything you
-    find suspicious and we will get him.\r\n\r\nRemember, TQO #305-D - three reports
-    about unacceptable behavior will be evaluated as incompetency and possibly judged
-    as betrayal of the motherland! So be patient!\r\n\r\nSlavssya Sowoke!\r\n"
+  m_Text: "<b>Telecommunication Quality Officer #305-D!\r</b>\n\r\nI've receiving
+    more reports about your unacceptable behavior on the workplace. Should I remind
+    you that it may lead to <b>inspection of your working proficiency</b> and in case
+    of any suspicious\u2026 <b>discoveries</b>, your accusion of the most important
+    law violation. You know <b>which law</b> I'm talking about here.\r\n\r\nWork harder,
+    pay more attention to your line and remember, that any of your mistake may lead
+    to a big treat for Sowoke Respublica and it's citizens safety!  \r\n\r\nAlso -
+    enough of this kindergarten and let's get to the real work: <b>we connect you
+    to your second line</b>. Pay attention to both lines you have; to make this a
+    bit easier, QAT has indicators to show on which line you have any calls. <b>Is
+    the lamp light turns green - you need to take the line under control; if light
+    fades, go back to other line. </b>\n\r\nTo go from one <b>line to another, hit
+    the marker twice (quickly hit the Space two times).</b> We expect better results
+    from you, #305-D.\r\n\r\n<b>PAY ATTENTION FOR\r</b>\n\r\n- Forbidden or banned
+    in Sowoke items, medicines, food, etc. mention\r\n- Weapon or acts of violence
+    mention \r\n- Showing no respect for the Leader, the Party, their decisions or
+    the glorious Sowoke Respublica itself\r\n- Crime discussion or conspiracy attempt\r\n-
+    Emigration discussion\r\n\r\n<b>Slavssya Sowoke!\r</b>\n"
 --- !u!222 &342551907
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 342551904}
+--- !u!1 &347643246
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 347643247}
+  - component: {fileID: 347643248}
+  m_Layer: 0
+  m_Name: 3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &347643247
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 347643246}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1477666638}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &347643248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 347643246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c4313d5a8a883c4aa7eeb2a45b7163a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &347914122
 GameObject:
   m_ObjectHideFlags: 0
@@ -3803,7 +3966,7 @@ RectTransform:
   m_Children:
   - {fileID: 1601753555}
   m_Father: {fileID: 2010686965}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -3873,6 +4036,7 @@ MonoBehaviour:
   id: FirstHelper
   modalRectTransform: {fileID: 451885915}
   modalCanvasGroup: {fileID: 451885920}
+  enableGameObjects: []
   openDuration: 0
   closeDuration: 0
 --- !u!225 &451885920
@@ -4307,7 +4471,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Day 27
+  m_Text: Day 25
 --- !u!222 &532913857
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4349,7 +4513,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 960.00006, y: 0.00024414062}
-  m_SizeDelta: {x: 1086.9, y: 2959.84}
+  m_SizeDelta: {x: 1086.9, y: 3053.77}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &544220407
 MonoBehaviour:
@@ -5444,7 +5608,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00000035762787, y: -1339}
+  m_AnchoredPosition: {x: -0.00000035762787, y: -1406}
   m_SizeDelta: {x: -300, y: 167}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &733951899
@@ -5554,7 +5718,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: -- GET TO WORK --
+  m_Text: -- CONTINUE --
 --- !u!222 &733951904
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9335,7 +9499,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00000035762787, y: -2738}
+  m_AnchoredPosition: {x: -0.00000035762787, y: -2841}
   m_SizeDelta: {x: -300, y: 167}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &841050404
@@ -9423,7 +9587,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: -- GET TO WORK --
+  m_Text: -- START WORK --
 --- !u!222 &841050407
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9590,7 +9754,7 @@ RectTransform:
   m_Children:
   - {fileID: 1626760905}
   m_Father: {fileID: 2010686965}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -9660,6 +9824,7 @@ MonoBehaviour:
   id: SecondLetterSuccess
   modalRectTransform: {fileID: 893816153}
   modalCanvasGroup: {fileID: 893816158}
+  enableGameObjects: []
   openDuration: 0
   closeDuration: 0
 --- !u!225 &893816158
@@ -9896,7 +10061,7 @@ RectTransform:
   m_Children:
   - {fileID: 88390881}
   m_Father: {fileID: 2010686965}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -9966,6 +10131,7 @@ MonoBehaviour:
   id: SecondLetterFail
   modalRectTransform: {fileID: 959908264}
   modalCanvasGroup: {fileID: 959908269}
+  enableGameObjects: []
   openDuration: 0
   closeDuration: 0
 --- !u!225 &959908269
@@ -10394,6 +10560,72 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1062183553}
+--- !u!1 &1072417409
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1072417410}
+  - component: {fileID: 1072417411}
+  m_Layer: 5
+  m_Name: Scrollview
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1072417410
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1072417409}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1706770398}
+  m_Father: {fileID: 1972341120}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1072417411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1072417409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1367256648, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Content: {fileID: 1706770398}
+  m_Horizontal: 0
+  m_Vertical: 1
+  m_MovementType: 1
+  m_Elasticity: 0.1
+  m_Inertia: 1
+  m_DecelerationRate: 0.135
+  m_ScrollSensitivity: 35
+  m_Viewport: {fileID: 1072417410}
+  m_HorizontalScrollbar: {fileID: 0}
+  m_VerticalScrollbar: {fileID: 0}
+  m_HorizontalScrollbarVisibility: 0
+  m_VerticalScrollbarVisibility: 0
+  m_HorizontalScrollbarSpacing: 0
+  m_VerticalScrollbarSpacing: 0
+  m_OnValueChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.ScrollRect+ScrollRectEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &1099838994
 GameObject:
   m_ObjectHideFlags: 0
@@ -10427,7 +10659,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -140}
-  m_SizeDelta: {x: -300, y: 2449}
+  m_SizeDelta: {x: -300, y: 2851}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1099838996
 MonoBehaviour:
@@ -10449,7 +10681,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: b9899f4b2a5b8a841b025e4b5c53a89b, type: 3}
+    m_Font: {fileID: 12800000, guid: f6010dbd2ef4b6747aeb85fa7f6a7c69, type: 3}
     m_FontSize: 54
     m_FontStyle: 0
     m_BestFit: 0
@@ -10461,15 +10693,20 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Telecommunication Quality Officer #305-D!\r\n\r\nI remind you about new
-    cases you should mark as inappropriate:\r\n\r\nKids (citizens younger than 14
-    years) at home with adult citizens\r\n\r\nAlso you have a special task today:
-    detect enemy spy. Bureau of External Community have gave us the approximate location
-    of him (her), and we give you 4 nearest houses phone lines to watch over them
-    (Double Space to change phone line). Mark \"inappropriate\" anything you find
-    suspicious and we will get him. \r\n\r\nRemember, TQO #305-D - three reports about
-    unacceptable behavior will be evaluated as incompetency and possibly judged as
-    betrayal of the motherland! So be patient!\r\n\r\nSlavssya Sowoke!\r\n"
+  m_Text: "<b>Telecommunication Quality Officer #305-D!\r</b>\n\r\nYou're work results\u2026
+    Meet our expectations.\r\n\r\nYet work harder, pay more attention to your line
+    and remember, that any of your mistake may lead to a big treat for Sowoke Respublica
+    and it's citizens safety!  \r\n\r\nAlso - enough of this kindergarten and let's
+    get to the real work: <b>we connect you to your second line</b>. Pay attention
+    to both lines you have; to make this a bit easier, QAT has indicators to show
+    on which line you have any calls. <b>If the lamp light turns green - you need
+    to take the line under control; if light fades, go back to other line. \r</b>\n\r\nTo
+    go from one <b>line to another, hit the marker twice (quickly hit the Space two
+    times).</b> We expect good results, #305-D.\r\n\r\n<b>PAY ATTENTION FOR\r</b>\n\r\n-
+    Forbidden or banned in Sowoke items, medicines, food, etc. mention\r\n- Weapon
+    or acts of violence mention \r\n- Showing no respect for the Leader, the Party,
+    their decisions or the glorious Sowoke Respublica itself\r\n- Crime discussion
+    or conspiracy attempt\r\nEmigration discussion\r\n\r\n<b>Slavssya Sowoke!\r</b>\n"
 --- !u!222 &1099838997
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10835,7 +11072,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00000035762787, y: -3623}
+  m_AnchoredPosition: {x: -0.00000035762787, y: -3375}
   m_SizeDelta: {x: -300, y: 167}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1189040663
@@ -10871,7 +11108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54df9f147951e4124a934d24f62cfdb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventId: FirstLetter_Done
+  eventId: SecondLetter_Done
 --- !u!114 &1189040666
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10945,13 +11182,79 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: -- GET TO WORK --
+  m_Text: -- START WORK --
 --- !u!222 &1189040668
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1189040661}
+--- !u!1 &1214377768
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1214377769}
+  - component: {fileID: 1214377770}
+  m_Layer: 5
+  m_Name: Scrollview
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1214377769
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1214377768}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1492101400}
+  m_Father: {fileID: 78009013}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1214377770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1214377768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1367256648, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Content: {fileID: 1492101400}
+  m_Horizontal: 0
+  m_Vertical: 1
+  m_MovementType: 1
+  m_Elasticity: 0.1
+  m_Inertia: 1
+  m_DecelerationRate: 0.135
+  m_ScrollSensitivity: 35
+  m_Viewport: {fileID: 1214377769}
+  m_HorizontalScrollbar: {fileID: 0}
+  m_VerticalScrollbar: {fileID: 0}
+  m_HorizontalScrollbarVisibility: 0
+  m_VerticalScrollbarVisibility: 0
+  m_HorizontalScrollbarSpacing: 0
+  m_VerticalScrollbarSpacing: 0
+  m_OnValueChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.ScrollRect+ScrollRectEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &1223218748
 GameObject:
   m_ObjectHideFlags: 0
@@ -10984,7 +11287,7 @@ RectTransform:
   m_Children:
   - {fileID: 1305133205}
   m_Father: {fileID: 2010686965}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -11016,6 +11319,7 @@ MonoBehaviour:
   id: FirstLetter
   modalRectTransform: {fileID: 1223218749}
   modalCanvasGroup: {fileID: 1223218750}
+  enableGameObjects: []
   openDuration: 0
   closeDuration: 0
 --- !u!114 &1223218752
@@ -11411,7 +11715,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 960.00006, y: 0.00024414062}
-  m_SizeDelta: {x: 1086.9, y: 3842.44}
+  m_SizeDelta: {x: 1444, y: 3695.6}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1298056141
 MonoBehaviour:
@@ -11850,7 +12154,7 @@ RectTransform:
   m_Children:
   - {fileID: 360794688}
   m_Father: {fileID: 2010686965}
-  m_RootOrder: 11
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -11920,6 +12224,7 @@ MonoBehaviour:
   id: LevelFinished
   modalRectTransform: {fileID: 1340845194}
   modalCanvasGroup: {fileID: 1340845199}
+  enableGameObjects: []
   openDuration: 0.2
   closeDuration: 1
 --- !u!225 &1340845199
@@ -11965,7 +12270,7 @@ RectTransform:
   m_Children:
   - {fileID: 2135800569}
   m_Father: {fileID: 2010686965}
-  m_RootOrder: 10
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -12035,6 +12340,7 @@ MonoBehaviour:
   id: GameOver
   modalRectTransform: {fileID: 1353350245}
   modalCanvasGroup: {fileID: 1353350250}
+  enableGameObjects: []
   openDuration: 1
   closeDuration: 1
 --- !u!225 &1353350250
@@ -12607,6 +12913,7 @@ Transform:
   m_Children:
   - {fileID: 219455171}
   - {fileID: 2021096081}
+  - {fileID: 347643247}
   m_Father: {fileID: 970154892}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -12653,6 +12960,76 @@ MonoBehaviour:
   prefab: {fileID: 1999176471850000, guid: cd641ae77b726374e8a99ab60cb7a98c, type: 2}
   preloadCount: 10
   factoryUnit: {fileID: 0}
+--- !u!1 &1492101399
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1492101400}
+  - component: {fileID: 1492101402}
+  - component: {fileID: 1492101401}
+  m_Layer: 5
+  m_Name: Content
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1492101400
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1492101399}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1650142380}
+  - {fileID: 1513277232}
+  m_Father: {fileID: 1214377769}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 960.00006, y: 0.00024414062}
+  m_SizeDelta: {x: 1444, y: 3049.53}
+  m_Pivot: {x: 0.5, y: 1}
+--- !u!114 &1492101401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1492101399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: e63a7682a4d3413489576865e72e3240, type: 3}
+  m_Type: 2
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &1492101402
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1492101399}
 --- !u!1 &1512262720
 GameObject:
   m_ObjectHideFlags: 0
@@ -12708,7 +13085,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: b9899f4b2a5b8a841b025e4b5c53a89b, type: 3}
+    m_Font: {fileID: 12800000, guid: f6010dbd2ef4b6747aeb85fa7f6a7c69, type: 3}
     m_FontSize: 54
     m_FontStyle: 0
     m_BestFit: 0
@@ -12720,21 +13097,175 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Good morning, citizens! Slavssya Sowoke! The voice of glorious Sowoke Respublica
-    is on the air, Yevan Measurot talking to you! For the first page today: yesterday
-    our great Leader has signed the new Elementary Social Labor Act selection on the
-    Party Congress! \n\nLet me remind you the basic points of it: now all the children
-    since their birth are raised in special institutions, lead by Bureau of Independent
-    Future. \n\nAfter they get to age of 8, their natural parents can visit them,
-    after the age of 14 they are officially recognized as adults, which means that
-    Social Foundation will present them work and housing queue orders. Now, for the
-    other important news: the weather is great today, and ...\r\n"
+  m_Text: "Good morning, citizens! <b>Slavssya Sowoke!</b> \n\nThe voice of glorious
+    Sowoke Respublica is on the air, <b>Yevan Measurot</b> talking to you! \n\nFor
+    the first page today: yesterday our great Leader has signed the new <b>Elementary
+    Social Labor Act selection</b> on the Party Congress! \n\nLet me remind you the
+    <b>basic points of it: now all the children since their birth are raised in special
+    institutions, lead by Bureau of Independent Future.</b> After they get to <b>age
+    of 8</b>, their natural parents can visit them, after the <b>age of 14</b> they
+    are officially recognized <b>as adults</b>, which means that Social Foundation
+    will present them <b>work and housing queue orders.</b> Now, for the other important
+    news: the weather is great today, and \u2026\u2026\u2026"
 --- !u!222 &1512262723
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1512262720}
+--- !u!1 &1513277231
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1513277232}
+  - component: {fileID: 1513277238}
+  - component: {fileID: 1513277237}
+  - component: {fileID: 1513277236}
+  - component: {fileID: 1513277235}
+  - component: {fileID: 1513277234}
+  - component: {fileID: 1513277233}
+  m_Layer: 5
+  m_Name: Button
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1513277232
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1513277231}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.99966115, y: 0.99966115, z: 0.99966115}
+  m_Children: []
+  m_Father: {fileID: 1492101400}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -0.00000035762787, y: -2782}
+  m_SizeDelta: {x: -300, y: 167}
+  m_Pivot: {x: 0.5, y: 1}
+--- !u!114 &1513277233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1513277231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7cea09839ff9481094ce606287dad72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1513277234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1513277231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f795d15d6e3e7624d94f3b4880a5eeb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1513277235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1513277231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54df9f147951e4124a934d24f62cfdb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventId: ThirdLetter_Done
+--- !u!114 &1513277236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1513277231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1513277237}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &1513277237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1513277231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.10510382, g: 0.17960264, b: 0.39705884, a: 0.828}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: b9899f4b2a5b8a841b025e4b5c53a89b, type: 3}
+    m_FontSize: 60
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 97
+    m_Alignment: 1
+    m_AlignByGeometry: 0
+    m_RichText: 0
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: -- START WORK --
+--- !u!222 &1513277238
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1513277231}
 --- !u!1 &1527399523
 GameObject:
   m_ObjectHideFlags: 0
@@ -12808,6 +13339,133 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!1 &1528606028
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1528606029}
+  - component: {fileID: 1528606031}
+  - component: {fileID: 1528606030}
+  m_Layer: 5
+  m_Name: RadioTalk
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1528606029
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1528606028}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1753934325}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!82 &1528606030
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1528606028}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 243978785136747918, guid: dc6b802dc832e824aab126b897de2b9a,
+    type: 2}
+  m_audioClip: {fileID: 8300000, guid: d2beff50fe3f60442ac361a4a41bd099, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+--- !u!114 &1528606031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1528606028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12ff78c560bb94f49a15625c856461b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1551129178
 GameObject:
   m_ObjectHideFlags: 0
@@ -12930,7 +13588,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1584878202
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13019,7 +13677,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b046ff928d6ac4c0eb5573e12b07aa1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lastState: 0
+  lastState: 1
   lastStateBeforeSceneClose: 0
 --- !u!1 &1591065373
 GameObject:
@@ -13056,7 +13714,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 960.00006, y: 0.00024414062}
-  m_SizeDelta: {x: 1086.9, y: 2847}
+  m_SizeDelta: {x: 1382, y: 2739}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1591065375
 MonoBehaviour:
@@ -13404,7 +14062,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 960.00006, y: 0.00024414062}
-  m_SizeDelta: {x: 1086.9, y: 2624}
+  m_SizeDelta: {x: 1412.1, y: 3198}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1628254593
 MonoBehaviour:
@@ -13475,7 +14133,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00000035762787, y: -2346}
+  m_AnchoredPosition: {x: -0.00000035762787, y: -2387}
   m_SizeDelta: {x: -300, y: 167}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1633036248
@@ -13511,7 +14169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54df9f147951e4124a934d24f62cfdb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventId: RadioDone_Done
+  eventId: Radio_Done
 --- !u!114 &1633036251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13744,6 +14402,93 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1637444861}
+--- !u!1 &1650142379
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1650142380}
+  - component: {fileID: 1650142382}
+  - component: {fileID: 1650142381}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1650142380
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1650142379}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1492101400}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: -140}
+  m_SizeDelta: {x: -300, y: 3515}
+  m_Pivot: {x: 0.5, y: 1}
+--- !u!114 &1650142381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1650142379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.16176468, g: 0.15938579, b: 0.15938579, a: 0.828}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: f6010dbd2ef4b6747aeb85fa7f6a7c69, type: 3}
+    m_FontSize: 54
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 97
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: "<b>Telecommunication Quality Officer #305-D!\r</b>\n\r\nWe need you to
+    complete a very important assignment; Bureau of External Communa has informed
+    us about <b>a terrorist in our city</b>, probably located in the Gorskiy district.
+    He or she should receive orders today, most likely by phone. We include another
+    line to your list; pay attention and listen closely! He will reveal himself without
+    a doubt!\r\n\r\nAlso - after signing of <b>new Elementary Social Labor Act</b>
+    you need to pay attention to any suspicious situations, related to kids;\r\n\r\n<b>PAY
+    ATTENTION FOR\r</b>\n\r\n- Drug, weapon or acts of violence mention \r\nShowing
+    no respect for the Leader, the Party, their decisions or the glorious Sowoke Respublica
+    itself\r\n- Crime discussion or conspiracy attempt\r\n- Emigration discussion\r\n-
+    <b>Kids (citizens younger than 14 years) at home with adult citizens\r</b>\n\r\nJust
+    to remind: to go from one <b>line to another, hit the marker twice (quickly hit
+    the Space two times).</b> We expect better results from you, #305-D.\r\n\r\n<b>Slavssya
+    Sowoke!\r</b>\n"
+--- !u!222 &1650142382
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1650142379}
 --- !u!1 &1661137585
 GameObject:
   m_ObjectHideFlags: 0
@@ -13844,7 +14589,7 @@ RectTransform:
   m_Children:
   - {fileID: 1872099204}
   m_Father: {fileID: 2010686965}
-  m_RootOrder: 7
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -13865,6 +14610,7 @@ MonoBehaviour:
   id: DayOne
   modalRectTransform: {fileID: 1662571204}
   modalCanvasGroup: {fileID: 1662571206}
+  enableGameObjects: []
   openDuration: 0.4
   closeDuration: 1.5
 --- !u!225 &1662571206
@@ -14082,6 +14828,159 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lightId: Level
+--- !u!1 &1677347654
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1677347655}
+  - component: {fileID: 1677347661}
+  - component: {fileID: 1677347660}
+  - component: {fileID: 1677347659}
+  - component: {fileID: 1677347658}
+  - component: {fileID: 1677347657}
+  - component: {fileID: 1677347656}
+  m_Layer: 5
+  m_Name: Button
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1677347655
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1677347654}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.99966115, y: 0.99966115, z: 0.99966115}
+  m_Children: []
+  m_Father: {fileID: 1706770398}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -0.00000035762787, y: -1353}
+  m_SizeDelta: {x: -300, y: 167}
+  m_Pivot: {x: 0.5, y: 1}
+--- !u!114 &1677347656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1677347654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54df9f147951e4124a934d24f62cfdb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventId: Newspaper_Done
+--- !u!114 &1677347657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1677347654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7cea09839ff9481094ce606287dad72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1677347658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1677347654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f795d15d6e3e7624d94f3b4880a5eeb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1677347659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1677347654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1677347660}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &1677347660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1677347654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.10510382, g: 0.17960264, b: 0.39705884, a: 0.828}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: b9899f4b2a5b8a841b025e4b5c53a89b, type: 3}
+    m_FontSize: 39
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 97
+    m_Alignment: 1
+    m_AlignByGeometry: 0
+    m_RichText: 0
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: -- CONTINUE --
+--- !u!222 &1677347661
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1677347654}
 --- !u!1001 &1683882576
 Prefab:
   m_ObjectHideFlags: 0
@@ -14411,7 +15310,7 @@ RectTransform:
   m_Children:
   - {fileID: 1330385166}
   m_Father: {fileID: 2010686965}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -14481,6 +15380,7 @@ MonoBehaviour:
   id: SwitchingHelper
   modalRectTransform: {fileID: 1696101022}
   modalCanvasGroup: {fileID: 1696101027}
+  enableGameObjects: []
   openDuration: 0
   closeDuration: 0
 --- !u!225 &1696101027
@@ -14494,6 +15394,75 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!1 &1706770397
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1706770398}
+  - component: {fileID: 1706770400}
+  - component: {fileID: 1706770399}
+  m_Layer: 5
+  m_Name: Content
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1706770398
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1706770397}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1677347655}
+  m_Father: {fileID: 1072417410}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 960.00006, y: 0.00024414062}
+  m_SizeDelta: {x: 1086.9, y: 1636}
+  m_Pivot: {x: 0.5, y: 1}
+--- !u!114 &1706770399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1706770397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: ce3ef47fccffc0e45963bdda6e392aae, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 1
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &1706770400
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1706770397}
 --- !u!1001 &1723062364
 Prefab:
   m_ObjectHideFlags: 0
@@ -14817,6 +15786,7 @@ RectTransform:
   m_Children:
   - {fileID: 1062183554}
   - {fileID: 862219463}
+  - {fileID: 1528606029}
   m_Father: {fileID: 2010686965}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -14888,6 +15858,8 @@ MonoBehaviour:
   id: DayRadioOne
   modalRectTransform: {fileID: 1753934325}
   modalCanvasGroup: {fileID: 1753934330}
+  enableGameObjects:
+  - {fileID: 1528606028}
   openDuration: 0.4
   closeDuration: 1.5
 --- !u!225 &1753934330
@@ -15153,7 +16125,7 @@ RectTransform:
   m_Children:
   - {fileID: 498197750}
   m_Father: {fileID: 2010686965}
-  m_RootOrder: 8
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -15223,6 +16195,7 @@ MonoBehaviour:
   id: DayTwo
   modalRectTransform: {fileID: 1810749786}
   modalCanvasGroup: {fileID: 1810749791}
+  enableGameObjects: []
   openDuration: 0.4
   closeDuration: 1.5
 --- !u!225 &1810749791
@@ -15821,7 +16794,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1943784229
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15834,7 +16807,7 @@ RectTransform:
   m_Children:
   - {fileID: 562701172}
   m_Father: {fileID: 2010686965}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -15904,6 +16877,7 @@ MonoBehaviour:
   id: IntroLetter
   modalRectTransform: {fileID: 1943784229}
   modalCanvasGroup: {fileID: 1943784234}
+  enableGameObjects: []
   openDuration: 0
   closeDuration: 0
 --- !u!225 &1943784234
@@ -15912,6 +16886,122 @@ CanvasGroup:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1943784228}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!1 &1972341119
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1972341120}
+  - component: {fileID: 1972341125}
+  - component: {fileID: 1972341124}
+  - component: {fileID: 1972341123}
+  - component: {fileID: 1972341122}
+  - component: {fileID: 1972341121}
+  m_Layer: 5
+  m_Name: Newspaper
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1972341120
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1972341119}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.9995936, y: 0.9995936, z: 0.9995936}
+  m_Children:
+  - {fileID: 1072417410}
+  m_Father: {fileID: 2010686965}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -0.0000052452087, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1972341121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1972341119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1301386320, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!223 &1972341122
+Canvas:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1972341119}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 1
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: -1123144333
+  m_SortingOrder: 2010
+  m_TargetDisplay: 0
+--- !u!114 &1972341123
+MonoBehaviour:
+  m_ObjectHideFlags: 10
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1972341119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b046ff928d6ac4c0eb5573e12b07aa1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lastState: 0
+  lastStateBeforeSceneClose: 0
+--- !u!114 &1972341124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1972341119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c8ccf8128f0c42cbaa05a1dbffa7a1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: Newspaper
+  modalRectTransform: {fileID: 1972341120}
+  modalCanvasGroup: {fileID: 1972341125}
+  enableGameObjects: []
+  openDuration: 0
+  closeDuration: 0
+--- !u!225 &1972341125
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1972341119}
   m_Enabled: 1
   m_Alpha: 1
   m_Interactable: 1
@@ -16120,12 +17210,14 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1753934325}
+  - {fileID: 1972341120}
   - {fileID: 1943784229}
   - {fileID: 1223218749}
   - {fileID: 451885915}
   - {fileID: 893816153}
   - {fileID: 959908264}
   - {fileID: 1696101022}
+  - {fileID: 78009013}
   - {fileID: 1662571204}
   - {fileID: 1810749786}
   - {fileID: 158691811}
@@ -16415,7 +17507,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00000035762787, y: -2393.8667}
+  m_AnchoredPosition: {x: -0.00000035762787, y: -2999}
   m_SizeDelta: {x: -300, y: 167}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &2054545934
@@ -16451,7 +17543,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54df9f147951e4124a934d24f62cfdb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventId: FirstLetter_Done
+  eventId: SecondLetter_Done
 --- !u!114 &2054545937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16525,7 +17617,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: -- GET TO WORK --
+  m_Text: -- START WORK --
 --- !u!222 &2054545939
 CanvasRenderer:
   m_ObjectHideFlags: 0

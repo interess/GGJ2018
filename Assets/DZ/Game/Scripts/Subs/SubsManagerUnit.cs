@@ -70,7 +70,7 @@ namespace DZ.Game.Scripts
 
 		private IEnumerator LoadSubsRoutine(int dayIndex, System.Action callback)
 		{
-			var subsTextAssets = Resources.LoadAll<TextAsset>("SubsRus/" + dayIndex.ToString());
+			var subsTextAssets = Resources.LoadAll<TextAsset>("Subs/" + dayIndex.ToString());
 
 			for (int i = 0; i < subsTextAssets.Length; i++)
 			{
@@ -97,6 +97,36 @@ namespace DZ.Game.Scripts
 				{
 					currentWord = word;
 					currentIsTargetMode = word.Contains("*");
+
+					var numberOfStars = 0;
+
+					if (currentIsTargetMode)
+					{
+						if (word.Contains("***")) { numberOfStars = 3; }
+						else if (word.Contains("**")) { numberOfStars = 2; }
+						else if (word.Contains("*")) { numberOfStars = 1; }
+					}
+
+					var mistakeScore = 0;
+					var scoreScore = 0;
+
+					if (numberOfStars == 3)
+					{
+						mistakeScore = 8;
+						scoreScore = 12;
+					}
+
+					if (numberOfStars == 2)
+					{
+						mistakeScore = 5;
+						scoreScore = 8;
+					}
+
+					if (numberOfStars == 1)
+					{
+						mistakeScore = 2;
+						scoreScore = 3;
+					}
 
 					currentWord = Regex.Replace(currentWord, @"\*", "");
 
@@ -129,7 +159,7 @@ namespace DZ.Game.Scripts
 						else if (dialogOwnerIndex > 10) { dialogOwnerIndex = 10; }
 					}
 
-					currentWord = currentWord;
+					// currentWord = currentWord;
 
 					var productUnit = (SubsWordProductUnit) __subsWordFactoryUnit.Spawn();
 					var wordUnit = productUnit.subsWordUnit;
@@ -146,6 +176,8 @@ namespace DZ.Game.Scripts
 					wordUnit.isSpoken = false;
 					wordUnit.isScored = false;
 					wordUnit.isEnd = isEnd;
+					wordUnit.mistakeScore = mistakeScore;
+					wordUnit.scoreScore = scoreScore;
 					__wordUnitsLookup.Add(wordUnit);
 					currentWordList.Add(wordUnit);
 

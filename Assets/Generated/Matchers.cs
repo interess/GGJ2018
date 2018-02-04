@@ -342,6 +342,20 @@ namespace DZ.Game {
             }
         }
 
+        static IMatcher<InputEntity> _matcherMistakeHeavy;
+
+        public static IMatcher<InputEntity> MistakeHeavy {
+            get {
+                if(_matcherMistakeHeavy == null) {
+                    var matcher = (Matcher<InputEntity>)Matcher<InputEntity>.AllOf(InputComponentsLookup.MistakeHeavy);
+                    matcher.componentNames = InputComponentsLookup.componentNames;
+                    _matcherMistakeHeavy = matcher;
+                }
+
+                return _matcherMistakeHeavy;
+            }
+        }
+
         static IMatcher<InputEntity> _matcherScoreHeavyEvent;
 
         public static IMatcher<InputEntity> ScoreHeavyEvent {
@@ -367,6 +381,20 @@ namespace DZ.Game {
                 }
 
                 return _matcherScoreLightEvent;
+            }
+        }
+
+        static IMatcher<InputEntity> _matcherScoreHeavy;
+
+        public static IMatcher<InputEntity> ScoreHeavy {
+            get {
+                if(_matcherScoreHeavy == null) {
+                    var matcher = (Matcher<InputEntity>)Matcher<InputEntity>.AllOf(InputComponentsLookup.ScoreHeavy);
+                    matcher.componentNames = InputComponentsLookup.componentNames;
+                    _matcherScoreHeavy = matcher;
+                }
+
+                return _matcherScoreHeavy;
             }
         }
 

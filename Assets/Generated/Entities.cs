@@ -825,6 +825,80 @@ namespace DZ.Game {
             else if (component == null) ReplaceComponent(InputComponentsLookup.ModalId, null);
         }
 
+        // MistakeHeavy
+        public int _mistakeHeavy { 
+            get {
+                if (!HasComponent(InputComponentsLookup.MistakeHeavy)) throw new System.Exception("Entity does not have component 'MistakeHeavy'. You can check safely with 'HasMistakeHeavy()'");
+                return ((Components.Input.MistakeHeavy)GetComponent(InputComponentsLookup.MistakeHeavy)).value;
+            } 
+            set {
+                ((Components.Input.MistakeHeavy)GetComponent(InputComponentsLookup.MistakeHeavy)).value = value;
+            }
+        }
+
+        public int mistakeHeavy { 
+            get {
+                if (!HasComponent(InputComponentsLookup.MistakeHeavy)) throw new System.Exception("Entity does not have component 'MistakeHeavy'. You can check safely with 'HasMistakeHeavy()'");
+                return ((Components.Input.MistakeHeavy)GetComponent(InputComponentsLookup.MistakeHeavy)).value;
+            } 
+            set {
+                var component = CreateComponent<Components.Input.MistakeHeavy>(InputComponentsLookup.MistakeHeavy);
+                component.value = value;
+                ReplaceComponent(InputComponentsLookup.MistakeHeavy, component);
+            }
+        }
+
+        public bool HasMistakeHeavy() {
+            return HasComponent(InputComponentsLookup.MistakeHeavy);
+        }
+
+        public void RemoveMistakeHeavy() {
+            if (HasComponent(InputComponentsLookup.MistakeHeavy)) { RemoveComponent(InputComponentsLookup.MistakeHeavy); }
+        }
+
+        public void PingMistakeHeavy() {
+            var component = GetComponent(InputComponentsLookup.MistakeHeavy);
+            if (component != null) ReplaceComponent(InputComponentsLookup.MistakeHeavy, component);
+            else if (component == null) ReplaceComponent(InputComponentsLookup.MistakeHeavy, null);
+        }
+
+        // ScoreHeavy
+        public int _scoreHeavy { 
+            get {
+                if (!HasComponent(InputComponentsLookup.ScoreHeavy)) throw new System.Exception("Entity does not have component 'ScoreHeavy'. You can check safely with 'HasScoreHeavy()'");
+                return ((Components.Input.ScoreHeavy)GetComponent(InputComponentsLookup.ScoreHeavy)).value;
+            } 
+            set {
+                ((Components.Input.ScoreHeavy)GetComponent(InputComponentsLookup.ScoreHeavy)).value = value;
+            }
+        }
+
+        public int scoreHeavy { 
+            get {
+                if (!HasComponent(InputComponentsLookup.ScoreHeavy)) throw new System.Exception("Entity does not have component 'ScoreHeavy'. You can check safely with 'HasScoreHeavy()'");
+                return ((Components.Input.ScoreHeavy)GetComponent(InputComponentsLookup.ScoreHeavy)).value;
+            } 
+            set {
+                var component = CreateComponent<Components.Input.ScoreHeavy>(InputComponentsLookup.ScoreHeavy);
+                component.value = value;
+                ReplaceComponent(InputComponentsLookup.ScoreHeavy, component);
+            }
+        }
+
+        public bool HasScoreHeavy() {
+            return HasComponent(InputComponentsLookup.ScoreHeavy);
+        }
+
+        public void RemoveScoreHeavy() {
+            if (HasComponent(InputComponentsLookup.ScoreHeavy)) { RemoveComponent(InputComponentsLookup.ScoreHeavy); }
+        }
+
+        public void PingScoreHeavy() {
+            var component = GetComponent(InputComponentsLookup.ScoreHeavy);
+            if (component != null) ReplaceComponent(InputComponentsLookup.ScoreHeavy, component);
+            else if (component == null) ReplaceComponent(InputComponentsLookup.ScoreHeavy, null);
+        }
+
         // WordLength
         public int _wordLength { 
             get {

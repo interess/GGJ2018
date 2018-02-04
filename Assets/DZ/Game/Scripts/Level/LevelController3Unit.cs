@@ -5,44 +5,56 @@ namespace DZ.Game.Scripts
 {
     public class LevelController3Unit : LevelControllerUnit
     {
+        bool raportShown;
+        bool warningShown;
+
         public override void OnStart()
         {
             Debug.Log("Level start");
 
-            var eventEntity = Contexts.input.CreateEventEntity();
-            eventEntity.modalOpenEvent = true;
-            eventEntity.modalId = "DayThree";
+            var closeEventEntity2 = Contexts.input.CreateEventEntity();
+            closeEventEntity2.modalOpenEvent = true;
+            closeEventEntity2.modalId = "DayThree";
+
+            raportShown = false;
+            warningShown = false;
 
             Freaking.Fwait.ForSecondsUnscaled(3f).Done(() =>
             {
-                var letterEventEntity = Contexts.input.CreateEventEntity();
-                letterEventEntity.modalOpenEvent = true;
-                // letterEventEntity.modalOpenBackgroundEvent = true;
-                letterEventEntity.modalId = "FirstLetter";
+                var eventEntity = Contexts.input.CreateEventEntity();
+                eventEntity.modalOpenEvent = true;
+                eventEntity.modalId = "DayRadioOne";
 
                 var closeEventEntity = Contexts.input.CreateEventEntity();
                 closeEventEntity.modalCloseEvent = true;
                 closeEventEntity.modalId = "DayThree";
             });
-
-            // TODO: Start subs flow by events from here
-
-            // Contexts.state.hudUnit.SetActive(true);
         }
 
         public override void HandleLevelEvent(InputEntity entity)
         {
-            if (entity.HasEventId() && entity.eventId == "FirstLetter_Done")
+            if (entity.HasEventId() && entity.eventId == "Radio_Done")
             {
+                var letterEventEntity = Contexts.input.CreateEventEntity();
+                letterEventEntity.modalCloseEvent = true;
+                letterEventEntity.modalId = "DayRadioOne";
+
                 var eventEntity = Contexts.input.CreateEventEntity();
-                eventEntity.modalCloseEvent = true;
-                eventEntity.modalId = "FirstLetter";
+                eventEntity.modalOpenEvent = true;
+                eventEntity.modalId = "ThirdLetter";
+            }
+
+            if (entity.HasEventId() && entity.eventId == "ThirdLetter_Done")
+            {
+                var closeEventEntity = Contexts.input.CreateEventEntity();
+                closeEventEntity.modalCloseEvent = true;
+                closeEventEntity.modalId = "ThirdLetter";
 
                 Contexts.state.hudUnit.SetActive(true);
                 Contexts.state.levelActiveEntity.levelSubsSpeed = Contexts.state.worldTimeEntity.worldTimeSpeed;
             }
 
-            var baseScore = 10;
+            var baseScore = 0;
 
             if (!Contexts.state.HasScore())
             {
@@ -51,11 +63,11 @@ namespace DZ.Game.Scripts
 
             if (entity.HasScoreHeavyEvent())
             {
-                Contexts.state.score += 100 + entity.wordLength * 2;
+                Contexts.state.score += entity.scoreHeavy;
             }
             else if (entity.HasMistakeHeavyEvent())
             {
-                Contexts.state.score -= (10 + entity.wordLength);
+                Contexts.state.score -= entity.mistakeHeavy;
             }
             else if (entity.HasMistakeLightEvent())
             {
@@ -65,8 +77,27 @@ namespace DZ.Game.Scripts
             var finalWarning = false;
             var finalRaport = false;
 
-            if (Contexts.state.score < -5)
+            if (Contexts.state.score < -40 && !raportShown)
             {
+                raportShown = true;
+                Contexts.state.score = baseScore;
+
+                var numberOfRaports = PlayerPrefs.GetInt("Raports");
+                numberOfRaports++;
+                PlayerPrefs.SetInt("Raports", numberOfRaports);
+
+                if (numberOfRaports >= 3)
+                {
+                    finalRaport = true;
+                    PlayerPrefs.SetInt("Raports", 0);
+                    GameOver();
+                }
+
+                Contexts.state.ticketManagerUnit.AddRaport(finalRaport);
+            }
+            else if (Contexts.state.score < -20 && !warningShown)
+            {
+                warningShown = true;
                 Contexts.state.score = baseScore;
 
                 var numberOfWarnings = PlayerPrefs.GetInt("Warnings");
@@ -94,23 +125,6 @@ namespace DZ.Game.Scripts
 
                 Contexts.state.ticketManagerUnit.AddWarning(finalWarning);
 
-            }
-            else if (Contexts.state.score < -15)
-            {
-                Contexts.state.score = baseScore;
-
-                var numberOfRaports = PlayerPrefs.GetInt("Raports");
-                numberOfRaports++;
-                PlayerPrefs.SetInt("Raports", numberOfRaports);
-
-                if (numberOfRaports >= 3)
-                {
-                    finalRaport = true;
-                    PlayerPrefs.SetInt("Raports", 0);
-                    GameOver();
-                }
-
-                Contexts.state.ticketManagerUnit.AddRaport(finalRaport);
             }
         }
 
