@@ -100,7 +100,7 @@ namespace DZ.Game.Scripts
 
 			if (!final)
 			{
-				Freaking.Fwait.ForSeconds(5f).Done(() =>
+				Freaking.Fwait.ForSeconds(6f).Done(() =>
 				{
 					doorAnimator.SetBool("Opened", false);
 					Contexts.state.CreateEffectEntity("DoorCloseEffect");

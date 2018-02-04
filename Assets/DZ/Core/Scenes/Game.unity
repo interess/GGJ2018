@@ -763,7 +763,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 1
+  m_ScrollSensitivity: 35
   m_Viewport: {fileID: 88390881}
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 0}
@@ -1650,7 +1650,6 @@ GameObject:
   - component: {fileID: 151474298}
   - component: {fileID: 151474297}
   - component: {fileID: 151474301}
-  - component: {fileID: 151474303}
   - component: {fileID: 151474302}
   m_Layer: 0
   m_Name: Camera
@@ -1742,52 +1741,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 151474296}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff5335a7357baa3489a469d0ca0f40f3, type: 3}
+  m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distortion:
-    enabled: 1
-    amount: 12
-    centerX: 0.082
-    centerY: 0.173
-    amountX: 0.955
-    amountY: 0.794
-    scale: 0.98
-  vignette:
-    enabled: 1
-    color: {r: 0, g: 0, b: 0, a: 1}
-    center: {x: 0.5, y: 0.5}
-    intensity: 1.72
-    smoothness: 1.12
-    roundness: 0.614
-    blur: 0.124
-    desaturate: 0.391
-  chromaticAberration:
-    enabled: 1
-    color: {r: 0, g: 1, b: 0, a: 1}
-    amount: 0.6
-  m_Shader: {fileID: 4800000, guid: 136ab50fe2b9ad64d9c22adc3668abb7, type: 3}
---- !u!114 &151474303
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 151474296}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32187365ced0c42219cde2b57c99b323, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  settings:
-    threshold: 0.9
-    softKnee: 0.977
-    radius: 3.93
-    intensity: 0.7
-    highQuality: 0
-    antiFlicker: 0
-    dirtTexture: {fileID: 0}
-    dirtIntensity: 2.5
-  m_Shader: {fileID: 4800000, guid: e45d4f28262b04d10a075856ab5fdb5e, type: 3}
+  profile: {fileID: 11400000, guid: e2a384fe993fe42458a98d43cf841493, type: 2}
 --- !u!1 &158691810
 GameObject:
   m_ObjectHideFlags: 0
@@ -1807,7 +1764,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &158691811
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1854,7 +1811,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b046ff928d6ac4c0eb5573e12b07aa1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lastState: 1
+  lastState: 0
   lastStateBeforeSceneClose: 0
 --- !u!223 &158691814
 Canvas:
@@ -3833,7 +3790,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &451885915
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3900,7 +3857,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b046ff928d6ac4c0eb5573e12b07aa1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lastState: 1
+  lastState: 0
   lastStateBeforeSceneClose: 0
 --- !u!114 &451885919
 MonoBehaviour:
@@ -3929,6 +3886,84 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!1 &472344829
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 472344830}
+  - component: {fileID: 472344832}
+  - component: {fileID: 472344831}
+  m_Layer: 0
+  m_Name: LightWalls_1 (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &472344830
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 472344829}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -5, y: 2.91, z: -3.4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 548991369}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &472344831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 472344829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 788b5f94027ad02409db3e01c7cd9033, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lightId: Level
+--- !u!108 &472344832
+Light:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 472344829}
+  m_Enabled: 1
+  serializedVersion: 8
+  m_Type: 2
+  m_Color: {r: 0.71323526, g: 0.65167713, b: 0.5191933, a: 1}
+  m_Intensity: 0.59
+  m_Range: 20.23
+  m_SpotAngle: 30
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 7168
+  m_Lightmapping: 4
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 3.97
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
 --- !u!1 &486536094
 GameObject:
   m_ObjectHideFlags: 0
@@ -4381,6 +4416,7 @@ Transform:
   - {fileID: 1674912812}
   - {fileID: 295735796}
   - {fileID: 3811551}
+  - {fileID: 472344830}
   m_Father: {fileID: 1869481245}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4437,7 +4473,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 1
+  m_ScrollSensitivity: 35
   m_Viewport: {fileID: 562701172}
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 0}
@@ -9469,7 +9505,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 1
+  m_ScrollSensitivity: 35
   m_Viewport: {fileID: 862219463}
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 0}
@@ -9541,7 +9577,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &893816153
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9608,7 +9644,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b046ff928d6ac4c0eb5573e12b07aa1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lastState: 1
+  lastState: 0
   lastStateBeforeSceneClose: 0
 --- !u!114 &893816157
 MonoBehaviour:
@@ -9847,7 +9883,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &959908264
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9914,7 +9950,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b046ff928d6ac4c0eb5573e12b07aa1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lastState: 1
+  lastState: 0
   lastStateBeforeSceneClose: 0
 --- !u!114 &959908268
 MonoBehaviour:
@@ -10935,7 +10971,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1223218749
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10993,7 +11029,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b046ff928d6ac4c0eb5573e12b07aa1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lastState: 1
+  lastState: 0
   lastStateBeforeSceneClose: 0
 --- !u!223 &1223218753
 Canvas:
@@ -11463,7 +11499,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 1
+  m_ScrollSensitivity: 35
   m_Viewport: {fileID: 1305133205}
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 0}
@@ -11769,7 +11805,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 1
+  m_ScrollSensitivity: 35
   m_Viewport: {fileID: 1330385166}
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 0}
@@ -11801,7 +11837,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1340845194
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11848,7 +11884,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b046ff928d6ac4c0eb5573e12b07aa1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lastState: 1
+  lastState: 0
   lastStateBeforeSceneClose: 0
 --- !u!223 &1340845197
 Canvas:
@@ -11916,7 +11952,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1353350245
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11963,7 +11999,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b046ff928d6ac4c0eb5573e12b07aa1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lastState: 1
+  lastState: 0
   lastStateBeforeSceneClose: 0
 --- !u!223 &1353350248
 Canvas:
@@ -12894,7 +12930,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1584878202
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12983,7 +13019,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b046ff928d6ac4c0eb5573e12b07aa1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lastState: 1
+  lastState: 0
   lastStateBeforeSceneClose: 0
 --- !u!1 &1591065373
 GameObject:
@@ -13108,7 +13144,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 1
+  m_ScrollSensitivity: 35
   m_Viewport: {fileID: 1601753555}
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 0}
@@ -13320,7 +13356,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 1
+  m_ScrollSensitivity: 35
   m_Viewport: {fileID: 1626760905}
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 0}
@@ -13795,7 +13831,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1662571204
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13873,7 +13909,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b046ff928d6ac4c0eb5573e12b07aa1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lastState: 1
+  lastState: 0
   lastStateBeforeSceneClose: 0
 --- !u!114 &1662571209
 MonoBehaviour:
@@ -14362,7 +14398,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1696101022
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14429,7 +14465,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b046ff928d6ac4c0eb5573e12b07aa1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lastState: 1
+  lastState: 0
   lastStateBeforeSceneClose: 0
 --- !u!114 &1696101026
 MonoBehaviour:
@@ -14768,7 +14804,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1753934325
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14816,7 +14852,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b046ff928d6ac4c0eb5573e12b07aa1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lastState: 1
+  lastState: 0
   lastStateBeforeSceneClose: 0
 --- !u!223 &1753934328
 Canvas:
@@ -15104,7 +15140,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1810749786
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15151,7 +15187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b046ff928d6ac4c0eb5573e12b07aa1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lastState: 1
+  lastState: 0
   lastStateBeforeSceneClose: 0
 --- !u!223 &1810749789
 Canvas:
@@ -15852,7 +15888,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b046ff928d6ac4c0eb5573e12b07aa1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lastState: 1
+  lastState: 0
   lastStateBeforeSceneClose: 0
 --- !u!114 &1943784233
 MonoBehaviour:

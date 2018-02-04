@@ -56,7 +56,7 @@ namespace DZ.Game.Scripts
                 Contexts.state.levelActiveEntity.levelSubsSpeed = Contexts.state.worldTimeEntity.worldTimeSpeed;
             }
 
-            var baseScore = 10;
+            var baseScore = 1;
 
             if (!Contexts.state.HasScore())
             {
