@@ -19,6 +19,9 @@ namespace DZ.Game.Scripts
             raportShown = false;
             warningShown = false;
 
+            var controlsUnit = GameObject.FindObjectOfType<ControlsUnit>();
+            controlsUnit.switchButton.gameObject.SetActive(true);
+
             Freaking.Fwait.ForSecondsUnscaled(3f).Done(() =>
             {
                 var eventEntity = Contexts.input.CreateEventEntity();

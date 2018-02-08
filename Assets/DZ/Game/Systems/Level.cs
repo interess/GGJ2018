@@ -1,6 +1,6 @@
+using Entitas;
 using System.Collections;
 using System.Collections.Generic;
-using Entitas;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -537,6 +537,11 @@ namespace DZ.Game.Systems.Level
 
                         var channelEntity = state.channelIndex.FindSingle(wordUnit.channelIndex);
                         if (channelEntity == null) { continue; }
+
+                        if (wordUnit.isEnd)
+                        {
+                            channelEntity.channelVoiceActive = false;
+                        }
 
                         if (!wordUnit.isEmpty)
                         {

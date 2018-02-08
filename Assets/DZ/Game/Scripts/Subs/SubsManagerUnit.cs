@@ -186,20 +186,6 @@ namespace DZ.Game.Scripts
 					entity.levelPart = true;
 				}
 
-				// for (int n = 0; n < 3; n++)
-				// {
-				// 	yield return new WaitForEndOfFrame();
-				// }
-
-				// var cumulativeWidth = 0f;
-
-				// foreach (var wordUnit in currentWordList)
-				// {
-				// 	wordUnit.rectTransform.anchoredPosition = new Vector2(cumulativeWidth, 0f);
-				// 	cumulativeWidth = cumulativeWidth + wordUnit.GetWidth();
-				// 	wordUnit.text.raycastTarget = true;
-				// }
-
 				var phoneChannelProductUnit = Contexts.state.phoneManagerUnit.Spawn();
 				var phoneChannelUnit = phoneChannelProductUnit.GetComponent<PhoneChannelUnit>();
 				phoneChannelUnit.Initialize();

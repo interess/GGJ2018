@@ -1,6 +1,6 @@
-﻿using System.Collections;
+﻿using DG.Tweening;
+using System.Collections;
 using System.Collections.Generic;
-using DG.Tweening;
 using UnityEngine;
 
 namespace DZ.Game.Scripts
@@ -20,6 +20,9 @@ namespace DZ.Game.Scripts
 
         public float openDuration;
         public float closeDuration;
+
+        public ButtonEventUnit __internalSkipButtonEventUnit;
+        public bool __internalClosable;
 
         public void SetOpened(bool value, bool fast = false)
         {
@@ -64,6 +67,14 @@ namespace DZ.Game.Scripts
             foreach (var item in enableGameObjects)
             {
                 item.SetActive(value);
+            }
+        }
+
+        public void __InternalSkip()
+        {
+            if (__internalSkipButtonEventUnit != null)
+            {
+                __internalSkipButtonEventUnit.SendMessage("HandleClickedButton");
             }
         }
     }

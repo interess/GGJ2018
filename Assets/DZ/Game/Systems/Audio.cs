@@ -1,6 +1,6 @@
-using System.Collections.Generic;
 using Entitas;
 using Entitas.Unity;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace DZ.Game.Systems.Audio
@@ -12,6 +12,26 @@ namespace DZ.Game.Systems.Audio
             Add(new InitializeAudioManagerUnit());
             Add(new InitializeMusicManagerUnit());
             Add(new InitializeAudioEffectManagerUnit());
+            Add(new ProcessEnv());
+        }
+    }
+
+    public class ProcessEnv : InitializeSystem
+    {
+        protected override void Act()
+        {
+            Freaking.Fwait.ForSeconds(0.2f).Done(() =>
+            {
+                if (Env.disableEffects)
+                {
+                    state.audioManagerUnit.audioMixer.SetFloat("EffectsVolume", -80f);
+                }
+
+                if (Env.disableMusic)
+                {
+                    state.audioManagerUnit.audioMixer.SetFloat("MusicVolume", -80f);
+                }
+            });
         }
     }
 

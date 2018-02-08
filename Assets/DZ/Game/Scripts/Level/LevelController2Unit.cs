@@ -21,6 +21,9 @@ namespace DZ.Game.Scripts
             eventEntity.modalOpenEvent = true;
             eventEntity.modalId = "DayTwo";
 
+            var controlsUnit = GameObject.FindObjectOfType<ControlsUnit>();
+            controlsUnit.switchButton.gameObject.SetActive(true);
+
             Freaking.Fwait.ForSecondsUnscaled(3f).Done(() =>
             {
                 var rapport = PlayerPrefs.GetInt("Raports");

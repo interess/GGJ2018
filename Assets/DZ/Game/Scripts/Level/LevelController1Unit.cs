@@ -21,6 +21,9 @@ namespace DZ.Game.Scripts
             eventEntity.modalOpenEvent = true;
             eventEntity.modalId = "DayOne";
 
+            var controlsUnit = GameObject.FindObjectOfType<ControlsUnit>();
+            controlsUnit.switchButton.gameObject.SetActive(false);
+
             Freaking.Fwait.ForSecondsUnscaled(3f).Done(() =>
             {
                 var introEventEntity = Contexts.input.CreateEventEntity();
