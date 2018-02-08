@@ -722,6 +722,21 @@ namespace DZ.Game.Systems.Level
                 {
                     state.levelActiveEntity.flagActive = false;
                 }
+                else
+                {
+                    var savedLevelIndex = PlayerPrefs.GetInt("Levels");
+                    var levelEntity = state.levelIndexIndex.FindSingle(savedLevelIndex);
+
+                    if (levelEntity == null)
+                    {
+                        var playEventEntity = input.CreateEventEntity();
+                        playEventEntity.eventId = "PlayButton";
+                    }
+                    else
+                    {
+                        levelEntity.flagActive = true;
+                    }
+                }
             }
         }
 

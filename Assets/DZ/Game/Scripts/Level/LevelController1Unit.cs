@@ -24,6 +24,13 @@ namespace DZ.Game.Scripts
             var controlsUnit = GameObject.FindObjectOfType<ControlsUnit>();
             controlsUnit.switchButton.gameObject.SetActive(false);
 
+            Contexts.state.ticketManagerUnit.Init(PlayerPrefs.GetInt("Raports"), PlayerPrefs.GetInt("Warnings"));
+
+            PlayerPrefs.SetInt("Raports", 0);
+            PlayerPrefs.SetInt("Warnings", 0);
+
+            Contexts.state.score = -16;
+
             Freaking.Fwait.ForSecondsUnscaled(3f).Done(() =>
             {
                 var introEventEntity = Contexts.input.CreateEventEntity();
@@ -74,13 +81,6 @@ namespace DZ.Game.Scripts
                 Contexts.state.levelActiveEntity.levelSubsSpeed = Contexts.state.worldTimeEntity.worldTimeSpeed;
             }
 
-            var baseScore = 0;
-
-            if (!Contexts.state.HasScore())
-            {
-                Contexts.state.score = baseScore;
-            }
-
             if (entity.HasScoreHeavyEvent())
             {
                 Contexts.state.score += entity.scoreHeavy;
@@ -97,34 +97,10 @@ namespace DZ.Game.Scripts
             var finalWarning = false;
             var finalRaport = false;
 
-            if (Contexts.state.score < -40 && !raportShown)
-            {
-                raportShown = true;
-                Contexts.state.score = baseScore;
-
-                var numberOfRaports = PlayerPrefs.GetInt("Raports");
-                numberOfRaports++;
-                PlayerPrefs.SetInt("Raports", numberOfRaports);
-
-                if (numberOfRaports >= 3)
-                {
-                    finalRaport = true;
-                    PlayerPrefs.SetInt("Raports", 0);
-                    GameOver();
-                }
-
-                if (!firstHelperShown)
-                {
-                    OnFirstHeavyRapport();
-                    firstHelperShown = true;
-                }
-
-                Contexts.state.ticketManagerUnit.AddRaport(finalRaport);
-            }
-            else if (Contexts.state.score < -20 && !warningShown)
+            if (Contexts.state.score < -40 && !warningShown)
             {
                 warningShown = true;
-                Contexts.state.score = baseScore;
+                Contexts.state.score = 0;
 
                 var numberOfWarnings = PlayerPrefs.GetInt("Warnings");
                 numberOfWarnings++;
@@ -152,7 +128,32 @@ namespace DZ.Game.Scripts
                 Contexts.state.ticketManagerUnit.AddWarning(finalWarning);
 
             }
+            else if (Contexts.state.score < -20 && !raportShown)
+            {
+                raportShown = true;
 
+                var numberOfRaports = PlayerPrefs.GetInt("Raports");
+                numberOfRaports++;
+                PlayerPrefs.SetInt("Raports", numberOfRaports);
+
+                if (numberOfRaports >= 3)
+                {
+                    finalRaport = true;
+                    PlayerPrefs.SetInt("Raports", 0);
+                    GameOver();
+                }
+
+                if (!firstHelperShown)
+                {
+                    OnFirstHeavyRapport();
+                    firstHelperShown = true;
+                    raportShown = false;
+                }
+                else
+                {
+                    Contexts.state.ticketManagerUnit.AddRaport(finalRaport);
+                }
+            }
         }
 
         void OnFirstHeavyRapport()
@@ -171,7 +172,7 @@ namespace DZ.Game.Scripts
                 if (numberOfRaports < 0) numberOfRaports = 0;
                 PlayerPrefs.SetInt("Raports", numberOfRaports);
 
-                Contexts.state.ticketManagerUnit.Init(0, PlayerPrefs.GetInt("Warnings"));
+                Contexts.state.ticketManagerUnit.Init(numberOfRaports, PlayerPrefs.GetInt("Warnings"));
 
                 // Contexts.state.ticketManagerUnit.RemoveRaport();
             });

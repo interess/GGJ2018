@@ -19,8 +19,18 @@ namespace DZ.Game.Scripts
             raportShown = false;
             warningShown = false;
 
+            if (!Contexts.state.HasScore())
+            {
+                Contexts.state.score = 0;
+            }
+
+            if (Contexts.state.score < -20) { Contexts.state.score = 0; }
+            else if (Contexts.state.score < 30) { Contexts.state.score += 10; }
+
             var controlsUnit = GameObject.FindObjectOfType<ControlsUnit>();
             controlsUnit.switchButton.gameObject.SetActive(true);
+
+            Contexts.state.ticketManagerUnit.Init(PlayerPrefs.GetInt("Raports"), PlayerPrefs.GetInt("Warnings"));
 
             Freaking.Fwait.ForSecondsUnscaled(3f).Done(() =>
             {
@@ -57,13 +67,6 @@ namespace DZ.Game.Scripts
                 Contexts.state.levelActiveEntity.levelSubsSpeed = Contexts.state.worldTimeEntity.worldTimeSpeed;
             }
 
-            var baseScore = 0;
-
-            if (!Contexts.state.HasScore())
-            {
-                Contexts.state.score = baseScore;
-            }
-
             if (entity.HasScoreHeavyEvent())
             {
                 Contexts.state.score += entity.scoreHeavy;
@@ -83,7 +86,7 @@ namespace DZ.Game.Scripts
             if (Contexts.state.score < -40 && !raportShown)
             {
                 raportShown = true;
-                Contexts.state.score = baseScore;
+                Contexts.state.score = 0;
 
                 var numberOfRaports = PlayerPrefs.GetInt("Raports");
                 numberOfRaports++;
@@ -101,7 +104,6 @@ namespace DZ.Game.Scripts
             else if (Contexts.state.score < -20 && !warningShown)
             {
                 warningShown = true;
-                Contexts.state.score = baseScore;
 
                 var numberOfWarnings = PlayerPrefs.GetInt("Warnings");
                 numberOfWarnings++;
