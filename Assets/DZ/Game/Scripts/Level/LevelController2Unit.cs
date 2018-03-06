@@ -9,6 +9,7 @@ namespace DZ.Game.Scripts
         bool switchedToChannel;
         bool raportShown;
         bool warningShown;
+        bool secondLetterDone;
 
         public override void OnStart()
         {
@@ -16,6 +17,10 @@ namespace DZ.Game.Scripts
 
             raportShown = false;
             warningShown = false;
+            switchedToChannel = false;
+            secondLetterDone = false;
+
+            if (Contexts.state.HasLevelActive()) { Contexts.state.levelActiveEntity.levelSubsSpeed = 0; }
 
             var eventEntity = Contexts.input.CreateEventEntity();
             eventEntity.modalOpenEvent = true;
@@ -29,7 +34,7 @@ namespace DZ.Game.Scripts
                 Contexts.state.score = 0;
             }
 
-            if (Contexts.state.score < -20) { Contexts.state.score = 0; }
+            if (Contexts.state.score < -20) { Contexts.state.score = -10; }
             else if (Contexts.state.score < 30) { Contexts.state.score += 10; }
 
             Contexts.state.ticketManagerUnit.Init(PlayerPrefs.GetInt("Raports"), PlayerPrefs.GetInt("Warnings"));
@@ -64,18 +69,23 @@ namespace DZ.Game.Scripts
                 Contexts.state.hudUnit.SetActive(true);
                 Contexts.state.levelActiveEntity.levelSubsSpeed = Contexts.state.worldTimeEntity.worldTimeSpeed;
 
-                Freaking.Fwait.ForSeconds(10f).Done(() =>
+                Freaking.Fwait.ForSeconds(5f).Done(() =>
                 {
+                    Debug.Log("5 sec passed");
                     if (!switchedToChannel)
                     {
+                        Debug.Log("Open modal");
                         var helperModal = Contexts.input.CreateEventEntity();
                         helperModal.modalOpenEvent = true;
                         helperModal.modalId = "SwitchingHelper";
+                        switchedToChannel = true;
                     }
                 });
+
+                secondLetterDone = true;
             }
 
-            if (entity.channelSwitchEvent)
+            if (entity.channelSwitchEvent && secondLetterDone)
             {
                 switchedToChannel = true;
             }

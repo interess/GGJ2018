@@ -16,6 +16,9 @@ namespace DZ.Game.Scripts
 		public RectTransform[] channelRectTransforms;
 		public float spaceWidth = 70f;
 
+		[SerializeField]
+		private UnityEngine.UI.GraphicRaycaster[] channelGraphicsRaycasters;
+
 		public Color[] dialogOwnerColors;
 
 		private FS.PrefabFactory.Scripts.FactoryUnit __subsWordFactoryUnit;
@@ -60,6 +63,12 @@ namespace DZ.Game.Scripts
 			if (channelRectTransforms.Length < 10)
 			{
 				Debug.LogError("SubsManagerUnit | SubsWrapperRectTransforms array must have more than 10 RectTransforms");
+			}
+
+			channelGraphicsRaycasters = new UnityEngine.UI.GraphicRaycaster[channelRectTransforms.Length];
+			for (int i = 0; i < channelRectTransforms.Length; i++)
+			{
+				channelGraphicsRaycasters[i] = channelRectTransforms[i].GetComponentInParent<UnityEngine.UI.GraphicRaycaster>();
 			}
 		}
 
@@ -145,7 +154,7 @@ namespace DZ.Game.Scripts
 
 					if (isEnd)
 					{
-						currentWord = " ";
+						currentWord = "              ";
 					}
 
 					if (word.Contains("---"))
@@ -223,10 +232,15 @@ namespace DZ.Game.Scripts
 
 		public void MoveSubs(float speed)
 		{
-			foreach (var item in channelRectTransforms)
+			foreach (var item in channelGraphicsRaycasters)
 			{
 				item.transform.Translate(new Vector3(-speed * Time.deltaTime, 0, 0));
 			}
+		}
+
+		public UnityEngine.UI.GraphicRaycaster GetRaycaster(int index)
+		{
+			return channelGraphicsRaycasters[index];
 		}
 
 		public void SetRecording(bool value)
@@ -238,7 +252,8 @@ namespace DZ.Game.Scripts
 		{
 			foreach (var item in channelRectTransforms)
 			{
-				item.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+				item.anchoredPosition = Vector2.zero;
+				item.parent.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
 			}
 
 			__wordUnitsLookup.Clear();

@@ -77,6 +77,17 @@ namespace DZ.Game.Scripts
                 letterEventEntity.modalCloseEvent = true;
                 letterEventEntity.modalId = "FirstLetter";
 
+                var letter2EventEntity = Contexts.input.CreateEventEntity();
+                letter2EventEntity.modalOpenEvent = true;
+                letter2EventEntity.modalId = "FirstLetter2";
+            }
+
+            if (entity.HasEventId() && entity.eventId == "FirstLetter2_Done")
+            {
+                var letterEventEntity = Contexts.input.CreateEventEntity();
+                letterEventEntity.modalCloseEvent = true;
+                letterEventEntity.modalId = "FirstLetter2";
+
                 Contexts.state.hudUnit.SetActive(true);
                 Contexts.state.levelActiveEntity.levelSubsSpeed = Contexts.state.worldTimeEntity.worldTimeSpeed;
             }
@@ -131,6 +142,7 @@ namespace DZ.Game.Scripts
             else if (Contexts.state.score < -20 && !raportShown)
             {
                 raportShown = true;
+                Contexts.state.score = 0;
 
                 var numberOfRaports = PlayerPrefs.GetInt("Raports");
                 numberOfRaports++;
@@ -143,15 +155,13 @@ namespace DZ.Game.Scripts
                     GameOver();
                 }
 
+                Contexts.state.ticketManagerUnit.AddRaport(finalRaport);
+
                 if (!firstHelperShown)
                 {
                     OnFirstHeavyRapport();
                     firstHelperShown = true;
                     raportShown = false;
-                }
-                else
-                {
-                    Contexts.state.ticketManagerUnit.AddRaport(finalRaport);
                 }
             }
         }

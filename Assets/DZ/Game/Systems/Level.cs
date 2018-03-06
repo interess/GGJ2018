@@ -240,6 +240,7 @@ namespace DZ.Game.Systems.Level
                     var levelActiveEntity = state.levelActiveEntity;
                     if (!levelActiveEntity.flagLoaded)
                     {
+                        levelActiveEntity.levelSubsSpeed = 0;
                         state.subsManagerUnit.LoadSubs(levelActiveEntity.levelIndex, () =>
                         {
 
@@ -497,7 +498,6 @@ namespace DZ.Game.Systems.Level
                                 if (wordUnit.channelIndex != state.channelActiveEntity.channel) { continue; }
                                 if (!wordUnit.isEmpty)
                                 {
-                                    // Debug.Log(wordUnit.text.text); 
                                     wordUnit.SetColor(Color.white);
                                     wordUnit.isMarked = true;
                                 }
@@ -512,16 +512,31 @@ namespace DZ.Game.Systems.Level
         public class TriggerPhoneTalks : ExecuteSystem
         {
             private int __prevDialogIndex;
+            private int __counter;
+            private int __counterInitial = 8;
 
             protected override void Act()
             {
-                if (!state.HasLevelActiveLoaded()) { return; }
+                if (!state.HasLevelActiveLoaded())
+                {
+                    __counter = __counterInitial;
+                    return;
+                }
+
+                if (__counter >= 0)
+                {
+                    __counter -= 1;
+                    return;
+                }
+
+                __counter = __counterInitial;
 
                 var anchor = state.phoneManagerUnit.phoneTriggerAnchor;
                 var gameCamera = state.stageManagerUnit.gameCameraUnit.camera;
 
                 var anchorPositionScreen = gameCamera.WorldToScreenPoint(anchor.position);
                 UnityEngine.EventSystems.PointerEventData pointerData = new UnityEngine.EventSystems.PointerEventData(UnityEngine.EventSystems.EventSystem.current);
+                anchorPositionScreen.z = -5;
                 pointerData.position = anchorPositionScreen;
                 var results = new List<UnityEngine.EventSystems.RaycastResult>();
                 UnityEngine.EventSystems.EventSystem.current.RaycastAll(pointerData, results);
@@ -531,7 +546,6 @@ namespace DZ.Game.Systems.Level
                     var wordUnit = item.gameObject.GetComponent<Scripts.SubsWordUnit>();
                     if (wordUnit != null)
                     {
-
                         if (wordUnit.isSpoken) { continue; }
                         wordUnit.isSpoken = true;
 
@@ -564,16 +578,49 @@ namespace DZ.Game.Systems.Level
                         }
                     }
                 }
+
+                // var channelGroup = state.channelGroup;
+                // foreach (var entity in channelGroup)
+                // {
+                //     var raycaster = state.subsManagerUnit.GetRaycaster(entity.channel);
+                //     if (raycaster == null)
+                //     {
+                //         Debug.Log("Raycaster is null on index " + entity.channel);
+                //     }
+                //     else
+                //     {
+                //         // pointerData.position = raycaster.transform.InverseTransformPoint(anchor.position);
+                //         // var results = new List<UnityEngine.EventSystems.RaycastResult>();
+                //         // raycaster.Raycast(pointerData, results);
+                //         // Debug.Log(results.Count);
+                //         // Debug.LogFormat("{0} - {1}", anchorPositionScreen, pointerData.position);
+
+                //     }
+                // }
             }
         }
 
         public class TriggerScore : ExecuteSystem
         {
             private int __prevDialogIndex;
+            private int __counter;
+            private int __counterInitial = 7;
 
             protected override void Act()
             {
-                if (!state.HasLevelActiveLoaded()) { return; }
+                if (!state.HasLevelActiveLoaded())
+                {
+                    __counter = __counterInitial;
+                    return;
+                }
+
+                if (__counter >= 0)
+                {
+                    __counter -= 1;
+                    return;
+                }
+
+                __counter = __counterInitial;
 
                 var anchor = state.phoneManagerUnit.scoreTriggerAnchor;
                 var gameCamera = state.stageManagerUnit.gameCameraUnit.camera;
@@ -592,7 +639,7 @@ namespace DZ.Game.Systems.Level
                         if (wordUnit.isEnd)
                         {
                             var channelEntity = state.channelIndex.FindSingle(wordUnit.channelIndex);
-                            Debug.Log("Ended: " + wordUnit.channelIndex + " " + wordUnit.text.text);
+                            // Debug.Log("Ended: " + wordUnit.channelIndex + " " + wordUnit.text.text);
                             if (channelEntity != null)
                             {
                                 channelEntity.channelFinished = true;
@@ -605,7 +652,7 @@ namespace DZ.Game.Systems.Level
 
                         if (wordUnit.isTarget)
                         {
-                            Debug.Log("Word is target:  " + wordUnit.text.text);
+                            // Debug.Log("Word is target:  " + wordUnit.text.text);
                             if (!wordUnit.isMarked)
                             {
                                 var eventEntity = input.CreateEventEntity();
@@ -635,6 +682,22 @@ namespace DZ.Game.Systems.Level
                         }
                     }
                 }
+
+                // var channelGroup = state.channelGroup;
+                // foreach (var entity in channelGroup)
+                // {
+                //     var raycaster = state.subsManagerUnit.GetRaycaster(entity.channel);
+                //     if (raycaster == null)
+                //     {
+                //         Debug.Log("Raycaster is null on index " + entity.channel);
+                //     }
+                //     else
+                //     {
+                //         var results = new List<UnityEngine.EventSystems.RaycastResult>();
+                //         raycaster.Raycast(pointerData, results);
+
+                //     }
+                // }
             }
         }
 

@@ -16,6 +16,8 @@ namespace DZ.Game.Scripts
             closeEventEntity2.modalOpenEvent = true;
             closeEventEntity2.modalId = "DayThree";
 
+             if (Contexts.state.HasLevelActive()) { Contexts.state.levelActiveEntity.levelSubsSpeed = 0; }
+
             raportShown = false;
             warningShown = false;
 
@@ -24,7 +26,7 @@ namespace DZ.Game.Scripts
                 Contexts.state.score = 0;
             }
 
-            if (Contexts.state.score < -20) { Contexts.state.score = 0; }
+            if (Contexts.state.score < -20) { Contexts.state.score = -10; }
             else if (Contexts.state.score < 30) { Contexts.state.score += 10; }
 
             var controlsUnit = GameObject.FindObjectOfType<ControlsUnit>();
