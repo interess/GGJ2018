@@ -243,12 +243,14 @@ namespace DZ.Game {
         public const int LevelEvent = 12;
         public const int MistakeHeavyEvent = 13;
         public const int MistakeLightEvent = 14;
-        public const int ScoreHeavyEvent = 15;
-        public const int ScoreLightEvent = 16;
-        public const int WordLength = 17;
-        public const int GameOverEvent = 18;
+        public const int MistakeHeavy = 15;
+        public const int ScoreHeavyEvent = 16;
+        public const int ScoreLightEvent = 17;
+        public const int ScoreHeavy = 18;
+        public const int WordLength = 19;
+        public const int GameOverEvent = 20;
 
-        public const int TotalComponents = 19;
+        public const int TotalComponents = 21;
 
         public static readonly Dictionary<string, int> componentsDict = new Dictionary<string, int> () {
             {"FlagEvent", 0 },
@@ -266,10 +268,12 @@ namespace DZ.Game {
             {"LevelEvent", 12 },
             {"MistakeHeavyEvent", 13 },
             {"MistakeLightEvent", 14 },
-            {"ScoreHeavyEvent", 15 },
-            {"ScoreLightEvent", 16 },
-            {"WordLength", 17 },
-            {"GameOverEvent", 18 }
+            {"MistakeHeavy", 15 },
+            {"ScoreHeavyEvent", 16 },
+            {"ScoreLightEvent", 17 },
+            {"ScoreHeavy", 18 },
+            {"WordLength", 19 },
+            {"GameOverEvent", 20 }
         };
 
         public static readonly string[] componentNames = {
@@ -288,8 +292,10 @@ namespace DZ.Game {
             "LevelEvent",
             "MistakeHeavyEvent",
             "MistakeLightEvent",
+            "MistakeHeavy",
             "ScoreHeavyEvent",
             "ScoreLightEvent",
+            "ScoreHeavy",
             "WordLength",
             "GameOverEvent"
         };
@@ -310,8 +316,10 @@ namespace DZ.Game {
             typeof(Components.Input.LevelEvent),
             typeof(Components.Input.MistakeHeavyEvent),
             typeof(Components.Input.MistakeLightEvent),
+            typeof(Components.Input.MistakeHeavy),
             typeof(Components.Input.ScoreHeavyEvent),
             typeof(Components.Input.ScoreLightEvent),
+            typeof(Components.Input.ScoreHeavy),
             typeof(Components.Input.WordLength),
             typeof(Components.Input.GameOverEvent)
         };

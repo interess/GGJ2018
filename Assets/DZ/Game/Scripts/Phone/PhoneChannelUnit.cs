@@ -43,6 +43,7 @@ namespace DZ.Game.Scripts
         {
             __audioSource.Stop();
             __isPlaying = false;
+            __audioSource.clip = null;
         }
 
         private void Update()

@@ -13,6 +13,27 @@ namespace DZ.Game.Scripts
 
         private bool __recordStartEventCreated;
 
+        public HUDButtonUnit markerButton;
+        public HUDButtonUnit switchButton;
+
+        void Start()
+        {
+            markerButton.onPointerDown += () =>
+            {
+                CreateStartRecordEvent();
+            };
+
+            markerButton.onPointerUp += () =>
+            {
+                CreateStopRecordEvent();
+            };
+
+            switchButton.onPointerClick += () =>
+            {
+                CreateChannelSwitchEvent();
+            };
+        }
+
         public void Update()
         {
             __secondsSinceLastPress += Time.deltaTime;

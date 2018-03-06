@@ -1,31 +1,24 @@
 ---0 . . . . . . . . . . . . . . . . . . . . . . . . . 
----1 Slavssya Sowoke, Lena! Can you hear me? Hello? 
----0 . . . 
----2 Yes, hi Shelly, Slavssya Sowoke! How are you doing? 
----0 . . . 
----1 I'm good, everything is going well since George came back from mines! He's free now! We're free now! Kids are so happy! 
----0 . . . . . . . . 
----1 Lena, are you still there? Lena? Are you crying? 
----0 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
 ---3 Hi, is this doctor Lewis?
 ---0 . . . 
 ---4 Yes, who's asking? 
 ---0 . . . 
----3 It's Roberto, Paul told me to call you for the *benzoymet…
----0 . . . . . . . . . . . . .  
----5 Hey Alina, Slasvssya Sowoke. I've been on the market today, they got fresh tomatos from the south, so good! I'm glad we live here and our Leader takes us to the brighter future! 
----0. . .
----6 Hi... I don't know for the tomatos, Kira, but the life is not going so well. My kneels hurt and there is nothing doctors can do, as The Party gives less and less money to the *medicine, more and more for the army...
+---3 It's Roberto, Paul told me to call you for the ***benzoymet…
+---0 . . . . . . . . . . . . . . . . 
+---5 Hey Alina, Slasvssya Sowoke. I've been on the market today, they got fresh tomatos from the south, so tasty! I'm glad we live here and our Leader leads us to the brighter future! 
+---0 . . . 
+---6 Hi... I don't know for the tomatos, Kira, but the *life is *not *going *so *well. My kneels hurt and there is nothing doctors can do, as *after *the *Health *Act *was *signed *ordinary *people *can *only have limited amount of medicine for year...
+---0 . . . 
+---5 Alina, how dare you! More medicines should go the army, as army protects our great Sowoke Respublica borders from the outsiders! 
 ---0 . . .
----5 Alina, how dare you! Army protects our great Sowoke Respublica borders from the outsiders! 
----0 . . .
----6 Yes, darling, I know. But sometimes I think our Leader cares more about our *enemies than about his people.
+---6 Yes, darling, I know. But sometimes I think *our *Leader **cares *more *about *our *enemies *than *about *his *people.
 ---0 . . .
 ---5 I don't want to continue this conversation.
 ---0 . . . . . . . . . . . . . . . . . . . . 
 ---5 Slavssya Sowoke! Hello, fellow citizen Yaneka! Have you heard of the latest Personal Amusement Bureau invention?
 ---0 . . .
 ---2 Slavssya Sowoke! No, I haven't. Please, tell me!
----5 Not a problem! A totally new entertainment for kids of all ages: Little Inferno! Why let your waste to be a mess, when you can burn it 
----0 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+---5 Not a problem! A totally new entertainment for kids of all ages: Little Inferno! Is there any better game than bring your dusty stuff to flame?
+---0 . . . . . . . . . . . . . . . 
+
 END

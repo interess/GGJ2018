@@ -1,28 +1,53 @@
----1 Hey, Kira! Slavssya Sowoke! How are you, my dear? 
----0 . . . 
----5 Slavssya Sowoke, Shelly. Everything is alright, me and Michael just came back from Bugoria, we had a really nice trip there! Have you been to Bugoria yourself? 
----0 . . . 
----1 Yeah, back at the childhood, when they had the Artztek Social Education camp was still opened. Have you been there too? 
----0 . . . 
----5 Not when I were a young girl, but the bus we were on went by camp's closed gates. So bad our children won't be able to visit it. But, at least the new Social Labor Act of laws give them rides to the sea each 4 years! 
----0 . . . 
----1 Yeah… That's great, of course. By the way, your son, Graham… 
----0 . . . 
----5 He's gone to Institute, yes. He's a clever boy, he will handle it. And what about Caren? 
----0 . . . . . . . . 
----1 I… I *need to go, Kira. Sorry. . . .
----0 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
----7 Slavssya Sowoke, Social Party Control Bureau Officer #562-R is on the line. How can I help?
+---0 . . . . . . . . . . . . . . . 
+---3 Hello? Mother, are you here?
+---0 . . . . . .
+---3 Mother? 
 ---0 . . .
----4 Slavssta Sowoke, officer. My name is Maya Saneva, Ost-Sareth, Rabenov st. 22A, appartment 12. My neighbor from upstairs is suspiciously low, I mean, quiet for last week or something. 
+---2 Oh, Gans, is that you?
 ---0 . . .
----7 Citizen Saneva, your neighbor may be at the vacation. 
+---3 Yes, mother, it's me. Are you okay?
 ---0 . . .
----4 No she's not, fellow officer. She's lazy and has no work, no child, her husband is a criminal and she's alcoholic, pathetic piano-player who played her damn piano every day. Before. So she's up to something, or I don't know, please check it.
+---2 Yes, my dear, I'm fine. Just some troubles with my ears, because of those bombs… Falling everyday.
 ---0 . . .
----7 Calm down, citizen Saneva. Social Party Control Bureau will send someone to her. Slavssya Sowoke.
+---3 How's the situation on the border?
 ---0 . . .
----4 Slavssya Sowoke!
----0 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+---2 Oh, Gans, you know… War never takes a break. Those young soldiers on the streets, I see them everyday. They don't deserve to die. They are too young for death.
+---0 . . . . . . . .
+---2 Gans? 
+---0 . . .
+---3 I need to go, mother. Stay safe, don't leave your home. 
+---0 . . .
+---3 Oh Gans, I understand. Thanks for calling me. You stay safe too!
+---0 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+---3 Hermes, you hear me?
+---0 . . .
+---6 Yes, Roberto. You want something?
+---0 . . .
+---3 Yes, Hermes, I do. Meet me at the post office tomorrow morning, we'll have *some *business to do.
+---0 . . .
+---6 Business? Are you talking about that deal, the *deal *which *will *make *us *rich *and *free?
+---0 . . .
+---3 Yes, Hermes. Roberto out. *Tomorrow. **Post *office. *Morning.
+---0 . . .
+---3 I'll be waiting.
+---0 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+---5 Yunone? Hi, it's Anya.
+---0 . . .
+---1 O, hi Anya. Anything happened?
+---0 . . .
+---5 Hi, it's alright. I just wanted to ask if you got homework tasks for social culture and, uhm, for nation history.
+---0 . . .
+---1 Oh yes, I do have them! Give me a moment…
+---0 . . . . . . . . . .
+---1 I see… It's War for Freedom, paragraph 13, page 153. For national history, of course. For social culture it's Marketing issues in social behavior, paragraph 8, page 121. 
+---0 . . . 
+---5 My gosh, you saved me, Yunone!
+---0 . . .
+---1 Nevermind! Anything else?
+---0 . . .
+---5 No, thanks again! Have a good day!
+---0 . . .
+---1 Thanks, you too!
+---0 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
 END

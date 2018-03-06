@@ -72,7 +72,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: d8c46f13a43f8884db94e523b0412709, type: 3}
   - {fileID: 8300000, guid: e866d7cbc5af86c45a32402c87fb6647, type: 3}
   femaleAudioClips:
-  - {fileID: 8300000, guid: 2e2fa3378e6365147bc3bb02858f0291, type: 3}
+  - {fileID: 8300000, guid: f0df5d054112e304cb5d2a496bde2f63, type: 3}
   - {fileID: 8300000, guid: 49e8a357f1501d34291d53c391a99246, type: 3}
 --- !u!167 &167325526254390448
 AudioReverbZone:

@@ -105,6 +105,7 @@ namespace DZ.Game.Systems.Menu
 
             protected override void Act(List<InputEntity> entities)
             {
+                Debug.Log("Quits");
                 Application.Quit();
             }
         }

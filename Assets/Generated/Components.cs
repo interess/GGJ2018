@@ -42,6 +42,8 @@ namespace DZ.Game.Components {
         public partial class TrashTimer: Entitas.IComponent { public float value; }
         public partial class EventId: Entitas.IComponent { public string value; }
         public partial class ModalId: Entitas.IComponent { public string value; }
+        public partial class MistakeHeavy: Entitas.IComponent { public int value; }
+        public partial class ScoreHeavy: Entitas.IComponent { public int value; }
         public partial class WordLength: Entitas.IComponent { public int value; }
     }
     namespace State {

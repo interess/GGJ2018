@@ -64,12 +64,11 @@ namespace DZ.Game.Scripts
 
         public override void OnMouseDown()
         {
-            if (UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
+            if (_isInverted)
             {
                 return;
             }
 
-            if (_isInverted && extraSprite == null) { return; }
 
             var entity = Contexts.input.CreateEventEntity();
             entity.eventId = buttonId;

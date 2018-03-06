@@ -16,6 +16,9 @@ namespace DZ.Game.Scripts
 		public RectTransform[] channelRectTransforms;
 		public float spaceWidth = 70f;
 
+		[SerializeField]
+		private UnityEngine.UI.GraphicRaycaster[] channelGraphicsRaycasters;
+
 		public Color[] dialogOwnerColors;
 
 		private FS.PrefabFactory.Scripts.FactoryUnit __subsWordFactoryUnit;
@@ -61,6 +64,12 @@ namespace DZ.Game.Scripts
 			{
 				Debug.LogError("SubsManagerUnit | SubsWrapperRectTransforms array must have more than 10 RectTransforms");
 			}
+
+			channelGraphicsRaycasters = new UnityEngine.UI.GraphicRaycaster[channelRectTransforms.Length];
+			for (int i = 0; i < channelRectTransforms.Length; i++)
+			{
+				channelGraphicsRaycasters[i] = channelRectTransforms[i].GetComponentInParent<UnityEngine.UI.GraphicRaycaster>();
+			}
 		}
 
 		public void LoadSubs(int dayIndex, System.Action callback)
@@ -70,7 +79,7 @@ namespace DZ.Game.Scripts
 
 		private IEnumerator LoadSubsRoutine(int dayIndex, System.Action callback)
 		{
-			var subsTextAssets = Resources.LoadAll<TextAsset>("SubsRus/" + dayIndex.ToString());
+			var subsTextAssets = Resources.LoadAll<TextAsset>("Subs/" + dayIndex.ToString());
 
 			for (int i = 0; i < subsTextAssets.Length; i++)
 			{
@@ -98,6 +107,36 @@ namespace DZ.Game.Scripts
 					currentWord = word;
 					currentIsTargetMode = word.Contains("*");
 
+					var numberOfStars = 0;
+
+					if (currentIsTargetMode)
+					{
+						if (word.Contains("***")) { numberOfStars = 3; }
+						else if (word.Contains("**")) { numberOfStars = 2; }
+						else if (word.Contains("*")) { numberOfStars = 1; }
+					}
+
+					var mistakeScore = 0;
+					var scoreScore = 0;
+
+					if (numberOfStars == 3)
+					{
+						mistakeScore = 8;
+						scoreScore = 12;
+					}
+
+					if (numberOfStars == 2)
+					{
+						mistakeScore = 5;
+						scoreScore = 8;
+					}
+
+					if (numberOfStars == 1)
+					{
+						mistakeScore = 2;
+						scoreScore = 3;
+					}
+
 					currentWord = Regex.Replace(currentWord, @"\*", "");
 
 					if (currentWord == "." || string.IsNullOrEmpty(currentWord.Trim()) || currentWord == " ")
@@ -115,7 +154,7 @@ namespace DZ.Game.Scripts
 
 					if (isEnd)
 					{
-						currentWord = " ";
+						currentWord = "              ";
 					}
 
 					if (word.Contains("---"))
@@ -129,7 +168,7 @@ namespace DZ.Game.Scripts
 						else if (dialogOwnerIndex > 10) { dialogOwnerIndex = 10; }
 					}
 
-					currentWord = currentWord;
+					// currentWord = currentWord;
 
 					var productUnit = (SubsWordProductUnit) __subsWordFactoryUnit.Spawn();
 					var wordUnit = productUnit.subsWordUnit;
@@ -146,6 +185,8 @@ namespace DZ.Game.Scripts
 					wordUnit.isSpoken = false;
 					wordUnit.isScored = false;
 					wordUnit.isEnd = isEnd;
+					wordUnit.mistakeScore = mistakeScore;
+					wordUnit.scoreScore = scoreScore;
 					__wordUnitsLookup.Add(wordUnit);
 					currentWordList.Add(wordUnit);
 
@@ -153,20 +194,6 @@ namespace DZ.Game.Scripts
 					entity.productUnit = productUnit;
 					entity.levelPart = true;
 				}
-
-				// for (int n = 0; n < 3; n++)
-				// {
-				// 	yield return new WaitForEndOfFrame();
-				// }
-
-				// var cumulativeWidth = 0f;
-
-				// foreach (var wordUnit in currentWordList)
-				// {
-				// 	wordUnit.rectTransform.anchoredPosition = new Vector2(cumulativeWidth, 0f);
-				// 	cumulativeWidth = cumulativeWidth + wordUnit.GetWidth();
-				// 	wordUnit.text.raycastTarget = true;
-				// }
 
 				var phoneChannelProductUnit = Contexts.state.phoneManagerUnit.Spawn();
 				var phoneChannelUnit = phoneChannelProductUnit.GetComponent<PhoneChannelUnit>();
@@ -205,10 +232,15 @@ namespace DZ.Game.Scripts
 
 		public void MoveSubs(float speed)
 		{
-			foreach (var item in channelRectTransforms)
+			foreach (var item in channelGraphicsRaycasters)
 			{
 				item.transform.Translate(new Vector3(-speed * Time.deltaTime, 0, 0));
 			}
+		}
+
+		public UnityEngine.UI.GraphicRaycaster GetRaycaster(int index)
+		{
+			return channelGraphicsRaycasters[index];
 		}
 
 		public void SetRecording(bool value)
@@ -220,7 +252,8 @@ namespace DZ.Game.Scripts
 		{
 			foreach (var item in channelRectTransforms)
 			{
-				item.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+				item.anchoredPosition = Vector2.zero;
+				item.parent.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
 			}
 
 			__wordUnitsLookup.Clear();

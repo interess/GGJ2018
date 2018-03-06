@@ -1,6 +1,6 @@
-﻿using System.Collections;
+﻿using DG.Tweening;
+using System.Collections;
 using System.Collections.Generic;
-using DG.Tweening;
 using UnityEngine;
 
 namespace DZ.Game.Scripts
@@ -11,6 +11,8 @@ namespace DZ.Game.Scripts
         public RectTransform modalRectTransform;
         public CanvasGroup modalCanvasGroup;
 
+        public GameObject[] enableGameObjects;
+
         UnityEngine.UI.GraphicRaycaster _graphicsRaycaster;
         protected UnityEngine.UI.GraphicRaycaster graphicsRaycaster { get { if (_graphicsRaycaster == null) _graphicsRaycaster = GetComponent<UnityEngine.UI.GraphicRaycaster>(); return _graphicsRaycaster; } }
 
@@ -18,6 +20,9 @@ namespace DZ.Game.Scripts
 
         public float openDuration;
         public float closeDuration;
+
+        public ButtonEventUnit __internalSkipButtonEventUnit;
+        public bool __internalClosable;
 
         public void SetOpened(bool value, bool fast = false)
         {
@@ -35,6 +40,7 @@ namespace DZ.Game.Scripts
                 modalCanvasGroup.DOKill(false);
                 modalCanvasGroup.DOFade(value ? 1f : 0f, value ? openDuration : closeDuration);
             }
+
         }
 
         public void SetActive(bool value, bool fast = false)
@@ -56,6 +62,19 @@ namespace DZ.Game.Scripts
                     modalCanvasGroup.DOKill(false);
                     modalCanvasGroup.DOFade(0f, closeDuration);
                 }
+            }
+
+            foreach (var item in enableGameObjects)
+            {
+                item.SetActive(value);
+            }
+        }
+
+        public void __InternalSkip()
+        {
+            if (__internalSkipButtonEventUnit != null)
+            {
+                __internalSkipButtonEventUnit.SendMessage("HandleClickedButton");
             }
         }
     }

@@ -8,5 +8,11 @@ namespace DZ.Game.Scripts
     {
         private SubsWordUnit __subsWordUnit;
         public SubsWordUnit subsWordUnit { get { if (__subsWordUnit == null) __subsWordUnit = GetComponent<SubsWordUnit>(); return __subsWordUnit; } }
+
+        [FreakingEditor.FbuttonPlay]
+        public override void Despawn()
+        {
+            Destroy(gameObject);
+        }
     }
 }

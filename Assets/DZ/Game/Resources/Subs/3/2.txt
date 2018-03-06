@@ -1,0 +1,20 @@
+---0 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+---5 Madame Berghoff?
+---0 . . .
+---1 *Oui.
+---0 . . .
+---5 Super. *Avez-vous *rempli *tous *les *documents *nécessaires?
+---0 . . .
+---1 Oui. Je suis prêt *à *partir.
+---0 . . .
+---5 Ta *prononciation *va bien, je pense que tu es prête.
+---0 . . .
+---1 Alors on *se *retrouve chez *toi *demain?
+---0 . . .
+---5 Oui. A *bientôt.
+---0 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+---2 And, so, the city is great from it's borders to the central park. All the streets, all the corners - a true socialism spirit gets through them, and you feel it. Like, everywhere. And we got to the Emerald river, it was about 10 minutes walking from our hotel. And it's truly emerald - the color amazes, you can't stop looking into the water reflection, it's like diving into it, flowing with it's water. Then we got to the opera theater, and - guess what - the sound was mind blowing, I have never felt so close to the art itself…
+---0 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+---6 . . . *and *we *will *leave *your *instructions *on *the previous *point. *Remember: *it's *not *safe *to *use *phones *more *than *once. *It's *not *safe *to *stay *anywhere *more *than *one *night. *Don't trust people talking to you. Wherever you are, stay on guard. End of message. **Svobodis, **Sowoke!
+
+END
